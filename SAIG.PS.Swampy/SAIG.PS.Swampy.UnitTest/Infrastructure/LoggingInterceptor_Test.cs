@@ -46,6 +46,49 @@ namespace SAIG.PS.Swampy.UnitTest.Infrastructure
             Assert.AreEqual(2, factory.MessagesLogged.Count);
         }
 
+        [Test]
+        public void Interceptor_No_Logs_On_Success_With_Debug_Off()
+        {
+            //arrange
+            var factory = new FakeLogFactory(false);
+            var container = RegisterContainer(factory, typeof(SuccessObject));
+
+            var action = container.Resolve<IAnyObject>();
+
+            //act
+            action.DoSomething("a", "b");
+
+            //assert
+            Assert.AreEqual(0, factory.MessagesLogged.Count);
+        }
+
+
+
+        [Test]
+        public void Interceptor_Logs_Execption_With_Debug_Off()
+        {
+            //arrange
+            var factory = new FakeLogFactory(false);
+            var container = RegisterContainer(factory, typeof(FailureObject));
+
+            var action = container.Resolve<IAnyObject>();
+
+            //act
+            try
+            {
+                action.DoSomething("a", "b");
+            }
+            catch
+            {
+ 
+            }
+           
+
+            //assert
+            Assert.AreEqual(1, factory.MessagesLogged.Count);
+        }
+
+
         public class SuccessObject : IAnyObject
         {
             public string DoSomething(string valueA, string valueB)
@@ -90,6 +133,13 @@ namespace SAIG.PS.Swampy.UnitTest.Infrastructure
                         {
                             MessagesLogged.Add(x.Arguments[0].ToString());
                         }
+                    );
+                stub.Stub(x => x.Error(null)).IgnoreArguments()
+                    .WhenCalled(
+                    x =>
+                    {
+                        MessagesLogged.Add(x.Arguments[0].ToString());
+                    }
                     );
 
                 return stub;

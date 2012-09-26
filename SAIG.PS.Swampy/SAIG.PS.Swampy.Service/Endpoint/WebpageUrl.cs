@@ -5,15 +5,14 @@ using System.Text;
 
 namespace SAIG.PS.Swampy.Service.Endpoint
 {
-    public class WebpageUrl : IEndpointValidator
+    public class WebpageUrl : EndpointBase
     {
-        #region Implementation of IEndpointValidator
 
-        public bool IsValid(string url)
+        public override bool IsValid(string url)
         {
             return (Uri.IsWellFormedUriString(url, UriKind.RelativeOrAbsolute));
         }
 
-        #endregion
+       
     }
 }

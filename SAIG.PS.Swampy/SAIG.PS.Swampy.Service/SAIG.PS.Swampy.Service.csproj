@@ -41,6 +41,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\log4net.2.0.0\lib\net40-full\log4net.dll</HintPath>
     </Reference>
+    <Reference Include="MongoDB.Bson">
+      <HintPath>..\packages\mongocsharpdriver.1.6\lib\net35\MongoDB.Bson.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Runtime.Serialization" />
@@ -55,8 +58,11 @@
     <Compile Include="CastleConfigurator.cs" />
     <Compile Include="Endpoint\DatabaseConnectionString.cs" />
     <Compile Include="Endpoint\EndpointType.cs" />
+    <Compile Include="Endpoint\IEndpoint.cs" />
     <Compile Include="Endpoint\IEndpointValidator.cs" />
     <Compile Include="Endpoint\WebpageUrl.cs" />
+    <Compile Include="EntityBase.cs" />
+    <Compile Include="SystemEnvironment.cs" />
     <Compile Include="IEndpointService.cs" />
     <Compile Include="Infrastructure\ILogFactory.cs" />
     <Compile Include="Infrastructure\LogFactory.cs" />

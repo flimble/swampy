@@ -4,10 +4,10 @@ using log4net;
 
 namespace SAIG.PS.Swampy.Service.Endpoint
 {
-    public class DatabaseConnectionString : IEndpointValidator
+    public class DatabaseConnectionString : EndpointBase
     {
 
-        public bool IsValid(string connectionString)
+        public override bool IsValid(string connectionString)
         {
             try
             {

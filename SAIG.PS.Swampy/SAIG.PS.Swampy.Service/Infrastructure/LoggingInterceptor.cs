@@ -10,6 +10,8 @@ namespace SAIG.PS.Swampy.Service.Infrastructure
 {
     /// <summary>
     /// Generic AOP Logging Interceptor using DynamicProxy 
+    /// In large part lifted from following blog article 
+    /// http://ayende.com/blog/3474/logging-the-aop-way
     /// </summary>
     public class LoggingInterceptor : IInterceptor
     {
@@ -46,7 +48,7 @@ namespace SAIG.PS.Swampy.Service.Infrastructure
             }
             catch (Exception e)
             {
-                logger.Error(e);
+               logger.Error(e);
                 throw;
             }
         }

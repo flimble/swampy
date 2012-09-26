@@ -24,3 +24,17 @@ Scenario: Add a new endpoint
 	Then The key should be there for all environments
 
 
+Scenario: Config Replacement
+	Given I have wildcard
+	When I create a new environment
+	Then All environment data is updated at read time. Note validation must happen when a config replacement value is modified as this will affect all other keys.
+
+
+Scenario: Changing a replacement token
+	Given I have an existing replacement token
+	And I have config values that use it
+	When I attempt to modify the replacement token
+	Then The new replacement value must be validdated.
+
+
+
