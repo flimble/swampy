@@ -11,5 +11,8 @@ namespace SAIG.PS.Swampy.Service
     {
         [OperationContract]
         KeyPair[] GetEndpoints(string environment, string[] keys);
+
+        [OperationContract]
+        KeyPair GetSingleEndpoint(string environment, string key);
     }
 }

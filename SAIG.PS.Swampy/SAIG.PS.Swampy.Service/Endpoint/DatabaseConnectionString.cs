@@ -1,11 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Data.Common;
-using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
 
-namespace SAIG.PS.Swampy.Service
+namespace SAIG.PS.Swampy.Service.Endpoint
 {
     public class DatabaseConnectionString : IEndpointValidator
     {

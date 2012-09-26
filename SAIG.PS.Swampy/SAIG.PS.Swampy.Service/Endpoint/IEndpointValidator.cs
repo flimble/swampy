@@ -1,4 +1,4 @@
-namespace SAIG.PS.Swampy.Service
+namespace SAIG.PS.Swampy.Service.Endpoint
 {
     public interface IEndpointValidator
     {

@@ -48,7 +48,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Endpoint\WebpageUrl_Test.cs" />
-    <Compile Include="Fakes\do.cs" />
+    <Compile Include="Fakes\FakeEndpointService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
