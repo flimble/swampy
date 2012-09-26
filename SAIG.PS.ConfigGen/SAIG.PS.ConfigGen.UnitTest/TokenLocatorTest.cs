@@ -6,7 +6,6 @@ using System.Text;
 using System.Text.RegularExpressions;
 using NUnit.Framework;
 using Rhino.Mocks;
-using SAIG.PS.ConfigGen.Console;
 
 namespace SAIG.PS.ConfigGen.UnitTest
 {
@@ -34,9 +33,10 @@ namespace SAIG.PS.ConfigGen.UnitTest
                             </appSettings>
                          </configuration>";
 
-            var underTest = new TokenFinder();
+            var underTest = new TokenIdentifier();
 
-            var result = underTest.GetTokens(sourceTemplate);
+            underTest.SearchForTokens(sourceTemplate);
+            var result = underTest.TokensFound;
 
             Assert.AreEqual(1, result.Count);
 
@@ -57,9 +57,10 @@ namespace SAIG.PS.ConfigGen.UnitTest
                             </appSettings>
                          </configuration>";
 
-            var underTest = new TokenFinder();
+            var underTest = new TokenIdentifier();
+            underTest.SearchForTokens(sourceTemplate);
 
-            var result = underTest.GetTokens(sourceTemplate);
+            var result = underTest.TokensFound;
 
             Assert.AreEqual(3, result.Count);
 
@@ -82,9 +83,10 @@ namespace SAIG.PS.ConfigGen.UnitTest
                             </appSettings>
                          </configuration>";
 
-            var underTest = new TokenFinder();
+            var underTest = new TokenIdentifier();
 
-            var result = underTest.GetTokens(sourceTemplate);
+            underTest.SearchForTokens(sourceTemplate);
+            var result = underTest.TokensFound;
 
             Assert.AreEqual(1, result.Count);
 

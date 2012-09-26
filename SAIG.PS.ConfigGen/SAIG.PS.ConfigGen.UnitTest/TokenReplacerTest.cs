@@ -6,7 +6,6 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Xml;
 using NUnit.Framework;
-using SAIG.PS.ConfigGen.Console;
 
 namespace SAIG.PS.ConfigGen.UnitTest
 {
@@ -19,7 +18,7 @@ namespace SAIG.PS.ConfigGen.UnitTest
             //arrange
             var tokenReplacementValueMap = new Dictionary<string, string>
                                                {
-                                                   { "[%Token1%]","ba" }
+                                                   { "Token1","ba" }
                                                };
 
             string templateXml =
@@ -40,7 +39,7 @@ namespace SAIG.PS.ConfigGen.UnitTest
                          </configuration>";
 
 
-            var underTest = new TokenReplacer();
+            var underTest = new TokenReplacer(new TokenIdentifier());
 
             string result = underTest.Replace(templateXml, tokenReplacementValueMap);
 
@@ -55,8 +54,8 @@ namespace SAIG.PS.ConfigGen.UnitTest
             //arrange
             var tokenReplacementValueMap = new Dictionary<string, string>
                                                {
-                                                   { "[%Token1%]","ba" },
-                                                   { "[%Token2%]","fa" }
+                                                   { "Token1","ba" },
+                                                   { "Token2","fa" }
                                                };
 
             string templateXml =
@@ -79,7 +78,7 @@ namespace SAIG.PS.ConfigGen.UnitTest
                          </configuration>";
 
 
-            var underTest = new TokenReplacer();
+            var underTest = new TokenReplacer(new TokenIdentifier());
 
             string result = underTest.Replace(templateXml, tokenReplacementValueMap);
 

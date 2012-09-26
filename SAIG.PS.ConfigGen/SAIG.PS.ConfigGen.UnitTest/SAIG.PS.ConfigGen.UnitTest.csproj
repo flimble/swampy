@@ -49,7 +49,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ConfigWriterTest.cs" />
-    <Compile Include="Do.cs" />
     <Compile Include="TokenLocatorTest.cs" />
     <Compile Include="TokenReplacerTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -62,10 +61,13 @@
       <Project>{BEA1C3E4-9222-400E-8E7B-B0E98A715B11}</Project>
       <Name>SAIG.PS.Swampy.Service</Name>
     </ProjectReference>
-    <ProjectReference Include="..\SAIG.PS.ConfigGen.Console\SAIG.PS.ConfigGen.csproj">
+    <ProjectReference Include="..\SAIG.PS.ConfigGen\SAIG.PS.ConfigGen.csproj">
       <Project>{A0E14B32-0EDE-43DF-913F-D0D5A9FEF475}</Project>
       <Name>SAIG.PS.ConfigGen</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="TestFiles\sampletemplate.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

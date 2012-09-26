@@ -2,18 +2,20 @@
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{BEA1C3E4-9222-400E-8E7B-B0E98A715B11}</ProjectGuid>
-    <OutputType>Library</OutputType>
+    <ProjectGuid>{4ADAFA96-142A-486B-8715-A8DCF467F5D3}</ProjectGuid>
+    <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>SAIG.PS.Swampy.Service</RootNamespace>
-    <AssemblyName>SAIG.PS.Swampy.Service</AssemblyName>
+    <RootNamespace>SAIG.PS.ConfigGen.Console</RootNamespace>
+    <AssemblyName>SAIG.PS.ConfigGen.Console</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkProfile>Client</TargetFrameworkProfile>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -22,7 +24,8 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -35,12 +38,17 @@
       <HintPath>..\packages\Castle.Core.3.1.0\lib\net40-client\Castle.Core.dll</HintPath>
     </Reference>
     <Reference Include="Castle.Windsor">
-      <HintPath>..\packages\Castle.Windsor.3.1.0\lib\net40\Castle.Windsor.dll</HintPath>
+      <HintPath>..\packages\Castle.Windsor.3.1.0\lib\net40-client\Castle.Windsor.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net, Version=1.2.11.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\log4net.2.0.0\lib\net40-client\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="NDesk.Options">
+      <HintPath>..\packages\NDesk.Options.0.2.1\lib\NDesk.Options.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Runtime.Serialization" />
-    <Reference Include="System.ServiceModel" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -48,15 +56,27 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Endpoint\DatabaseConnectionString.cs" />
-    <Compile Include="Endpoint\EndpointType.cs" />
-    <Compile Include="Endpoint\IEndpointValidator.cs" />
-    <Compile Include="Endpoint\WebpageUrl.cs" />
-    <Compile Include="IEndpointService.cs" />
-    <Compile Include="KeyPair.cs" />
+    <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\SAIG.PS.Swampy\SAIG.PS.Swampy.Service\SAIG.PS.Swampy.Service.csproj">
+      <Project>{BEA1C3E4-9222-400E-8E7B-B0E98A715B11}</Project>
+      <Name>SAIG.PS.Swampy.Service</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\SAIG.PS.Swampy\SAIG.PS.Swampy.UnitTest\SAIG.PS.Swampy.UnitTest.csproj">
+      <Project>{59498DF9-EC90-46BC-8BF5-C03AB419CD21}</Project>
+      <Name>SAIG.PS.Swampy.UnitTest</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SAIG.PS.ConfigGen\SAIG.PS.ConfigGen.csproj">
+      <Project>{A0E14B32-0EDE-43DF-913F-D0D5A9FEF475}</Project>
+      <Name>SAIG.PS.ConfigGen</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="log4net.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
