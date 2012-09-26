@@ -37,6 +37,10 @@
     <Reference Include="Castle.Windsor">
       <HintPath>..\packages\Castle.Windsor.3.1.0\lib\net40\Castle.Windsor.dll</HintPath>
     </Reference>
+    <Reference Include="log4net, Version=1.2.11.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\log4net.2.0.0\lib\net40-full\log4net.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Runtime.Serialization" />
@@ -48,15 +52,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CastleConfigurator.cs" />
     <Compile Include="Endpoint\DatabaseConnectionString.cs" />
     <Compile Include="Endpoint\EndpointType.cs" />
     <Compile Include="Endpoint\IEndpointValidator.cs" />
     <Compile Include="Endpoint\WebpageUrl.cs" />
     <Compile Include="IEndpointService.cs" />
+    <Compile Include="Infrastructure\ILogFactory.cs" />
+    <Compile Include="Infrastructure\LogFactory.cs" />
+    <Compile Include="Infrastructure\LoggingInterceptor.cs" />
     <Compile Include="KeyPair.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="log4net.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
