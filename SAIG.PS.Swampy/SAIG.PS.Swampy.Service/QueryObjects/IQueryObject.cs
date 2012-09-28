@@ -2,8 +2,11 @@ using System.Linq;
 
 namespace SAIG.PS.Swampy.Service.QueryObjects
 {
-    public interface IQueryObject
+    /// <summary>
+    /// Interface for all query objects
+    /// </summary>
+    public interface IQueryObject<T, V>
     {
-        IQueryable GetQuery();
+        IQueryable<T> GetQuery(IQueryable<V> inputQuery);
     }
 }

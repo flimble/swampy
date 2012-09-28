@@ -25,5 +25,10 @@ namespace SAIG.PS.Swampy.Service.Entities.Endpoint
             }
             return true;
         }
+
+        public override bool Test(string endpoint)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

@@ -2,6 +2,10 @@
 
 namespace SAIG.PS.Swampy.Service.Entities.Endpoint
 {
+    /// <summary>
+    /// Base class for all environment endpoints. 
+    /// Contains methods for validating endpoint location as well as performing connnectivity tests.
+    /// </summary>
     public abstract class EndpointBase : EntityBase, IEndpointValidator
     {
         private string _key;
@@ -17,11 +21,15 @@ namespace SAIG.PS.Swampy.Service.Entities.Endpoint
             }
         }
 
+        public virtual string Description { get; set; }
+
         public virtual string Value { get; set; }
 
         #region Implementation of IEndpointValidator
 
         public abstract bool IsValid(string endpoint);
+
+        public abstract bool Test(string endpoint);
 
         public abstract string TypeName { get; }
 
