@@ -47,3 +47,8 @@ Scenario: Missing Key QuickView
 	And Some environments do not have all keys populated
 	When I go to the value configuration page
 	Then The view will show me in red a list of all the keys that do not match
+
+Scenario: Diff by Environment QuickView
+	Given I have the same key value in two environment
+	When I select the two keys and go to the comparison page
+	Then I can compare two perhaps using DiffPlex?
