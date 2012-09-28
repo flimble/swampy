@@ -9,6 +9,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SAIG.PS.Swampy.UnitTest", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SAIG.PS.Swampy.MongoDataAccess", "SAIG.PS.Swampy.MongoDataAccess\SAIG.PS.Swampy.MongoDataAccess.csproj", "{A99D7A13-5A08-455E-A6D0-EAE4027C134E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SAIG.PS.Swampy.WcfService", "SAIG.PS.Swampy.WcfService\SAIG.PS.Swampy.WcfService.csproj", "{24AE091E-6B73-4364-81F6-E1B14E6EA9A2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SAIG.PS.Swampy.Shared", "SAIG.PS.Swampy.Shared\SAIG.PS.Swampy.Shared.csproj", "{5EBF0A59-32D5-4D8F-8106-1C43E5C2A1AA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -31,6 +35,14 @@ Global
 		{A99D7A13-5A08-455E-A6D0-EAE4027C134E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A99D7A13-5A08-455E-A6D0-EAE4027C134E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A99D7A13-5A08-455E-A6D0-EAE4027C134E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{24AE091E-6B73-4364-81F6-E1B14E6EA9A2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{24AE091E-6B73-4364-81F6-E1B14E6EA9A2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{24AE091E-6B73-4364-81F6-E1B14E6EA9A2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{24AE091E-6B73-4364-81F6-E1B14E6EA9A2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5EBF0A59-32D5-4D8F-8106-1C43E5C2A1AA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5EBF0A59-32D5-4D8F-8106-1C43E5C2A1AA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5EBF0A59-32D5-4D8F-8106-1C43E5C2A1AA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5EBF0A59-32D5-4D8F-8106-1C43E5C2A1AA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

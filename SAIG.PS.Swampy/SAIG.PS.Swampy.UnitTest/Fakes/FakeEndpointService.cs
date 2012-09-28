@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using SAIG.PS.Swampy.Service;
+﻿using SAIG.PS.Swampy.Service.Contract;
 
 namespace SAIG.PS.Swampy.UnitTest.Fakes
 {

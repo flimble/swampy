@@ -22,6 +22,9 @@ using System.Runtime.InteropServices;
 // The following GUID is for the ID of the typelib if this project is exposed to COM
 [assembly: Guid("4cda6105-ca6a-43d9-9725-25866e12f14b")]
 
+[assembly: InternalsVisibleTo("SAIG.PS.Swampy.IntegrationTest")]
+[assembly: InternalsVisibleTo("SAIG.PS.Swampy.UnitTest")]
+
 // Version information for an assembly consists of the following four values:
 //
 //      Major Version
@@ -32,7 +35,5 @@ using System.Runtime.InteropServices;
 // You can specify all the values or you can default the Build and Revision Numbers 
 // by using the '*' as shown below:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("1.0.0.0")]
-[assembly: AssemblyFileVersion("1.0.0.0")]
 
 [assembly: log4net.Config.XmlConfigurator(ConfigFile = "log4net.config", Watch = true)]

@@ -5,11 +5,11 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{A99D7A13-5A08-455E-A6D0-EAE4027C134E}</ProjectGuid>
+    <ProjectGuid>{5EBF0A59-32D5-4D8F-8106-1C43E5C2A1AA}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>SAIG.PS.Swampy.MongoDataAccess</RootNamespace>
-    <AssemblyName>SAIG.PS.Swampy.MongoDataAccess</AssemblyName>
+    <RootNamespace>SAIG.PS.Swampy.Shared</RootNamespace>
+    <AssemblyName>SAIG.PS.Swampy.Shared</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -31,11 +31,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="MongoDB.Bson">
-      <HintPath>..\packages\mongocsharpdriver.1.6\lib\net35\MongoDB.Bson.dll</HintPath>
+    <Reference Include="log4net, Version=1.2.11.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\log4net.2.0.0\lib\net40-full\log4net.dll</HintPath>
     </Reference>
-    <Reference Include="MongoDB.Driver">
-      <HintPath>..\packages\mongocsharpdriver.1.6\lib\net35\MongoDB.Driver.dll</HintPath>
+    <Reference Include="Rhino.Mocks">
+      <HintPath>..\packages\RhinoMocks.3.6.1\lib\net\Rhino.Mocks.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -46,18 +47,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ISession.cs" />
+    <Compile Include="Infrastructure\Extensions\Inflector.cs" />
+    <Compile Include="Infrastructure\Extensions\RegexPattern.cs" />
+    <Compile Include="Infrastructure\Extensions\StringExtensions.cs" />
+    <Compile Include="Infrastructure\Extensions\Strings.cs" />
+    <Compile Include="Infrastructure\ILogFactory.cs" />
+    <Compile Include="Infrastructure\LogFactory.cs" />
+    <Compile Include="Infrastructure\LoggingInterceptor.cs" />
+    <Compile Include="Infrastructure\SystemTime.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Session.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\SAIG.PS.Swampy.Shared\SAIG.PS.Swampy.Shared.csproj">
-      <Project>{5EBF0A59-32D5-4D8F-8106-1C43E5C2A1AA}</Project>
-      <Name>SAIG.PS.Swampy.Shared</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

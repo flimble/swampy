@@ -56,23 +56,30 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CastleConfigurator.cs" />
-    <Compile Include="Endpoint\DatabaseConnectionString.cs" />
-    <Compile Include="Endpoint\EndpointType.cs" />
-    <Compile Include="Endpoint\IEndpoint.cs" />
-    <Compile Include="Endpoint\IEndpointValidator.cs" />
-    <Compile Include="Endpoint\WebpageUrl.cs" />
-    <Compile Include="EntityBase.cs" />
-    <Compile Include="SystemEnvironment.cs" />
-    <Compile Include="IEndpointService.cs" />
-    <Compile Include="Infrastructure\ILogFactory.cs" />
-    <Compile Include="Infrastructure\LogFactory.cs" />
-    <Compile Include="Infrastructure\LoggingInterceptor.cs" />
-    <Compile Include="KeyPair.cs" />
+    <Compile Include="Entities\Endpoint\ServiceUrl.cs" />
+    <Compile Include="Entities\Endpoint\DatabaseConnectionString.cs" />
+    <Compile Include="Entities\Endpoint\EndpointType.cs" />
+    <Compile Include="Entities\Endpoint\EndpointBase.cs" />
+    <Compile Include="Entities\Endpoint\IEndpointValidator.cs" />
+    <Compile Include="Entities\Endpoint\WebpageUrl.cs" />
+    <Compile Include="Entities\EntityBase.cs" />
+    <Compile Include="Entities\Environment.cs" />
+    <Compile Include="Contract\IEndpointService.cs" />
+    <Compile Include="Contract\KeyPair.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="DomainServices\SwampyEndpointService.cs" />
+    <Compile Include="QueryObjects\DatabaseConnectionStringQuery.cs" />
+    <Compile Include="QueryObjects\IQueryObject.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="log4net.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SAIG.PS.Swampy.MongoDataAccess\SAIG.PS.Swampy.MongoDataAccess.csproj">
+      <Project>{A99D7A13-5A08-455E-A6D0-EAE4027C134E}</Project>
+      <Name>SAIG.PS.Swampy.MongoDataAccess</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

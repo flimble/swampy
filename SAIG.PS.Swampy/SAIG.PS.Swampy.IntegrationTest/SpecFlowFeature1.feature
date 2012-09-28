@@ -37,4 +37,13 @@ Scenario: Changing a replacement token
 	Then The new replacement value must be validdated.
 
 
+Scenario: Adding a new Key
+	Given I have an existing set of environments
+	When I add a new key
+	Then The key is added to all environments but not validated
 
+Scenario: Missing Key QuickView
+	Given I have already created a number of environment entries
+	And Some environments do not have all keys populated
+	When I go to the value configuration page
+	Then The view will show me in red a list of all the keys that do not match

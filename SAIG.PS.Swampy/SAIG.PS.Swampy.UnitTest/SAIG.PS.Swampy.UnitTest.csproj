@@ -60,9 +60,17 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\SAIG.PS.Swampy.MongoDataAccess\SAIG.PS.Swampy.MongoDataAccess.csproj">
+      <Project>{A99D7A13-5A08-455E-A6D0-EAE4027C134E}</Project>
+      <Name>SAIG.PS.Swampy.MongoDataAccess</Name>
+    </ProjectReference>
     <ProjectReference Include="..\SAIG.PS.Swampy.Service\SAIG.PS.Swampy.Service.csproj">
       <Project>{BEA1C3E4-9222-400E-8E7B-B0E98A715B11}</Project>
       <Name>SAIG.PS.Swampy.Service</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SAIG.PS.Swampy.Shared\SAIG.PS.Swampy.Shared.csproj">
+      <Project>{5EBF0A59-32D5-4D8F-8106-1C43E5C2A1AA}</Project>
+      <Name>SAIG.PS.Swampy.Shared</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup />

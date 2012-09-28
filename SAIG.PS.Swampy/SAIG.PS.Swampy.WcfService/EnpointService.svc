@@ -1,0 +1,1 @@
+﻿<%@ ServiceHost Language="C#" Debug="true" Service="SAIG.PS.Swampy.WcfService.Service1" CodeBehind="EnpointService.svc.cs" %>

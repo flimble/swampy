@@ -5,8 +5,8 @@ using Castle.MicroKernel.Registration;
 using Castle.Windsor;
 using NUnit.Framework;
 using Rhino.Mocks;
-using SAIG.PS.Swampy.Service.Infrastructure;
-using SAIG.PS.Swampy.Service.Infrastructure.SAIG.PS.Swampy.Service.Infrastructure;
+using SAIG.PS.Swampy.Shared.Infrastructure;
+using SAIG.PS.Swampy.Shared.Infrastructure.SAIG.PS.Swampy.Service.Infrastructure;
 using log4net;
 using log4net.Config;
 
@@ -30,7 +30,7 @@ namespace SAIG.PS.Swampy.UnitTest.Infrastructure
         }
 
         [Test]
-        public void Interceptor_Logs_Registered_Class_Entry_And_Result()
+        public void interceptor_logs_registered_class_entry_and_result()
         {
             //arrange
             var factory = new FakeLogFactory(true);
@@ -47,7 +47,7 @@ namespace SAIG.PS.Swampy.UnitTest.Infrastructure
         }
 
         [Test]
-        public void Interceptor_No_Logs_On_Success_With_Debug_Off()
+        public void interceptor_noes_not_log_on_success_with_debug_off()
         {
             //arrange
             var factory = new FakeLogFactory(false);
@@ -65,7 +65,7 @@ namespace SAIG.PS.Swampy.UnitTest.Infrastructure
 
 
         [Test]
-        public void Interceptor_Logs_Execption_With_Debug_Off()
+        public void interceptor_logs_execption_with_debug_off()
         {
             //arrange
             var factory = new FakeLogFactory(false);

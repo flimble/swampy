@@ -2,16 +2,14 @@
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
-[assembly: InternalsVisibleTo("SAIG.PS.Swampy.IntegrationTest")]
-
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("SAIG.PS.MongoDataAccess")]
+[assembly: AssemblyTitle("SAIG.PS.Swampy.WcfService")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("SAI Global")]
-[assembly: AssemblyProduct("SAIG.PS.MongoDataAccess")]
+[assembly: AssemblyProduct("SAIG.PS.Swampy.WcfService")]
 [assembly: AssemblyCopyright("Copyright © SAI Global 2012")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -22,9 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("d630ece4-e556-43cd-861a-294159ef0adf")]
-
-
+[assembly: Guid("b9724cda-fbb6-4d94-893b-9f8702c20733")]
 
 // Version information for an assembly consists of the following four values:
 //
@@ -33,9 +29,8 @@ using System.Runtime.InteropServices;
 //      Build Number
 //      Revision
 //
-// You can specify all the values or you can default the Build and Revision Numbers 
+// You can specify all the values or you can default the Revision and Build Numbers 
 // by using the '*' as shown below:
 // [assembly: AssemblyVersion("1.0.*")]
-
-
-//[assembly: InternalsVisibleTo("SAIG.PS.Swampy.UnitTest")]
+[assembly: AssemblyVersion("1.0.0.0")]
+[assembly: AssemblyFileVersion("1.0.0.0")]
