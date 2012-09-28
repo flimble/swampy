@@ -1,4 +1,3 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
 <configuration>
   <configSections>
     <sectionGroup name="elmah">
@@ -9,33 +8,19 @@
     </sectionGroup>
   </configSections>
   <system.web>
-    <compilation debug="true" targetFramework="4.0" />
     <httpModules>
       <add name="ErrorLog" type="Elmah.ErrorLogModule, Elmah" />
       <add name="ErrorMail" type="Elmah.ErrorMailModule, Elmah" />
-      <add name="ErrorFilter" type="Elmah.ErrorFilterModule, Elmah" />
+      <add name="ErrorFilter" type="Elmah.ErrorFilterModule, Elmah"/>
     </httpModules>
   </system.web>
-  <system.serviceModel>
-    <behaviors>
-      <serviceBehaviors>
-        <behavior>
-          <!-- To avoid disclosing metadata information, set the value below to false and remove the metadata endpoint above before deployment -->
-          <serviceMetadata httpGetEnabled="true" />
-          <!-- To receive exception details in faults for debugging purposes, set the value below to true.  Set to false before deployment to avoid disclosing exception information -->
-          <serviceDebug includeExceptionDetailInFaults="false" />
-        </behavior>
-      </serviceBehaviors>
-    </behaviors>
-    <serviceHostingEnvironment multipleSiteBindingsEnabled="true" />
-  </system.serviceModel>
   <system.webServer>
-    <modules runAllManagedModulesForAllRequests="true">
+    <validation validateIntegratedModeConfiguration="false" />
+    <modules>
       <add name="ErrorLog" type="Elmah.ErrorLogModule, Elmah" preCondition="managedHandler" />
       <add name="ErrorMail" type="Elmah.ErrorMailModule, Elmah" preCondition="managedHandler" />
       <add name="ErrorFilter" type="Elmah.ErrorFilterModule, Elmah" preCondition="managedHandler" />
     </modules>
-    <validation validateIntegratedModeConfiguration="false" />
   </system.webServer>
   <elmah>
     <!--
@@ -47,7 +32,9 @@
   <location path="elmah.axd" inheritInChildApplications="false">
     <system.web>
       <httpHandlers>
-        <add verb="POST,GET,HEAD" path="elmah.axd" type="Elmah.ErrorLogPageFactory, Elmah" />
+        <add verb="POST,GET,HEAD" 
+             path="elmah.axd" 
+             type="Elmah.ErrorLogPageFactory, Elmah" />
       </httpHandlers>
       <!-- 
         See http://code.google.com/p/elmah/wiki/SecuringErrorLogPages for 
@@ -57,11 +44,15 @@
         <allow roles="admin" />
         <deny users="*" />  
       </authorization>
-      -->
+      -->  
     </system.web>
     <system.webServer>
       <handlers>
-        <add name="ELMAH" verb="POST,GET,HEAD" path="elmah.axd" type="Elmah.ErrorLogPageFactory, Elmah" preCondition="integratedMode" />
+        <add name="ELMAH"
+             verb="POST,GET,HEAD"
+             path="elmah.axd" 
+             type="Elmah.ErrorLogPageFactory, Elmah"
+             preCondition="integratedMode" />
       </handlers>
     </system.webServer>
   </location>
