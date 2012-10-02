@@ -14,13 +14,21 @@ namespace SAIG.PS.Swampy.IntegrationTest.Mongo
         private string _testdbname = "swampyintegrationtests";
         private Session _session;
 
+        [TestFixtureSetUp]
+        public void FixtureSetUp()
+        {
+            
+        }
+
         [SetUp]
         public void Setup()
         {       
             _session = new Session("mongodb://localhost/?safe=true", _testdbname);
+            MongoConfiguration.Configure();
             try
             {
                 _session.Server.DropDatabase(_testdbname);
+                
             }
             catch {}            
         }
@@ -35,11 +43,12 @@ namespace SAIG.PS.Swampy.IntegrationTest.Mongo
         [Test]
         public void insert_environment_test()
         {
+            
 
                 var e = new Environment();
                 e.Name = "SIT1";
-                e.Endpoints.Add(new DatabaseConnectionString { Value = "ABV" });
-                e.Endpoints.Add(new WebpageUrl { Value = "def" });
+                e.Endpoints.Add(new DatabaseConnectionString { Key="adbconnectionstring", Value = "ABV" });
+                e.Endpoints.Add(new WebpageUrl { Key="awebpageurl", Value = "def" });
 
                 _session.Save(e);
 
@@ -53,16 +62,17 @@ namespace SAIG.PS.Swampy.IntegrationTest.Mongo
         [Test]
         public void query_test_single_level()
         {
+            
 
             var sit1 = new Environment();
             sit1.Name = "SIT1";
-            sit1.Endpoints.Add(new DatabaseConnectionString { Value = "ABV" });
-            sit1.Endpoints.Add(new WebpageUrl { Value = "def" });
+            sit1.Endpoints.Add(new DatabaseConnectionString { Key = "adbconnectionstring", Value = "ABV" });
+            sit1.Endpoints.Add(new WebpageUrl { Key = "awebpageurl", Value = "def" });
             _session.Save(sit1);
 
             var sit2 = new Environment();
             sit2.Name = "SIT2";
-            sit2.Endpoints.Add(new DatabaseConnectionString { Value = "deh" });
+            sit2.Endpoints.Add(new DatabaseConnectionString { Key = "adbconnectionstring", Value = "deh" });
             _session.Save(sit2);
 
 
@@ -81,17 +91,17 @@ namespace SAIG.PS.Swampy.IntegrationTest.Mongo
 
             var sit1 = new Environment();
             sit1.Name = "SIT1";
-            sit1.Endpoints.Add(new DatabaseConnectionString { Value = "ABV" });
-            sit1.Endpoints.Add(new WebpageUrl { Value = "def" });
+            sit1.Endpoints.Add(new DatabaseConnectionString { Key = "adbconnectionstring", Value = "ABV" });
+            sit1.Endpoints.Add(new WebpageUrl { Key = "awebpageurl", Value = "def" });
             _session.Save(sit1);
 
             var sit2 = new Environment();
             sit2.Name = "SIT2";
-            sit2.Endpoints.Add(new DatabaseConnectionString { Value = "deh" });
+            sit2.Endpoints.Add(new DatabaseConnectionString { Key = "adbconnectionstring", Value = "deh" });
             _session.Save(sit2);
 
 
-            var results = _session.All<Environment>()
+            var results = _session.All<Environment>().ToList()
                 .SelectMany(x => x.Endpoints)
                 .Where(x => x.Value == "deh");
 
@@ -109,8 +119,8 @@ namespace SAIG.PS.Swampy.IntegrationTest.Mongo
 
             var sit1 = new Environment();
             sit1.Name = "SIT1";
-            sit1.Endpoints.Add(new DatabaseConnectionString { Value = "ABV" });
-            sit1.Endpoints.Add(new WebpageUrl { Value = "def" });
+            sit1.Endpoints.Add(new DatabaseConnectionString { Key = "adbconnectionstring", Value = "ABV" });
+            sit1.Endpoints.Add(new WebpageUrl { Key = "awebpageurl", Value = "def" });
             _session.Save(sit1);
 
 
@@ -126,12 +136,6 @@ namespace SAIG.PS.Swampy.IntegrationTest.Mongo
            
         }
 
-        [Test]
-        public void generate_real_values()
-        {
-            Database.Up();
-
-
-        }
+        
     }
 }

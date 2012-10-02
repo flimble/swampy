@@ -1,4 +1,8 @@
-﻿@{
+﻿@using SAIG.PS.Swampy.Admin.MVC.Controllers
+
+@model SAIG.PS.Swampy.Admin.MVC.Models.HomeViewModel
+
+@{
     ViewBag.Title = "Home Page";
 }
 
@@ -6,3 +10,9 @@
 <p>
     To learn more about ASP.NET MVC visit <a href="http://asp.net/mvc" title="ASP.NET MVC Website">http://asp.net/mvc</a>.
 </p>
+
+@foreach(string environment in Model.EnvironmentNames)
+{
+    <h3>@environment</h3>
+    @Html.ActionLink(environment ,"Index", "Environment", new { environmentName = environment }, null);
+}

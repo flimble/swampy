@@ -1,33 +1,47 @@
-﻿<!DOCTYPE html>
+﻿@{
+                       
+    Bundles.Reference("Content/scripts/jquery/jquery-1.8.2.min.js");
+    Bundles.Reference("Content/scripts/jquery/modernizr-1.7.js");
+    Bundles.Reference("Content/scripts/bootstrap/bootstrap.js");
+    Bundles.Reference("Content/scripts/site.coffee");
+
+    Bundles.Reference("Content/styles/bootstrap/bootstrap.css");
+    Bundles.Reference("Content/styles/bootstrap/bootstrap-responsive.css");
+
+    Bundles.Reference("Content/styles/site.less");              
+}
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
     <title>@ViewBag.Title</title>
-    <link href="@Url.Content("~/Content/styles/style.css")" rel="stylesheet" type="text/css" />
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js" type="text/javascript"></script>
-    <script src="@Url.Content("~/Content/scripts/modernizr-1.7.min.js")" type="text/javascript"></script>
+    @Bundles.RenderStylesheets()
 </head>
-<body>
-    <div class="page">
-        <header>
-            <div id="title">
-                <h1>My MVC Application</h1>
+    <body>
+        
+        <div class="navbar navbar-fixed-top">
+            <div class="navbar-inner">
+                <div class="container">
+                    
+                    <a class="brand" href="@Url.Content("~/")">Swampy</a>
+                    @Html.Partial("_NavPartial")
+                    @Html.Partial("_LogOnPartial")
+                </div>
             </div>
-            <div id="logindisplay">
-                Welcome <strong>@User.Identity.Name</strong>!
-            </div>
-            <nav>
-                <ul id="menu">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                </ul>
-            </nav>
-        </header>
-        <section id="main">
+        </div>
+        <div class="container">
+            
             @RenderBody()
-        </section>
-        <footer>
-        </footer>
-    </div>
-</body>
+            
+            <hr />
+            <footer>
+                <p>
+                    &copy; Company 2012</p>
+            </footer>
+        </div>
+        @Bundles.RenderScripts()
+    </body>
 </html>

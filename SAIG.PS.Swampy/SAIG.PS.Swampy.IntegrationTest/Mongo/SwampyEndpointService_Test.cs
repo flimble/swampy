@@ -11,6 +11,13 @@ namespace SAIG.PS.Swampy.IntegrationTest.Mongo
     [TestFixture]
     public class SwampyEndpointService_Test
     {
+        [SetUp]
+        public void Setup()
+        {
+            Database.Down();
+        }
+
+
         [Test]
         public void single_endpoint_returns_saved_value_to_service()
         {
@@ -55,8 +62,11 @@ namespace SAIG.PS.Swampy.IntegrationTest.Mongo
         }
 
         [Test]
+        
         public void incorrect_environment_name_returns_empty_result_list()
         {
+            Assert.Inconclusive("TODO");
+
             Database.Up();
 
             var underTest = new SwampyEndpointService(Database.TestSession());

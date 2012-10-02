@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
+using SAIG.PS.Swampy.Service;
 
 namespace SAIG.PS.Swampy.Admin.MVC
 {
@@ -35,6 +36,9 @@ namespace SAIG.PS.Swampy.Admin.MVC
 
             RegisterGlobalFilters(GlobalFilters.Filters);
             RegisterRoutes(RouteTable.Routes);
+
+            MongoConfiguration.Configure();
+
         }
     }
 }

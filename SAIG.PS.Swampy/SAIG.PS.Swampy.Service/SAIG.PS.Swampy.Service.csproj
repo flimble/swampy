@@ -44,6 +44,7 @@
     <Reference Include="MongoDB.Bson">
       <HintPath>..\packages\mongocsharpdriver.1.6\lib\net35\MongoDB.Bson.dll</HintPath>
     </Reference>
+    <Reference Include="MongoDB.Driver, Version=1.6.0.4624, Culture=neutral, PublicKeyToken=f686731cfb9cc103, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Runtime.Serialization" />
@@ -55,7 +56,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CastleConfigurator.cs" />
+    <Compile Include="CastleConfiguration.cs" />
     <Compile Include="Entities\Endpoint\ServiceUrl.cs" />
     <Compile Include="Entities\Endpoint\DatabaseConnectionString.cs" />
     <Compile Include="Entities\Endpoint\EndpointType.cs" />
@@ -67,11 +68,11 @@
     <Compile Include="Contract\IEndpointService.cs" />
     <Compile Include="Contract\KeyPair.cs" />
     <Compile Include="Entities\TokenizedConfigParser.cs" />
+    <Compile Include="MongoConfiguration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="DomainServices\SwampyEndpointService.cs" />
-    <Compile Include="QueryObjects\DatabaseConnectionStringQuery.cs" />
-    <Compile Include="QueryObjects\EndpointByEnvironmentNameQuery.cs" />
-    <Compile Include="QueryObjects\IQueryObject.cs" />
+    <Compile Include="QueryObjects\EndpointsWithMatchingKeyQuery.cs" />
+    <Compile Include="QueryObjects\EnvironmentByNameQuery.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="log4net.config" />
@@ -82,6 +83,13 @@
       <Project>{A99D7A13-5A08-455E-A6D0-EAE4027C134E}</Project>
       <Name>SAIG.PS.Swampy.MongoDataAccess</Name>
     </ProjectReference>
+    <ProjectReference Include="..\SAIG.PS.Swampy.Shared\SAIG.PS.Swampy.Shared.csproj">
+      <Project>{5EBF0A59-32D5-4D8F-8106-1C43E5C2A1AA}</Project>
+      <Name>SAIG.PS.Swampy.Shared</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="FilterObjects\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

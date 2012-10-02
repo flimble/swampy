@@ -136,7 +136,7 @@ this.ScenarioSetup(scenarioInfo);
 #line 29
  testRunner.When("I create a new environment", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 30
- testRunner.Then("All environment data is updated at read time. Note validation must happen when a " +
+ testRunner.Then("FindAll environment data is updated at read time. Note validation must happen when a " +
                     "config replacement value is modified as this will affect all other keys.", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();

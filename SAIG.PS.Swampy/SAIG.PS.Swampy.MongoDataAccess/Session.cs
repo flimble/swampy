@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using MongoDB.Driver;
+using MongoDB.Driver.Linq;
 using SAIG.PS.Swampy.Shared.Infrastructure.Extensions;
 
 namespace SAIG.PS.Swampy.MongoDataAccess
@@ -38,10 +39,32 @@ namespace SAIG.PS.Swampy.MongoDataAccess
 
         public IQueryable<T> All<T>()
         {
-            return GetCollection<T>().FindAllAs<T>().AsQueryable();
+            return GetCollection<T>().AsQueryable();
         }
 
-        protected MongoCollection<T> GetCollection<T>(string collectionName = null)
+        public IQueryable<T> FindAll<T>(Func<T, bool> predicate)
+        {
+            return GetCollection<T>().AsQueryable().Where(predicate).AsQueryable();
+        }
+
+        public IQueryable<T> Query<T>(IQueryObject<T> query)
+        {
+            query.SetSession(this);
+
+            var linqQuery = query.GetQuery().AsQueryable();
+            var mongoQuery = ((MongoQueryable<T>) linqQuery).GetMongoQuery();
+
+            
+
+            return GetCollection<T>().Find(mongoQuery).AsQueryable();
+        }
+
+        public T FindOne<T>(Func<T, bool> predicate)
+        {
+            return GetCollection<T>().AsQueryable().SingleOrDefault(predicate);
+        }         
+
+        protected internal MongoCollection<T> GetCollection<T>(string collectionName = null)
         {
             if (string.IsNullOrWhiteSpace(collectionName))
             {

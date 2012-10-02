@@ -20,8 +20,11 @@ namespace SAIG.PS.Swampy.Service.DomainServices
         public KeyPair[] GetEndpoints(string environment, string[] keys)
         {
             var environmentData =
-                _session.All<Environment>().GetEndpointByEnvironmentName(environment).EndpointsWithMatchingKey(
-                    keys.ToList());
+                _session.Query(new EnvironmentByNameQuery
+                                   {
+                                       EnvironmentName = environment,
+                                   }).Single().Endpoints.Where(x => keys.Contains(x.Key));
+            
 
             var keypairs = environmentData.Select(e => new KeyPair(e.Key, e.Value));
 
