@@ -16,12 +16,12 @@ namespace SAIG.PS.Swampy.WcfService
         #region Implementation of IEndpointService
 
 
-        public KeyPair[] GetEndpoints(string environment, string[] keys)
+        public KeyPair[] GetEndpoints(string environment, string[] keys, string callingApplication)
         {
             throw new NotImplementedException();
         }
 
-        public KeyPair GetSingleEndpoint(string environment, string key)
+        public KeyPair GetSingleEndpoint(string environment, string key, string callingApplication)
         {
             throw new NotImplementedException();
         }

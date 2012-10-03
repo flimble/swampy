@@ -125,18 +125,50 @@ this.ScenarioSetup(scenarioInfo);
         }
         
         [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("Authorisation")]
+        public virtual void Authorisation()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Authorisation", ((string[])(null)));
+#line 26
+this.ScenarioSetup(scenarioInfo);
+#line 27
+testRunner.Given("I am acessing the admin page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 28
+testRunner.Then("I must be authorised", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("Config Check")]
+        public virtual void ConfigCheck()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Config Check", ((string[])(null)));
+#line 31
+this.ScenarioSetup(scenarioInfo);
+#line 32
+testRunner.Given("There is a wildcard placeholder in my endpoint", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 33
+testRunner.When("I retrieve the endpoint", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 34
+testRunner.Then("If there are no replacement values an exception is thrown", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("Config Replacement")]
         public virtual void ConfigReplacement()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Config Replacement", ((string[])(null)));
-#line 27
+#line 36
 this.ScenarioSetup(scenarioInfo);
-#line 28
+#line 37
  testRunner.Given("I have wildcard", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 29
+#line 38
  testRunner.When("I create a new environment", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 30
- testRunner.Then("FindAll environment data is updated at read time. Note validation must happen when a " +
+#line 39
+ testRunner.Then("All environment data is updated at read time. Note validation must happen when a " +
                     "config replacement value is modified as this will affect all other keys.", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
@@ -147,15 +179,15 @@ this.ScenarioSetup(scenarioInfo);
         public virtual void ChangingAReplacementToken()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Changing a replacement token", ((string[])(null)));
-#line 33
+#line 42
 this.ScenarioSetup(scenarioInfo);
-#line 34
+#line 43
  testRunner.Given("I have an existing replacement token", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 35
+#line 44
  testRunner.And("I have config values that use it", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 36
+#line 45
  testRunner.When("I attempt to modify the replacement token", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 37
+#line 46
  testRunner.Then("The new replacement value must be validdated.", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
@@ -166,13 +198,13 @@ this.ScenarioSetup(scenarioInfo);
         public virtual void AddingANewKey()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Adding a new Key", ((string[])(null)));
-#line 40
+#line 49
 this.ScenarioSetup(scenarioInfo);
-#line 41
+#line 50
  testRunner.Given("I have an existing set of environments", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 42
+#line 51
  testRunner.When("I add a new key", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 43
+#line 52
  testRunner.Then("The key is added to all environments but not validated", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
@@ -183,15 +215,15 @@ this.ScenarioSetup(scenarioInfo);
         public virtual void MissingKeyQuickView()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Missing Key QuickView", ((string[])(null)));
-#line 45
+#line 54
 this.ScenarioSetup(scenarioInfo);
-#line 46
+#line 55
  testRunner.Given("I have already created a number of environment entries", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 47
+#line 56
  testRunner.And("Some environments do not have all keys populated", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 48
+#line 57
  testRunner.When("I go to the value configuration page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 49
+#line 58
  testRunner.Then("The view will show me in red a list of all the keys that do not match", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
@@ -202,13 +234,13 @@ this.ScenarioSetup(scenarioInfo);
         public virtual void DiffByEnvironmentQuickView()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Diff by Environment QuickView", ((string[])(null)));
-#line 51
+#line 60
 this.ScenarioSetup(scenarioInfo);
-#line 52
+#line 61
  testRunner.Given("I have the same key value in two environment", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 53
+#line 62
  testRunner.When("I select the two keys and go to the comparison page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 54
+#line 63
  testRunner.Then("I can compare two perhaps using DiffPlex?", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();

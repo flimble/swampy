@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace SAIG.PS.Swampy.Service.Entities.Endpoint
 {
@@ -32,6 +33,18 @@ namespace SAIG.PS.Swampy.Service.Entities.Endpoint
         public abstract bool Test(string endpoint);
 
         public abstract string TypeName { get; }
+
+        public virtual bool ContainsTokens(ITokenBuilder builder)
+        {
+            builder.SearchForTokens(this.Value);
+            if (builder.TokensFound.Count > 0)
+                return true;
+
+            return false;
+        }
+
+
+
 
         #endregion
     }

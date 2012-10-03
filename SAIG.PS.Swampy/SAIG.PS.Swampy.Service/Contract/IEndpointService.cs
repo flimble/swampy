@@ -10,9 +10,9 @@ namespace SAIG.PS.Swampy.Service.Contract
     public interface IEndpointService
     {
         [OperationContract]
-        KeyPair[] GetEndpoints(string environment, string[] keys);
+        KeyPair[] GetEndpoints(string environment, string[] keys, string callingApplication);
 
         [OperationContract]
-        KeyPair GetSingleEndpoint(string environment, string key);
+        KeyPair GetSingleEndpoint(string environment, string key, string callingApplication);
     }
 }

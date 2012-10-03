@@ -23,6 +23,15 @@ Scenario: Add a new endpoint
 	When I call the service for sit1
 	Then The key should be there for all environments
 
+Scenario: Authorisation
+Given I am acessing the admin page
+Then I must be authorised
+
+
+Scenario: Config Check
+Given There is a wildcard placeholder in my endpoint
+When I retrieve the endpoint
+Then If there are no replacement values an exception is thrown
 
 Scenario: Config Replacement
 	Given I have wildcard

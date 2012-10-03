@@ -57,6 +57,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CastleConfiguration.cs" />
+    <Compile Include="Contract\IEndpointAdministrator.cs" />
     <Compile Include="Entities\Endpoint\ServiceUrl.cs" />
     <Compile Include="Entities\Endpoint\DatabaseConnectionString.cs" />
     <Compile Include="Entities\Endpoint\EndpointType.cs" />
@@ -67,6 +68,9 @@
     <Compile Include="Entities\Environment.cs" />
     <Compile Include="Contract\IEndpointService.cs" />
     <Compile Include="Contract\KeyPair.cs" />
+    <Compile Include="Entities\GlobalToken.cs" />
+    <Compile Include="Entities\ITokenBuilder.cs" />
+    <Compile Include="Entities\TokenBuilder.cs" />
     <Compile Include="Entities\TokenizedConfigParser.cs" />
     <Compile Include="MongoConfiguration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

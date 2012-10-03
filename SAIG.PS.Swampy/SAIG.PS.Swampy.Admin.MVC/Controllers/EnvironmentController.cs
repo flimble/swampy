@@ -15,9 +15,9 @@ namespace SAIG.PS.Swampy.Admin.MVC.Controllers
         private readonly ISession _session;
 
 
-        public EnvironmentController()
+        public EnvironmentController(ISession session)
         {
-            _session = new Session("mongodb://localhost/?safe=true", "swampyintegrationtests");
+            _session = session;
         }
 
         public ActionResult Index(string environmentName)

@@ -25,7 +25,7 @@ namespace SAIG.PS.Swampy.IntegrationTest.Mongo
 
             var underTest = new SwampyEndpointService(Database.TestSession());
 
-            var result = underTest.GetSingleEndpoint("SIT1", "CommonDBConnectionString");
+            var result = underTest.GetSingleEndpoint("SIT1", "CommonDBConnectionString", "testApp");
 
             Assert.AreEqual("data source=AUSYDHQ-PSTSQ04.SAIG.frd.global;initial catalog=Common;User ID=eonapp;Password=330n@pp10ck;persist security info=False;packet size=4096", result.Value);
 
@@ -40,7 +40,7 @@ namespace SAIG.PS.Swampy.IntegrationTest.Mongo
 
             var underTest = new SwampyEndpointService(Database.TestSession());
 
-            var result = underTest.GetEndpoints("SIT1", new [] {"CommonDBConnectionString"} );
+            var result = underTest.GetEndpoints("SIT1", new [] {"CommonDBConnectionString"} , "testApp");
 
             Assert.AreEqual("data source=AUSYDHQ-PSTSQ04.SAIG.frd.global;initial catalog=Common;User ID=eonapp;Password=330n@pp10ck;persist security info=False;packet size=4096", result[0].Value);
 
@@ -54,7 +54,7 @@ namespace SAIG.PS.Swampy.IntegrationTest.Mongo
 
             var underTest = new SwampyEndpointService(Database.TestSession());
 
-            var result = underTest.GetEndpoints("SIT1", new[] { "ZZooASASDFASD" });
+            var result = underTest.GetEndpoints("SIT1", new[] { "ZZooASASDFASD" }, "testApp");
 
             Assert.AreEqual(0, result.Count());
 
@@ -71,7 +71,7 @@ namespace SAIG.PS.Swampy.IntegrationTest.Mongo
 
             var underTest = new SwampyEndpointService(Database.TestSession());
 
-            var result = underTest.GetEndpoints("SITXXX", new[] { "CommonDBConnectionString" });
+            var result = underTest.GetEndpoints("SITXXX", new[] { "CommonDBConnectionString" }, "testApp");
 
             Assert.AreEqual(0, result.Count());
 

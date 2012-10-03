@@ -17,7 +17,7 @@ namespace SAIG.PS.Swampy.Service.DomainServices
         }
 
 
-        public KeyPair[] GetEndpoints(string environment, string[] keys)
+        public KeyPair[] GetEndpoints(string environment, string[] keys, string callingApplication)
         {
             var environmentData =
                 _session.Query(new EnvironmentByNameQuery
@@ -31,9 +31,9 @@ namespace SAIG.PS.Swampy.Service.DomainServices
             return keypairs.ToArray();
         }
 
-        public KeyPair GetSingleEndpoint(string environment, string key)
+        public KeyPair GetSingleEndpoint(string environment, string key, string callingApplication)
         {
-            var result = GetEndpoints(environment, new[] {key}).First();
+            var result = GetEndpoints(environment, new[] {key}, callingApplication).First();
 
             return result;
         }

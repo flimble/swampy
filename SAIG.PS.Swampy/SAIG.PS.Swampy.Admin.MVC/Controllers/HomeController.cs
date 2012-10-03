@@ -13,14 +13,11 @@ namespace SAIG.PS.Swampy.Admin.MVC.Controllers
     {
         private readonly ISession _session;
 
-        public HomeController()
-        {
-            _session = new Session("mongodb://localhost/?safe=true", "swampyintegrationtests");
-        }
         public HomeController(ISession session)
         {
             _session = session;
         }
+
 
         public ActionResult Index()
         {
