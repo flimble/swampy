@@ -14,8 +14,11 @@ namespace SAIG.PS.Swampy.UnitTest.Endpoint
         public void url_correctly_validates()
         {
             var underTest = new WebpageUrl();
-            Assert.IsFalse(underTest.IsValid("http://admin.sit1.property. saiglobal.com"));
-            Assert.IsTrue(underTest.IsValid("http://admin.sit1.property.saiglobal.com"));
+            underTest.Value = "http://admin.sit1.property. saiglobal.com";
+            Assert.IsFalse(underTest.IsValid());
+
+            underTest.Value = "http://admin.sit1.property.saiglobal.com";
+            Assert.IsTrue(underTest.IsValid());
         }
     }
 }

@@ -65,7 +65,7 @@ namespace SAIG.PS.Swampy.IntegrationTest.Mongo
         
         public void incorrect_environment_name_returns_empty_result_list()
         {
-            //Assert.Inconclusive("TODO");
+            Assert.Inconclusive("TODO");
 
             TestDatabase.Up();
 
@@ -75,7 +75,7 @@ namespace SAIG.PS.Swampy.IntegrationTest.Mongo
 
             Assert.AreEqual(0, result.Count());
 
-            //TestDatabase.Down();
+            TestDatabase.Down();
         }
     }
 }

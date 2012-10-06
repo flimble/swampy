@@ -7,7 +7,7 @@ namespace SAIG.PS.Swampy.Service.Entities.Endpoint
     /// </summary>
     public class ServiceUrl : EndpointBase
     {
-        public override bool Test(string endpoint)
+        public override bool Test()
         {
             throw new NotImplementedException();
         }
@@ -17,9 +17,9 @@ namespace SAIG.PS.Swampy.Service.Entities.Endpoint
             get { return "Wcf Service Url"; }
         }
 
-        public override bool IsValid(string url)
+        public override bool IsValid()
         {
-            return (Uri.IsWellFormedUriString(url, UriKind.RelativeOrAbsolute));
+            return (Uri.IsWellFormedUriString(Value, UriKind.RelativeOrAbsolute));
         }
 
        

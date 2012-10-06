@@ -35,6 +35,12 @@ namespace SAIG.PS.Swampy.IntegrationTest.Mongo
                                           Name = "SIT1",
                                           Endpoints = new List<EndpointBase>
                                                           {
+                                                                new SimpleEndpoint
+                                                              {
+                                                                  Key="ModeKey",
+                                                                  Value="SIT2"
+                                                              },
+                                                              
                                                               
                                                               new DatabaseConnectionString
                                                                   {

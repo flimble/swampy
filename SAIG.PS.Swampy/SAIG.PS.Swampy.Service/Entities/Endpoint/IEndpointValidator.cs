@@ -5,6 +5,6 @@ namespace SAIG.PS.Swampy.Service.Entities.Endpoint
     /// </summary>
     public interface IEndpointValidator
     {
-        bool IsValid(string endpoint);
+        bool IsValid();
     }
 }

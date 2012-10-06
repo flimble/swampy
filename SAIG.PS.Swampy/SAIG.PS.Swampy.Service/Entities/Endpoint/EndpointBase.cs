@@ -28,9 +28,9 @@ namespace SAIG.PS.Swampy.Service.Entities.Endpoint
 
         #region Implementation of IEndpointValidator
 
-        public abstract bool IsValid(string endpoint);
+        public abstract bool IsValid();
 
-        public abstract bool Test(string endpoint);
+        public abstract bool Test();
 
         public abstract string TypeName { get; }
 

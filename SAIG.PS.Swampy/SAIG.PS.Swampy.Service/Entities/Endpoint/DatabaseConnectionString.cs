@@ -12,12 +12,12 @@ namespace SAIG.PS.Swampy.Service.Entities.Endpoint
             get { return "Database Connection String"; }
         }
 
-        public override bool IsValid(string connectionString)
+        public override bool IsValid()
         {
             try
             {
                 var connectionTester = new DbConnectionStringBuilder();
-                connectionTester.ConnectionString = connectionString;
+                connectionTester.ConnectionString = Value;
             }
             catch (Exception)
             {
@@ -26,7 +26,7 @@ namespace SAIG.PS.Swampy.Service.Entities.Endpoint
             return true;
         }
 
-        public override bool Test(string endpoint)
+        public override bool Test()
         {
             throw new NotImplementedException();
         }

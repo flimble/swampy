@@ -71,7 +71,7 @@
     <Compile Include="Contract\KeyPair.cs" />
     <Compile Include="Entities\GlobalToken.cs" />
     <Compile Include="Entities\ITokenBuilder.cs" />
-    <Compile Include="Entities\Server.cs" />
+    <Compile Include="Entities\Endpoint\Server.cs" />
     <Compile Include="Entities\TokenBuilder.cs" />
     <Compile Include="Entities\TokenizedConfigParser.cs" />
     <Compile Include="IRepository.cs" />

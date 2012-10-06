@@ -7,12 +7,12 @@ namespace SAIG.PS.Swampy.Service.Entities.Endpoint
 {
     public class SimpleEndpoint : EndpointBase
     {
-        public override bool IsValid(string endpoint)
+        public override bool IsValid()
         {
-            return !string.IsNullOrWhiteSpace(endpoint);
+            return !string.IsNullOrWhiteSpace(Value);
         }
 
-        public override bool Test(string endpoint)
+        public override bool Test()
         {
             return true;
         }
