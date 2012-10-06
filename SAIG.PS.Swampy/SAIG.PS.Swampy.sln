@@ -1,6 +1,6 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 11.00
-# Visual Studio 2010
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SAIG.PS.Swampy.IntegrationTest", "SAIG.PS.Swampy.IntegrationTest\SAIG.PS.Swampy.IntegrationTest.csproj", "{2D83CEEF-655D-4F1C-94A9-024A79FDE9AF}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SAIG.PS.Swampy.Service", "SAIG.PS.Swampy.Service\SAIG.PS.Swampy.Service.csproj", "{BEA1C3E4-9222-400E-8E7B-B0E98A715B11}"

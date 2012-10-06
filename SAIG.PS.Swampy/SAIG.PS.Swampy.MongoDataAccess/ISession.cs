@@ -14,5 +14,7 @@ namespace SAIG.PS.Swampy.MongoDataAccess
         void Save<T>(T item) where T : class, new();
         void Drop<T>();
         T FindOne<T>(Func<T, bool> predicate);
+
+        T QueryOne<T>(IQueryObject<T> query);
     }
 }

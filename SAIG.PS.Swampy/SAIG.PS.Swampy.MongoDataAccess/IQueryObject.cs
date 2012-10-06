@@ -1,11 +1,10 @@
 ﻿using System.Linq;
+using MongoDB.Driver;
 
 namespace SAIG.PS.Swampy.MongoDataAccess
 {
     public interface IQueryObject<T>
     {
-        IQueryable<T> GetQuery();
-
-        void SetSession(ISession currentSession);
+        IMongoQuery GetQuery();
     }
 }

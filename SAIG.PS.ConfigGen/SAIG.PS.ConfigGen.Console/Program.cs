@@ -3,8 +3,6 @@ using Castle.MicroKernel.Registration;
 using Castle.Windsor;
 using NDesk.Options;
 using SAIG.PS.ConfigGen.Interfaces;
-using SAIG.PS.Swampy.Service;
-using SAIG.PS.Swampy.UnitTest.Fakes;
 using log4net;
 
 namespace SAIG.PS.ConfigGen.Console
@@ -82,7 +80,7 @@ namespace SAIG.PS.ConfigGen.Console
                 Component.For<ITokenIdentifier>().ImplementedBy<TokenIdentifier>(), 
                 Component.For<ITokenReplacer>().ImplementedBy<TokenReplacer>(),
                 Component.For<ConfigWriter>().ImplementedBy<ConfigWriter>(),
-                Component.For<IEndpointService>().ImplementedBy<FakeEndpointService>(),
+                Component.For<IEnvironmentServiceProxy>().ImplementedBy<EnvironmentServiceProxy>(),
                 Component.For<ConfigurationCoordinator>().ImplementedBy<ConfigurationCoordinator>()
                 );
 

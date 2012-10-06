@@ -41,6 +41,8 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -51,27 +53,58 @@
     <Compile Include="ConfigWriter.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="EnvironmentServiceProxy.cs" />
+    <Compile Include="IEnvironmentServiceProxy.cs" />
     <Compile Include="Interfaces\ITemplateReader.cs" />
     <Compile Include="Interfaces\ITokenIdentifier.cs" />
     <Compile Include="ConfigurationCoordinator.cs" />
     <Compile Include="Interfaces\ITokenReplacer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Service References\SwampyEnvironments\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
     <Compile Include="TemplateReader.cs" />
     <Compile Include="TokenIdentifier.cs" />
     <Compile Include="TokenReplacer.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+    <None Include="Service References\SwampyEnvironments\EndpointService.wsdl" />
+    <None Include="Service References\SwampyEnvironments\EndpointService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\SwampyEnvironments\EndpointService1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\SwampyEnvironments\EndpointService2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\SwampyEnvironments\EndpointService3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\SwampyEnvironments\SAIG.PS.ConfigGen.SwampyEnvironments.KeyPair.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\SAIG.PS.Swampy\SAIG.PS.Swampy.Service\SAIG.PS.Swampy.Service.csproj">
-      <Project>{BEA1C3E4-9222-400E-8E7B-B0E98A715B11}</Project>
-      <Name>SAIG.PS.Swampy.Service</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\SAIG.PS.Swampy\SAIG.PS.Swampy.UnitTest\SAIG.PS.Swampy.UnitTest.csproj">
-      <Project>{59498DF9-EC90-46BC-8BF5-C03AB419CD21}</Project>
-      <Name>SAIG.PS.Swampy.UnitTest</Name>
-    </ProjectReference>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Service References\SwampyEnvironments\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\SwampyEnvironments\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\SwampyEnvironments\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\SwampyEnvironments\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

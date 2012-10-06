@@ -49,14 +49,12 @@ namespace SAIG.PS.Swampy.MongoDataAccess
 
         public IQueryable<T> Query<T>(IQueryObject<T> query)
         {
-            query.SetSession(this);
+            return GetCollection<T>().Find(query.GetQuery()).AsQueryable();
+        }
 
-            var linqQuery = query.GetQuery().AsQueryable();
-            var mongoQuery = ((MongoQueryable<T>) linqQuery).GetMongoQuery();
-
-            
-
-            return GetCollection<T>().Find(mongoQuery).AsQueryable();
+        public T QueryOne<T>(IQueryObject<T> query)
+        {
+            return GetCollection<T>().FindOne(query.GetQuery());
         }
 
         public T FindOne<T>(Func<T, bool> predicate)

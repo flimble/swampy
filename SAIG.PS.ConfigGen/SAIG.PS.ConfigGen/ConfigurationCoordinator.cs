@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using SAIG.PS.ConfigGen.Interfaces;
-using SAIG.PS.Swampy.Service;
 using log4net;
 
 namespace SAIG.PS.ConfigGen
@@ -12,18 +11,18 @@ namespace SAIG.PS.ConfigGen
     {
 
 
-        private readonly ITemplateReader _reader;
-        private readonly ITokenReplacer _replacer;
-        private readonly ITokenIdentifier _finder;
-        private readonly IEndpointService _proxy; 
-        private readonly ConfigWriter _writer;
-        private readonly ILog _logger = LogManager.GetLogger(typeof(ConfigurationCoordinator));
+        protected readonly ITemplateReader _reader;
+        protected readonly ITokenReplacer _replacer;
+        protected readonly ITokenIdentifier _finder;
+        protected readonly IEnvironmentServiceProxy _proxy; 
+        protected readonly ConfigWriter _writer;
+        protected readonly ILog _logger = LogManager.GetLogger(typeof(ConfigurationCoordinator));
 
         public ConfigurationCoordinator(
             ITemplateReader reader, 
             ITokenReplacer replacer, 
             ITokenIdentifier finder, 
-            IEndpointService  proxy, 
+            IEnvironmentServiceProxy  proxy, 
             ConfigWriter writer)
         {
             _reader = reader;
@@ -53,13 +52,13 @@ namespace SAIG.PS.ConfigGen
 
             foreach (string environment in environmentname)
             {
-                var endpoints = _proxy.GetEndpoints(environment, tokens.ToArray());
+                var endpoints = _proxy.GetEndpoints(environment, tokens.ToArray(), "ConfigGen");
 
                 var keyvalueReplacement = endpoints.ToDictionary(x => x.Key, y => y.Value);
 
                 string generatedConfigText = _replacer.Replace(templateText, keyvalueReplacement);
 
-                string servername = _proxy.GetSingleEndpoint(environment, string.Format("{0}.ServerName", appName)).Value;
+                string servername = _proxy.GetSingleEndpoint(environment, string.Format("{0}.ServerName", appName), "ConfigGen").Value;
 
                 string configName = string.Format("{0}.{1}.{2}", servername, environment, configSuffix);
 

@@ -78,7 +78,7 @@
       <Name>SAIG.PS.Swampy.Service</Name>
     </ProjectReference>
     <ProjectReference Include="..\SAIG.PS.Swampy.Shared\SAIG.PS.Swampy.Shared.csproj">
-      <Project>{5EBF0A59-32D5-4D8F-8106-1C43E5C2A1AA}</Project>
+      <Project>{5ebf0a59-32d5-4d8f-8106-1c43e5c2a1aa}</Project>
       <Name>SAIG.PS.Swampy.Shared</Name>
     </ProjectReference>
   </ItemGroup>
