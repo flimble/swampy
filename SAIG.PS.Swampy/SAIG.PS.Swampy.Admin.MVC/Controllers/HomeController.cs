@@ -27,7 +27,7 @@ namespace SAIG.PS.Swampy.Admin.MVC.Controllers
                         select e.Name;
 
 
-            var model = new HomeViewModel
+            var model = new HomeReadModel
                             {
                                 EnvironmentNames = names.ToList()
                             };

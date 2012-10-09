@@ -1,13 +1,8 @@
-﻿using System;
-using System.Diagnostics;
-using System.Linq;
-using System.Reflection;
+﻿using System.Linq;
 using System.Web.Mvc;
-using SAIG.PS.Swampy.Admin.MVC.Models;
 using SAIG.PS.Swampy.Admin.MVC.Models.Mappers;
-using SAIG.PS.Swampy.Admin.MVC.Models.Operation;
+using SAIG.PS.Swampy.Admin.MVC.Models.OperationModels;
 using SAIG.PS.Swampy.MongoDataAccess;
-using SAIG.PS.Swampy.Service.Entities.Endpoint;
 using SAIG.PS.Swampy.Service.QueryObjects;
 using Environment = SAIG.PS.Swampy.Service.Entities.Environment;
 

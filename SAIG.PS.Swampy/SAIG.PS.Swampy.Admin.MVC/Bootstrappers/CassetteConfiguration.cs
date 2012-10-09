@@ -23,7 +23,6 @@ namespace SAIG.PS.Swampy.Admin.MVC
                         
             bundles.AddPerIndividualFile<ScriptBundle>("Content/scripts");
 
-            
             // To combine files, try something like this instead:
             //   bundles.Add<StylesheetBundle>("Content");
             // In production mode, all of ~/Content will be combined into a single bundle.

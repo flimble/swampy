@@ -1,4 +1,5 @@
-﻿@model SAIG.PS.Swampy.Admin.MVC.Models.Operation.CreateEndpointOperationModel
+﻿@using SAIG.PS.Swampy.Service.Entities.Endpoint
+@model SAIG.PS.Swampy.Admin.MVC.Models.OperationModels.CreateEndpointOperationModel
 
 @{
     ViewBag.Title = "Create";
@@ -6,8 +7,8 @@
 }
 
 @{
-    Bundles.Reference("Content/scripts/jquery/jquery.validate.js");
     Bundles.Reference("Content/scripts/jquery/jquery.validate.unobtrusive.js");
+
 }
 
 
@@ -15,6 +16,10 @@
     @Html.ValidationSummary(true)
     <fieldset>
         <legend>Create new endpoint in @Html.DisplayFor(model => model.EnvironmentName)</legend>
+        
+        
+        @Html.DropDownListFor(x=>x.EndpointType, new SelectList(@Model.EndpointTypes, "Value", "Key", typeof(SimpleEndpoint)))
+        
 
         @Html.HiddenFor(model=>model.EnvironmentName)
 

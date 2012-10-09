@@ -7,12 +7,12 @@ using Environment = SAIG.PS.Swampy.Service.Entities.Environment;
 
 namespace SAIG.PS.Swampy.Admin.MVC.Models.Mappers
 {
-    public class EnvironmentViewModelMapper : IViewModelMapper<Environment, EnvironmentViewModel>
+    public class EnvironmentViewModelMapper : IViewModelMapper<Environment, EnvironmentReadModel>
     {
 
-        public EnvironmentViewModel Map(Environment toMap)
+        public EnvironmentReadModel Map(Environment toMap)
         {
-           return  new EnvironmentViewModel
+           return  new EnvironmentReadModel
             {
                 Endpoints = (from ep in toMap.Endpoints
                              select ToEndpointViewModel(ep)).ToList(),
@@ -20,9 +20,9 @@ namespace SAIG.PS.Swampy.Admin.MVC.Models.Mappers
             };
         }
 
-        private EnvironmentViewModel.EndpointViewModel ToEndpointViewModel(EndpointBase toMap)
+        private EnvironmentReadModel.EndpointViewModel ToEndpointViewModel(EndpointBase toMap)
         {
-            var result = new EnvironmentViewModel.EndpointViewModel
+            var result = new EnvironmentReadModel.EndpointViewModel
             {
                 Key = toMap.Key,
                 Value = toMap.Value,

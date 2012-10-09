@@ -1,5 +1,5 @@
 ﻿@using SAIG.PS.Swampy.Admin.MVC.Models
-@model SAIG.PS.Swampy.Admin.MVC.Models.EnvironmentViewModel
+@model SAIG.PS.Swampy.Admin.MVC.Models.EnvironmentReadModel
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_LayoutFluid.cshtml";
@@ -16,7 +16,6 @@
 
     </form>
 
-    @Html.DropDownListFor(x=>x.)
     @Html.ActionLink("Create New Endpoint", "Create", "Endpoint", new { environmentName = @Model.environmentName}, new { @class="btn btn-primary"})
 
     <table class="table table-bordered table-striped table-hover">
@@ -29,7 +28,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach (EnvironmentViewModel.EndpointViewModel endpoint in Model.Endpoints)
+                    @foreach (EnvironmentReadModel.EndpointViewModel endpoint in Model.Endpoints)
                     {
                         <tr>
                             <td>@endpoint.Key</td>
