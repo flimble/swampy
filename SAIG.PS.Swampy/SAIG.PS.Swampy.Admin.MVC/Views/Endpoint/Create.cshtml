@@ -1,5 +1,6 @@
-﻿@using SAIG.PS.Swampy.Service.Entities.Endpoint
-@model SAIG.PS.Swampy.Admin.MVC.Models.OperationModels.CreateEndpointOperationModel
+﻿@using SAIG.PS.Swampy.Admin.MVC.Models.OperationModels
+@using SAIG.PS.Swampy.Service.Entities.Endpoint
+@model SAIG.PS.Swampy.Admin.MVC.Models.OperationModels.Endpoint.CreateEndpoint
 
 @{
     ViewBag.Title = "Create";
@@ -24,28 +25,23 @@
         @Html.HiddenFor(model=>model.EnvironmentName)
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.Name)
+            @Html.LabelFor(model => model.Endpoint.Name)
         </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model.Name)
-            @Html.ValidationMessageFor(model => model.Name)
+            @Html.EditorFor(model => model.Endpoint.Name)
+            @Html.ValidationMessageFor(model => model.Endpoint.Name)
+        </div>
+        
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Endpoint.Description)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Endpoint.Description)
+            @Html.ValidationMessageFor(model => model.Endpoint.Description)
         </div>
 
-        <div class="editor-label">
-            @Html.LabelFor(model => model.Value)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.Value)
-            @Html.ValidationMessageFor(model => model.Value)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.Description)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.Description)
-            @Html.ValidationMessageFor(model => model.Description)
-        </div>
+        @Html.Partial("CreateSimpleEndpoint", ((CreateSimpleEndpoint)@Model.Endpoint))
+        
 
         <p>
             <input type="submit" value="Save" />

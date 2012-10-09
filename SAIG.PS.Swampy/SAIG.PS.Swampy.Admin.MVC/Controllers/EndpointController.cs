@@ -5,6 +5,7 @@ using System.Reflection;
 using System.Web;
 using System.Web.Mvc;
 using SAIG.PS.Swampy.Admin.MVC.Models.OperationModels;
+using SAIG.PS.Swampy.Admin.MVC.Models.OperationModels.Endpoint;
 using SAIG.PS.Swampy.MongoDataAccess;
 using SAIG.PS.Swampy.Service.Entities.Endpoint;
 using SAIG.PS.Swampy.Service.QueryObjects;
@@ -44,9 +45,10 @@ namespace SAIG.PS.Swampy.Admin.MVC.Controllers
 
         public ActionResult Create(string environmentName)
         {
-            var model = new CreateEndpointOperationModel
+            var model = new CreateEndpoint
                 {
-                    EnvironmentName = environmentName
+                    EnvironmentName = environmentName,
+                    Endpoint = new CreateSimpleEndpoint()
                 };
 
 
@@ -58,11 +60,12 @@ namespace SAIG.PS.Swampy.Admin.MVC.Controllers
             return View(model);
         }
 
-        public ActionResult Save(CreateEndpointOperationModel newEndpoint)
+        public ActionResult Save(CreateEndpoint newEndpoint)
         {
             if(!ModelState.IsValid)
             {
                 newEndpoint.EndpointTypes = GetEndpointTypes();
+                newEndpoint.Endpoint = new CreateSimpleEndpoint();
 
                 return View("Create", newEndpoint);
             }
@@ -73,16 +76,14 @@ namespace SAIG.PS.Swampy.Admin.MVC.Controllers
                     EnvironmentName = newEndpoint.EnvironmentName
                 });
 
-            
 
-
-
+            var endpoint = newEndpoint.Endpoint as CreateSimpleEndpoint;
 
             var toAdd = new SimpleEndpoint
                 {
-                    Description = newEndpoint.Description,
-                    Key = newEndpoint.Name,
-                    Value = newEndpoint.Value
+                    Description = newEndpoint.Endpoint.Description,
+                    Key = newEndpoint.Endpoint.Name,
+                    Value = endpoint.Value
                 };
 
             environment.Endpoints.Add(toAdd);

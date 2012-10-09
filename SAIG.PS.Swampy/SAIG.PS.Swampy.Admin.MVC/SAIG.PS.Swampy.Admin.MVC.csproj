@@ -150,8 +150,12 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\OperationModels\CreateEndpointOperationModel.cs" />
-    <Compile Include="Models\OperationModels\CreateEnvironmentOperationModel.cs" />
+    <Compile Include="Models\OperationModels\Endpoint\CreateSimpleEndpoint.cs" />
+    <Compile Include="Models\OperationModels\Endpoint\CreateDatabaseConnectionEndpoint.cs" />
+    <Compile Include="Models\OperationModels\Endpoint\CreateEndpointBase.cs" />
+    <Compile Include="Models\OperationModels\Endpoint\CreateEndpoint.cs" />
+    <Compile Include="Models\OperationModels\Environment\CreateEnvironmentOperationModel.cs" />
+    <Compile Include="Models\OperationModels\Endpoint\CreateServerEndpoint.cs" />
     <Compile Include="Models\ReadModels\EnvironmentReadModel.cs" />
     <Compile Include="Models\ReadModels\HomeReadModel.cs" />
     <Compile Include="Models\Mappers\EnvironmentViewModelMapper.cs" />
@@ -238,10 +242,9 @@
     <Content Include="Views\Shared\_Footer.cshtml" />
     <Content Include="Views\Environment\_EnvironmentList.cshtml" />
     <Content Include="Views\Endpoint\Create.cshtml" />
+    <Content Include="Views\Endpoint\CreateSimpleEndpoint.cshtml" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Models\Mappers\NewFolder1\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\SAIG.PS.Swampy.MongoDataAccess\SAIG.PS.Swampy.MongoDataAccess.csproj">
       <Project>{A99D7A13-5A08-455E-A6D0-EAE4027C134E}</Project>
