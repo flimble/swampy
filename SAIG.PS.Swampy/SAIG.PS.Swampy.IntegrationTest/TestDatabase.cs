@@ -40,7 +40,11 @@ namespace SAIG.PS.Swampy.IntegrationTest.Mongo
                                                                   Key="ModeKey",
                                                                   Value="SIT2"
                                                               },
-                                                              
+                                                              new Server
+                                                                  {
+                                                                      Key="QVAS.ServerName",
+                                                                      Value="ausydhq-pstap08.saig.frd.global"
+                                                                  },
                                                               
                                                               new DatabaseConnectionString
                                                                   {
@@ -208,7 +212,11 @@ namespace SAIG.PS.Swampy.IntegrationTest.Mongo
                                                                   Key="ModeKey",
                                                                   Value="SIT2"
                                                               },
-
+                                                              new Server
+                                                                  {
+                                                                      Key="QVAS.ServerName",
+                                                                      Value="ausydhq-pstap10.saig.frd.global"
+                                                                  },
                                                               new DatabaseConnectionString
                                                                   {
                                                                       Key = "CommonDBConnectionString",
@@ -364,7 +372,7 @@ namespace SAIG.PS.Swampy.IntegrationTest.Mongo
 
                 };
 
-                session.Save(sit2Environment);                
+                session.Save(sit2Environment);
             }
         }
     }

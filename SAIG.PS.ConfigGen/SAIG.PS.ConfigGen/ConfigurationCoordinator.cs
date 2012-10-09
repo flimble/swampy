@@ -45,7 +45,8 @@ namespace SAIG.PS.ConfigGen
 
           
             _finder.SearchForTokens(templateText);
-            var tokens = _finder.TokensFound;            
+            var tokens = from t in _finder.TokensFound
+                         select _finder.StripTokens(t);
 
             
           

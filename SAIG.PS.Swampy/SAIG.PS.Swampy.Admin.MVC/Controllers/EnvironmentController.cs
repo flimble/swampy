@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Diagnostics;
 using System.Linq;
+using System.Reflection;
 using System.Web.Mvc;
 using SAIG.PS.Swampy.Admin.MVC.Models;
 using SAIG.PS.Swampy.Admin.MVC.Models.Mappers;
@@ -26,6 +27,7 @@ namespace SAIG.PS.Swampy.Admin.MVC.Controllers
         public ActionResult Index(string environmentName)
         {
             var environment = _session.QueryOne(new EnvironmentByNameQuery { EnvironmentName = environmentName });
+
 
             var allEnvironmnets = from e in _session.All<Environment>()
                                   select e.Name; 

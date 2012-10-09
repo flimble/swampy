@@ -11,7 +11,7 @@ namespace SAIG.PS.Swampy.Shared.Infrastructure
     /// In large part lifted from following blog article 
     /// http://ayende.com/blog/3474/logging-the-aop-way
     /// </summary>
-    public class LoggingInterceptor : IInterceptor
+    public class LoggingInterceptor : Castle.Core.Interceptor.IInterceptor
     {
         private readonly ILogFactory _factory;
 

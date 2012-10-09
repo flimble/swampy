@@ -35,7 +35,7 @@ namespace SAIG.PS.Swampy.IntegrationTest.Mongo
         [TearDown]
         public void TearDown()
         {
-            //Session.Server.DropDatabase(_testdbname);
+            Session.Server.DropDatabase(_testdbname);
             Session.Dispose();
         }
     }

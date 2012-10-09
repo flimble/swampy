@@ -2,4 +2,4 @@
   Site-wide coffee/javascript file. 
 ###
 
-alert "hello"
+#alert "hello"

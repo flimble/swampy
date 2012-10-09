@@ -15,12 +15,17 @@ namespace SAIG.PS.Swampy.UnitTest.Infrastructure
     [TestFixture]
     public class LoggingInterceptor_Test
     {
-        private IWindsorContainer RegisterContainer(FakeLogFactory factory, Type actionType)
+        private IWindsorContainer RegisterContainer(Type actionType)
         {
             var container = new WindsorContainer();
             container.Register(
-                Component.For<LoggingInterceptor>(),
-                Component.For<ILogFactory>().Instance(factory),
+                Component.For<LoggingInterceptor>()
+                );
+            container.Register(
+                Component.For<ILogFactory>().ImplementedBy<FakeLogFactory>()
+                );
+
+            container.Register(
                 Component.For<IAnyObject>().ImplementedBy(actionType)
                 .Interceptors(new InterceptorReference(typeof(LoggingInterceptor))).First
             );
@@ -33,8 +38,10 @@ namespace SAIG.PS.Swampy.UnitTest.Infrastructure
         public void interceptor_logs_registered_class_entry_and_result()
         {
             //arrange
-            var factory = new FakeLogFactory(true);
-            var container = RegisterContainer(factory, typeof(SuccessObject));
+
+            var container = RegisterContainer(typeof(SuccessObject));
+            var factory = container.Resolve<ILogFactory>() as FakeLogFactory;
+            factory.EnableDebug = true;
 
             var action = container.Resolve<IAnyObject>();
             
@@ -50,8 +57,10 @@ namespace SAIG.PS.Swampy.UnitTest.Infrastructure
         public void interceptor_noes_not_log_on_success_with_debug_off()
         {
             //arrange
-            var factory = new FakeLogFactory(false);
-            var container = RegisterContainer(factory, typeof(SuccessObject));
+
+            var container = RegisterContainer(typeof(SuccessObject));
+            var factory = container.Resolve<ILogFactory>() as FakeLogFactory;
+            factory.EnableDebug = false;
 
             var action = container.Resolve<IAnyObject>();
 
@@ -68,8 +77,10 @@ namespace SAIG.PS.Swampy.UnitTest.Infrastructure
         public void interceptor_logs_execption_with_debug_off()
         {
             //arrange
-            var factory = new FakeLogFactory(false);
-            var container = RegisterContainer(factory, typeof(FailureObject));
+            
+            var container = RegisterContainer(typeof(FailureObject));
+            var factory = container.Resolve<ILogFactory>() as FakeLogFactory;
+            factory.EnableDebug = false;
 
             var action = container.Resolve<IAnyObject>();
 
@@ -112,13 +123,9 @@ namespace SAIG.PS.Swampy.UnitTest.Infrastructure
 
         public class FakeLogFactory : ILogFactory
         {
-            private readonly bool _enableDebug;
+            public bool EnableDebug { get; set; }
 
-            public FakeLogFactory(bool enableDebug)
-            {
-                _enableDebug = enableDebug;
-            }
-
+          
             #region Implementation of ILogFactory
 
             public List<string> MessagesLogged = new List<string>();
@@ -126,7 +133,7 @@ namespace SAIG.PS.Swampy.UnitTest.Infrastructure
             public ILog GetLogger(Type type)
             {
                 var stub = MockRepository.GenerateMock<ILog>();
-                stub.Stub(x => x.IsDebugEnabled).Return(_enableDebug);
+                stub.Stub(x => x.IsDebugEnabled).Return(EnableDebug);
                 stub.Stub(x => x.Debug(null)).IgnoreArguments()
                     .WhenCalled(
                     x=>
