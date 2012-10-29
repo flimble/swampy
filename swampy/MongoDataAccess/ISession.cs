@@ -1,6 +1,5 @@
 using System;
 using System.Linq;
-using MongoDB.Driver;
 
 namespace Swampy.MongoDataAccess
 {
