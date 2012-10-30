@@ -1,16 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Linq;
-using System.Runtime.Serialization;
-using System.ServiceModel;
-using System.ServiceModel.Web;
-using System.Text;
-using Swampy.MongoDataAccess;
-using Swampy.RavenDataAccess;
-using Swampy.Service;
+﻿using Swampy.RavenDataAccess;
 using Swampy.Service.Contract;
-using Swampy.Service.DomainServices;
 
 namespace Swampy.WcfService
 {

@@ -19,7 +19,7 @@ namespace Swampy.Service.DomainServices
         public KeyPair[] GetEndpoints(string environment, string[] keys, string callingApplication)
         {
             var environmentData =
-                _session.Query<Environment>().Where(x => x.Name == environment)
+                _session.Query<Environment>().Where(x => x.Name == environment).ToList()
                     .SelectMany(x => x.Endpoints).Where(y => keys.Contains(y.Key));            
 
             var keypairs = environmentData.Select(e => new KeyPair(e.Key, e.Value));

@@ -27,7 +27,7 @@ namespace Swampy.Admin.Web
             bundles.Add(new StyleBundle("~/Content/css").Include(
                 "~/Content/styles/bootstrap/bootstrap.css",
                 "~/Content/styles/bootstrap/bootstrap-responsive.css",
-                "~/Content/styles/site.css"
+                "~/Content/styles/site.less"
                 ));
 
             bundles.Add(new StyleBundle("~/Content/themes/base/css").Include(

@@ -10,7 +10,7 @@ using Swampy.Admin.Web.Controllers;
 
 namespace Swampy.Admin.Web.Bootstrappers
 {
-    public class ControllersInstaller : IWindsorInstaller
+    /*public class ControllersInstaller : IWindsorInstaller
     {
         public void Install(IWindsorContainer container, IConfigurationStore store)
         {
@@ -20,5 +20,5 @@ namespace Swampy.Admin.Web.Bootstrappers
                                    .If(t => t.Name.EndsWith("Controller"))
                                    .Configure(c => c.LifestyleTransient()));
         }
-    }
+    }*/
 }

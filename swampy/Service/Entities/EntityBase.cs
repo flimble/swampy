@@ -1,8 +1,4 @@
-﻿using System;
-using MongoDB.Bson.Serialization.Attributes;
-using MongoDB.Bson.Serialization.IdGenerators;
-
-namespace Swampy.Service.Entities
+﻿namespace Swampy.Service.Entities
 {
     /// <summary>Base class for all entities</summary>
     public abstract class EntityBase

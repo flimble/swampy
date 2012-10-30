@@ -367,6 +367,8 @@ namespace Swampy.IntegrationTest
                 };
 
                 session.Store(sit2Environment);
+
+                session.SaveChanges();
             }
         }
     }

@@ -47,6 +47,7 @@ namespace Swampy.Admin.Web.Controllers
 
             model.EndpointTypes = GetEndpointTypes();
 
+            this.DocumentSession.Store(model);
             
 
             return View(model);

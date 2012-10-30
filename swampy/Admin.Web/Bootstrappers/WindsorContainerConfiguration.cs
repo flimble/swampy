@@ -17,18 +17,18 @@ namespace Swampy.Admin.Web.Bootstrappers
 {
     public static class WindsorContainerConfiguration
     {
-        public static IWindsorContainer Configure()
+        /*public static IWindsorContainer Configure()
         {
             var container = new WindsorContainer()
                 .Install(FromAssembly.This());
 
 
-            /*container.Register(
+            container.Register(
                 Component.For<ISession>()
                     .ImplementedBy<Session>()
                     .DependsOn(Dependency.OnAppSettingsValue(dependencyName: "connectionString", settingName: "MongoServer"))
                     .DependsOn(Dependency.OnAppSettingsValue(dependencyName: "databaseName", settingName: "MongoDatabase"))
-                );*/
+                );
 
 
             DataDocumentStore.Initialize();
@@ -38,6 +38,6 @@ namespace Swampy.Admin.Web.Bootstrappers
 
             return container;
 
-        }
+        }*/
     }
 }
