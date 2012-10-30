@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Swampy.Admin.MVC")]
+[assembly: AssemblyTitle("Swampy.Admin.Web")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("SAI Global")]
-[assembly: AssemblyProduct("Swampy.Admin.MVC")]
+[assembly: AssemblyProduct("Swampy.Admin.Web")]
 [assembly: AssemblyCopyright("Copyright © SAI Global 2012")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]

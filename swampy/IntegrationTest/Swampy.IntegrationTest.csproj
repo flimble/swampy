@@ -44,6 +44,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\NUnit.2.6.1\lib\nunit.framework.dll</HintPath>
     </Reference>
+    <Reference Include="Raven.Client.Lightweight">
+      <HintPath>..\packages\RavenDB.Client.1.0.960\lib\net40\Raven.Client.Lightweight.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -80,9 +83,9 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\MongoDataAccess\Swampy.MongoDataAccess.csproj">
+    <ProjectReference Include="..\MongoDataAccess\Swampy.RavenDataAccess.csproj">
       <Project>{A99D7A13-5A08-455E-A6D0-EAE4027C134E}</Project>
-      <Name>Swampy.MongoDataAccess</Name>
+      <Name>Swampy.RavenDataAccess</Name>
     </ProjectReference>
     <ProjectReference Include="..\Service\Swampy.Service.csproj">
       <Project>{BEA1C3E4-9222-400E-8E7B-B0E98A715B11}</Project>

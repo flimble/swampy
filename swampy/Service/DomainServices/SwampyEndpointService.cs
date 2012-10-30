@@ -1,17 +1,16 @@
 ﻿using System.Linq;
-using Swampy.MongoDataAccess;
+using Raven.Client;
 using Swampy.Service.Contract;
-using Swampy.Service.QueryObjects;
 using Environment = Swampy.Service.Entities.Environment;
 
 namespace Swampy.Service.DomainServices
 {
     public class SwampyEndpointService : IEndpointService
     {
-        private ISession _session;
+        private IDocumentSession _session;
 
         #region Implementation of IEndpointService
-        public SwampyEndpointService(ISession session)
+        public SwampyEndpointService(IDocumentSession session)
         {
             _session = session;
         }
@@ -20,11 +19,8 @@ namespace Swampy.Service.DomainServices
         public KeyPair[] GetEndpoints(string environment, string[] keys, string callingApplication)
         {
             var environmentData =
-                _session.Query(new EnvironmentByNameQuery
-                                   {
-                                       EnvironmentName = environment,
-                                   }).Single().Endpoints.Where(x => keys.Contains(x.Key));
-            
+                _session.Query<Environment>().Where(x => x.Name == environment)
+                    .SelectMany(x => x.Endpoints).Where(y => keys.Contains(y.Key));            
 
             var keypairs = environmentData.Select(e => new KeyPair(e.Key, e.Value));
 

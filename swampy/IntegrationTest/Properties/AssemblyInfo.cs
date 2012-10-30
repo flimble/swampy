@@ -4,11 +4,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("SAIG.PS.Swampie.IntegrationTest")]
+[assembly: AssemblyTitle("Swampy.IntegrationTest")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("SAI Global")]
-[assembly: AssemblyProduct("SAIG.PS.Swampie.IntegrationTest")]
+[assembly: AssemblyProduct("Swampy.IntegrationTest")]
 [assembly: AssemblyCopyright("Copyright © SAI Global 2012")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]

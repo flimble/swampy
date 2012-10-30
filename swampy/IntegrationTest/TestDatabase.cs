@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
-using MongoDB.Driver.Builders;
-using Swampy.MongoDataAccess;
+using Swampy.RavenDataAccess;
 using Swampy.Service.Entities;
 using Swampy.Service.Entities.Endpoint;
 
@@ -8,25 +7,21 @@ namespace Swampy.IntegrationTest
 {
     public static class TestDatabase
     {
-        public static Session Session()
-        {
-            return new Session("mongodb://localhost/?safe=true", "swampyintegrationtests");
-        }
+        
+        
+
 
         public static void Down()
         {
-            var session = Session();
-            session.Server.DropDatabase("swampyintegrationtests");
-            session.Dispose();
+            
         }
+
 
         public static void Up()
         {
-            using (var session = TestDatabase.Session())
+            using (var session = DataDocumentStore.Instance.OpenSession())
             {
 
-                session.GetCollection<Environment>().EnsureIndex(new IndexKeysBuilder().Ascending("Name"),
-                                                                 IndexOptions.SetUnique(true));
 
 
                 var sit1Environment = new Environment
@@ -199,7 +194,7 @@ namespace Swampy.IntegrationTest
 
                                       };
 
-                session.Save(sit1Environment);
+                session.Store(sit1Environment);
 
                 var sit2Environment = new Environment
                 {
@@ -371,7 +366,7 @@ namespace Swampy.IntegrationTest
 
                 };
 
-                session.Save(sit2Environment);
+                session.Store(sit2Environment);
             }
         }
     }

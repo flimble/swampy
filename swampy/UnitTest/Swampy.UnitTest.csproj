@@ -49,7 +49,10 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Web.Mvc, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Web.Mvc, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.4.0.20710.0\lib\net40\System.Web.Mvc.dll</HintPath>
+    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -68,13 +71,9 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Admin.MVC\Swampy.Admin.MVC.csproj">
-      <Project>{998CA9A0-CB55-49BD-8839-366773A4B547}</Project>
-      <Name>Swampy.Admin.MVC</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\MongoDataAccess\Swampy.MongoDataAccess.csproj">
+    <ProjectReference Include="..\MongoDataAccess\Swampy.RavenDataAccess.csproj">
       <Project>{A99D7A13-5A08-455E-A6D0-EAE4027C134E}</Project>
-      <Name>Swampy.MongoDataAccess</Name>
+      <Name>Swampy.RavenDataAccess</Name>
     </ProjectReference>
     <ProjectReference Include="..\Service\Swampy.Service.csproj">
       <Project>{BEA1C3E4-9222-400E-8E7B-B0E98A715B11}</Project>

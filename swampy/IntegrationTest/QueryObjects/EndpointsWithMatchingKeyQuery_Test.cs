@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Collections.Generic;
 using NUnit.Framework;
 using Swampy.IntegrationTest.Mongo;
-using Swampy.Service.QueryObjects;
 
 namespace Swampy.IntegrationTest.QueryObjects
 {
@@ -16,17 +12,17 @@ namespace Swampy.IntegrationTest.QueryObjects
         {
             TestDatabase.Up();
 
-            var query = new EndpointsWithMatchingKeyQuery
+            /*var query = new EndpointsWithMatchingKeyQuery
                             {
                                 EnvironmentName = "SIT1",
                                 Keys = new List<string>(new[] { "CommonDBConnectionString" })
                             };
-
+            */
             Assert.Inconclusive("To complete. Issue with querying nested collections with the IMongoQuery interface. Go figure.");
 
-            var results = Session.Query(query);
+            //var results = Session.Query(query);
 
-            Assert.AreEqual(1, results.Count());
+            //Assert.AreEqual(1, results.Count());
 
 
 

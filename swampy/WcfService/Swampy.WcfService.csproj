@@ -50,6 +50,10 @@
       <HintPath>..\packages\elmah.corelibrary.1.2.2\lib\Elmah.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Raven.Client.Lightweight, Version=1.0.0.0, Culture=neutral, PublicKeyToken=37f41c7f99471593, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\RavenDB.Client.1.0.960\lib\net40\Raven.Client.Lightweight.dll</HintPath>
+    </Reference>
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
@@ -86,9 +90,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\MongoDataAccess\Swampy.MongoDataAccess.csproj">
+    <ProjectReference Include="..\MongoDataAccess\Swampy.RavenDataAccess.csproj">
       <Project>{A99D7A13-5A08-455E-A6D0-EAE4027C134E}</Project>
-      <Name>Swampy.MongoDataAccess</Name>
+      <Name>Swampy.RavenDataAccess</Name>
     </ProjectReference>
     <ProjectReference Include="..\Service\Swampy.Service.csproj">
       <Project>{BEA1C3E4-9222-400E-8E7B-B0E98A715B11}</Project>

@@ -7,6 +7,7 @@ using System.ServiceModel;
 using System.ServiceModel.Web;
 using System.Text;
 using Swampy.MongoDataAccess;
+using Swampy.RavenDataAccess;
 using Swampy.Service;
 using Swampy.Service.Contract;
 using Swampy.Service.DomainServices;
@@ -21,15 +22,21 @@ namespace Swampy.WcfService
         #region Implementation of IEndpointService
         public EndpointService()
         {
-            MongoConfiguration.Configure();
+            /*MongoConfiguration.Configure();
             string connectionString = ConfigurationManager.AppSettings["MongoServer"];
-            string databaseName = ConfigurationManager.AppSettings["MongoDatabase"];
-            domainService = new SwampyEndpointService(new Session(connectionString, databaseName));
+            string databaseName = ConfigurationManager.AppSettings["MongoDatabase"];*/
+
+
+
+            DataDocumentStore.Initialize();
+            //domainService = new SwampyEndpointService((connectionString, databaseName));
         }
 
 
         public KeyPair[] GetEndpoints(string environment, string[] keys, string callingApplication)
         {
+
+
             return domainService.GetEndpoints(environment, keys, callingApplication);
         }
 

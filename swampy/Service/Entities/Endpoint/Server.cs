@@ -35,7 +35,7 @@ namespace Swampy.Service.Entities
             }
             catch (PingException e)
             {
-
+                var a = e;
             }
             return false;
         }

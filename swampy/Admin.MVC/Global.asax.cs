@@ -10,11 +10,11 @@ using Castle.Windsor;
 using Castle.Windsor.Installer;
 using FluentValidation.Attributes;
 using FluentValidation.Mvc;
-using Swampy.Admin.MVC.Bootstrappers;
+using Swampy.Admin.Web.Bootstrappers;
 using Swampy.MongoDataAccess;
 using Swampy.Service;
 
-namespace Swampy.Admin.MVC
+namespace Swampy.Admin.Web
 {
     // Note: For instructions on enabling IIS6 or IIS7 classic mode, 
     // visit http://go.microsoft.com/?LinkId=9394801

@@ -1,10 +1,7 @@
-﻿using System.Linq;
-using MongoDB.Driver;
-
-namespace Swampy.MongoDataAccess
+﻿namespace Swampy.RavenDataAccess
 {
     public interface IQueryObject<T>
     {
-        IMongoQuery GetQuery();
+        
     }
 }

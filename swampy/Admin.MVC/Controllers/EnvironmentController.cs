@@ -1,13 +1,13 @@
 ﻿using System.Linq;
 using System.Web.Mvc;
-using Swampy.Admin.MVC.Models.Mappers;
-using Swampy.Admin.MVC.Models.OperationModels;
+using Swampy.Admin.Web.Models.Mappers;
+using Swampy.Admin.Web.Models.OperationModels;
 using Swampy.MongoDataAccess;
 using Swampy.Service.QueryObjects;
 using Environment = Swampy.Service.Entities.Environment;
 
 
-namespace Swampy.Admin.MVC.Controllers
+namespace Swampy.Admin.Web.Controllers
 {
     public class EnvironmentController : Controller
     {

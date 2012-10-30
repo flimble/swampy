@@ -1,8 +1,5 @@
-﻿using System;
-using System.Linq;
+﻿using System.Linq;
 using NUnit.Framework;
-using Swampy.MongoDataAccess;
-using Swampy.Service;
 using Swampy.Service.Entities.Endpoint;
 using Environment = Swampy.Service.Entities.Environment;
 
@@ -23,9 +20,9 @@ namespace Swampy.IntegrationTest.Mongo
                 e.Endpoints.Add(new DatabaseConnectionString { Key="adbconnectionstring", Value = "ABV" });
                 e.Endpoints.Add(new WebpageUrl { Key="awebpageurl", Value = "def" });
 
-                Session.Save(e);
+                Session.Store(e);
 
-                var results = Session.All<Environment>();
+                var results = Session.Query<Environment>();
 
                 Assert.AreEqual(1, results.Count());
                 Assert.AreEqual(2, results.First().Endpoints.Count);                      
@@ -41,15 +38,15 @@ namespace Swampy.IntegrationTest.Mongo
             sit1.Name = "SIT1";
             sit1.Endpoints.Add(new DatabaseConnectionString { Key = "adbconnectionstring", Value = "ABV" });
             sit1.Endpoints.Add(new WebpageUrl { Key = "awebpageurl", Value = "def" });
-            Session.Save(sit1);
+            Session.Store(sit1);
 
             var sit2 = new Environment();
             sit2.Name = "SIT2";
             sit2.Endpoints.Add(new DatabaseConnectionString { Key = "adbconnectionstring", Value = "deh" });
-            Session.Save(sit2);
+            Session.Store(sit2);
 
 
-            var results = from e in Session.All<Environment>()
+            var results = from e in Session.Query<Environment>()
                           where e.Name == "SIT1"
                           select e;
 
@@ -66,15 +63,15 @@ namespace Swampy.IntegrationTest.Mongo
             sit1.Name = "SIT1";
             sit1.Endpoints.Add(new DatabaseConnectionString { Key = "adbconnectionstring", Value = "ABV" });
             sit1.Endpoints.Add(new WebpageUrl { Key = "awebpageurl", Value = "def" });
-            Session.Save(sit1);
+            Session.Store(sit1);
 
             var sit2 = new Environment();
             sit2.Name = "SIT2";
             sit2.Endpoints.Add(new DatabaseConnectionString { Key = "adbconnectionstring", Value = "deh" });
-            Session.Save(sit2);
+            Session.SaveChanges();
 
 
-            var results = Session.All<Environment>().ToList()
+            var results = Session.Query<Environment>().ToList()
                 .SelectMany(x => x.Endpoints)
                 .Where(x => x.Value == "deh");
 
@@ -94,10 +91,10 @@ namespace Swampy.IntegrationTest.Mongo
             sit1.Name = "SIT1";
             sit1.Endpoints.Add(new DatabaseConnectionString { Key = "adbconnectionstring", Value = "ABV" });
             sit1.Endpoints.Add(new WebpageUrl { Key = "awebpageurl", Value = "def" });
-            Session.Save(sit1);
+            Session.Store(sit1);
 
 
-            var existing = Session.All<Environment>().First(x => x.Name == "SIT1");
+            var existing = Session.Query<Environment>().First(x => x.Name == "SIT1");
 
             foreach(var endpoint in existing.Endpoints)
             {
@@ -105,7 +102,7 @@ namespace Swampy.IntegrationTest.Mongo
             }
 
 
-            Session.Save(existing);
+            Session.Store(existing);
            
         }
 

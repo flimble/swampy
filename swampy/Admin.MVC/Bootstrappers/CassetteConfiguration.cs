@@ -1,10 +1,8 @@
-using System.IO;
-using System.Text.RegularExpressions;
 using Cassette;
 using Cassette.Scripts;
 using Cassette.Stylesheets;
 
-namespace Swampy.Admin.MVC
+namespace Swampy.Admin.Web.Bootstrappers
 {
     /// <summary>
     /// Configures the Cassette asset bundles for the web application.

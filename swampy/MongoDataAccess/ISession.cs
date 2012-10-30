@@ -1,7 +1,7 @@
 using System;
 using System.Linq;
 
-namespace Swampy.MongoDataAccess
+namespace Swampy.RavenDataAccess
 {
     public interface ISession : IDisposable
     {

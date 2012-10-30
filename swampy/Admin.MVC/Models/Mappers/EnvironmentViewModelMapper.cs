@@ -5,7 +5,7 @@ using System.Web;
 using Swampy.Service.Entities.Endpoint;
 using Environment = Swampy.Service.Entities.Environment;
 
-namespace Swampy.Admin.MVC.Models.Mappers
+namespace Swampy.Admin.Web.Models.Mappers
 {
     public class EnvironmentViewModelMapper : IViewModelMapper<Environment, EnvironmentReadModel>
     {

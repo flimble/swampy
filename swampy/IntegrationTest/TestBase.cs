@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using NUnit.Framework;
+using Raven.Client;
 using Swampy.MongoDataAccess;
 using Swampy.Service;
 
@@ -10,8 +11,8 @@ namespace Swampy.IntegrationTest.Mongo
 {
     public abstract class TestBase
     {
-        private string _testdbname = "swampyintegrationtests";
-        protected Session Session;
+        //private string _testdbname = "swampyintegrationtests";
+        protected IDocumentSession Session;
 
         [TestFixtureSetUp]
         public void FixtureSetUp()
@@ -22,21 +23,21 @@ namespace Swampy.IntegrationTest.Mongo
         [SetUp]
         public void Setup()
         {
-            Session = new Session("mongodb://localhost/?safe=true", _testdbname);
-            MongoConfiguration.Configure();
-            try
+            //Session = new Session("mongodb://localhost/?safe=true", _testdbname);
+            //MongoConfiguration.Configure();
+            /*try
             {
                 Session.Server.DropDatabase(_testdbname);
 
             }
-            catch { }
+            catch { }*/
         }
 
         [TearDown]
         public void TearDown()
         {
-            Session.Server.DropDatabase(_testdbname);
-            Session.Dispose();
+            /*Session.Server.DropDatabase(_testdbname);
+            Session.Dispose();*/
         }
     }
 }
