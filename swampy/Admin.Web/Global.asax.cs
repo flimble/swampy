@@ -20,7 +20,7 @@ namespace Swampy.Admin.Web
         {
             AreaRegistration.RegisterAllAreas();
 
-            WebApiConfig.Register(GlobalConfiguration.Configuration);
+            //WebApiConfig.Register(GlobalConfiguration.Configuration);
 
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
 
@@ -29,7 +29,6 @@ namespace Swampy.Admin.Web
             BundleConfig.RegisterBundles(BundleTable.Bundles);
 
             DataDocumentStore.Initialize();
-
 
         }
     }

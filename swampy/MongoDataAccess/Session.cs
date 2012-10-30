@@ -1,5 +1,6 @@
 ﻿using System;
 using Raven.Client;
+using Raven.Client.Document;
 using Raven.Client.Embedded;
 
 namespace Swampy.RavenDataAccess
@@ -28,9 +29,13 @@ namespace Swampy.RavenDataAccess
 
         public static IDocumentStore Initialize()
         {
-            instance = new EmbeddableDocumentStore { RunInMemory = true };
+            //instance = new EmbeddableDocumentStore { RunInMemory = true };
             
+            instance = new DocumentStore { Url = "http://localhost:8081" } ;
+
             instance.Conventions.IdentityPartsSeparator = "-";
+
+           
             instance.Initialize();
             return instance;
         }

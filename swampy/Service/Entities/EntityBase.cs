@@ -10,6 +10,6 @@ namespace Swampy.Service.Entities
         /// <summary>
         /// Entity Base class - all entities require an ID
         /// </summary>       
-        public virtual Guid Id { get; protected set; }
+        public virtual string Id { get; protected set; }
     }
 }

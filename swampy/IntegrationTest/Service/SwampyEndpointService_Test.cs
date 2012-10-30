@@ -17,6 +17,8 @@ namespace Swampy.IntegrationTest.Mongo
         public void Setup()
         {
             TestDatabase.Down();
+
+            DataDocumentStore.Initialize();
         }
 
 
