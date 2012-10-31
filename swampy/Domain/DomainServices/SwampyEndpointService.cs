@@ -4,10 +4,10 @@ using Swampy.Domain.Entities;
 
 namespace Swampy.Domain.DomainServices
 {
-    public class SwampyEndpointService : IEndpointService
+    public class SwampyEndpointService : ISwampyEndpointService
     {
       
-        public static void Initialize()
+        public SwampyEndpointService()
         {
             DataDocumentStore.Initialize();
         }

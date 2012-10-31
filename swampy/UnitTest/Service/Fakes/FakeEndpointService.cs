@@ -2,7 +2,7 @@
 
 namespace Swampy.UnitTest.Fakes
 {
-    public class FakeEndpointService : IEndpointService
+    public class FakeEndpointService : ISwampyEndpointService
     {
         #region Implementation of IEndpointService
 

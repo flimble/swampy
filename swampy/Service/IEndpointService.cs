@@ -6,10 +6,13 @@ namespace Swampy.Domain.Contract
     /// WCF contract service for applications to connect to.
     /// This contract is readonly and is used to retrieve endpoint information by all applications in the system.
     /// </summary>
-    public interface ISwampyEndpointService
+    [ServiceContract]
+    public interface IEndpointService
     {
+        [OperationContract]
         KeyPair[] GetEndpoints(string environment, string[] keys, string callingApplication);
 
+        [OperationContract]
         KeyPair GetSingleEndpoint(string environment, string key, string callingApplication);
     }
 }
