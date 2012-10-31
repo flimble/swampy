@@ -1,6 +1,7 @@
 ﻿using System.ServiceModel;
+using Swampy.Domain.Contract;
 
-namespace Swampy.Domain.Contract
+namespace Swampy.Service
 {
     /// <summary>
     /// WCF contract service for applications to connect to.

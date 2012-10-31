@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Swampy.Shared.Infrastructure
+namespace Swampy.Domain.Infrastructure
 {
     /// <summary>
     /// Unit Testable Time

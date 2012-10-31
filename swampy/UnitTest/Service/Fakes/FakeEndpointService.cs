@@ -1,6 +1,6 @@
 ﻿using Swampy.Domain.Contract;
 
-namespace Swampy.UnitTest.Fakes
+namespace Swampy.UnitTest.Service.Fakes
 {
     public class FakeEndpointService : ISwampyEndpointService
     {

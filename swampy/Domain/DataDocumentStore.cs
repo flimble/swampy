@@ -26,7 +26,7 @@ namespace Swampy.Domain
             }
         }
 
-        public static IDocumentStore Initialize()
+        public static void Initialize()
         {
             //instance = new EmbeddableDocumentStore { RunInMemory = true };
             
@@ -36,7 +36,6 @@ namespace Swampy.Domain
 
            
             instance.Initialize();
-            return instance;
         }
 
     }

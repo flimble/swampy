@@ -1,4 +1,4 @@
-﻿namespace Swampy.Shared.Infrastructure.Extensions
+﻿namespace Swampy.Domain.Infrastructure.Extensions
 {
     // 
     //   SubSonic - http://subsonicproject.com

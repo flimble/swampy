@@ -6,12 +6,7 @@ namespace Swampy.Domain.DomainServices
 {
     public class SwampyEndpointService : ISwampyEndpointService
     {
-      
-        public SwampyEndpointService()
-        {
-            DataDocumentStore.Initialize();
-        }
-        
+             
 
         public KeyPair[] GetEndpoints(string environment, string[] keys, string callingApplication)
         {

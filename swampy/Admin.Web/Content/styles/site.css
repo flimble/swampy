@@ -5,11 +5,57 @@ body {
 .sidebar-nav {
   padding: 9px 0;
 }
-.field-validation-error {
+.site-alert {
+  position: relative;
+  top: -2px;
+  right: -21px;
+  line-height: 20px;
+}
+.site-alert-error {
+  background-color: #f2dede;
+  border-color: #eed3d7;
   color: #b94a48;
 }
-.test {
-  border-radius: 10px;
-  -moz-border-radius: 10px;
-  -webkit-border-radius: 10px;
+.site-label {
+  display: inline-block;
+  padding: 2px 4px;
+  font-size: 11.844px;
+  font-weight: bold;
+  line-height: 14px;
+  color: #fff;
+  vertical-align: baseline;
+  white-space: nowrap;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+  background-color: #999;
+  border-radius: 3px;
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+}
+.site-label-important {
+  background-color: #b94a48;
+}
+.validation-summary-errors {
+  position: relative;
+  top: -2px;
+  right: -21px;
+  line-height: 20px;
+  background-color: #f2dede;
+  border-color: #eed3d7;
+  color: #b94a48;
+}
+.field-validation-error {
+  display: inline-block;
+  padding: 2px 4px;
+  font-size: 11.844px;
+  font-weight: bold;
+  line-height: 14px;
+  color: #fff;
+  vertical-align: baseline;
+  white-space: nowrap;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+  background-color: #999;
+  border-radius: 3px;
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  background-color: #b94a48;
 }

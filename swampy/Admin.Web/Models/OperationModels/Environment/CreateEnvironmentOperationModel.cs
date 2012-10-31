@@ -1,4 +1,4 @@
-﻿namespace Swampy.Admin.Web.Models.OperationModels
+﻿namespace Swampy.Admin.Web.Models.OperationModels.Environment
 {
     public class CreateEnvironmentOperationModel
     {

@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Linq;
 using NUnit.Framework;
 using Swampy.Domain;
 using Swampy.Domain.DomainServices;
 
-namespace Swampy.IntegrationTest.Mongo
+namespace Swampy.IntegrationTest.Service
 {
     [TestFixture]
     public class SwampyEndpointService_Test

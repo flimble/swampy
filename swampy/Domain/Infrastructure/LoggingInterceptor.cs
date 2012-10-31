@@ -1,8 +1,7 @@
 ﻿using System;
 using System.Linq;
 using Castle.DynamicProxy;
-using Swampy.Shared.Infrastructure;
-using Swampy.Shared.Infrastructure.Swampy.Service.Infrastructure;
+using Swampy.Domain.Infrastructure.Swampy.Service.Infrastructure;
 using log4net;
 
 namespace Swampy.Domain.Infrastructure

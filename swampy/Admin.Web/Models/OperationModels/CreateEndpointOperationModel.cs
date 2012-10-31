@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using FluentValidation;
 using FluentValidation.Attributes;
 
-namespace SAIG.PS.Swampy.Admin.MVC.Models.OperationModels
+namespace Swampy.Admin.Web.Models.OperationModels
 {
     [Validator(typeof(CreateEndpointValidator))]
     public class CreateEndpointOperationModel

@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-
-namespace Swampy.Admin.Web.Models.OperationModels
+﻿namespace Swampy.Admin.Web.Models.OperationModels.Endpoint
 {
     public class CreateServerEndpoint : CreateEndpointBase
     {

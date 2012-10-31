@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using TechTalk.SpecFlow;
+﻿using TechTalk.SpecFlow;
 
-namespace Swampy.IntegrationTest
+namespace Swampy.IntegrationTest.BDD
 {
     [Binding]
     public class StepDefinition1

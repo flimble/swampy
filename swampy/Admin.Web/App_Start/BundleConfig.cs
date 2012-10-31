@@ -1,7 +1,6 @@
-﻿using System.Web;
-using System.Web.Optimization;
+﻿using System.Web.Optimization;
 
-namespace Swampy.Admin.Web
+namespace Swampy.Admin.Web.App_Start
 {
     public class BundleConfig
     {
@@ -28,8 +27,7 @@ namespace Swampy.Admin.Web
                         "~/Content/scripts/jquery/modernizr-*"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
-                "~/Content/styles/bootstrap/bootstrap.css",
-                "~/Content/styles/bootstrap/bootstrap-responsive.css",
+                "~/Content/styles/bootstrap/bootstrap.less",
                 "~/Content/styles/site.less"
                 ));
 

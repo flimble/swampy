@@ -1,12 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Data.Common;
-using System.Linq;
-using System.Web;
 using FluentValidation;
 using FluentValidation.Attributes;
 
-namespace Swampy.Admin.Web.Models.OperationModels
+namespace Swampy.Admin.Web.Models.OperationModels.Endpoint
 {
     [Validator(typeof(CreateSqlConnectionStringValidator))]
     public class CreateDatabaseConnectionEndpointOperationModel : CreateEndpointBase

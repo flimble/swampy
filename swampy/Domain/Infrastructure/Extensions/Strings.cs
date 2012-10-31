@@ -4,7 +4,7 @@ using System.Reflection;
 using System.Text;
 using System.Text.RegularExpressions;
 
-namespace Swampy.Shared.Infrastructure.Extensions
+namespace Swampy.Domain.Infrastructure.Extensions
 {
     /// <summary>
     /// Extension Class for Strings

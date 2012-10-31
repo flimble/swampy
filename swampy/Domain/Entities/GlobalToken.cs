@@ -1,5 +1,5 @@
 ﻿using System;
-using Swampy.Shared.Infrastructure.Extensions;
+using Swampy.Domain.Infrastructure.Extensions;
 
 namespace Swampy.Domain.Entities
 {

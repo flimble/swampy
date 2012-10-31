@@ -13,8 +13,6 @@
 }
 
 
-
-
 @red: #B94A48;
 
 body {
@@ -26,12 +24,46 @@ body {
     padding: 9px 0;
 }
 
-.field-validation-error
-{
-    color: @red;
+//HACK!! copy of twitter bootstrap code as cannot get import statement working.
+.site-alert {
+  position: relative;
+  top: -2px;
+  right: -21px;
+  line-height:  20px;
+}
+
+.site-alert-error {
+  background-color: #f2dede;
+  border-color:  darken(spin(#f2dede, -10), 3%);
+  color: #b94a48;
+}
+
+.site-label {
+  display: inline-block;
+  padding: 2px 4px;
+  font-size: 14px * .846;
+  font-weight: bold;
+  line-height: 14px; // ensure proper line-height if floated
+  color: #fff;
+  vertical-align: baseline;
+  white-space: nowrap;
+  text-shadow: 0 -1px 0 rgba(0,0,0,.25);
+  background-color: #999;
+  .border-radius(3px);
+}
+
+.site-label-important {
+	background-color: #b94a48; 
 }
 
 
-.test{
-	.border-radius(10px);
+.validation-summary-errors
+{
+	.site-alert();
+	.site-alert-error();
+}
+.field-validation-error 
+{
+    .site-label();
+    .site-label-important();
 }

@@ -1,6 +1,6 @@
 ﻿using System.Text.RegularExpressions;
 
-namespace Swampy.Shared.Infrastructure.Extensions
+namespace Swampy.Domain.Infrastructure.Extensions
 {
     /// Summary for the Validation class
     /// </summary>

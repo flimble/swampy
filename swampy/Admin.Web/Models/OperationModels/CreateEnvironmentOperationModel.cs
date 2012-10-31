@@ -1,4 +1,4 @@
-﻿namespace SAIG.PS.Swampy.Admin.MVC.Models.OperationModels
+﻿namespace Swampy.Admin.Web.Models.OperationModels
 {
     public class CreateEnvironmentOperationModel
     {

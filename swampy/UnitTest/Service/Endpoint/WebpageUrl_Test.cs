@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using NUnit.Framework;
+﻿using NUnit.Framework;
 using Swampy.Domain.Entities.Endpoint;
 
-namespace Swampy.UnitTest.Endpoint
+namespace Swampy.UnitTest.Service.Endpoint
 {
     [TestFixture]
     public class WebpageUrl_Test

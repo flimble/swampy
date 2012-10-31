@@ -7,8 +7,8 @@
     <ProjectGuid>{388E3D01-CD77-414C-A7F0-37224E346DF9}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Swampy.Wcf</RootNamespace>
-    <AssemblyName>Swampy.Wcf</AssemblyName>
+    <RootNamespace>Swampy.Service</RootNamespace>
+    <AssemblyName>Swampy.Service</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>

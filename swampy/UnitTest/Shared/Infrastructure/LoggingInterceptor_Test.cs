@@ -6,7 +6,7 @@ using Castle.Windsor;
 using NUnit.Framework;
 using Rhino.Mocks;
 using Swampy.Domain.Infrastructure;
-using Swampy.Shared.Infrastructure.Swampy.Service.Infrastructure;
+using Swampy.Domain.Infrastructure.Swampy.Service.Infrastructure;
 using log4net;
 using log4net.Config;
 

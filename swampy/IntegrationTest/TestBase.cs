@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using NUnit.Framework;
+﻿using NUnit.Framework;
 using Raven.Client;
 
-namespace Swampy.IntegrationTest.Mongo
+namespace Swampy.IntegrationTest
 {
     public abstract class TestBase
     {

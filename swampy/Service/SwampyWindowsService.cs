@@ -1,29 +1,18 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.ServiceModel;
 using System.ServiceProcess;
-using System.Text;
-using System.Threading.Tasks;
 using Castle.DynamicProxy;
+using Swampy.Domain;
 using Swampy.Domain.Contract;
 using Swampy.Domain.DomainServices;
 using Swampy.Domain.Infrastructure;
-using Swampy.Shared.Infrastructure;
-using Swampy.WcfService;
 using log4net;
-using log4net.Repository.Hierarchy;
 
 namespace Swampy.Service
 {
     public class SwampyWindowsService : ServiceBase
     {
-        private static ILog Logger = LogManager.GetLogger(typeof (SwampyWindowsService));
-
-        public SwampyWindowsService()
-        {
-            this.ServiceName = this.ToString();
-        }
+        protected static ILog Logger = LogManager.GetLogger(typeof (SwampyWindowsService));
 
         public ServiceHost ServiceHost = null;
 
@@ -36,9 +25,13 @@ namespace Swampy.Service
                 ServiceHost.Close();
             }
 
-            var domainService = new ProxyGenerator().CreateInterfaceProxyWithTargetInterface<ISwampyEndpointService>(
-                new SwampyEndpointService(),
-                new LoggingInterceptor(new LogFactory()));
+
+            DataDocumentStore.Initialize();
+
+            //create domainservice with aop logging enabled using dynamic-proxy
+            var domainService = LoggingDecorator.Decorate<ISwampyEndpointService>(
+                new SwampyEndpointService()
+                );
 
             ServiceHost = new ServiceHost(new EndpointService(domainService));
             ServiceHost.Open();
@@ -52,7 +45,7 @@ namespace Swampy.Service
             if (Environment.UserInteractive)
             {
                 service.OnStart(args);
-                Logger.DebugFormat("Started windows service");
+                Logger.DebugFormat("Starting service in interactive mode");
                 Console.Read();
                 service.OnStop();
             }

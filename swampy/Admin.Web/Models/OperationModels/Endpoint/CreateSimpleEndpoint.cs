@@ -1,7 +1,7 @@
 using FluentValidation;
 using FluentValidation.Attributes;
 
-namespace Swampy.Admin.Web.Models.OperationModels
+namespace Swampy.Admin.Web.Models.OperationModels.Endpoint
 {
     public class CreateSimpleEndpointValidator : CreateEndpointBaseValidator<CreateSimpleEndpoint>
     {

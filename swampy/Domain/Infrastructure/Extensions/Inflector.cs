@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Text.RegularExpressions;
 
-namespace Swampy.Shared.Infrastructure.Extensions
+namespace Swampy.Domain.Infrastructure.Extensions
 {
     public static class Inflector
     {
