@@ -71,20 +71,11 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\MongoDataAccess\Swampy.RavenDataAccess.csproj">
-      <Project>{A99D7A13-5A08-455E-A6D0-EAE4027C134E}</Project>
-      <Name>Swampy.RavenDataAccess</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Service\Swampy.Service.csproj">
+    <ProjectReference Include="..\Domain\Swampy.Domain.csproj">
       <Project>{BEA1C3E4-9222-400E-8E7B-B0E98A715B11}</Project>
-      <Name>Swampy.Service</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Shared\Swampy.Shared.csproj">
-      <Project>{5ebf0a59-32d5-4d8f-8106-1c43e5c2a1aa}</Project>
-      <Name>Swampy.Shared</Name>
+      <Name>Swampy.Domain</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

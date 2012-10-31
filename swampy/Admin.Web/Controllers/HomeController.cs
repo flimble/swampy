@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using System.Linq;
 using System.Web.Mvc;
 using Swampy.Admin.Web.Models;
-using Swampy.MongoDataAccess;
-using Environment = Swampy.Service.Entities.Environment;
+using Environment = Swampy.Domain.Entities.Environment;
 
 namespace Swampy.Admin.Web.Controllers
 {
@@ -19,7 +15,6 @@ namespace Swampy.Admin.Web.Controllers
 
             var names = from e in this.DocumentSession.Query<Environment>()
                         select e.Name;
-
 
             var model = new HomeReadModel
                             {

@@ -5,7 +5,8 @@ using System.Reflection;
 using System.Web.Mvc;
 using Swampy.Admin.Web.Models.OperationModels;
 using Swampy.Admin.Web.Models.OperationModels.Endpoint;
-using Swampy.Service.Entities.Endpoint;
+using Swampy.Domain.Entities.Endpoint;
+using Environment = Swampy.Domain.Entities.Environment;
 
 namespace Swampy.Admin.Web.Controllers
 {
@@ -35,6 +36,22 @@ namespace Swampy.Admin.Web.Controllers
             return a;
         }
 
+        /*[HttpGet]
+        public ActionResult Detail(string id)
+        {
+            var model = this.DocumentSession.Query<EndpointBase>()
+                .Single(x => x.Id == id);
+
+            return View(model);
+        }*/
+
+        /*[HttpPut]
+        public ActionResult Create()
+        {
+            
+        }*/
+
+        [HttpGet]
         public ActionResult Create(string environmentName)
         {
             var model = new CreateEndpoint
@@ -45,47 +62,56 @@ namespace Swampy.Admin.Web.Controllers
 
 
 
-            model.EndpointTypes = GetEndpointTypes();
-
-            this.DocumentSession.Store(model);
-            
+            model.EndpointTypes = GetEndpointTypes();            
 
             return View(model);
         }
 
-        public ActionResult Save(CreateEndpoint newEndpoint)
-        {
-            if(!ModelState.IsValid)
-            {
-                newEndpoint.EndpointTypes = GetEndpointTypes();
-                newEndpoint.Endpoint = new CreateSimpleEndpoint();
 
-                return View("Create", newEndpoint);
+        [HttpPost]
+        public ActionResult Create(CreateEndpoint newEndpoint)
+        {
+            ModelState.AddModelError("Description", "Cannot be empty");
+
+            if (!ModelState.IsValid)
+            {
+                var model = RebuildModel(newEndpoint);
+                return View("Create", model);
             }
 
 
             var environment =
-                this.DocumentSession.Query<Swampy.Service.Entities.Environment>().Single(
+                this.DocumentSession.Query<Environment>().Single(
                     x => x.Name == newEndpoint.EnvironmentName);
 
- 
+
 
 
             var endpoint = newEndpoint.Endpoint as CreateSimpleEndpoint;
 
             var toAdd = new SimpleEndpoint
-                {
-                    Description = newEndpoint.Endpoint.Description,
-                    Key = newEndpoint.Endpoint.Name,
-                    Value = endpoint.Value
-                };
+            {
+                Description = newEndpoint.Endpoint.Description,
+                Key = newEndpoint.Endpoint.Name,
+                Value = endpoint.Value
+            };
 
             environment.Endpoints.Add(toAdd);
 
             this.DocumentSession.SaveChanges();
 
-            return RedirectToAction("Index", "Environment", new { environmentName = newEndpoint.EnvironmentName } );
+            return RedirectToAction("Index", "Environment", new { environmentName = newEndpoint.EnvironmentName });
         }
+
+        public CreateEndpoint RebuildModel(CreateEndpoint postedEndpoint)
+        {
+            postedEndpoint.EndpointTypes = GetEndpointTypes();
+            postedEndpoint.Endpoint = new CreateSimpleEndpoint();
+
+            return postedEndpoint;
+        }
+
+
 
     }
 }

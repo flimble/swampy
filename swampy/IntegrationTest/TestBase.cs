@@ -4,8 +4,6 @@ using System.Linq;
 using System.Text;
 using NUnit.Framework;
 using Raven.Client;
-using Swampy.MongoDataAccess;
-using Swampy.Service;
 
 namespace Swampy.IntegrationTest.Mongo
 {

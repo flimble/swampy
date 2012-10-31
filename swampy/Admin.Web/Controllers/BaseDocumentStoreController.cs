@@ -4,8 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Raven.Client;
-using Swampy.MongoDataAccess;
-using Swampy.RavenDataAccess;
+using Swampy.Domain;
 
 namespace Swampy.Admin.Web.Controllers
 {
@@ -27,7 +26,10 @@ namespace Swampy.Admin.Web.Controllers
                 return;
             if (this.DocumentSession != null && filterContext.Exception == null)
                 this.DocumentSession.SaveChanges();
-            this.DocumentSession.Dispose();
+
+            if(DocumentSession != null)
+                this.DocumentSession.Dispose();
+            
             base.OnActionExecuted(filterContext);
         }
     }

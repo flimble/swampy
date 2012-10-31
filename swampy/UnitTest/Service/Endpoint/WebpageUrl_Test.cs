@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using NUnit.Framework;
-using Swampy.Service.Entities.Endpoint;
+using Swampy.Domain.Entities.Endpoint;
 
 namespace Swampy.UnitTest.Endpoint
 {

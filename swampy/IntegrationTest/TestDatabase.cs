@@ -1,7 +1,8 @@
-﻿using System.Collections.Generic;
-using Swampy.RavenDataAccess;
-using Swampy.Service.Entities;
-using Swampy.Service.Entities.Endpoint;
+﻿using System;
+using System.Collections.Generic;
+using Swampy.Domain;
+using Swampy.Domain.Entities.Endpoint;
+using Environment = Swampy.Domain.Entities.Environment;
 
 namespace Swampy.IntegrationTest
 {

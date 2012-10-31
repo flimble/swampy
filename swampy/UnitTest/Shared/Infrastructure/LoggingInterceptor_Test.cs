@@ -5,12 +5,12 @@ using Castle.MicroKernel.Registration;
 using Castle.Windsor;
 using NUnit.Framework;
 using Rhino.Mocks;
-using Swampy.Shared.Infrastructure;
+using Swampy.Domain.Infrastructure;
 using Swampy.Shared.Infrastructure.Swampy.Service.Infrastructure;
 using log4net;
 using log4net.Config;
 
-namespace Swampy.UnitTest.Infrastructure
+namespace Swampy.UnitTest.Shared.Infrastructure
 {
     [TestFixture]
     public class LoggingInterceptor_Test

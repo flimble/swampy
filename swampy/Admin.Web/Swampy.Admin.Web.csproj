@@ -155,10 +155,7 @@
     <Content Include="Content\images\bootstrap\glyphicons-halflings-white.png" />
     <Content Include="Content\images\bootstrap\glyphicons-halflings.png" />
     <Content Include="Content\scripts\bootstrap\bootstrap.js" />
-    <None Include="Content\scripts\jquery\jquery-1.5.1-vsdoc.js" />
-    <Content Include="Content\scripts\jquery\jquery-1.5.1.js" />
     <Content Include="Content\scripts\jquery\jquery-1.8.2.js" />
-    <Content Include="Content\scripts\jquery\jquery-1.8.2.min.js" />
     <Content Include="Content\scripts\jquery\jquery-ui-1.8.11.js" />
     <Content Include="Content\scripts\jquery\jquery.unobtrusive-ajax.js" />
     <None Include="Content\scripts\jquery\jquery.validate-vsdoc.js" />
@@ -171,10 +168,14 @@
     <Content Include="Content\scripts\mvc4\MicrosoftMvcAjax.js" />
     <Content Include="Content\scripts\mvc4\MicrosoftMvcValidation.debug.js" />
     <Content Include="Content\scripts\mvc4\MicrosoftMvcValidation.js" />
-    <Content Include="Content\scripts\site.js" />
+    <Content Include="Content\scripts\site.js">
+      <DependentUpon>site.coffee</DependentUpon>
+    </Content>
     <Content Include="Content\styles\bootstrap\bootstrap-responsive.css" />
     <Content Include="Content\styles\bootstrap\bootstrap.css" />
-    <Content Include="Content\styles\site.css" />
+    <Content Include="Content\styles\site.css">
+      <DependentUpon>site.less</DependentUpon>
+    </Content>
     <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_glass_55_fbf9ee_1x400.png" />
@@ -235,21 +236,6 @@
     <Content Include="packages.config">
       <SubType>Designer</SubType>
     </Content>
-    <None Include="Scripts\jquery.validate-vsdoc.js" />
-    <None Include="Scripts\jquery-1.8.2.intellisense.js" />
-    <Content Include="Scripts\jquery-1.8.2.js" />
-    <Content Include="Scripts\jquery-1.8.2.min.js" />
-    <Content Include="Scripts\jquery-ui-1.8.20.js" />
-    <Content Include="Scripts\jquery-ui-1.8.20.min.js" />
-    <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
-    <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
-    <Content Include="Scripts\jquery.validate.js" />
-    <Content Include="Scripts\jquery.validate.min.js" />
-    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
-    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
-    <Content Include="Scripts\knockout-2.1.0.debug.js" />
-    <Content Include="Scripts\knockout-2.1.0.js" />
-    <Content Include="Scripts\modernizr-2.5.3.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -257,7 +243,6 @@
     <Content Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
-    <Content Include="Scripts\_references.js" />
     <Content Include="Images\accent.png" />
     <Content Include="Images\bullet.png" />
     <Content Include="Images\heroAccent.png" />
@@ -292,13 +277,9 @@
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\MongoDataAccess\Swampy.RavenDataAccess.csproj">
-      <Project>{A99D7A13-5A08-455E-A6D0-EAE4027C134E}</Project>
-      <Name>Swampy.RavenDataAccess</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Service\Swampy.Service.csproj">
+    <ProjectReference Include="..\Domain\Swampy.Domain.csproj">
       <Project>{BEA1C3E4-9222-400E-8E7B-B0E98A715B11}</Project>
-      <Name>Swampy.Service</Name>
+      <Name>Swampy.Domain</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

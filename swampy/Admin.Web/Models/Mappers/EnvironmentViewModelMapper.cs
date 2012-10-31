@@ -1,6 +1,6 @@
 ﻿using System.Linq;
-using Swampy.Service.Entities.Endpoint;
-using Environment = Swampy.Service.Entities.Environment;
+using Swampy.Domain.Entities.Endpoint;
+using Environment = Swampy.Domain.Entities.Environment;
 
 namespace Swampy.Admin.Web.Models.Mappers
 {

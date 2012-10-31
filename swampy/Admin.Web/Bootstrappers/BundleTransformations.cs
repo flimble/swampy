@@ -17,6 +17,7 @@ namespace Swampy.Admin.Web.Bootstrappers
         }
     }
 
+
     public class CoffeeTransform : JsMinify, IBundleTransform
     {
         public override void Process(BundleContext context, BundleResponse response)

@@ -3,10 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using NUnit.Framework;
-using Swampy.MongoDataAccess;
-using Swampy.RavenDataAccess;
-using Swampy.Service;
-using Swampy.Service.DomainServices;
+using Swampy.Domain;
+using Swampy.Domain.DomainServices;
 
 namespace Swampy.IntegrationTest.Mongo
 {
@@ -27,7 +25,7 @@ namespace Swampy.IntegrationTest.Mongo
         {
             TestDatabase.Up();
 
-            var underTest = new SwampyEndpointService(DataDocumentStore.Instance.OpenSession());
+            var underTest = new SwampyEndpointService();
 
             var result = underTest.GetSingleEndpoint("SIT1", "CommonDBConnectionString", "testApp");
 
@@ -42,7 +40,7 @@ namespace Swampy.IntegrationTest.Mongo
         {
             TestDatabase.Up();
 
-            var underTest = new SwampyEndpointService(DataDocumentStore.Instance.OpenSession());
+            var underTest = new SwampyEndpointService();
 
             var result = underTest.GetEndpoints("SIT1", new [] {"CommonDBConnectionString"} , "testApp");
 
@@ -56,7 +54,7 @@ namespace Swampy.IntegrationTest.Mongo
         {
             TestDatabase.Up();
 
-            var underTest = new SwampyEndpointService(DataDocumentStore.Instance.OpenSession());
+            var underTest = new SwampyEndpointService();
 
             var result = underTest.GetEndpoints("SIT1", new[] { "ZZooASASDFASD" }, "testApp");
 
@@ -73,7 +71,7 @@ namespace Swampy.IntegrationTest.Mongo
 
             TestDatabase.Up();
 
-            var underTest = new SwampyEndpointService(DataDocumentStore.Instance.OpenSession());
+            var underTest = new SwampyEndpointService();
 
             var result = underTest.GetEndpoints("SITXXX", new[] { "CommonDBConnectionString" }, "testApp");
 

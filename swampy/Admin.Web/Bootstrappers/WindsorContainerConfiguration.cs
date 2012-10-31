@@ -9,8 +9,6 @@ using Castle.MicroKernel.Registration;
 using Castle.Windsor;
 using Castle.Windsor.Installer;
 using FluentValidation.Mvc;
-using Swampy.MongoDataAccess;
-using Swampy.RavenDataAccess;
 using Component = Castle.MicroKernel.Registration.Component;
 
 namespace Swampy.Admin.Web.Bootstrappers

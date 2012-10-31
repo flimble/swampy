@@ -7,7 +7,7 @@ using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
 using Swampy.Admin.Web.Bootstrappers;
-using Swampy.RavenDataAccess;
+using Swampy.Domain;
 
 namespace Swampy.Admin.Web
 {
@@ -18,10 +18,6 @@ namespace Swampy.Admin.Web
     {
         protected void Application_Start()
         {
-            //AreaRegistration.RegisterAllAreas();
-
-            //WebApiConfig.Register(GlobalConfiguration.Configuration);
-
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
 
             RouteConfig.RegisterRoutes(RouteTable.Routes);
@@ -30,6 +26,7 @@ namespace Swampy.Admin.Web
 
             DataDocumentStore.Initialize();
 
+            FluentValidationConfiguration.Configure();
         }
     }
 }

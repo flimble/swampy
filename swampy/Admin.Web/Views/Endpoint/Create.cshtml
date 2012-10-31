@@ -1,4 +1,5 @@
 ﻿@using Swampy.Admin.Web.Models.OperationModels
+@using Swampy.Domain.Entities.Endpoint
 @using Swampy.Service.Entities.Endpoint
 @model Swampy.Admin.Web.Models.OperationModels.Endpoint.CreateEndpoint
 
@@ -8,37 +9,40 @@
 }
 
 
-
-@using (Html.BeginForm("Save", "Endpoint")) {
-    @Html.ValidationSummary(true)
+@Html.ValidationSummary(false)
+@using (Html.BeginForm("Create", "Endpoint"))
+{
+    
     <fieldset>
         <legend>Create new endpoint in @Html.DisplayFor(model => model.EnvironmentName)</legend>
-        
-        
-        @Html.DropDownListFor(x=>x.EndpointTypes, new SelectList(@Model.EndpointTypes, "Value", "Key", typeof(SimpleEndpoint)))
-        
 
-        @Html.HiddenFor(model=>model.EnvironmentName)
 
-        <div class="editor-label">
-            @Html.LabelFor(model => model.Endpoint.Name)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.Endpoint.Name)
-            @Html.ValidationMessageFor(model => model.Endpoint.Name)
-        </div>
-        
-        <div class="editor-label">
-            @Html.LabelFor(model => model.Endpoint.Description)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.Endpoint.Description)
-            @Html.ValidationMessageFor(model => model.Endpoint.Description)
-        </div>
+        @Html.DropDownListFor(x => x.SelectedType, new SelectList(@Model.EndpointTypes, "Value", "Key", typeof(SimpleEndpoint)))
 
-        @Html.Partial("CreateSimpleEndpoint", ((CreateSimpleEndpoint)@Model.Endpoint))
-        
 
+        @Html.HiddenFor(model => model.EnvironmentName)
+
+        <div class="control-group">
+            <div class="editor-label">
+                @Html.LabelFor(model => model.Endpoint.Name)
+            </div>
+            <div class="editor-field">
+                @Html.EditorFor(model => model.Endpoint.Name)
+                @Html.ValidationMessageFor(model => model.Endpoint.Name)
+            </div>
+
+            <div class="editor-label">
+                @Html.LabelFor(model => model.Endpoint.Description)
+            </div>
+            <div class="editor-field">
+                @Html.EditorFor(model => model.Endpoint.Description)
+                @Html.ValidationMessageFor(model => model.Endpoint.Description)
+            </div>
+
+            @Html.Partial("CreateSimpleEndpoint", @Model)
+
+
+        </div>
         <p>
             <input type="submit" value="Save" />
         </p>
@@ -46,5 +50,5 @@
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index", "Environment", new { environmentName=@Model.EnvironmentName }, null)
+    @Html.ActionLink("Back to List", "Index", "Environment", new { environmentName = @Model.EnvironmentName }, null)
 </div>

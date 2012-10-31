@@ -28,8 +28,11 @@ namespace SAIG.PS.Swampy.Admin.MVC.Models.OperationModels
         {
             RuleFor(x => x.Value)
                 .NotEmpty()
-                .WithMessage("test");
+                .WithMessage("Endpoint must have a value says john");
 
+            RuleFor(x => x.Name)
+                .NotEmpty()
+                .WithMessage("Endpoint must have a name says join");
 
 
         }

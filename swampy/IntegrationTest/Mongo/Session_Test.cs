@@ -1,7 +1,7 @@
 ﻿using System.Linq;
 using NUnit.Framework;
-using Swampy.Service.Entities.Endpoint;
-using Environment = Swampy.Service.Entities.Environment;
+using Swampy.Domain.Entities.Endpoint;
+using Environment = Swampy.Domain.Entities.Environment;
 
 namespace Swampy.IntegrationTest.Mongo
 {

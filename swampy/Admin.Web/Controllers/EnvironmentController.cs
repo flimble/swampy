@@ -2,8 +2,7 @@
 using System.Web.Mvc;
 using Swampy.Admin.Web.Models.Mappers;
 using Swampy.Admin.Web.Models.OperationModels;
-using Swampy.RavenDataAccess;
-using Environment = Swampy.Service.Entities.Environment;
+using Environment = Swampy.Domain.Entities.Environment;
 
 
 namespace Swampy.Admin.Web.Controllers

@@ -1,4 +1,4 @@
-﻿using Swampy.Service.Contract;
+﻿using Swampy.Domain.Contract;
 
 namespace Swampy.UnitTest.Fakes
 {

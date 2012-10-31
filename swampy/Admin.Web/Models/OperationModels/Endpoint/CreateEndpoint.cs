@@ -8,10 +8,11 @@ namespace Swampy.Admin.Web.Models.OperationModels.Endpoint
     {
 
         public IDictionary<string, Type> EndpointTypes { get; set; }
+        public string SelectedType { get; set; }
 
         public string EnvironmentName { get; set; }
 
-        public CreateEndpointBase Endpoint { get; set; }
+        public CreateSimpleEndpoint Endpoint { get; set; }
     }
 
    

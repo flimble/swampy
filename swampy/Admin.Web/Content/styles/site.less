@@ -1,11 +1,19 @@
 ﻿
-
-
+//Mixins Here
 .border-radius (@radius: 5px) {
   border-radius: @radius;
   -moz-border-radius: @radius;
   -webkit-border-radius: @radius;
 }
+
+.box-sizing (@type: border-box) {
+	-webkit-box-sizing: @type;
+	-moz-box-sizing:    @type;
+	box-sizing:         @type;
+}
+
+
+
 
 @red: #B94A48;
 
@@ -21,4 +29,9 @@ body {
 .field-validation-error
 {
     color: @red;
+}
+
+
+.test{
+	.border-radius(10px);
 }

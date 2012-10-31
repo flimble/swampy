@@ -2,10 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using Swampy.RavenDataAccess;
-using Swampy.Service.Entities;
-using Swampy.Service.Entities.Endpoint;
-using Environment = Swampy.Service.Entities.Environment;
+using Swampy.Domain;
+using Swampy.Domain.Entities.Endpoint;
+using Environment = Swampy.Domain.Entities.Environment;
 
 namespace Swampy.Admin.Web.Bootstrappers
 {
@@ -18,7 +17,7 @@ namespace Swampy.Admin.Web.Bootstrappers
 
 
 
-                var sit1Environment = new Service.Entities.Environment
+                var sit1Environment = new Environment
                 {
                     Name = "SIT1",
                     Endpoints = new List<EndpointBase>
