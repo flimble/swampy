@@ -21,26 +21,28 @@
         @Html.HiddenFor(model => model.EnvironmentName)
 
         <div class="control-group">
-            <div class="editor-label">
-                @Html.LabelFor(model => model.Endpoint.Name)
-            </div>
-            <div class="editor-field">
+
+
+            @Html.LabelFor(model => model.Endpoint.Name)
+
+            <div class="controls">
                 @Html.EditorFor(model => model.Endpoint.Name)
                 @Html.ValidationMessageFor(model => model.Endpoint.Name)
-            </div>
 
-            <div class="editor-label">
-                @Html.LabelFor(model => model.Endpoint.Description)
             </div>
-            <div class="editor-field">
+        </div>
+
+        <div class="control-group">
+            @Html.LabelFor(model => model.Endpoint.Description)
+            <div class="controls">
                 @Html.EditorFor(model => model.Endpoint.Description)
                 @Html.ValidationMessageFor(model => model.Endpoint.Description)
             </div>
-
-            @Html.Partial("CreateSimpleEndpoint", @Model)
-
-
         </div>
+
+        @Html.Partial("CreateSimpleEndpoint", @Model)
+
+
         <p>
             <input type="submit" value="Save" />
         </p>

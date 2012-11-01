@@ -8,14 +8,14 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace SAIG.PS.ConfigGen.SwampyEnvironments {
+namespace SAIG.PS.ConfigGen.ConfigGen.SwampyProxy {
     using System.Runtime.Serialization;
     using System;
     
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="KeyPair", Namespace="http://schemas.datacontract.org/2004/07/SAIG.PS.Swampy.Service.Contract")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="KeyPair", Namespace="http://schemas.datacontract.org/2004/07/Swampy.Domain.Contract")]
     [System.SerializableAttribute()]
     public partial class KeyPair : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
@@ -75,28 +75,108 @@ namespace SAIG.PS.ConfigGen.SwampyEnvironments {
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="SwampyEnvironments.IEndpointService")]
+    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ConfigGen.SwampyProxy.IEndpointService")]
     public interface IEndpointService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IEndpointService/GetEndpoints", ReplyAction="http://tempuri.org/IEndpointService/GetEndpointsResponse")]
-        SAIG.PS.ConfigGen.SwampyEnvironments.KeyPair[] GetEndpoints(string environment, string[] keys, string callingApplication);
+        SAIG.PS.ConfigGen.ConfigGen.SwampyProxy.GetEndpointsResponse GetEndpoints(SAIG.PS.ConfigGen.ConfigGen.SwampyProxy.GetEndpointsRequest request);
         
         [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/IEndpointService/GetEndpoints", ReplyAction="http://tempuri.org/IEndpointService/GetEndpointsResponse")]
-        System.IAsyncResult BeginGetEndpoints(string environment, string[] keys, string callingApplication, System.AsyncCallback callback, object asyncState);
+        System.IAsyncResult BeginGetEndpoints(SAIG.PS.ConfigGen.ConfigGen.SwampyProxy.GetEndpointsRequest request, System.AsyncCallback callback, object asyncState);
         
-        SAIG.PS.ConfigGen.SwampyEnvironments.KeyPair[] EndGetEndpoints(System.IAsyncResult result);
+        SAIG.PS.ConfigGen.ConfigGen.SwampyProxy.GetEndpointsResponse EndGetEndpoints(System.IAsyncResult result);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IEndpointService/GetSingleEndpoint", ReplyAction="http://tempuri.org/IEndpointService/GetSingleEndpointResponse")]
-        SAIG.PS.ConfigGen.SwampyEnvironments.KeyPair GetSingleEndpoint(string environment, string key, string callingApplication);
+        SAIG.PS.ConfigGen.ConfigGen.SwampyProxy.GetSingleEndpointResponse GetSingleEndpoint(SAIG.PS.ConfigGen.ConfigGen.SwampyProxy.GetSingleEndpointRequest request);
         
         [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/IEndpointService/GetSingleEndpoint", ReplyAction="http://tempuri.org/IEndpointService/GetSingleEndpointResponse")]
-        System.IAsyncResult BeginGetSingleEndpoint(string environment, string key, string callingApplication, System.AsyncCallback callback, object asyncState);
+        System.IAsyncResult BeginGetSingleEndpoint(SAIG.PS.ConfigGen.ConfigGen.SwampyProxy.GetSingleEndpointRequest request, System.AsyncCallback callback, object asyncState);
         
-        SAIG.PS.ConfigGen.SwampyEnvironments.KeyPair EndGetSingleEndpoint(System.IAsyncResult result);
+        SAIG.PS.ConfigGen.ConfigGen.SwampyProxy.GetSingleEndpointResponse EndGetSingleEndpoint(System.IAsyncResult result);
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="GetEndpoints", WrapperNamespace="http://tempuri.org/", IsWrapped=true)]
+    public partial class GetEndpointsRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=0)]
+        public string environment;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=1)]
+        public string[] keys;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=2)]
+        public string callingApplication;
+        
+        public GetEndpointsRequest() {
+        }
+        
+        public GetEndpointsRequest(string environment, string[] keys, string callingApplication) {
+            this.environment = environment;
+            this.keys = keys;
+            this.callingApplication = callingApplication;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="GetEndpointsResponse", WrapperNamespace="http://tempuri.org/", IsWrapped=true)]
+    public partial class GetEndpointsResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=0)]
+        public SAIG.PS.ConfigGen.ConfigGen.SwampyProxy.KeyPair[] GetEndpointsResult;
+        
+        public GetEndpointsResponse() {
+        }
+        
+        public GetEndpointsResponse(SAIG.PS.ConfigGen.ConfigGen.SwampyProxy.KeyPair[] GetEndpointsResult) {
+            this.GetEndpointsResult = GetEndpointsResult;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="GetSingleEndpoint", WrapperNamespace="http://tempuri.org/", IsWrapped=true)]
+    public partial class GetSingleEndpointRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=0)]
+        public string environment;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=1)]
+        public string key;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=2)]
+        public string callingApplication;
+        
+        public GetSingleEndpointRequest() {
+        }
+        
+        public GetSingleEndpointRequest(string environment, string key, string callingApplication) {
+            this.environment = environment;
+            this.key = key;
+            this.callingApplication = callingApplication;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="GetSingleEndpointResponse", WrapperNamespace="http://tempuri.org/", IsWrapped=true)]
+    public partial class GetSingleEndpointResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=0)]
+        public SAIG.PS.ConfigGen.ConfigGen.SwampyProxy.KeyPair GetSingleEndpointResult;
+        
+        public GetSingleEndpointResponse() {
+        }
+        
+        public GetSingleEndpointResponse(SAIG.PS.ConfigGen.ConfigGen.SwampyProxy.KeyPair GetSingleEndpointResult) {
+            this.GetSingleEndpointResult = GetSingleEndpointResult;
+        }
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public interface IEndpointServiceChannel : SAIG.PS.ConfigGen.SwampyEnvironments.IEndpointService, System.ServiceModel.IClientChannel {
+    public interface IEndpointServiceChannel : SAIG.PS.ConfigGen.ConfigGen.SwampyProxy.IEndpointService, System.ServiceModel.IClientChannel {
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
@@ -110,10 +190,10 @@ namespace SAIG.PS.ConfigGen.SwampyEnvironments {
             this.results = results;
         }
         
-        public SAIG.PS.ConfigGen.SwampyEnvironments.KeyPair[] Result {
+        public SAIG.PS.ConfigGen.ConfigGen.SwampyProxy.GetEndpointsResponse Result {
             get {
                 base.RaiseExceptionIfNecessary();
-                return ((SAIG.PS.ConfigGen.SwampyEnvironments.KeyPair[])(this.results[0]));
+                return ((SAIG.PS.ConfigGen.ConfigGen.SwampyProxy.GetEndpointsResponse)(this.results[0]));
             }
         }
     }
@@ -129,17 +209,17 @@ namespace SAIG.PS.ConfigGen.SwampyEnvironments {
             this.results = results;
         }
         
-        public SAIG.PS.ConfigGen.SwampyEnvironments.KeyPair Result {
+        public SAIG.PS.ConfigGen.ConfigGen.SwampyProxy.GetSingleEndpointResponse Result {
             get {
                 base.RaiseExceptionIfNecessary();
-                return ((SAIG.PS.ConfigGen.SwampyEnvironments.KeyPair)(this.results[0]));
+                return ((SAIG.PS.ConfigGen.ConfigGen.SwampyProxy.GetSingleEndpointResponse)(this.results[0]));
             }
         }
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public partial class EndpointServiceClient : System.ServiceModel.ClientBase<SAIG.PS.ConfigGen.SwampyEnvironments.IEndpointService>, SAIG.PS.ConfigGen.SwampyEnvironments.IEndpointService {
+    public partial class EndpointServiceClient : System.ServiceModel.ClientBase<SAIG.PS.ConfigGen.ConfigGen.SwampyProxy.IEndpointService>, SAIG.PS.ConfigGen.ConfigGen.SwampyProxy.IEndpointService {
         
         private BeginOperationDelegate onBeginGetEndpointsDelegate;
         
@@ -176,29 +256,27 @@ namespace SAIG.PS.ConfigGen.SwampyEnvironments {
         
         public event System.EventHandler<GetSingleEndpointCompletedEventArgs> GetSingleEndpointCompleted;
         
-        public SAIG.PS.ConfigGen.SwampyEnvironments.KeyPair[] GetEndpoints(string environment, string[] keys, string callingApplication) {
-            return base.Channel.GetEndpoints(environment, keys, callingApplication);
+        public SAIG.PS.ConfigGen.ConfigGen.SwampyProxy.GetEndpointsResponse GetEndpoints(SAIG.PS.ConfigGen.ConfigGen.SwampyProxy.GetEndpointsRequest request) {
+            return base.Channel.GetEndpoints(request);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        public System.IAsyncResult BeginGetEndpoints(string environment, string[] keys, string callingApplication, System.AsyncCallback callback, object asyncState) {
-            return base.Channel.BeginGetEndpoints(environment, keys, callingApplication, callback, asyncState);
+        public System.IAsyncResult BeginGetEndpoints(SAIG.PS.ConfigGen.ConfigGen.SwampyProxy.GetEndpointsRequest request, System.AsyncCallback callback, object asyncState) {
+            return base.Channel.BeginGetEndpoints(request, callback, asyncState);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        public SAIG.PS.ConfigGen.SwampyEnvironments.KeyPair[] EndGetEndpoints(System.IAsyncResult result) {
+        public SAIG.PS.ConfigGen.ConfigGen.SwampyProxy.GetEndpointsResponse EndGetEndpoints(System.IAsyncResult result) {
             return base.Channel.EndGetEndpoints(result);
         }
         
         private System.IAsyncResult OnBeginGetEndpoints(object[] inValues, System.AsyncCallback callback, object asyncState) {
-            string environment = ((string)(inValues[0]));
-            string[] keys = ((string[])(inValues[1]));
-            string callingApplication = ((string)(inValues[2]));
-            return this.BeginGetEndpoints(environment, keys, callingApplication, callback, asyncState);
+            SAIG.PS.ConfigGen.ConfigGen.SwampyProxy.GetEndpointsRequest request = ((SAIG.PS.ConfigGen.ConfigGen.SwampyProxy.GetEndpointsRequest)(inValues[0]));
+            return this.BeginGetEndpoints(request, callback, asyncState);
         }
         
         private object[] OnEndGetEndpoints(System.IAsyncResult result) {
-            SAIG.PS.ConfigGen.SwampyEnvironments.KeyPair[] retVal = this.EndGetEndpoints(result);
+            SAIG.PS.ConfigGen.ConfigGen.SwampyProxy.GetEndpointsResponse retVal = this.EndGetEndpoints(result);
             return new object[] {
                     retVal};
         }
@@ -210,11 +288,11 @@ namespace SAIG.PS.ConfigGen.SwampyEnvironments {
             }
         }
         
-        public void GetEndpointsAsync(string environment, string[] keys, string callingApplication) {
-            this.GetEndpointsAsync(environment, keys, callingApplication, null);
+        public void GetEndpointsAsync(SAIG.PS.ConfigGen.ConfigGen.SwampyProxy.GetEndpointsRequest request) {
+            this.GetEndpointsAsync(request, null);
         }
         
-        public void GetEndpointsAsync(string environment, string[] keys, string callingApplication, object userState) {
+        public void GetEndpointsAsync(SAIG.PS.ConfigGen.ConfigGen.SwampyProxy.GetEndpointsRequest request, object userState) {
             if ((this.onBeginGetEndpointsDelegate == null)) {
                 this.onBeginGetEndpointsDelegate = new BeginOperationDelegate(this.OnBeginGetEndpoints);
             }
@@ -225,34 +303,30 @@ namespace SAIG.PS.ConfigGen.SwampyEnvironments {
                 this.onGetEndpointsCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnGetEndpointsCompleted);
             }
             base.InvokeAsync(this.onBeginGetEndpointsDelegate, new object[] {
-                        environment,
-                        keys,
-                        callingApplication}, this.onEndGetEndpointsDelegate, this.onGetEndpointsCompletedDelegate, userState);
+                        request}, this.onEndGetEndpointsDelegate, this.onGetEndpointsCompletedDelegate, userState);
         }
         
-        public SAIG.PS.ConfigGen.SwampyEnvironments.KeyPair GetSingleEndpoint(string environment, string key, string callingApplication) {
-            return base.Channel.GetSingleEndpoint(environment, key, callingApplication);
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        public System.IAsyncResult BeginGetSingleEndpoint(string environment, string key, string callingApplication, System.AsyncCallback callback, object asyncState) {
-            return base.Channel.BeginGetSingleEndpoint(environment, key, callingApplication, callback, asyncState);
+        public SAIG.PS.ConfigGen.ConfigGen.SwampyProxy.GetSingleEndpointResponse GetSingleEndpoint(SAIG.PS.ConfigGen.ConfigGen.SwampyProxy.GetSingleEndpointRequest request) {
+            return base.Channel.GetSingleEndpoint(request);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        public SAIG.PS.ConfigGen.SwampyEnvironments.KeyPair EndGetSingleEndpoint(System.IAsyncResult result) {
+        public System.IAsyncResult BeginGetSingleEndpoint(SAIG.PS.ConfigGen.ConfigGen.SwampyProxy.GetSingleEndpointRequest request, System.AsyncCallback callback, object asyncState) {
+            return base.Channel.BeginGetSingleEndpoint(request, callback, asyncState);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        public SAIG.PS.ConfigGen.ConfigGen.SwampyProxy.GetSingleEndpointResponse EndGetSingleEndpoint(System.IAsyncResult result) {
             return base.Channel.EndGetSingleEndpoint(result);
         }
         
         private System.IAsyncResult OnBeginGetSingleEndpoint(object[] inValues, System.AsyncCallback callback, object asyncState) {
-            string environment = ((string)(inValues[0]));
-            string key = ((string)(inValues[1]));
-            string callingApplication = ((string)(inValues[2]));
-            return this.BeginGetSingleEndpoint(environment, key, callingApplication, callback, asyncState);
+            SAIG.PS.ConfigGen.ConfigGen.SwampyProxy.GetSingleEndpointRequest request = ((SAIG.PS.ConfigGen.ConfigGen.SwampyProxy.GetSingleEndpointRequest)(inValues[0]));
+            return this.BeginGetSingleEndpoint(request, callback, asyncState);
         }
         
         private object[] OnEndGetSingleEndpoint(System.IAsyncResult result) {
-            SAIG.PS.ConfigGen.SwampyEnvironments.KeyPair retVal = this.EndGetSingleEndpoint(result);
+            SAIG.PS.ConfigGen.ConfigGen.SwampyProxy.GetSingleEndpointResponse retVal = this.EndGetSingleEndpoint(result);
             return new object[] {
                     retVal};
         }
@@ -264,11 +338,11 @@ namespace SAIG.PS.ConfigGen.SwampyEnvironments {
             }
         }
         
-        public void GetSingleEndpointAsync(string environment, string key, string callingApplication) {
-            this.GetSingleEndpointAsync(environment, key, callingApplication, null);
+        public void GetSingleEndpointAsync(SAIG.PS.ConfigGen.ConfigGen.SwampyProxy.GetSingleEndpointRequest request) {
+            this.GetSingleEndpointAsync(request, null);
         }
         
-        public void GetSingleEndpointAsync(string environment, string key, string callingApplication, object userState) {
+        public void GetSingleEndpointAsync(SAIG.PS.ConfigGen.ConfigGen.SwampyProxy.GetSingleEndpointRequest request, object userState) {
             if ((this.onBeginGetSingleEndpointDelegate == null)) {
                 this.onBeginGetSingleEndpointDelegate = new BeginOperationDelegate(this.OnBeginGetSingleEndpoint);
             }
@@ -279,9 +353,7 @@ namespace SAIG.PS.ConfigGen.SwampyEnvironments {
                 this.onGetSingleEndpointCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnGetSingleEndpointCompleted);
             }
             base.InvokeAsync(this.onBeginGetSingleEndpointDelegate, new object[] {
-                        environment,
-                        key,
-                        callingApplication}, this.onEndGetSingleEndpointDelegate, this.onGetSingleEndpointCompletedDelegate, userState);
+                        request}, this.onEndGetSingleEndpointDelegate, this.onGetSingleEndpointCompletedDelegate, userState);
         }
     }
 }

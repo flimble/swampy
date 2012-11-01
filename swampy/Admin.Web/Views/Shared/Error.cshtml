@@ -4,6 +4,31 @@
     ViewBag.Title = "Error";
 }
 
-<h2>
-    Sorry, an error occurred while processing your request.
-</h2>
+<div class="">
+
+    <h1 class="alert alert-error">@ViewBag.Title</h1>
+    <h2>An unhandled error was encountered. Please contact your administrator for more information.</h2>
+    <p>Error details</p>
+    @{
+        if (@Model != null && @Model.Exception != null)
+        {
+        <div class="hero-unit">
+
+            <p>Exception was:@Model.Exception.Message</p>
+            <p>in controller:@Model.ControllerName</p>
+            <p>in action:<@Model.ActionName</p>
+
+            <p class="info">
+                Stack Trace: @Model.Exception.StackTrace
+            </p>
+            
+        </div>
+        
+
+        }
+    }
+
+    <div>
+    </div>
+
+</div>

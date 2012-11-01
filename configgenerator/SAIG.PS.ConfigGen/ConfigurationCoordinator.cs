@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using SAIG.PS.ConfigGen.ConfigGen.SwampyProxy;
 using SAIG.PS.ConfigGen.Interfaces;
 using log4net;
 
@@ -14,7 +15,7 @@ namespace SAIG.PS.ConfigGen
         protected readonly ITemplateReader _reader;
         protected readonly ITokenReplacer _replacer;
         protected readonly ITokenIdentifier _finder;
-        protected readonly IEnvironmentServiceProxy _proxy; 
+        protected readonly IEndpointService _proxy; 
         protected readonly ConfigWriter _writer;
         protected readonly ILog _logger = LogManager.GetLogger(typeof(ConfigurationCoordinator));
 
@@ -22,7 +23,7 @@ namespace SAIG.PS.ConfigGen
             ITemplateReader reader, 
             ITokenReplacer replacer, 
             ITokenIdentifier finder, 
-            IEnvironmentServiceProxy  proxy, 
+            IEndpointService  proxy, 
             ConfigWriter writer)
         {
             _reader = reader;
@@ -53,16 +54,32 @@ namespace SAIG.PS.ConfigGen
 
             foreach (string environment in environmentname)
             {
-                var endpoints = _proxy.GetEndpoints(environment, tokens.ToArray(), "ConfigGen");
+                var request = new GetEndpointsRequest
+                    {
+                        callingApplication = "ConfigGen", 
+                        environment = environment,
+                        keys = tokens.ToArray()
+                    };
+
+                var endpoints = _proxy.GetEndpoints(request).GetEndpointsResult;
+
+
 
                 var keyvalueReplacement = endpoints.ToDictionary(x => x.Key, y => y.Value);
 
                 string generatedConfigText = _replacer.Replace(templateText, keyvalueReplacement);
 
-                string servername = _proxy.GetSingleEndpoint(environment, string.Format("{0}.ServerName", appName), "ConfigGen").Value;
+                var singleRequest = new GetSingleEndpointRequest
+                    {
+                        callingApplication = "ConfigGen",
+                        environment = environment,
+                        key = string.Format("{0}.ServerName", appName)
+                    };
+
+                string servername = _proxy.GetSingleEndpoint(singleRequest).GetSingleEndpointResult.Value;
 
                 string configName = string.Format("{0}.{1}.{2}", servername, environment, configSuffix);
-
+                
                 _writer.Write(targetpath, configName, generatedConfigText);
             }
 

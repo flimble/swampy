@@ -1,1 +1,18 @@
-"# This is my README" 
+**Swampy**
+----------
+
+Configuration management simplified
+
+**Title**
+
+asdfa
+
+**Credits**
+Ipsum Lorem et Dolor
+
+
+** **
+
+
+
+

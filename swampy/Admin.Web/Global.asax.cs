@@ -29,5 +29,10 @@ namespace Swampy.Admin.Web
 
             FluentValidationConfiguration.Configure();
         }
+
+        protected void Application_Error(object sender, EventArgs e)
+        {
+            
+        }
     }
 }

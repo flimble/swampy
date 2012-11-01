@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using NUnit.Framework;
+using SAIG.PS.ConfigGen.ConfigGen.SwampyProxy;
 
 
 namespace SAIG.PS.ConfigGen.IntegrationTest
@@ -20,7 +21,7 @@ namespace SAIG.PS.ConfigGen.IntegrationTest
                 new TemplateReader(),
                 new TokenReplacer(identifier),
                 identifier,
-                new EnvironmentServiceProxy(),
+                new EndpointServiceClient(),                
                 new ConfigWriter()
                 );
 

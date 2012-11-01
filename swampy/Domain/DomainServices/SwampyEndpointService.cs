@@ -1,6 +1,7 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using Swampy.Domain.Contract;
-using Swampy.Domain.Entities;
+using Environment = Swampy.Domain.Entities.Environment;
 
 namespace Swampy.Domain.DomainServices
 {
@@ -26,10 +27,17 @@ namespace Swampy.Domain.DomainServices
         {
             using (var session = DataDocumentStore.Instance.OpenSession())
             {
+
                 var e =
                     session.Query<Environment>().Single(x => x.Name == environment)
-                        .Endpoints.Single(x => x.Key == key);
+                        .Endpoints.SingleOrDefault(x => x.Key == key);
 
+                if(e == null)
+                {
+                    throw new ApplicationException(
+                        string.Format("Endpoint: '{0}' does not exist in environment: {1}", environment, key)
+                        );
+                }
 
                 return new KeyPair(e.Key, e.Value);
             }

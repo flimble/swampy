@@ -133,6 +133,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="HtmlHelpers\LabelExtensions.cs" />
+    <Compile Include="HtmlHelpers\Twitter.cs" />
+    <Compile Include="ImportedFilePathResolver.cs" />
     <Compile Include="Models\Mappers\EnvironmentViewModelMapper.cs" />
     <Compile Include="Models\Mappers\IViewModelMapper.cs" />
     <Compile Include="Models\OperationModels\CreateEndpointOperationModel.cs" />
@@ -170,9 +173,6 @@
     <Content Include="Content\scripts\mvc4\MicrosoftMvcValidation.js" />
     <Content Include="Content\scripts\site.js">
       <DependentUpon>site.coffee</DependentUpon>
-    </Content>
-    <Content Include="Content\styles\site.css">
-      <DependentUpon>site.less</DependentUpon>
     </Content>
     <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
@@ -311,6 +311,7 @@
     <Content Include="Views\Shared\_LogOnPartial.cshtml" />
     <Content Include="Views\Shared\_NavPartial.cshtml" />
     <Content Include="Views\Shared\_SidebarPartial.cshtml" />
+    <Content Include="Views\Shared\ErrorDetail.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
