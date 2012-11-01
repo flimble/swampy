@@ -73,7 +73,7 @@ namespace SAIG.PS.ConfigGen
                     {
                         callingApplication = "ConfigGen",
                         environment = environment,
-                        key = string.Format("{0}.ServerName", appName)
+                        key = string.Format("{0}.Host", appName)
                     };
 
                 string servername = _proxy.GetSingleEndpoint(singleRequest).GetSingleEndpointResult.Value;
