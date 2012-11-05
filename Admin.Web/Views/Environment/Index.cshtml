@@ -1,0 +1,45 @@
+﻿@using Swampy.Admin.Web.Models
+@using Swampy.Admin.Web.Models.ReadModels
+@model Swampy.Admin.Web.Models.ReadModels.EnvironmentReadModel
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutFluid.cshtml";
+}
+
+
+
+<div>
+
+    <h2>@Model.environmentName</h2>
+    <form class="form-search pull-right">
+        <input type="text" class="input-medium search-query" />
+        <a href="#" class="btn"><i class="icon-search"></i></a>
+
+    </form>
+
+    @Html.ActionLink("Create New Endpoint", "Create", "Endpoint", new { environmentName = @Model.environmentName}, new { @class="btn btn-primary"})
+
+    <table class="table table-bordered table-striped table-hover">
+                <thead>
+                    <tr>
+                        <th>Key</th>
+                        <th>Value</th>
+                        <th>Description</th>
+                        <th>Type</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (EnvironmentReadModel.EndpointViewModel endpoint in Model.Endpoints)
+                    {
+                        <tr>
+                            <td>@endpoint.Key</td>
+                            <td>@endpoint.Value</td>
+                            <td>@endpoint.Description</td>
+                            <td>@endpoint.Type</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+
+
+</div>
