@@ -1,6 +1,10 @@
 require 'albacore'
 require 'nokogiri'
 
+root_path = File.dirname(__FILE__)
+@build_logger = ENV['env_buildlogger']
+
+
 desc "Builds solution, runs Unit Tests"
 task :default => [:build, :unit, :integration]
 
@@ -9,7 +13,10 @@ msbuild :build do |msb|
 	msb.properties :configuration => :Debug
 	msb.targets :Clean, :Build
 	msb.verbosity = 'quiet'
-	msb.solution = "Swampy.sln"
+	msb.solution = File.join(root_path, "Swampy.sln")
+	if !@build_logger.nil?
+		msb.loggermodule = @build_logger
+	end
 end
 
 desc "Build the solution in .Net 4.0 release mode"
@@ -17,7 +24,10 @@ msbuild :release_build do |msb|
 	msb.properties :configuration => :Release
 	msb.targets :Clean, :Build
 	msb.verbosity = 'quiet'
-	msb.solution = "Swampy.sln"
+	msb.solution = File.join(root_path, "Swampy.sln")
+	if !@build_logger.nil?
+		msb.loggermodule = @build_logger
+	end
 end
 
 desc "Run Unit tests"
