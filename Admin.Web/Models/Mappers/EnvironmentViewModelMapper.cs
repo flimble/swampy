@@ -13,7 +13,7 @@ namespace Swampy.Admin.Web.Models.Mappers
            return  new EnvironmentReadModel
             {
                 Endpoints = (from ep in toMap.Endpoints
-                             select ToEndpointViewModel(ep)).ToList(),
+                             select ToEndpointViewModel(ep)).OrderBy(x=>x.Type).ThenBy(x=>x.Key).ToList(),
                 environmentName = toMap.Name
             };
         }

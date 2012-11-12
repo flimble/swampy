@@ -133,6 +133,7 @@
     <Compile Include="Entities\GlobalToken.cs" />
     <Compile Include="Entities\ITokenBuilder.cs" />
     <Compile Include="Entities\Endpoint\Server.cs" />
+    <Compile Include="Entities\Levenshtein.cs" />
     <Compile Include="Entities\TokenBuilder.cs" />
     <Compile Include="Entities\TokenizedConfigParser.cs" />
     <Compile Include="Infrastructure\Extensions\Inflector.cs" />

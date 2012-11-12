@@ -19,6 +19,8 @@ namespace Swampy.Admin.Web.Controllers
 
             var currentEnvironment = environments.Single(x => x.Name == environmentName);
             var allEnvironments = from e in environments select e.Name;
+            
+                                  
 
             var model = new EnvironmentViewModelMapper()
                 .Map(currentEnvironment);
