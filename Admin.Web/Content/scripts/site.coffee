@@ -19,7 +19,6 @@ $(document).ready ->
 				$(this).addClass "error"  if $(this).find("span.field-validation-error").length > 0
 
 
-
 	$("form").each ->
 		$(this).find("div.control-group").each ->
 			$(this).addClass "error"  if $(this).find("span.field-validation-error").length > 0

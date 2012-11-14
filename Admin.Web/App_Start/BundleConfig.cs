@@ -21,6 +21,9 @@ namespace Swampy.Admin.Web.App_Start
             bundles.Add(new ScriptBundle("~/bundles/coffee").Include(
                        "~/Content/scripts/site.coffee"));
 
+            bundles.Add(new ScriptBundle("~/bundles/coffee-app").Include(
+           "~/Content/scripts/application/calc.coffee"));
+
             // Use the development version of Modernizr to develop with and learn from. Then, when you're
             // ready for production, use the build tool at http://modernizr.com to pick only the tests you need.
             bundles.Add(new ScriptBundle("~/bundles/modernizr").Include(

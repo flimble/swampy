@@ -163,6 +163,7 @@
     <Content Include="Content\scripts\jquery\jquery-1.8.2.js" />
     <Content Include="Content\scripts\jquery\jquery-ui-1.8.11.js" />
     <Content Include="Content\scripts\jquery\jquery.unobtrusive-ajax.js" />
+    <Content Include="Content\scripts\application\calc.coffee" />
     <None Include="Content\scripts\jquery\jquery.validate-vsdoc.js" />
     <Content Include="Content\scripts\jquery\jquery.validate.js" />
     <Content Include="Content\scripts\jquery\jquery.validate.unobtrusive.js" />
@@ -174,6 +175,9 @@
     <Content Include="Content\scripts\mvc4\MicrosoftMvcValidation.debug.js" />
     <Content Include="Content\scripts\mvc4\MicrosoftMvcValidation.js" />
     <Content Include="Content\scripts\site.js">
+      <DependentUpon>site.coffee</DependentUpon>
+    </Content>
+    <Content Include="Content\scripts\site.min.js">
       <DependentUpon>site.coffee</DependentUpon>
     </Content>
     <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
@@ -236,7 +240,14 @@
     <Content Include="packages.config">
       <SubType>Designer</SubType>
     </Content>
-    <Content Include="Web.config" />
+    <Content Include="Test\jasmine\jasmine-html.js" />
+    <Content Include="Test\jasmine\jasmine.css" />
+    <Content Include="Test\jasmine\jasmine.js" />
+    <Content Include="Test\SpecRunner.html" />
+    <Content Include="Test\spec\calculatorspec.js" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
