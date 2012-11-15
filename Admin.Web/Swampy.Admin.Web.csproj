@@ -176,6 +176,9 @@
     <Content Include="Content\scripts\site.js">
       <DependentUpon>site.coffee</DependentUpon>
     </Content>
+    <Content Include="Content\scripts\viewspecific\environment.js">
+      <DependentUpon>environment.coffee</DependentUpon>
+    </Content>
     <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_glass_55_fbf9ee_1x400.png" />
@@ -303,6 +306,7 @@
     <Content Include="Content\styles\bootstrap\utilities.less" />
     <Content Include="Content\styles\bootstrap\variables.less" />
     <Content Include="Content\styles\bootstrap\wells.less" />
+    <Content Include="Content\scripts\viewspecific\environment.coffee" />
     <None Include="readme.txt" />
     <Content Include="Views\Endpoint\Create.cshtml" />
     <Content Include="Views\Endpoint\CreateSimpleEndpoint.cshtml" />

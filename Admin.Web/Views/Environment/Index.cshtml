@@ -3,18 +3,18 @@
 @model Swampy.Admin.Web.Models.ReadModels.EnvironmentReadModel
 @{
     ViewBag.Title = "Index";
-    Layout = "~/Views/Shared/_LayoutFluid.cshtml";
+    Layout = "~/Views/Shared/_LayoutFluid.cshtml";    
 }
 
-
-
+@section scripts
+{
+    @Scripts.Render("~/Content/scripts/viewspecific/environment.coffee")
+}
 <div>
 
     <h2>@Model.environmentName</h2>
     <form class="form-search pull-right">
-        <input type="text" class="input-medium search-query" />
-        <a href="#" class="btn"><i class="icon-search"></i></a>
-
+        <input type="text" class="search-query" placeholder="Search" />
     </form>
 
     @Html.ActionLink("Create New Endpoint", "Create", "Endpoint", new { environmentName = @Model.environmentName}, new { @class="btn btn-primary"})
@@ -25,6 +25,7 @@
                         <th>Key</th>
                         <th>Value</th>
                         <th>Description</th>
+
                         <th>Type</th>
                     </tr>
                 </thead>

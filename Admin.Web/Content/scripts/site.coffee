@@ -23,3 +23,6 @@ $(document).ready ->
 	$("form").each ->
 		$(this).find("div.control-group").each ->
 			$(this).addClass "error"  if $(this).find("span.field-validation-error").length > 0
+
+
+

@@ -7,6 +7,8 @@
     <meta name="author" content="" />
     @Scripts.Render("~/bundles/modernizr")
     @Styles.Render("~/Content/css")
+    @RenderSection("styles", false)
+    
 </head>
 <body>
     <div class="navbar navbar-fixed-top">
@@ -47,5 +49,6 @@
     @Scripts.Render("~/bundles/jqueryui")
     @Scripts.Render("~/bundles/jqueryval")
     @Scripts.Render("~/Content/scripts/site.coffee")
+    @RenderSection("scripts", false)
 </body>
 </html>

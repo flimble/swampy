@@ -67,7 +67,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Admin.MVC\Controllers\EnvironmentController_Test.cs" />
-    <Compile Include="Domain\Levenstein_Test.cs" />
+    <Compile Include="Domain\LevenshteinTest.cs" />
     <Compile Include="Service\Endpoint\WebpageUrl_Test.cs" />
     <Compile Include="Service\Fakes\FakeEndpointService.cs" />
     <Compile Include="Shared\Infrastructure\LoggingInterceptor_Test.cs" />

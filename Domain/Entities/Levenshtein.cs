@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace Swampy.Domain.Entities
 {
     /// <summary>
-    /// Levenstein distance calculator. Used as fuzzy logic for string matching.
+    /// Levenshtein distance calculator. Used as fuzzy logic for string matching.
     /// </summary>
     public class Levenshtein
     {
