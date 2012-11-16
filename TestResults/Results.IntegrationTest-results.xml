@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8" standalone="no"?>
 <!--This file represents the results of running a test suite-->
-<test-results name="C:\Code\swampy\IntegrationTest\bin\Debug\Swampy.IntegrationTest.dll" total="19" errors="4" failures="2" not-run="0" inconclusive="12" ignored="0" skipped="0" invalid="0" date="2012-11-13" time="10:25:11">
-  <environment nunit-version="2.6.2.12296" clr-version="2.0.50727.5456" os-version="Microsoft Windows NT 6.1.7601 Service Pack 1" platform="Win32NT" cwd="C:\Code\swampy" machine-name="14679W7N" user="fatjoh0" user-domain="SAIG" />
-  <culture-info current-culture="en-AU" current-uiculture="en-US" />
-  <test-suite type="Assembly" name="C:\Code\swampy\IntegrationTest\bin\Debug\Swampy.IntegrationTest.dll" executed="True" result="Failure" success="False" time="8.073" asserts="0">
+<test-results name="C:\Code\swampy\IntegrationTest\bin\Debug\Swampy.IntegrationTest.dll" total="19" errors="4" failures="2" not-run="0" inconclusive="12" ignored="0" skipped="0" invalid="0" date="2012-11-05" time="11:51:36">
+  <environment nunit-version="2.6.2.12296" clr-version="2.0.50727.6387" os-version="Microsoft Windows NT 6.2.9200.0" platform="Win32NT" cwd="C:\code\swampy" machine-name="FLIMBLEBASELINE" user="John" user-domain="FLIMBLEBASELINE" />
+  <culture-info current-culture="en-US" current-uiculture="en-US" />
+  <test-suite type="Assembly" name="C:\Code\swampy\IntegrationTest\bin\Debug\Swampy.IntegrationTest.dll" executed="True" result="Failure" success="False" time="3.358" asserts="0">
     <results>
-      <test-suite type="Namespace" name="Swampy" executed="True" result="Failure" success="False" time="8.067" asserts="0">
+      <test-suite type="Namespace" name="Swampy" executed="True" result="Failure" success="False" time="3.352" asserts="0">
         <results>
-          <test-suite type="Namespace" name="IntegrationTest" executed="True" result="Failure" success="False" time="8.067" asserts="0">
+          <test-suite type="Namespace" name="IntegrationTest" executed="True" result="Failure" success="False" time="3.352" asserts="0">
             <results>
-              <test-suite type="Namespace" name="BDD" executed="True" result="Inconclusive" success="False" time="0.936" asserts="0">
+              <test-suite type="Namespace" name="BDD" executed="True" result="Inconclusive" success="False" time="0.488" asserts="0">
                 <results>
-                  <test-suite type="TestFixture" name="AdditionFeature" description="Addition" executed="True" result="Inconclusive" success="False" time="0.935" asserts="0">
+                  <test-suite type="TestFixture" name="AdditionFeature" description="Addition" executed="True" result="Inconclusive" success="False" time="0.486" asserts="0">
                     <results>
-                      <test-case name="Swampy.IntegrationTest.BDD.AdditionFeature.AddANewEndpoint" description="Add a new endpoint" executed="True" result="Inconclusive" success="False" time="0.576" asserts="0">
+                      <test-case name="Swampy.IntegrationTest.BDD.AdditionFeature.AddANewEndpoint" description="Add a new endpoint" executed="True" result="Inconclusive" success="False" time="0.204" asserts="0">
                         <reason>
                           <message><![CDATA[No matching step definition found for one or more steps.
 using System;
@@ -46,7 +46,7 @@ namespace MyNamespace
 ]]></message>
                         </reason>
                       </test-case>
-                      <test-case name="Swampy.IntegrationTest.BDD.AdditionFeature.AddingANewKey" description="Adding a new Key" executed="True" result="Inconclusive" success="False" time="0.004" asserts="0">
+                      <test-case name="Swampy.IntegrationTest.BDD.AdditionFeature.AddingANewKey" description="Adding a new Key" executed="True" result="Inconclusive" success="False" time="0.016" asserts="0">
                         <reason>
                           <message><![CDATA[No matching step definition found for one or more steps.
 using System;
@@ -79,7 +79,7 @@ namespace MyNamespace
 ]]></message>
                         </reason>
                       </test-case>
-                      <test-case name="Swampy.IntegrationTest.BDD.AdditionFeature.AddTwoNumbers" description="Add two numbers" executed="True" result="Inconclusive" success="False" time="0.032" asserts="0">
+                      <test-case name="Swampy.IntegrationTest.BDD.AdditionFeature.AddTwoNumbers" description="Add two numbers" executed="True" result="Inconclusive" success="False" time="0.031" asserts="0">
                         <categories>
                           <category name="mytag" />
                         </categories>
@@ -88,7 +88,7 @@ namespace MyNamespace
   StepDefinition1.GivenIHaveEnteredSomethingIntoTheCalculator(50)]]></message>
                         </reason>
                       </test-case>
-                      <test-case name="Swampy.IntegrationTest.BDD.AdditionFeature.Authorisation" description="Authorisation" executed="True" result="Inconclusive" success="False" time="0.003" asserts="0">
+                      <test-case name="Swampy.IntegrationTest.BDD.AdditionFeature.Authorisation" description="Authorisation" executed="True" result="Inconclusive" success="False" time="0.000" asserts="0">
                         <reason>
                           <message><![CDATA[No matching step definition found for one or more steps.
 using System;
@@ -115,7 +115,7 @@ namespace MyNamespace
 ]]></message>
                         </reason>
                       </test-case>
-                      <test-case name="Swampy.IntegrationTest.BDD.AdditionFeature.ChangingAReplacementToken" description="Changing a replacement token" executed="True" result="Inconclusive" success="False" time="0.005" asserts="0">
+                      <test-case name="Swampy.IntegrationTest.BDD.AdditionFeature.ChangingAReplacementToken" description="Changing a replacement token" executed="True" result="Inconclusive" success="False" time="0.016" asserts="0">
                         <reason>
                           <message><![CDATA[No matching step definition found for one or more steps.
 using System;
@@ -154,7 +154,7 @@ namespace MyNamespace
 ]]></message>
                         </reason>
                       </test-case>
-                      <test-case name="Swampy.IntegrationTest.BDD.AdditionFeature.ConfigCheck" description="Config Check" executed="True" result="Inconclusive" success="False" time="0.004" asserts="0">
+                      <test-case name="Swampy.IntegrationTest.BDD.AdditionFeature.ConfigCheck" description="Config Check" executed="True" result="Inconclusive" success="False" time="0.015" asserts="0">
                         <reason>
                           <message><![CDATA[No matching step definition found for one or more steps.
 using System;
@@ -187,7 +187,7 @@ namespace MyNamespace
 ]]></message>
                         </reason>
                       </test-case>
-                      <test-case name="Swampy.IntegrationTest.BDD.AdditionFeature.ConfigReplacement" description="Config Replacement" executed="True" result="Inconclusive" success="False" time="0.004" asserts="0">
+                      <test-case name="Swampy.IntegrationTest.BDD.AdditionFeature.ConfigReplacement" description="Config Replacement" executed="True" result="Inconclusive" success="False" time="0.005" asserts="0">
                         <reason>
                           <message><![CDATA[No matching step definition found for one or more steps.
 using System;
@@ -220,7 +220,7 @@ namespace MyNamespace
 ]]></message>
                         </reason>
                       </test-case>
-                      <test-case name="Swampy.IntegrationTest.BDD.AdditionFeature.DiffByEnvironmentQuickView" description="Diff by Environment QuickView" executed="True" result="Inconclusive" success="False" time="0.005" asserts="0">
+                      <test-case name="Swampy.IntegrationTest.BDD.AdditionFeature.DiffByEnvironmentQuickView" description="Diff by Environment QuickView" executed="True" result="Inconclusive" success="False" time="0.004" asserts="0">
                         <reason>
                           <message><![CDATA[No matching step definition found for one or more steps.
 using System;
@@ -253,7 +253,7 @@ namespace MyNamespace
 ]]></message>
                         </reason>
                       </test-case>
-                      <test-case name="Swampy.IntegrationTest.BDD.AdditionFeature.MissingKeyQuickView" description="Missing Key QuickView" executed="True" result="Inconclusive" success="False" time="0.005" asserts="0">
+                      <test-case name="Swampy.IntegrationTest.BDD.AdditionFeature.MissingKeyQuickView" description="Missing Key QuickView" executed="True" result="Inconclusive" success="False" time="0.004" asserts="0">
                         <reason>
                           <message><![CDATA[No matching step definition found for one or more steps.
 using System;
@@ -292,7 +292,7 @@ namespace MyNamespace
 ]]></message>
                         </reason>
                       </test-case>
-                      <test-case name="Swampy.IntegrationTest.BDD.AdditionFeature.RetrieveConfigValue" description="Retrieve config value" executed="True" result="Inconclusive" success="False" time="0.005" asserts="0">
+                      <test-case name="Swampy.IntegrationTest.BDD.AdditionFeature.RetrieveConfigValue" description="Retrieve config value" executed="True" result="Inconclusive" success="False" time="0.016" asserts="0">
                         <reason>
                           <message><![CDATA[No matching step definition found for one or more steps.
 using System;
@@ -335,32 +335,32 @@ namespace MyNamespace
                   </test-suite>
                 </results>
               </test-suite>
-              <test-suite type="Namespace" name="Mongo" executed="True" result="Failure" success="False" time="0.079" asserts="0">
+              <test-suite type="Namespace" name="Mongo" executed="True" result="Failure" success="False" time="0.089" asserts="0">
                 <results>
-                  <test-suite type="TestFixture" name="Session_Test" executed="True" result="Failure" success="False" time="0.078" asserts="0">
+                  <test-suite type="TestFixture" name="Session_Test" executed="True" result="Failure" success="False" time="0.089" asserts="0">
                     <results>
-                      <test-case name="Swampy.IntegrationTest.Mongo.Session_Test.insert_environment_test" executed="True" result="Error" success="False" time="0.070" asserts="0">
+                      <test-case name="Swampy.IntegrationTest.Mongo.Session_Test.insert_environment_test" executed="True" result="Error" success="False" time="0.081" asserts="0">
                         <failure>
                           <message><![CDATA[System.NullReferenceException : Object reference not set to an instance of an object.]]></message>
                           <stack-trace><![CDATA[at Swampy.IntegrationTest.Mongo.Session_Test.insert_environment_test() in c:\Code\swampy\IntegrationTest\Mongo\Session_Test.cs:line 23
 ]]></stack-trace>
                         </failure>
                       </test-case>
-                      <test-case name="Swampy.IntegrationTest.Mongo.Session_Test.query_test_nested" executed="True" result="Error" success="False" time="0.001" asserts="0">
+                      <test-case name="Swampy.IntegrationTest.Mongo.Session_Test.query_test_nested" executed="True" result="Error" success="False" time="0.000" asserts="0">
                         <failure>
                           <message><![CDATA[System.NullReferenceException : Object reference not set to an instance of an object.]]></message>
                           <stack-trace><![CDATA[at Swampy.IntegrationTest.Mongo.Session_Test.query_test_nested() in c:\Code\swampy\IntegrationTest\Mongo\Session_Test.cs:line 66
 ]]></stack-trace>
                         </failure>
                       </test-case>
-                      <test-case name="Swampy.IntegrationTest.Mongo.Session_Test.query_test_single_level" executed="True" result="Error" success="False" time="0.002" asserts="0">
+                      <test-case name="Swampy.IntegrationTest.Mongo.Session_Test.query_test_single_level" executed="True" result="Error" success="False" time="0.000" asserts="0">
                         <failure>
                           <message><![CDATA[System.NullReferenceException : Object reference not set to an instance of an object.]]></message>
                           <stack-trace><![CDATA[at Swampy.IntegrationTest.Mongo.Session_Test.query_test_single_level() in c:\Code\swampy\IntegrationTest\Mongo\Session_Test.cs:line 41
 ]]></stack-trace>
                         </failure>
                       </test-case>
-                      <test-case name="Swampy.IntegrationTest.Mongo.Session_Test.update_existing_test" executed="True" result="Error" success="False" time="0.002" asserts="0">
+                      <test-case name="Swampy.IntegrationTest.Mongo.Session_Test.update_existing_test" executed="True" result="Error" success="False" time="0.001" asserts="0">
                         <failure>
                           <message><![CDATA[System.NullReferenceException : Object reference not set to an instance of an object.]]></message>
                           <stack-trace><![CDATA[at Swampy.IntegrationTest.Mongo.Session_Test.update_existing_test() in c:\Code\swampy\IntegrationTest\Mongo\Session_Test.cs:line 94
@@ -371,11 +371,11 @@ namespace MyNamespace
                   </test-suite>
                 </results>
               </test-suite>
-              <test-suite type="Namespace" name="QueryObjects" executed="True" result="Inconclusive" success="False" time="5.094" asserts="0">
+              <test-suite type="Namespace" name="QueryObjects" executed="True" result="Inconclusive" success="False" time="1.224" asserts="0">
                 <results>
-                  <test-suite type="TestFixture" name="EndpointsWithMatchingKeyQuery_Test" executed="True" result="Inconclusive" success="False" time="5.094" asserts="0">
+                  <test-suite type="TestFixture" name="EndpointsWithMatchingKeyQuery_Test" executed="True" result="Inconclusive" success="False" time="1.223" asserts="0">
                     <results>
-                      <test-case name="Swampy.IntegrationTest.QueryObjects.EndpointsWithMatchingKeyQuery_Test.returns_single_key_with_connection_string" executed="True" result="Inconclusive" success="False" time="5.094" asserts="0">
+                      <test-case name="Swampy.IntegrationTest.QueryObjects.EndpointsWithMatchingKeyQuery_Test.returns_single_key_with_connection_string" executed="True" result="Inconclusive" success="False" time="1.223" asserts="0">
                         <reason>
                           <message><![CDATA[To complete. Issue with querying nested collections with the IMongoQuery interface. Go figure.]]></message>
                         </reason>
@@ -386,14 +386,14 @@ namespace MyNamespace
               </test-suite>
               <test-suite type="Namespace" name="Service" executed="True" result="Failure" success="False" time="1.951" asserts="0">
                 <results>
-                  <test-suite type="TestFixture" name="SwampyEndpointService_Test" executed="True" result="Failure" success="False" time="1.950" asserts="0">
+                  <test-suite type="TestFixture" name="SwampyEndpointService_Test" executed="True" result="Failure" success="False" time="1.543" asserts="0">
                     <results>
-                      <test-case name="Swampy.IntegrationTest.Service.SwampyEndpointService_Test.incorrect_environment_name_returns_empty_result_list" executed="True" result="Inconclusive" success="False" time="0.024" asserts="0">
+                      <test-case name="Swampy.IntegrationTest.Service.SwampyEndpointService_Test.incorrect_environment_name_returns_empty_result_list" executed="True" result="Inconclusive" success="False" time="0.027" asserts="0">
                         <reason>
                           <message><![CDATA[TODO]]></message>
                         </reason>
                       </test-case>
-                      <test-case name="Swampy.IntegrationTest.Service.SwampyEndpointService_Test.incorrect_key_returns_empty_result_list" executed="True" result="Failure" success="False" time="1.639" asserts="1">
+                      <test-case name="Swampy.IntegrationTest.Service.SwampyEndpointService_Test.incorrect_key_returns_empty_result_list" executed="True" result="Failure" success="False" time="1.233" asserts="1">
                         <failure>
                           <message><![CDATA[  Expected: 0
   But was:  32
@@ -402,7 +402,7 @@ namespace MyNamespace
 ]]></stack-trace>
                         </failure>
                       </test-case>
-                      <test-case name="Swampy.IntegrationTest.Service.SwampyEndpointService_Test.multiple_endpoint_returns_saved_value_to_service" executed="True" result="Failure" success="False" time="0.134" asserts="1">
+                      <test-case name="Swampy.IntegrationTest.Service.SwampyEndpointService_Test.multiple_endpoint_returns_saved_value_to_service" executed="True" result="Failure" success="False" time="0.133" asserts="1">
                         <failure>
                           <message><![CDATA[  Expected string length 147 but was 4. Strings differ at index 0.
   Expected: "data source=AUSYDHQ-PSTSQ04.SAIG.frd.global;initial catalog=C..."
@@ -413,7 +413,7 @@ namespace MyNamespace
 ]]></stack-trace>
                         </failure>
                       </test-case>
-                      <test-case name="Swampy.IntegrationTest.Service.SwampyEndpointService_Test.single_endpoint_returns_saved_value_to_service" executed="True" result="Success" success="True" time="0.150" asserts="1" />
+                      <test-case name="Swampy.IntegrationTest.Service.SwampyEndpointService_Test.single_endpoint_returns_saved_value_to_service" executed="True" result="Success" success="True" time="0.140" asserts="1" />
                     </results>
                   </test-suite>
                 </results>

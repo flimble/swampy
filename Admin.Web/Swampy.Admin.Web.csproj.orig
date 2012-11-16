@@ -177,11 +177,13 @@
     <Content Include="Content\scripts\site.js">
       <DependentUpon>site.coffee</DependentUpon>
     </Content>
-    <Content Include="Content\scripts\site.min.js">
-      <DependentUpon>site.coffee</DependentUpon>
-    </Content>
+<<<<<<< HEAD
     <Content Include="Content\scripts\viewspecific\environment.js">
       <DependentUpon>environment.coffee</DependentUpon>
+=======
+    <Content Include="Content\scripts\site.min.js">
+      <DependentUpon>site.coffee</DependentUpon>
+>>>>>>> a8a461221c65cc4c3d0097cc16334c33b8cd4a29
     </Content>
     <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
