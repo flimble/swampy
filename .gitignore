@@ -18,3 +18,4 @@ lib/**/*.nupkg
 TestResults/*
 TestResult.xml
 packages/**
+gemfile.lock
