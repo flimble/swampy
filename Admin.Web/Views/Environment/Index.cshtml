@@ -9,17 +9,18 @@
 @section scripts
 {
     @Scripts.Render("~/Content/scripts/viewspecific/environment.coffee")
+
+    @Scripts.Render("~/Content/scripts/datatables/jquery.dataTables.js")
+    @Scripts.Render("~/Content/scripts/viewspecific/environment-new.js")
 }
 <div>
 
-    <h2>@Model.environmentName</h2>
-    <form class="form-search pull-right">
-        <input type="text" class="search-query" placeholder="Search" />
-    </form>
+    <h1>@Model.environmentName</h1>
 
+    @Html.DropDownListFor(x => x.SelectedType, new SelectList(@Model.EndpointTypes, "SimpleEndpoint"))
     @Html.ActionLink("Create New Endpoint", "Create", "Endpoint", new { environmentName = @Model.environmentName}, new { @class="btn btn-primary"})
 
-    <table class="table table-bordered table-striped table-hover">
+    <table id="endpoints" class="table table-bordered table-striped table-hover">
                 <thead>
                     <tr>
                         <th>Key</th>

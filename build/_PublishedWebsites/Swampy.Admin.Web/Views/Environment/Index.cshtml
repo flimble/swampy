@@ -1,0 +1,46 @@
+﻿@using Swampy.Admin.Web.Models
+@using Swampy.Admin.Web.Models.ReadModels
+@model Swampy.Admin.Web.Models.ReadModels.EnvironmentReadModel
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutFluid.cshtml";    
+}
+
+@section scripts
+{
+    @Scripts.Render("~/Content/scripts/viewspecific/environment.coffee")
+
+    @Scripts.Render("~/Content/scripts/datatables/jquery.dataTables.js")
+    @Scripts.Render("~/Content/scripts/viewspecific/environment-new.js")
+}
+<div>
+
+    <h1>@Model.environmentName</h1>
+
+    @Html.ActionLink("Create New Endpoint", "Create", "Endpoint", new { environmentName = @Model.environmentName}, new { @class="btn btn-primary"})
+
+    <table id="endpoints" class="table table-bordered table-striped table-hover">
+                <thead>
+                    <tr>
+                        <th>Key</th>
+                        <th>Value</th>
+                        <th>Description</th>
+
+                        <th>Type</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (EnvironmentReadModel.EndpointViewModel endpoint in Model.Endpoints)
+                    {
+                        <tr>
+                            <td>@endpoint.Key</td>
+                            <td>@endpoint.Value</td>
+                            <td>@endpoint.Description</td>
+                            <td>@endpoint.Type</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+
+
+</div>
