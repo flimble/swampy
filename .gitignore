@@ -19,3 +19,4 @@ lib/**/*.nupkg
 TestResults/*
 packages/**
 gemfile.lock
+build/*
