@@ -5,7 +5,7 @@ root_path = File.dirname(__FILE__)
 
 
 desc "Builds solution, runs Unit Tests"
-task :default => [:install_nuget_packages, :build, :unit, :integration]
+task :default => [:install_nuget_packages, :build, :unit]
 
 desc "Build the solution in .Net 4.0"
 msbuild :build do |msb|
