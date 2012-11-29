@@ -33,14 +33,14 @@ desc "Run Unit tests"
 nunit :unit do |nunit|
 	nunit.command = "packages/NUnit.Runners.2.6.2/tools/nunit-console-x86.exe"
 	nunit.assemblies "UnitTest/bin/Debug/Swampy.UnitTest.dll"
-	nunit.options '/xml=TestResults/Results.UnitTest-results.xml'
+	nunit.options '/xml=Results.UnitTest-results.xml'
 end
 
 desc "Run Integration tests"
 nunit :integration do |nunit|
 	nunit.command = "packages/NUnit.Runners.2.6.2/tools/nunit-console-x86.exe"
 	nunit.assemblies "IntegrationTest/bin/Debug/Swampy.IntegrationTest.dll"
-	nunit.options '/xml=TestResults/Results.IntegrationTest-results.xml'
+	nunit.options '/xml=Results.IntegrationTest-results.xml'
 end
 
 task :install_nuget_packages do 
