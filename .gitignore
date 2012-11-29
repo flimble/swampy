@@ -20,5 +20,6 @@ TestResults/*
 !packages/
 packages/*
 !/packages/NuGetEnablePackageRestore.2.0.0/
+!/packages/NUnit.Runners.2.6.2/
 gemfile.lock
 build/*
