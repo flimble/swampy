@@ -60,7 +60,7 @@ namespace Swampy.Admin.Web.Controllers
                     Endpoint = new CreateSimpleEndpoint()
                 };
 
-
+            
 
             model.EndpointTypes = GetEndpointTypes();            
 

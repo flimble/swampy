@@ -30,7 +30,7 @@ namespace Swampy.Domain
         public static void Initialize()
         {
             
-            instance = new DocumentStore { Url = "http://localhost:8081" } ;
+            instance = new DocumentStore { Url = "http://localhost:8080" } ;
             instance.Conventions.IdentityPartsSeparator = "-";
             instance.Initialize();
         }

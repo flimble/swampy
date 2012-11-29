@@ -4,12 +4,39 @@ using Swampy.Admin.Web.Models.Mappers;
 using Swampy.Admin.Web.Models.OperationModels;
 using CreateEnvironmentOperationModel = Swampy.Admin.Web.Models.OperationModels.Environment.CreateEnvironmentOperationModel;
 using Environment = Swampy.Domain.Entities.Environment;
+using System.Collections.Generic;
+using System;
+using System.Reflection;
+using Swampy.Domain.Entities.Endpoint;
 
 
 namespace Swampy.Admin.Web.Controllers
 {
     public class EnvironmentController : BaseDocumentStoreController
     {
+
+
+        protected List<string> GetEndpointTypes()
+        {
+            var endpointTypes = Assembly
+               .GetAssembly(typeof(EndpointBase))
+               .GetTypes()
+               .Where(x => x.IsSubclassOf(typeof(EndpointBase)) && !x.IsAbstract)
+               .Select(x => x)
+               .ToList();
+
+            var a = new List<string>();
+
+            foreach (var type in endpointTypes)
+            {
+                var endpoint = Activator.CreateInstance(type) as EndpointBase;
+                string name = endpoint.TypeName;
+
+                a.Add(name);
+            }
+
+            return a;
+        }
 
         public ActionResult Index(string environmentName)
         {
@@ -26,6 +53,7 @@ namespace Swampy.Admin.Web.Controllers
                 .Map(currentEnvironment);
 
             model.allEnvironments = allEnvironments.ToList();
+            model.EndpointTypes = GetEndpointTypes();
 
             return View(model);
         }

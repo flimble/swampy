@@ -15,7 +15,8 @@ _ReSharper.*
 *.pidb
 *.DS_Store
 lib/**/*.nupkg
+!TestResults/
 TestResults/*
-TestResult.xml
 packages/**
 gemfile.lock
+build/*
