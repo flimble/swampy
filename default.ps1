@@ -47,11 +47,11 @@ task ConfigureRelease {
 
 task Compile -depends Init {
 	
-	$v4_net_version = (ls "$env:windir\Microsoft.NET\Framework\v4.0*").Name
+	$v4_net_version = (ls "c:\windows\Microsoft.NET\Framework\v4.0*").Name
 	
 	try { 
 		Write-Host "Compiling with '$configuration' configuration"
-		exec { &"$env:windir\Microsoft.NET\Framework\$v4_net_version\MSBuild.exe" "$sln_file" /p:OutDir="$build_dir\" /p:Configuration=$configuration /verbosity:$verbosity }
+		exec { msbuild $sln_file "/p:OutDir=$build_dir" /p:Configuration=$configuration /verbosity:$verbosity  }
 	} catch {
 		Throw
 	} finally { 
