@@ -13,6 +13,11 @@ properties {
 }
 
 include .\psake_ext.ps1
+include .\teamcity.ps1
+
+TaskSetup {
+    TeamCity-ReportBuildProgress "Running task $($psake.context.Peek().currentTaskName)"
+}
 
 task default -depends UnitTest 
 
