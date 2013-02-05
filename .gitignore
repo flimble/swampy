@@ -15,11 +15,10 @@ _ReSharper.*
 *.pidb
 *.DS_Store
 lib/**/*.nupkg
-!TestResults/
-TestResults/*
 !packages/
 packages/*
 !/packages/NuGetEnablePackageRestore.2.0.0/
 !/packages/NUnit.Runners.2.6.2/
 gemfile.lock
 build/*
+buildartifacts/*
