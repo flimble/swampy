@@ -33,8 +33,6 @@ task Init -depends Clean, DownloadDependencies {
 
 	Verify-Net-45-Installed
 	
-	$commit = Get-Git-Commit
-	
 	
 	New-Item $release_dir -itemType directory -ErrorAction SilentlyContinue | Out-Null
 	New-Item $build_dir -itemType directory -ErrorAction SilentlyContinue | Out-Null
