@@ -1,9 +1,10 @@
 ﻿using System.Linq;
 using System.Web.Mvc;
+using NHibernate.Linq;
 using Swampy.Admin.Web.Models.Mappers;
 using Swampy.Admin.Web.Models.OperationModels;
 using CreateEnvironmentOperationModel = Swampy.Admin.Web.Models.OperationModels.Environment.CreateEnvironmentOperationModel;
-using Environment = Swampy.Domain.Entities.Environment;
+using Environment = Swampy.Business.DomainModel.Entities.Environment;
 using System.Collections.Generic;
 using System;
 using System.Reflection;
@@ -12,7 +13,7 @@ using Swampy.Domain.Entities.Endpoint;
 
 namespace Swampy.Admin.Web.Controllers
 {
-    public class EnvironmentController : BaseDocumentStoreController
+    public class EnvironmentController : AbstractController
     {
 
 
@@ -42,7 +43,7 @@ namespace Swampy.Admin.Web.Controllers
         {
 
 
-            var environments = this.DocumentSession.Query<Environment>();
+            var environments = this.Session.Query<Environment>();
 
             var currentEnvironment = environments.Single(x => x.Name == environmentName);
             var allEnvironments = from e in environments select e.Name;
@@ -56,6 +57,7 @@ namespace Swampy.Admin.Web.Controllers
             model.EndpointTypes = GetEndpointTypes();
 
             return View(model);
+
         }
 
         public ActionResult Create(CreateEnvironmentOperationModel operation)
@@ -70,6 +72,7 @@ namespace Swampy.Admin.Web.Controllers
 
             return null;
         }
-       
+
+
     }
 }

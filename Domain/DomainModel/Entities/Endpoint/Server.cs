@@ -3,23 +3,29 @@ using System.Net.NetworkInformation;
 
 namespace Swampy.Domain.Entities.Endpoint
 {
-    public class Server : EndpointBase
+    public class Server : EntityBase
+    
     {
-        public string Name { get; set; }
 
-        public string Domain { get; set; }
+        public virtual Swampy.Business.DomainModel.Entities.Environment Environment { get; set; }
 
-        public string FullyQualifiedDomainName
+        public virtual string Name { get; set; }
+
+        public virtual Business.DomainModel.ValueObjects.Domain Domain { get; set; }
+
+        public virtual string FullyQualifiedDomainName
         {
-            get { return string.Format("{0}.{1}", Name, Domain); }
+            get { return string.Format("{0}.{1}", Name, Domain.Name); }
         }
 
-        public override bool IsValid()
+        public virtual bool IsValid()
         {
             return Uri.CheckHostName(FullyQualifiedDomainName) == UriHostNameType.Dns;
         }
 
-        public override bool Test()
+        public virtual string Key { get; set; }
+
+        public virtual bool Test()
         {
             try
             {
@@ -35,7 +41,7 @@ namespace Swampy.Domain.Entities.Endpoint
             return false;
         }
 
-        public override string TypeName
+        public virtual string TypeName
         {
             get { return "Application Server"; }
         }

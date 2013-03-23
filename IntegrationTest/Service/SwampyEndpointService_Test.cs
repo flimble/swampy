@@ -11,7 +11,7 @@ namespace Swampy.IntegrationTest.Service
         [SetUp]
         public void Setup()
         {
-            TestDatabase.Up();
+            
         }
 
 

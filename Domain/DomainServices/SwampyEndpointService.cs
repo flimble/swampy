@@ -1,48 +1,48 @@
-﻿using System;
+﻿
+using System;
 using System.Linq;
+using NHibernate;
+using NHibernate.Linq;
 using Swampy.Domain.Contract;
-using Environment = Swampy.Domain.Entities.Environment;
+using Environment = Swampy.Business.DomainModel.Entities.Environment;
 
 namespace Swampy.Domain.DomainServices
 {
     public class SwampyEndpointService : ISwampyEndpointService
     {
-             
+        private ISession Session;
+
+        public void SetSession(ISession session)
+        {
+            this.Session = session;
+        }
 
         public KeyPair[] GetEndpoints(string environment, string[] keys, string callingApplication)
         {
-            using (var session = DataDocumentStore.Instance.OpenSession())
-            {
+            var env = Session.Query<Environment>().SingleOrDefault(x => x.Name == environment);
+            var keypairs = env.Endpoints.Select(e => new KeyPair(e.Key, e.Value));
 
-                var env =
-                    session.Query<Environment>().Single(x => x.Name == environment);
-
-                var keypairs = env.Endpoints.Select(e => new KeyPair(e.Key, e.Value));
-
-                return keypairs.ToArray();
-            }
+            return keypairs.ToArray();
         }
 
         public KeyPair GetSingleEndpoint(string environment, string key, string callingApplication)
         {
-            using (var session = DataDocumentStore.Instance.OpenSession())
+            var singleOrDefault = Session.Query<Environment>().SingleOrDefault(x => x.Name == environment);
+            if (singleOrDefault != null)
             {
+                var endpoint = singleOrDefault
+                                      .Endpoints.SingleOrDefault(x => x.Key == key);
 
-                var e =
-                    session.Query<Environment>().Single(x => x.Name == environment)
-                        .Endpoints.SingleOrDefault(x => x.Key == key);
-
-                if(e == null)
+                if (endpoint == null)
                 {
                     throw new ApplicationException(
                         string.Format("Endpoint: '{0}' does not exist in environment: {1}", environment, key)
                         );
                 }
 
-                return new KeyPair(e.Key, e.Value);
+                return new KeyPair(endpoint.Key, endpoint.Value);
             }
+            return null;
         }
-
-
     }
 }

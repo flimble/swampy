@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Swampy.UnitTest", "UnitTest
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Swampy.Admin.Web", "Admin.Web\Swampy.Admin.Web.csproj", "{D974CE1C-EDFA-4F23-BE27-8998EDE3AA35}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Swampy.Domain", "Domain\Swampy.Domain.csproj", "{BEA1C3E4-9222-400E-8E7B-B0E98A715B11}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Swampy.Business", "Domain\Swampy.Business.csproj", "{BEA1C3E4-9222-400E-8E7B-B0E98A715B11}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Swampy.Service", "Service\Swampy.Service.csproj", "{388E3D01-CD77-414C-A7F0-37224E346DF9}"
 EndProject

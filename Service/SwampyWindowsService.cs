@@ -24,9 +24,7 @@ namespace Swampy.Service
             {
                 ServiceHost.Close();
             }
-
-
-            DataDocumentStore.Initialize();
+            
 
             //create domainservice with aop logging enabled using dynamic-proxy
             var domainService = LoggingDecorator.Decorate<ISwampyEndpointService>(

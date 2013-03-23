@@ -15,7 +15,7 @@
         <legend>Create new endpoint in @Html.DisplayFor(model => model.EnvironmentName)</legend>
 
 
-        @Html.DropDownListFor(x => x.SelectedType, new SelectList(@Model.EndpointTypes, "Value", "Key", typeof(SimpleEndpoint)))
+        @Html.DropDownListFor(x => x.SelectedType, new SelectList(@Model.EndpointTypes, "Value", "Key", typeof(ConfigurationItem)))
 
 
         @Html.HiddenFor(model => model.EnvironmentName)

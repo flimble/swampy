@@ -3,14 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Web.Mvc;
+using NHibernate.Linq;
 using Swampy.Admin.Web.Models.OperationModels;
 using Swampy.Admin.Web.Models.OperationModels.Endpoint;
 using Swampy.Domain.Entities.Endpoint;
-using Environment = Swampy.Domain.Entities.Environment;
+using Environment = Swampy.Business.DomainModel.Entities.Environment;
 
 namespace Swampy.Admin.Web.Controllers
 {
-    public class EndpointController : BaseDocumentStoreController
+    public class EndpointController : AbstractController
     {
      
 
@@ -81,7 +82,7 @@ namespace Swampy.Admin.Web.Controllers
 
 
             var environment =
-                this.DocumentSession.Query<Environment>().Single(
+                this.Session.Query<Environment>().Single(
                     x => x.Name == newEndpoint.EnvironmentName);
 
 
@@ -89,16 +90,11 @@ namespace Swampy.Admin.Web.Controllers
 
             var endpoint = newEndpoint.Endpoint as CreateSimpleEndpoint;
 
-            var toAdd = new SimpleEndpoint
-            {
-                Description = newEndpoint.Endpoint.Description,
-                Key = newEndpoint.Endpoint.Name,
-                Value = endpoint.Value
-            };
+            var toAdd = new ConfigurationItem(newEndpoint.Endpoint.Name, newEndpoint.Endpoint.Value,
+                                              ConfigurationItemType.Simple, environment);
+                        environment.SimpleEndpoints.Add(toAdd);
 
-            environment.Endpoints.Add(toAdd);
-
-            this.DocumentSession.SaveChanges();
+            this.Session.SaveOrUpdate(environment);
 
             return RedirectToAction("Index", "Environment", new { environmentName = newEndpoint.EnvironmentName });
         }
@@ -112,6 +108,27 @@ namespace Swampy.Admin.Web.Controllers
         }
 
 
+        public ActionResult Save(Domain.Entities.Endpoint.ConfigurationItem data)
+        {
+            var endpoint = this.Session.Query<EndpointBase>().Single(
+                x => x.Key == data.Key
+                );
 
+            return RedirectToAction("Index", "Home");
+            
+
+        }
+
+        public ActionResult Edit(string environment, string key)
+        {
+            var environmentObject = this.Session.Query<Environment>().Single(
+                            x => x.Name == environment
+                            );
+
+            var endpoint = environmentObject.Endpoints.Single(x => x.Key == key) as ConfigurationItem;
+
+            return View("Edit", endpoint);
+            
+        }
     }
 }

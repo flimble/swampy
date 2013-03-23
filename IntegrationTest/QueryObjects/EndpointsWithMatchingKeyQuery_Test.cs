@@ -5,12 +5,12 @@ using Swampy.IntegrationTest.Mongo;
 namespace Swampy.IntegrationTest.QueryObjects
 {
     [TestFixture]
-    public class EndpointsWithMatchingKeyQuery_Test : TestBase
+    public class EndpointsWithMatchingKeyQuery_Test 
     {
         [Test]
         public void returns_single_key_with_connection_string()
         {
-            TestDatabase.Up();
+            //TestDatabase.Up();
 
             /*var query = new EndpointsWithMatchingKeyQuery
                             {

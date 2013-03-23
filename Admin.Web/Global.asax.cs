@@ -19,13 +19,13 @@ namespace Swampy.Admin.Web
     {
         protected void Application_Start()
         {
+            NHibernateConfig.Configure();
+
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
 
             RouteConfig.RegisterRoutes(RouteTable.Routes);
 
             BundleConfig.RegisterBundles(BundleTable.Bundles);
-
-            DataDocumentStore.Initialize();
 
             FluentValidationConfiguration.Configure();
         }

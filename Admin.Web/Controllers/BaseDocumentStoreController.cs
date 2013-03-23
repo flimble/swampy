@@ -16,7 +16,7 @@ namespace Swampy.Admin.Web.Controllers
         {
             if (filterContext.IsChildAction)
                 return;
-            this.DocumentSession = DataDocumentStore.Instance.OpenSession();
+            //this.DocumentSession = DataDocumentStore.Instance.OpenSession();
             base.OnActionExecuting(filterContext);
         }
 
@@ -24,12 +24,12 @@ namespace Swampy.Admin.Web.Controllers
         {
             if (filterContext.IsChildAction)
                 return;
-            if (this.DocumentSession != null && filterContext.Exception == null)
+            /*if (this.DocumentSession != null && filterContext.Exception == null)
                 this.DocumentSession.SaveChanges();
 
             if(DocumentSession != null)
                 this.DocumentSession.Dispose();
-            
+            */
             base.OnActionExecuted(filterContext);
         }
     }

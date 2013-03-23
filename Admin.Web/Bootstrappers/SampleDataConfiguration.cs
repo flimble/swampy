@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using Swampy.Domain;
 using Swampy.Domain.Entities.Endpoint;
-using Environment = Swampy.Domain.Entities.Environment;
+using Environment = Swampy.Business.DomainModel.Entities.Environment;
 
 namespace Swampy.Admin.Web.Bootstrappers
 {
@@ -12,7 +12,7 @@ namespace Swampy.Admin.Web.Bootstrappers
     {
         public static void Configure()
         {
-            using (var session = DataDocumentStore.Instance.OpenSession())
+            /*using (var session = DataDocumentStore.Instance.OpenSession())
             {
 
 
@@ -360,7 +360,7 @@ namespace Swampy.Admin.Web.Bootstrappers
                 };
 
                 session.Store(sit2Environment);
-            }
+            }*/
         }
     }
 }

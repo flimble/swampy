@@ -1,21 +1,26 @@
 ﻿using System.Linq;
 using System.Web.Mvc;
+using NHibernate.Linq;
 using Swampy.Admin.Web.Models;
 using Swampy.Admin.Web.Models.ReadModels;
-using Environment = Swampy.Domain.Entities.Environment;
+using Environment = Swampy.Business.DomainModel.Entities.Environment;
 
 namespace Swampy.Admin.Web.Controllers
 {
-    public class HomeController : BaseDocumentStoreController
+    //[Authorize]
+    public class HomeController : AbstractController
     {
      
-
+        [HttpGet]
         public ActionResult Index()
         {
             ViewBag.Message = "Welcome to ASP.NET MVC!";
 
-            var names = from e in this.DocumentSession.Query<Environment>()
-                        select e.Name;
+            var names = from e in Session.Query<Environment>()
+                                          .OrderBy(x => x.Name)
+                         select e.Name;                     
+                       
+           
 
             var model = new HomeReadModel
                             {
@@ -23,8 +28,10 @@ namespace Swampy.Admin.Web.Controllers
                             };
 
             return View(model);
+
         }
 
+        [HttpGet]
         public ActionResult About()
         {
             return View();

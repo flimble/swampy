@@ -1,4 +1,5 @@
 ﻿using System.ServiceModel;
+using NHibernate;
 using Swampy.Domain.Contract;
 
 namespace Swampy.Service
@@ -14,6 +15,7 @@ namespace Swampy.Service
         KeyPair[] GetEndpoints(string environment, string[] keys, string callingApplication);
 
         [OperationContract]
-        KeyPair GetSingleEndpoint(string environment, string key, string callingApplication);
+        KeyPair GetSingleEndpoint(string environment, string key, string callingApplication);  
+       
     }
 }
