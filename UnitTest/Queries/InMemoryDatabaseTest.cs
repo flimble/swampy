@@ -82,7 +82,7 @@ namespace Swampy.UnitTest.Queries
         public void TearDown()
         {
             if(_cleanBetweenTests)
-                CreateNewSession();
+                Dispose();
         }
     }
 }

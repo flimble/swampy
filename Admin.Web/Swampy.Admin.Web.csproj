@@ -14,7 +14,7 @@
     <RootNamespace>Swampy.Admin.Web</RootNamespace>
     <AssemblyName>Swampy.Admin.Web</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
-    <MvcBuildViews>true</MvcBuildViews>
+    <MvcBuildViews>false</MvcBuildViews>
     <UseIISExpress>true</UseIISExpress>
     <IISExpressSSLPort />
     <IISExpressAnonymousAuthentication />
