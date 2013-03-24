@@ -6,7 +6,7 @@ namespace Swampy.Domain.Entities.Endpoint
     /// <summary>
     /// SQL Server Connection String endpoint type 
     /// </summary>
-    public class DatabaseConnectionString : EndpointBase
+    public class DatabaseConnectionString : Endpoint
     {
         public override string TypeName { 
             get { return "Database Connection String"; }

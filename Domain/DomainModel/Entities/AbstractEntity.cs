@@ -1,7 +1,7 @@
 ﻿namespace Swampy.Domain.Entities
 {
     /// <summary>Base class for all entities</summary>
-    public abstract class EntityBase
+    public abstract class AbstractEntity
     {        
         /// <summary>
         /// Entity Base class - all entities require an ID

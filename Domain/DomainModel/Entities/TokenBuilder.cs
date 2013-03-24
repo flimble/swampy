@@ -27,8 +27,6 @@ namespace Swampy.Domain.Entities
         }
 
 
-
-
         public string StripTokens(string toStrip)
         {
             return toStrip.Substring(2, toStrip.Length - 4);

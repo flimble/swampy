@@ -5,7 +5,7 @@ namespace Swampy.Domain.Entities.Endpoint
     /// <summary>
     /// A web or Wcf Service Url endpoint
     /// </summary>
-    public class ServiceUrl : EndpointBase
+    public class ServiceUrl : Endpoint
     {
         public override bool Test()
         {

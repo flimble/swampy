@@ -101,11 +101,11 @@
     <Compile Include="DomainModel\Entities\Endpoint\ServiceUrl.cs" />
     <Compile Include="DomainModel\Entities\Endpoint\DatabaseConnectionString.cs" />
     <Compile Include="DomainModel\Entities\Endpoint\EndpointType.cs" />
-    <Compile Include="DomainModel\Entities\Endpoint\EndpointBase.cs" />
+    <Compile Include="DomainModel\Entities\Endpoint\Endpoint.cs" />
     <Compile Include="DomainModel\Entities\Endpoint\IEndpointValidator.cs" />
     <Compile Include="DomainModel\Entities\Endpoint\ConfigurationItem.cs" />
     <Compile Include="DomainModel\Entities\Endpoint\WebpageUrl.cs" />
-    <Compile Include="DomainModel\Entities\EntityBase.cs" />
+    <Compile Include="DomainModel\Entities\AbstractEntity.cs" />
     <Compile Include="DomainModel\Entities\Environment.cs" />
     <Compile Include="Contract\IEndpointService.cs" />
     <Compile Include="Contract\KeyPair.cs" />

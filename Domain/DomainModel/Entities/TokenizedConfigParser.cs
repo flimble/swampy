@@ -9,8 +9,6 @@ namespace Swampy.Domain.Entities
         public TokenizedConfigParser(IList<string> globalTokens)
         {
             _globalTokens = globalTokens;
-        }
-
-         
+        }         
     }
 }

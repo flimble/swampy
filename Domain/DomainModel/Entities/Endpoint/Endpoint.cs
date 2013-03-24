@@ -6,7 +6,7 @@ namespace Swampy.Domain.Entities.Endpoint
     /// Base class for all environment endpoints. 
     /// Contains methods for validating endpoint location as well as performing connnectivity tests.
     /// </summary>
-    public abstract class EndpointBase : EntityBase, IEndpointValidator, IEndpoint
+    public abstract class Endpoint : AbstractEntity, IEndpointValidator, IEndpoint
     {
         private string _key;
 

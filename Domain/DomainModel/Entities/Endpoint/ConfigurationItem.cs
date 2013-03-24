@@ -10,7 +10,7 @@ namespace Swampy.Domain.Entities.Endpoint
         ServerUrl=3
     }
 
-    public class ConfigurationItem : EntityBase
+    public class ConfigurationItem : AbstractEntity
     {
         protected ConfigurationItem()
         {
@@ -40,9 +40,26 @@ namespace Swampy.Domain.Entities.Endpoint
             return true;
         }
 
+        public virtual bool StoreAsToken { get; set; }
+
         public virtual bool ContainsTokens(ITokenBuilder builder)
         {
-            throw new NotImplementedException();
+            builder.SearchForTokens(this.Value);
+            if (builder.TokensFound.Count > 0)
+                return true;
+
+            return false;
+        }
+
+        public virtual string Hydrate(ITokenBuilder builder)
+        {
+            builder.SearchForTokens(this.Value);
+            if (builder.TokensFound.Count > 0)
+            {
+                //TODO: replace this string with 
+                throw new NotImplementedException();
+            }
+            return this.Value;
         }
 
         public virtual  string TypeName

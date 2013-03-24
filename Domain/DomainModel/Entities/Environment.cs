@@ -5,7 +5,7 @@ using Swampy.Business.DomainModel.ValueObjects;
 
 namespace Swampy.Business.DomainModel.Entities
 {
-    public class Environment : EntityBase
+    public class Environment : AbstractEntity
     {
         public virtual string Name { get; set; }
 

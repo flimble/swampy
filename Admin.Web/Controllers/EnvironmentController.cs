@@ -20,9 +20,9 @@ namespace Swampy.Admin.Web.Controllers
         protected List<string> GetEndpointTypes()
         {
             var endpointTypes = Assembly
-               .GetAssembly(typeof(EndpointBase))
+               .GetAssembly(typeof(Endpoint))
                .GetTypes()
-               .Where(x => x.IsSubclassOf(typeof(EndpointBase)) && !x.IsAbstract)
+               .Where(x => x.IsSubclassOf(typeof(Endpoint)) && !x.IsAbstract)
                .Select(x => x)
                .ToList();
 
@@ -30,7 +30,7 @@ namespace Swampy.Admin.Web.Controllers
 
             foreach (var type in endpointTypes)
             {
-                var endpoint = Activator.CreateInstance(type) as EndpointBase;
+                var endpoint = Activator.CreateInstance(type) as Endpoint;
                 string name = endpoint.TypeName;
 
                 a.Add(name);

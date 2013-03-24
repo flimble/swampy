@@ -5,7 +5,7 @@ namespace Swampy.Domain.Entities.Endpoint
     /// <summary>
     /// A webpage url environent endpoint
     /// </summary>
-    public class WebpageUrl : EndpointBase
+    public class WebpageUrl : Endpoint
     {
         public override bool Test()
         {

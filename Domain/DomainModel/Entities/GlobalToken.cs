@@ -3,7 +3,7 @@ using Swampy.Domain.Infrastructure.Extensions;
 
 namespace Swampy.Domain.Entities
 {
-    public class GlobalToken : EntityBase
+    public class GlobalToken : AbstractEntity
     {
         public string Key { get; set; }
         public string Value { get; set; }

@@ -3,7 +3,7 @@ using System.Net.NetworkInformation;
 
 namespace Swampy.Domain.Entities.Endpoint
 {
-    public class Server : EntityBase
+    public class Server : AbstractEntity
     
     {
 
