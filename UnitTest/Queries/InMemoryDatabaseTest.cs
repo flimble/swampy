@@ -13,6 +13,7 @@ using NHibernate.Cfg;
 using NHibernate.Dialect;
 using NHibernate.Driver;
 using NHibernate.Tool.hbm2ddl;
+using NUnit.Framework;
 using Swampy.Business.Infrastructure.NHibernate;
 using Swampy.Domain.Entities;
 using Swampy.Domain.Entities.Endpoint;
@@ -21,12 +22,16 @@ namespace Swampy.UnitTest.Queries
 {
     public class InMemoryDatabaseTest : IDisposable
     {
+        private readonly bool _cleanBetweenTests;
         private static Configuration Configuration;
         public static ISessionFactory SessionFactory;
         protected ISession session;
 
-        public InMemoryDatabaseTest()
+        public InMemoryDatabaseTest(): this(false) {}
+
+        public InMemoryDatabaseTest(bool cleanBetweenTests)
         {
+            _cleanBetweenTests = cleanBetweenTests;
             if (Configuration == null)
             {
                 var sqLiteConfiguration = SQLiteConfiguration
@@ -50,6 +55,12 @@ namespace Swampy.UnitTest.Queries
                 
             }
 
+            if (!_cleanBetweenTests)
+                CreateNewSession();
+        }
+
+        private void CreateNewSession()
+        {
             session = SessionFactory.OpenSession();
 
             new SchemaExport(Configuration).Execute(true, true, false, session.Connection, Console.Out);
@@ -57,7 +68,21 @@ namespace Swampy.UnitTest.Queries
 
         public void Dispose()
         {
-            session.Dispose();
+            TearDown();
+        }
+
+        [SetUp]
+        public void SetUp()
+        {
+          if(_cleanBetweenTests)
+              CreateNewSession();
+        }
+
+        [TearDown]
+        public void TearDown()
+        {
+            if(_cleanBetweenTests)
+                CreateNewSession();
         }
     }
 }
