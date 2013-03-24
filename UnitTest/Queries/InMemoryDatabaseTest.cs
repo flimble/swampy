@@ -22,10 +22,10 @@ namespace Swampy.UnitTest.Queries
     public class InMemoryDatabaseTest : IDisposable
     {
         private static Configuration Configuration;
-        private static ISessionFactory SessionFactory;
+        public static ISessionFactory SessionFactory;
         protected ISession session;
 
-        public InMemoryDatabaseTest(Assembly assemblyContainingMapping)
+        public InMemoryDatabaseTest()
         {
             if (Configuration == null)
             {
@@ -44,6 +44,7 @@ namespace Swampy.UnitTest.Queries
 
                 SessionFactory = NHibernateConfigurationFactory.Configuration(sqLiteConfiguration)             
                     .ExposeConfiguration(cfg => Configuration = cfg)
+                    .ExposeConfiguration(x=>x.SetProperty(NHibernate.Cfg.Environment.ReleaseConnections, "on_close"))
                     .BuildSessionFactory();
 
                 

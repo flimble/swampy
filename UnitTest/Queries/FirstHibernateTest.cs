@@ -14,15 +14,13 @@ namespace Swampy.UnitTest.Queries
     [TestFixture]
     public class FirstHibernateTest : InMemoryDatabaseTest
     {
-        public FirstHibernateTest() :  base(typeof(Environment).Assembly)
-        {
-        }
+       
 
         [Test]
         public void Can_load_and_save_environment()
         {
             object id;
-
+            
             using (var tx = session.BeginTransaction())
             {
                 var e = new Environment("SIT1","saig.frd.global");
