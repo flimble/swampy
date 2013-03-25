@@ -14,6 +14,7 @@ namespace Swampy.Business.Infrastructure.NHibernate.Mappings
             Map(x => x.Key).Column("Name");
             Map(x => x.Value).Column("Value");
             Map(x => x.Type).Column("Type");
+            Map(x => x.StoreAsToken).Column("StoreAsToken");
         }
     }
 

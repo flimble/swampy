@@ -85,6 +85,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Admin.MVC\Controllers\EnvironmentController_Test.cs" />
+    <Compile Include="Domain\ConfigurationItemTest.cs" />
     <Compile Include="Domain\LevenshteinTest.cs" />
     <Compile Include="Domain\TokenBuilderTest.cs" />
     <Compile Include="Queries\FirstHibernateTest.cs" />
