@@ -33,9 +33,8 @@ namespace Swampy.Business.DomainModel.Entities
 
         public virtual void AddServer(string key, string name)
         {
-            Servers.Add(new Server
+            Servers.Add(new Server()
                 {
-                    Domain = this.Domain,
                     Name = name,
                     Key = key,
                     Environment = this

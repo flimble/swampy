@@ -18,16 +18,16 @@ using Swampy.Business.Infrastructure.NHibernate;
 
 namespace Swampy.UnitTest.Queries
 {
-    public class InMemoryDatabaseTest : IDisposable
+    public class AbstractInMemoryDatabaseTest : IDisposable
     {
         private readonly bool _cleanBetweenTests;
         private static Configuration Configuration;
         public static ISessionFactory SessionFactory;
         protected ISession session;
 
-        public InMemoryDatabaseTest() : this(true) { }
+        public AbstractInMemoryDatabaseTest() : this(true) { }
 
-        public InMemoryDatabaseTest(bool cleanBetweenTests)
+        public AbstractInMemoryDatabaseTest(bool cleanBetweenTests)
         {
             _cleanBetweenTests = cleanBetweenTests;
             if (Configuration == null)

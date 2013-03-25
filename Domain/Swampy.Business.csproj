@@ -57,6 +57,9 @@
     <Reference Include="FluentNHibernate">
       <HintPath>..\packages\FluentNHibernate.1.3.0.733\lib\FluentNHibernate.dll</HintPath>
     </Reference>
+    <Reference Include="FluentValidation">
+      <HintPath>..\Admin.Web\bin\FluentValidation.dll</HintPath>
+    </Reference>
     <Reference Include="ICSharpCode.NRefactory">
       <HintPath>..\packages\RavenDB.Database.1.0.960\lib\net40\ICSharpCode.NRefactory.dll</HintPath>
     </Reference>
@@ -97,7 +100,10 @@
   <ItemGroup>
     <Compile Include="DomainModel\Entities\ConfigurationItemType.cs" />
     <Compile Include="Contract\Validators\DatabaseConnectionStringValidator.cs" />
-    <Compile Include="Contract\Validators\ServiceUrlValidator.cs" />
+    <Compile Include="Contract\Validators\UrlValidator.cs" />
+    <Compile Include="DomainModel\Queries\asdfQuery.cs" />
+    <Compile Include="DomainModel\Queries\IQuery.cs" />
+    <Compile Include="DomainModel\ValueObjects\ValueObjectBase.cs" />
     <Compile Include="Infrastructure\NHibernate\Mappings\ServerMap.cs" />
     <Compile Include="DomainModel\ValueObjects\Domain.cs" />
     <Compile Include="DomainModel\Entities\Endpoint\EndpointType.cs" />

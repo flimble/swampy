@@ -8,7 +8,7 @@ namespace Swampy.Business.Infrastructure.NHibernate.Mappings
         {
             Table("Domain");
             Id(x => x.Id).Column("DomainId").GeneratedBy.Native();
-            Map(x => x.Name).Access.ReadOnlyPropertyThroughCamelCaseField(Prefix.Underscore).Unique();
+            Map(x => x.Name).Unique();
         }
     }
 }

@@ -1,21 +1,20 @@
 ﻿using System;
 using System.Net.NetworkInformation;
+using Swampy.Business.DomainModel.ValueObjects;
 
 namespace Swampy.Business.DomainModel.Entities
 {
-    public class Server : AbstractEntity
-    
+    public class Server : AbstractEntity    
     {
+     
 
         public virtual Swampy.Business.DomainModel.Entities.Environment Environment { get; set; }
 
         public virtual string Name { get; set; }
 
-        public virtual Business.DomainModel.ValueObjects.Domain Domain { get; set; }
-
         public virtual string FullyQualifiedDomainName
         {
-            get { return string.Format("{0}.{1}", Name, Domain.Name); }
+            get { return string.Format("{0}.{1}", Name, Environment.Domain.Name); }
         }
 
         public virtual bool IsValid()
