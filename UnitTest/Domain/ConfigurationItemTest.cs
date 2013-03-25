@@ -12,7 +12,7 @@ namespace Swampy.UnitTest.Domain
             var e = new Environment("SIT1", "ausydhc-pspsq10");
             var underTest = new ConfigurationItem("key", "value", ConfigurationItemType.Simple, e);
 
-            underTest.StoreAsToken
+            //underTest.StoreAsToken
         }
     }
 }
