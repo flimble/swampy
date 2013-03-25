@@ -27,7 +27,7 @@ namespace Swampy.UnitTest.Queries
         public static ISessionFactory SessionFactory;
         protected ISession session;
 
-        public InMemoryDatabaseTest(): this(false) {}
+        public InMemoryDatabaseTest() : this(false) { }
 
         public InMemoryDatabaseTest(bool cleanBetweenTests)
         {
@@ -47,15 +47,15 @@ namespace Swampy.UnitTest.Queries
                                                                     .Database("Swampy"))
                                                                .ShowSql();
 
-                SessionFactory = NHibernateConfigurationFactory.Configuration(sqLiteConfiguration)             
+                SessionFactory = NHibernateConfigurationFactory.Configuration(sqLiteConfiguration)
                     .ExposeConfiguration(cfg => Configuration = cfg)
-                    .ExposeConfiguration(x=>x.SetProperty(NHibernate.Cfg.Environment.ReleaseConnections, "on_close"))
+                    .ExposeConfiguration(x => x.SetProperty(NHibernate.Cfg.Environment.ReleaseConnections, "on_close"))
                     .BuildSessionFactory();
 
-                
+
             }
 
-            if (!_cleanBetweenTests)
+            if(!_cleanBetweenTests)
                 CreateNewSession();
         }
 
@@ -68,20 +68,20 @@ namespace Swampy.UnitTest.Queries
 
         public void Dispose()
         {
-            TearDown();
+            session.Dispose();
         }
 
         [SetUp]
         public void SetUp()
         {
-          if(_cleanBetweenTests)
-              CreateNewSession();
+            if (_cleanBetweenTests)
+                CreateNewSession();
         }
 
         [TearDown]
         public void TearDown()
         {
-            if(_cleanBetweenTests)
+            if (_cleanBetweenTests)
                 Dispose();
         }
     }

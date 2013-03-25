@@ -15,7 +15,7 @@ namespace Swampy.UnitTest.Queries
     public class FirstHibernateTest : InMemoryDatabaseTest
     {
 
-        public FirstHibernateTest() : base(true) {}
+        public FirstHibernateTest() : base(false) {}
         
 
         [Test]
