@@ -5,8 +5,8 @@ using Castle.MicroKernel.Registration;
 using Castle.Windsor;
 using NUnit.Framework;
 using Rhino.Mocks;
-using Swampy.Domain.Infrastructure;
-using Swampy.Domain.Infrastructure.Swampy.Service.Infrastructure;
+using Swampy.Business.Infrastructure.Logging;
+using Swampy.Business.Infrastructure.Logging.Swampy.Service.Infrastructure;
 using log4net;
 using log4net.Config;
 

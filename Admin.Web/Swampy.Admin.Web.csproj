@@ -147,7 +147,6 @@
     <Compile Include="Bootstrappers\WindsorControllerFactory.cs" />
     <Compile Include="Controllers\AbstractController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
-    <Compile Include="Controllers\BaseDocumentStoreController.cs" />
     <Compile Include="Controllers\EndpointController.cs" />
     <Compile Include="Controllers\EnvironmentController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -183,7 +182,7 @@
     <Content Include="Content\scripts\jquery\jquery-1.8.2.js" />
     <Content Include="Content\scripts\jquery\jquery-ui-1.8.11.js" />
     <Content Include="Content\scripts\jquery\jquery.unobtrusive-ajax.js" />
-    <Content Include="Content\scripts\application\calc.coffee" />
+    <Content Include="Content\scripts\application\calc.js" />
     <None Include="Content\scripts\jquery\jquery.validate-vsdoc.js" />
     <Content Include="Content\scripts\jquery\jquery.validate.js" />
     <Content Include="Content\scripts\jquery\jquery.validate.unobtrusive.js" />
@@ -194,16 +193,9 @@
     <Content Include="Content\scripts\mvc4\MicrosoftMvcAjax.js" />
     <Content Include="Content\scripts\mvc4\MicrosoftMvcValidation.debug.js" />
     <Content Include="Content\scripts\mvc4\MicrosoftMvcValidation.js" />
-    <Content Include="Content\scripts\site.js">
-      <DependentUpon>site.coffee</DependentUpon>
-    </Content>
-    <Content Include="Content\scripts\site.min.js">
-      <DependentUpon>site.coffee</DependentUpon>
-    </Content>
+    <Content Include="Content\scripts\site.js" />
     <Content Include="Content\scripts\viewspecific\environment-new.js" />
-    <Content Include="Content\scripts\viewspecific\environment.js">
-      <DependentUpon>environment.coffee</DependentUpon>
-    </Content>
+    <Content Include="Content\scripts\viewspecific\environment.js" />
     <Content Include="Content\styles\site.css">
       <DependentUpon>site.less</DependentUpon>
     </Content>
@@ -239,7 +231,6 @@
     <Content Include="Content\themes\base\jquery.ui.theme.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
-    <Content Include="Content\scripts\site.coffee" />
     <Content Include="Content\styles\site.less" />
     <Content Include="packages.config">
       <SubType>Designer</SubType>
@@ -318,7 +309,6 @@
     <Content Include="Content\styles\bootstrap\utilities.less" />
     <Content Include="Content\styles\bootstrap\variables.less" />
     <Content Include="Content\styles\bootstrap\wells.less" />
-    <Content Include="Content\scripts\viewspecific\environment.coffee" />
     <None Include="readme.txt" />
     <Content Include="Views\Endpoint\Create.cshtml" />
     <Content Include="Views\Endpoint\CreateSimpleEndpoint.cshtml" />

@@ -1,13 +1,5 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
-using NUnit.Framework;
+﻿using NUnit.Framework;
 using Swampy.Business.DomainModel.Entities;
-using Swampy.Domain;
-using Swampy.Domain.Entities;
-using Swampy.Domain.Entities.Endpoint;
 
 namespace Swampy.UnitTest.Queries
 {
@@ -15,7 +7,7 @@ namespace Swampy.UnitTest.Queries
     public class FirstHibernateTest : InMemoryDatabaseTest
     {
 
-        public FirstHibernateTest() : base(false) {}
+        public FirstHibernateTest() : base(true) {}
         
 
         [Test]
@@ -27,7 +19,7 @@ namespace Swampy.UnitTest.Queries
             {
                 var e = new Environment("SIT1","saig.frd.global");
                                 
-                e.SimpleEndpoints.Add(new ConfigurationItem("anEndpoint", "abc", ConfigurationItemType.Simple, e));
+                e.Endpoints.Add(new ConfigurationItem("anEndpoint", "abc", ConfigurationItemType.Simple, e));
 
                 e.AddServer("ssrdbserver","ausydhq-pstsq04");
 
@@ -59,7 +51,7 @@ namespace Swampy.UnitTest.Queries
             {
                 var e = new Environment("SIT1", "saig.frd.global");
 
-                e.SimpleEndpoints.Add(new ConfigurationItem("anEndpoint", "abc", ConfigurationItemType.Simple, e));
+                e.Endpoints.Add(new ConfigurationItem("anEndpoint", "abc", ConfigurationItemType.Simple, e));
 
                 e.AddServer("ssrdbserver", "ausydhq-pstsq04");
 

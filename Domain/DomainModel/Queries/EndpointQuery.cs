@@ -1,21 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Linq;
 using NHibernate;
 using NHibernate.Linq;
-using Swampy.Domain.Entities.Endpoint;
+using Swampy.Business.DomainModel.Entities;
 using Environment = Swampy.Business.DomainModel.Entities.Environment;
 
-namespace Swampy.Domain.Queries
+namespace Swampy.Business.DomainModel.Queries
 {
     public class EndpointQuery
     {
         public string EndpointName { get; set; }
         public string EnvironmentName { get; set; }
 
-        public IQueryable<IEndpoint> Query(ISession session)
+        public IQueryable<ConfigurationItem> Query(ISession session)
         {
             var result =
                 from e in

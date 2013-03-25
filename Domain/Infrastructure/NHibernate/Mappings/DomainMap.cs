@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using FluentNHibernate.Mapping;
-using Swampy.Domain.Entities;
+﻿using FluentNHibernate.Mapping;
 
-namespace Swampy.Domain.DomainModel.Mappings
+namespace Swampy.Business.Infrastructure.NHibernate.Mappings
 {
     public class DomainMap : ClassMap<Business.DomainModel.ValueObjects.Domain>
     {

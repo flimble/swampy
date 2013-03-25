@@ -2,13 +2,10 @@
 using System.Web.Mvc;
 using NHibernate.Linq;
 using Swampy.Admin.Web.Models.Mappers;
-using Swampy.Admin.Web.Models.OperationModels;
+using Swampy.Business.DomainModel.Entities;
 using CreateEnvironmentOperationModel = Swampy.Admin.Web.Models.OperationModels.Environment.CreateEnvironmentOperationModel;
 using Environment = Swampy.Business.DomainModel.Entities.Environment;
-using System.Collections.Generic;
 using System;
-using System.Reflection;
-using Swampy.Domain.Entities.Endpoint;
 
 
 namespace Swampy.Admin.Web.Controllers
@@ -17,27 +14,27 @@ namespace Swampy.Admin.Web.Controllers
     {
 
 
-        protected List<string> GetEndpointTypes()
+        /*protected IDictionary<string, Type> GetEndpointTypes()
         {
             var endpointTypes = Assembly
-               .GetAssembly(typeof(Endpoint))
+               .GetAssembly(typeof(ConfigurationItem))
                .GetTypes()
-               .Where(x => x.IsSubclassOf(typeof(Endpoint)) && !x.IsAbstract)
+               .Where(x => x.IsSubclassOf(typeof(AbstractEntity)) && !x.IsAbstract)
                .Select(x => x)
                .ToList();
 
-            var a = new List<string>();
+            var a = new Dictionary<string, Type>();
 
             foreach (var type in endpointTypes)
             {
-                var endpoint = Activator.CreateInstance(type) as Endpoint;
+                var endpoint = Activator.CreateInstance(type) as ConfigurationItem;
                 string name = endpoint.TypeName;
 
-                a.Add(name);
+                a.Add(name, type);
             }
 
             return a;
-        }
+        }*/
 
         public ActionResult Index(string environmentName)
         {
@@ -54,7 +51,7 @@ namespace Swampy.Admin.Web.Controllers
                 .Map(currentEnvironment);
 
             model.allEnvironments = allEnvironments.ToList();
-            model.EndpointTypes = GetEndpointTypes();
+            model.EndpointTypes = Enum.GetValues(typeof (ConfigurationItemType)).Cast<ConfigurationItemType>();
 
             return View(model);
 

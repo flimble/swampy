@@ -1,7 +1,9 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using System.Text.RegularExpressions;
+using Swampy.Business.DomainModel.Entities.Interfaces;
 
-namespace Swampy.Domain.Entities
+namespace Swampy.Business.DomainModel.Entities
 {
     public class TokenBuilder : ITokenBuilder
     {
@@ -19,20 +21,25 @@ namespace Swampy.Domain.Entities
 
                 if (!result.Contains(match))
                 {
-                    result.Add(match);
+                    result.Add(RemoveTokenWrap(match));
                 }
 
             }
             TokensFound = result;
         }
 
+        public bool HasTokens
+        {
+            get { return this.TokensFound.Any(); }
+        }
 
-        public string StripTokens(string toStrip)
+
+        private string RemoveTokenWrap(string toStrip)
         {
             return toStrip.Substring(2, toStrip.Length - 4);
         }
 
-        public string AppendTokens(string toAppend)
+        public string AddTokenWrap(string toAppend)
         {
             return string.Format("[%{0}%]", toAppend);
         }

@@ -1,8 +1,8 @@
 ﻿using System;
-using Swampy.Domain.Infrastructure.Swampy.Service.Infrastructure;
+using Swampy.Business.Infrastructure.Logging.Swampy.Service.Infrastructure;
 using log4net;
 
-namespace Swampy.Domain.Infrastructure
+namespace Swampy.Business.Infrastructure.Logging
 {
     public class LogFactory : ILogFactory
     {

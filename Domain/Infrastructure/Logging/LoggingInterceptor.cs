@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Linq;
 using Castle.DynamicProxy;
-using Swampy.Domain.Infrastructure.Swampy.Service.Infrastructure;
+using Swampy.Business.Infrastructure.Abstractions;
+using Swampy.Business.Infrastructure.Logging.Swampy.Service.Infrastructure;
 using log4net;
 
-namespace Swampy.Domain.Infrastructure
+namespace Swampy.Business.Infrastructure.Logging
 {
     /// <summary>
     /// Generic AOP Logging Interceptor using DynamicProxy 

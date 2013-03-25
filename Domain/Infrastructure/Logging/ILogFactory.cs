@@ -1,7 +1,7 @@
 ﻿using System;
 using log4net;
 
-namespace Swampy.Domain.Infrastructure
+namespace Swampy.Business.Infrastructure.Logging
 {
     namespace Swampy.Service.Infrastructure
     {

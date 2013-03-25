@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Swampy.Business.DomainModel.Entities;
 
 namespace Swampy.Admin.Web.Models.ReadModels
 {
@@ -12,7 +13,7 @@ namespace Swampy.Admin.Web.Models.ReadModels
         public List<EndpointViewModel> Endpoints { get; set; }
 
 
-        public List<string> EndpointTypes { get; set; }
+        public IEnumerable<ConfigurationItemType> EndpointTypes { get; set; }
         public string SelectedType { get; set; }
 
         public class EndpointViewModel

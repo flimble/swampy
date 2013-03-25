@@ -1,10 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace Swampy.Domain.Entities
+namespace Swampy.Business.DomainModel.Entities
 {
     /// <summary>
     /// Levenshtein distance calculator. Used as fuzzy logic for string matching.

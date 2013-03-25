@@ -1,6 +1,6 @@
 ﻿using NHibernate;
 
-namespace Swampy.Domain.Infrastructure
+namespace Swampy.Business.Infrastructure.Abstractions
 {
     public abstract class Command
     {

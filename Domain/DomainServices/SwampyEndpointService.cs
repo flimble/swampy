@@ -1,12 +1,11 @@
-﻿
-using System;
+﻿using System;
 using System.Linq;
 using NHibernate;
 using NHibernate.Linq;
-using Swampy.Domain.Contract;
+using Swampy.Business.Contract;
 using Environment = Swampy.Business.DomainModel.Entities.Environment;
 
-namespace Swampy.Domain.DomainServices
+namespace Swampy.Business.DomainServices
 {
     public class SwampyEndpointService : ISwampyEndpointService
     {

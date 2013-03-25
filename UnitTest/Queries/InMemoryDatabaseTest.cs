@@ -15,8 +15,6 @@ using NHibernate.Driver;
 using NHibernate.Tool.hbm2ddl;
 using NUnit.Framework;
 using Swampy.Business.Infrastructure.NHibernate;
-using Swampy.Domain.Entities;
-using Swampy.Domain.Entities.Endpoint;
 
 namespace Swampy.UnitTest.Queries
 {
@@ -27,7 +25,7 @@ namespace Swampy.UnitTest.Queries
         public static ISessionFactory SessionFactory;
         protected ISession session;
 
-        public InMemoryDatabaseTest() : this(false) { }
+        public InMemoryDatabaseTest() : this(true) { }
 
         public InMemoryDatabaseTest(bool cleanBetweenTests)
         {

@@ -1,6 +1,4 @@
-﻿using System.ServiceModel;
-
-namespace Swampy.Domain.Contract
+﻿namespace Swampy.Business.Contract
 {
     
     public interface ISwampyEndpointService

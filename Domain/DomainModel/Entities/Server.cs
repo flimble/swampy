@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Net.NetworkInformation;
 
-namespace Swampy.Domain.Entities.Endpoint
+namespace Swampy.Business.DomainModel.Entities
 {
     public class Server : AbstractEntity
     

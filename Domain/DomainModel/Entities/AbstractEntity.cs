@@ -1,4 +1,4 @@
-﻿namespace Swampy.Domain.Entities
+﻿namespace Swampy.Business.DomainModel.Entities
 {
     /// <summary>Base class for all entities</summary>
     public abstract class AbstractEntity

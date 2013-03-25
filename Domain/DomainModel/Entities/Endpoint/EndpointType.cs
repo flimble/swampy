@@ -1,4 +1,4 @@
-﻿namespace Swampy.Domain.Entities.Endpoint
+﻿namespace Swampy.Business.DomainModel.Entities.Endpoint
 {
     /// <summary>
     /// Enumeration of available types of endpoints

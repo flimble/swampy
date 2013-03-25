@@ -95,23 +95,21 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DomainModel\Entities\ConfigurationItemType.cs" />
+    <Compile Include="Contract\Validators\DatabaseConnectionStringValidator.cs" />
+    <Compile Include="Contract\Validators\ServiceUrlValidator.cs" />
     <Compile Include="Infrastructure\NHibernate\Mappings\ServerMap.cs" />
     <Compile Include="DomainModel\ValueObjects\Domain.cs" />
-    <Compile Include="DomainModel\Entities\Endpoint\IEndpoint.cs" />
-    <Compile Include="DomainModel\Entities\Endpoint\ServiceUrl.cs" />
-    <Compile Include="DomainModel\Entities\Endpoint\DatabaseConnectionString.cs" />
     <Compile Include="DomainModel\Entities\Endpoint\EndpointType.cs" />
-    <Compile Include="DomainModel\Entities\Endpoint\Endpoint.cs" />
-    <Compile Include="DomainModel\Entities\Endpoint\IEndpointValidator.cs" />
-    <Compile Include="DomainModel\Entities\Endpoint\ConfigurationItem.cs" />
-    <Compile Include="DomainModel\Entities\Endpoint\WebpageUrl.cs" />
+    <Compile Include="Contract\Validators\IValidate.cs" />
+    <Compile Include="DomainModel\Entities\ConfigurationItem.cs" />
     <Compile Include="DomainModel\Entities\AbstractEntity.cs" />
     <Compile Include="DomainModel\Entities\Environment.cs" />
     <Compile Include="Contract\IEndpointService.cs" />
     <Compile Include="Contract\KeyPair.cs" />
     <Compile Include="DomainModel\Entities\GlobalToken.cs" />
-    <Compile Include="DomainModel\Entities\ITokenBuilder.cs" />
-    <Compile Include="DomainModel\Entities\Endpoint\Server.cs" />
+    <Compile Include="DomainModel\Entities\Interfaces\ITokenBuilder.cs" />
+    <Compile Include="DomainModel\Entities\Server.cs" />
     <Compile Include="DomainModel\Entities\Levenshtein.cs" />
     <Compile Include="DomainModel\Entities\TokenBuilder.cs" />
     <Compile Include="DomainModel\Entities\TokenizedConfigParser.cs" />

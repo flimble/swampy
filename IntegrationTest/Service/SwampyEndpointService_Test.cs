@@ -1,7 +1,6 @@
 ﻿using System.Linq;
 using NUnit.Framework;
-using Swampy.Domain;
-using Swampy.Domain.DomainServices;
+using Swampy.Business.DomainServices;
 
 namespace Swampy.IntegrationTest.Service
 {
@@ -16,6 +15,7 @@ namespace Swampy.IntegrationTest.Service
 
 
         [Test]
+        [Explicit]
         public void single_endpoint_returns_saved_value_to_service()
         {
 
@@ -28,6 +28,7 @@ namespace Swampy.IntegrationTest.Service
 
 
         [Test]
+        [Explicit]
         public void multiple_endpoint_returns_saved_value_to_service()
         {
 
@@ -39,6 +40,7 @@ namespace Swampy.IntegrationTest.Service
         }
 
         [Test]
+        [Explicit]
         public void incorrect_key_returns_empty_result_list()
         {
 

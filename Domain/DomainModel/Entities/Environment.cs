@@ -1,6 +1,4 @@
 ﻿using System.Collections.Generic;
-using Swampy.Domain.Entities;
-using Swampy.Domain.Entities.Endpoint;
 using Swampy.Business.DomainModel.ValueObjects;
 
 namespace Swampy.Business.DomainModel.Entities
@@ -24,14 +22,12 @@ namespace Swampy.Business.DomainModel.Entities
 
         protected Environment()
         {
-            Endpoints = new List<IEndpoint>();
-            SimpleEndpoints = new List<ConfigurationItem>();
+            Endpoints = new List<ConfigurationItem>();
             Servers = new List<Server>();
         }
 
 
-        public virtual IList<IEndpoint> Endpoints { get; set; }
-        public virtual IList<ConfigurationItem> SimpleEndpoints { get; set; }
+        public virtual IList<ConfigurationItem> Endpoints { get; set; }
 
         public virtual IList<Server> Servers { get; protected set; } 
 

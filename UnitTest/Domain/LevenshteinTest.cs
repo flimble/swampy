@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using NUnit.Framework;
-using Swampy.Domain.Entities;
+using Swampy.Business.DomainModel.Entities;
 
 namespace Swampy.UnitTest.Domain
 {

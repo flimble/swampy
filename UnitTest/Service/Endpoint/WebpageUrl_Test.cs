@@ -1,5 +1,6 @@
 ﻿using NUnit.Framework;
-using Swampy.Domain.Entities.Endpoint;
+using Swampy.Business.Contract.Validators;
+using Swampy.Business.DomainModel.Entities;
 
 namespace Swampy.UnitTest.Service.Endpoint
 {
@@ -9,12 +10,10 @@ namespace Swampy.UnitTest.Service.Endpoint
         [Test]
         public void url_correctly_validates()
         {
-            var underTest = new WebpageUrl();
-            underTest.Value = "http://admin.sit1.property. saiglobal.com";
-            Assert.IsFalse(underTest.IsValid());
+            var underTest = new ServiceUrlValidator();
+            Assert.IsFalse(underTest.IsValid(@"http://admin.sit1.property. saiglobal.com"));
 
-            underTest.Value = "http://admin.sit1.property.saiglobal.com";
-            Assert.IsTrue(underTest.IsValid());
+            Assert.IsTrue(underTest.IsValid(@"http://admin.sit1.property.saiglobal.com"));
         }
     }
 }

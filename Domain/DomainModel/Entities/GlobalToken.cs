@@ -1,7 +1,7 @@
 ﻿using System;
-using Swampy.Domain.Infrastructure.Extensions;
+using Swampy.Business.Infrastructure.Extensions;
 
-namespace Swampy.Domain.Entities
+namespace Swampy.Business.DomainModel.Entities
 {
     public class GlobalToken : AbstractEntity
     {

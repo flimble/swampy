@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Swampy.Domain.Infrastructure
+namespace Swampy.Business.Infrastructure.Abstractions
 {
     /// <summary>
     /// Unit Testable Time

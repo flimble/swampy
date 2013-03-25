@@ -7,7 +7,7 @@ using FluentNHibernate.Cfg;
 using FluentNHibernate.Cfg.Db;
 using FluentNHibernate.Conventions.Helpers;
 using NHibernate.Cfg;
-using Swampy.Domain.Infrastructure.Mappings;
+using Swampy.Business.Infrastructure.NHibernate.Mappings;
 
 namespace Swampy.Business.Infrastructure.NHibernate
 {

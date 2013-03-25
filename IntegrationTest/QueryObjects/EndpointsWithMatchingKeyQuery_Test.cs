@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using NUnit.Framework;
-using Swampy.IntegrationTest.Mongo;
 
 namespace Swampy.IntegrationTest.QueryObjects
 {

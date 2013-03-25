@@ -1,6 +1,6 @@
 ﻿using System.Linq;
 using Swampy.Admin.Web.Models.ReadModels;
-using Swampy.Domain.Entities.Endpoint;
+using Swampy.Business.DomainModel.Entities;
 using Environment = Swampy.Business.DomainModel.Entities.Environment;
 
 namespace Swampy.Admin.Web.Models.Mappers
@@ -12,7 +12,7 @@ namespace Swampy.Admin.Web.Models.Mappers
         {
            return  new EnvironmentReadModel
             {
-                Endpoints = (from ep in toMap.SimpleEndpoints
+                Endpoints = (from ep in toMap.Endpoints
                              select ToEndpointViewModel(ep)).OrderBy(x=>x.Type).ThenBy(x=>x.Key).ToList(),
                 environmentName = toMap.Name
             };

@@ -6,7 +6,7 @@ using System.Web.Mvc;
 using NHibernate.Linq;
 using Swampy.Admin.Web.Models.OperationModels;
 using Swampy.Admin.Web.Models.OperationModels.Endpoint;
-using Swampy.Domain.Entities.Endpoint;
+using Swampy.Business.DomainModel.Entities;
 using Environment = Swampy.Business.DomainModel.Entities.Environment;
 
 namespace Swampy.Admin.Web.Controllers
@@ -18,9 +18,9 @@ namespace Swampy.Admin.Web.Controllers
         protected IDictionary<string, Type> GetEndpointTypes()
         {
             var endpointTypes = Assembly
-               .GetAssembly(typeof(Endpoint))
+               .GetAssembly(typeof(ConfigurationItem))
                .GetTypes()
-               .Where(x => x.IsSubclassOf(typeof(Endpoint)) && !x.IsAbstract)
+               .Where(x => x.IsSubclassOf(typeof(AbstractEntity)) && !x.IsAbstract)
                .Select(x => x)
                .ToList();
 
@@ -28,7 +28,7 @@ namespace Swampy.Admin.Web.Controllers
 
             foreach (var type in endpointTypes)
             {
-                var endpoint = Activator.CreateInstance(type) as Endpoint;
+                var endpoint = Activator.CreateInstance(type) as ConfigurationItem;
                 string name = endpoint.TypeName;
 
                 a.Add(name, type);
@@ -86,13 +86,9 @@ namespace Swampy.Admin.Web.Controllers
                     x => x.Name == newEndpoint.EnvironmentName);
 
 
-
-
-            var endpoint = newEndpoint.Endpoint as CreateSimpleEndpoint;
-
             var toAdd = new ConfigurationItem(newEndpoint.Endpoint.Name, newEndpoint.Endpoint.Value,
                                               ConfigurationItemType.Simple, environment);
-                        environment.SimpleEndpoints.Add(toAdd);
+                        environment.Endpoints.Add(toAdd);
 
             this.Session.SaveOrUpdate(environment);
 
@@ -108,9 +104,9 @@ namespace Swampy.Admin.Web.Controllers
         }
 
 
-        public ActionResult Save(Domain.Entities.Endpoint.ConfigurationItem data)
+        public ActionResult Save(ConfigurationItem data)
         {
-            var endpoint = this.Session.Query<Endpoint>().Single(
+            var endpoint = this.Session.Query<ConfigurationItem>().Single(
                 x => x.Key == data.Key
                 );
 

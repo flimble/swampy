@@ -1,11 +1,9 @@
 ﻿using System;
 using System.ServiceModel;
 using System.ServiceProcess;
-using Castle.DynamicProxy;
-using Swampy.Domain;
-using Swampy.Domain.Contract;
-using Swampy.Domain.DomainServices;
-using Swampy.Domain.Infrastructure;
+using Swampy.Business.Contract;
+using Swampy.Business.DomainServices;
+using Swampy.Business.Infrastructure.Logging;
 using log4net;
 
 namespace Swampy.Service

@@ -1,5 +1,5 @@
 ﻿using System.ServiceModel;
-using Swampy.Domain.Contract;
+using Swampy.Business.Contract;
 
 namespace Swampy.Service
 {

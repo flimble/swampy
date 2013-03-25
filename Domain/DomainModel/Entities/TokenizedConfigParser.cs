@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Swampy.Domain.Entities
+namespace Swampy.Business.DomainModel.Entities
 {
     public class TokenizedConfigParser
     {

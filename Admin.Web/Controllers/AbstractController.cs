@@ -1,10 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 using NHibernate;
-using Swampy.Domain.Infrastructure;
+using Swampy.Business.Infrastructure.Abstractions;
 
 namespace Swampy.Admin.Web.Controllers
 {
@@ -14,8 +11,8 @@ namespace Swampy.Admin.Web.Controllers
 
         public Action<Command> AlternativeExecuteCommand { get; set; }
         public Func<Command, object> AlternativeExecuteCommandWithResult { get; set; }
+      
 
-       
 
         public void ExecuteCommand(Command cmd)
         {

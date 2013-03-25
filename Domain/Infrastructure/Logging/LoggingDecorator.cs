@@ -1,13 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Castle.DynamicProxy;
-using Swampy.Domain.Contract;
-using Swampy.Domain.DomainServices;
+﻿using Castle.DynamicProxy;
 
-namespace Swampy.Domain.Infrastructure
+namespace Swampy.Business.Infrastructure.Logging
 {
     /// <summary>
     /// Decorate an existing class to add logging using LoggingInterceptor.

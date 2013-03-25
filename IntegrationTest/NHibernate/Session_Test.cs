@@ -1,9 +1,7 @@
-﻿using System.Linq;
-using NUnit.Framework;
-using Swampy.Domain.Entities.Endpoint;
-using Environment = Swampy.Business.DomainModel.Entities.Environment;
+﻿using NUnit.Framework;
+using Swampy.Business.DomainModel.Entities;
 
-namespace Swampy.IntegrationTest.Mongo
+namespace Swampy.IntegrationTest.NHibernate
 {
     [TestFixture]
     public class Session_Test 
@@ -13,8 +11,8 @@ namespace Swampy.IntegrationTest.Mongo
         public void insert_environment_test()
         {           
                 var e = new Environment("SIT1");
-                e.Endpoints.Add(new DatabaseConnectionString { Key="adbconnectionstring", Value = "ABV" });
-                e.Endpoints.Add(new WebpageUrl { Key="awebpageurl", Value = "def" });
+                //e.Endpoints.Add(new DatabaseConnectionString { Key="adbconnectionstring", Value = "ABV" });
+                //e.Endpoints.Add(new WebpageUrl { Key="awebpageurl", Value = "def" });
 
                 /*Session.Store(e);
 
@@ -31,12 +29,12 @@ namespace Swampy.IntegrationTest.Mongo
             
 
             var sit1 = new Environment("SIT1");
-            sit1.Endpoints.Add(new DatabaseConnectionString { Key = "adbconnectionstring", Value = "ABV" });
-            sit1.Endpoints.Add(new WebpageUrl { Key = "awebpageurl", Value = "def" });
+            //sit1.Endpoints.Add(new DatabaseConnectionString { Key = "adbconnectionstring", Value = "ABV" });
+            //sit1.Endpoints.Add(new WebpageUrl { Key = "awebpageurl", Value = "def" });
             //Session.Store(sit1);
 
-            var sit2 = new Environment("SIT2");
-            sit2.Endpoints.Add(new DatabaseConnectionString { Key = "adbconnectionstring", Value = "deh" });
+            //var sit2 = new Environment("SIT2");
+            //sit2.Endpoints.Add(new DatabaseConnectionString { Key = "adbconnectionstring", Value = "deh" });
             //Session.Store(sit2);
 
 
@@ -54,12 +52,12 @@ namespace Swampy.IntegrationTest.Mongo
         {
 
             var sit1 = new Environment("SIT1","saig.frd.global");
-            sit1.Endpoints.Add(new DatabaseConnectionString { Key = "adbconnectionstring", Value = "ABV" });
-            sit1.Endpoints.Add(new WebpageUrl { Key = "awebpageurl", Value = "def" });
+            //sit1.Endpoints.Add(new DatabaseConnectionString { Key = "adbconnectionstring", Value = "ABV" });
+            //sit1.Endpoints.Add(new WebpageUrl { Key = "awebpageurl", Value = "def" });
             //Session.Store(sit1);
 
-            var sit2 = new Environment("SIT2","saig.frd.global");
-            sit2.Endpoints.Add(new DatabaseConnectionString { Key = "adbconnectionstring", Value = "deh" });
+            //var sit2 = new Environment("SIT2","saig.frd.global");
+            //sit2.Endpoints.Add(new DatabaseConnectionString { Key = "adbconnectionstring", Value = "deh" });
             //Session.SaveChanges();
 
 
@@ -80,8 +78,8 @@ namespace Swampy.IntegrationTest.Mongo
         {
 
             var sit1 = new Environment("SIT1","saig.frd.global");
-            sit1.Endpoints.Add(new DatabaseConnectionString { Key = "adbconnectionstring", Value = "ABV" });
-            sit1.Endpoints.Add(new WebpageUrl { Key = "awebpageurl", Value = "def" });
+            //sit1.Endpoints.Add(new DatabaseConnectionString { Key = "adbconnectionstring", Value = "ABV" });
+            //sit1.Endpoints.Add(new WebpageUrl { Key = "awebpageurl", Value = "def" });
             //Session.Store(sit1);
 
             /*

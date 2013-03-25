@@ -1,12 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using Swampy.Domain;
-using Swampy.Domain.Entities.Endpoint;
-using Environment = Swampy.Business.DomainModel.Entities.Environment;
-
-namespace Swampy.Admin.Web.Bootstrappers
+﻿namespace Swampy.Admin.Web.Bootstrappers
 {
     public class SampleDataConfiguration
     {

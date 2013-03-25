@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Runtime.Serialization;
 
-namespace Swampy.Domain.Contract
+namespace Swampy.Business.Contract
 {
     /// <summary>
     /// Basic KeyPair type. Replacement for .NET KeyValuePair as a serializable POCO for communication with Java and other non - .NET services

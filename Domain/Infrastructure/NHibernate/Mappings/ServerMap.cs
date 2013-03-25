@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using FluentNHibernate.Mapping;
-using Swampy.Domain.Entities.Endpoint;
+﻿using FluentNHibernate.Mapping;
+using Swampy.Business.DomainModel.Entities;
 
-namespace Swampy.Business.DomainModel.Mappings
+namespace Swampy.Business.Infrastructure.NHibernate.Mappings
 {
     public class ServerMap : ClassMap<Server>
     {

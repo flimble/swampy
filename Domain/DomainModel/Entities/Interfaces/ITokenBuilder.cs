@@ -1,12 +1,10 @@
 using System.Collections.Generic;
 
-namespace Swampy.Domain.Entities
+namespace Swampy.Business.DomainModel.Entities.Interfaces
 {
     public interface ITokenBuilder
     {
         List<string> TokensFound { get; }
         void SearchForTokens(string input);
-        string StripTokens(string toStrip);
-        string AppendTokens(string toAppend);
     }
 }

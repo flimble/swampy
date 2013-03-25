@@ -1,15 +1,8 @@
 ﻿using System;
-using Swampy.Business.DomainModel.Entities;
+using Swampy.Business.DomainModel.Entities.Interfaces;
 
-namespace Swampy.Domain.Entities.Endpoint
+namespace Swampy.Business.DomainModel.Entities
 {
-    public enum ConfigurationItemType
-    {
-        Simple=1,
-        DatabaseConnectionString=2,
-        ServerUrl=3
-    }
-
     public class ConfigurationItem : AbstractEntity
     {
         protected ConfigurationItem()
@@ -26,10 +19,7 @@ namespace Swampy.Domain.Entities.Endpoint
             this.Environment = environment;
         }
 
-        public virtual bool IsValid()
-        {
-            return !string.IsNullOrWhiteSpace(Value);
-        }
+    
 
         public virtual Swampy.Business.DomainModel.Entities.Environment Environment { get; set; }
 

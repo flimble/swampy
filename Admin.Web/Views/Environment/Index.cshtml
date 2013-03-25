@@ -38,7 +38,7 @@
                             <td>@endpoint.Value</td>
                             <td>@endpoint.Description</td>
                             <td>@endpoint.Type</td>
-                            <td>@Html.ActionLink("Edit","Edit", "Endpoint", new { key=@endpoint.Key }, null)</td>
+                            <td>@Html.ActionLink("Edit","Edit", "Endpoint", new { key=@endpoint.Key, environment=@Model.environmentName }, null)</td>
                         </tr>
                     }
                 </tbody>
