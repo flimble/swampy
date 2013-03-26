@@ -15,7 +15,7 @@ using Swampy.Business.Infrastructure.NHibernate;
 namespace Swampy.UnitTest
 {
     [TestFixture]
-    public class SchemaUpdateGenerator
+    public class RoundhouseSchemUpdateScriptGenerator
     {
         private Configuration Configuration;
 
@@ -24,7 +24,7 @@ namespace Swampy.UnitTest
 
         [Test]
         [Explicit]
-        public void generate_for_test()
+        public void generate_roundhouse_scripts_based_on_changes()
         {
 
             var sqlServerConfiguration = MsSqlConfiguration.MsSql2008

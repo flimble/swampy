@@ -90,7 +90,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Helpers\AbstractControllerTest.cs" />
-    <Compile Include="SchemaUpdateGenerator.cs" />
+    <Compile Include="RoundhouseSchemUpdateScriptGenerator.cs" />
     <Compile Include="Tests\Admin.MVC\Controllers\EnvironmentControllerTest.cs" />
     <Compile Include="Tests\Contract\Validators\DatabaseConnectionStringFluentValidatorTest.cs" />
     <Compile Include="Tests\Domain\ConfigurationItemTest.cs" />
