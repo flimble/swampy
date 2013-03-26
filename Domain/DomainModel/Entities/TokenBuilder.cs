@@ -11,7 +11,7 @@ namespace Swampy.Business.DomainModel.Entities
 
         public void SearchForTokens(string input)
         {
-            string pattern = @"\[%.*?%\]";
+            string pattern = @"{.*?}";
 
             var result = new List<string>();
 
@@ -36,12 +36,12 @@ namespace Swampy.Business.DomainModel.Entities
 
         private string RemoveTokenWrap(string toStrip)
         {
-            return toStrip.Substring(2, toStrip.Length - 4);
+            return toStrip.Substring(1, toStrip.Length - 2);
         }
 
         public string AddTokenWrap(string toAppend)
         {
-            return string.Format("[%{0}%]", toAppend);
+            return string.Format("{{{0}}}", toAppend);
         }
     }
 }

@@ -31,12 +31,26 @@ namespace Swampy.Business.DomainModel.Entities
 
         public virtual IList<ConfigurationItem> ConfigurationItemsUsedByOthers
         {
-            get { return ConfigurationItems.Where(x => x.StoreAsToken) as IList<ConfigurationItem>; }
+            get { return this.ConfigurationItems.Where(x => x.StoreAsToken).ToList(); }
         }
 
-        public virtual IList<ConfigurationItem>  ReorderItemsByDependency()
+        public virtual IList<ConfigurationItem>  HydrateItems()
         {
-            return null;
+            var builder = new TokenBuilder();
+
+            var orderedByDependency = this.ConfigurationItems
+                                          .OrderByDescending(x => x.StoreAsToken)
+                                          .ToList();
+
+            foreach (var item in orderedByDependency)
+            {
+                if (item.ContainsTokens(builder))
+                {
+                    item.Hydrate(builder, this.ConfigurationItemsUsedByOthers);
+                }
+            }
+
+            return orderedByDependency;
         }
 
 

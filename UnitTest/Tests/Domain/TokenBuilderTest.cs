@@ -16,7 +16,7 @@ namespace Swampy.UnitTest.Domain
         {
             var underTest = new TokenBuilder();
 
-            underTest.SearchForTokens("abcd[%abc%]");
+            underTest.SearchForTokens("abcd{abc}");
             Assert.IsTrue(underTest.HasTokens);
 
             underTest.SearchForTokens("abcd");
@@ -34,7 +34,7 @@ namespace Swampy.UnitTest.Domain
         {
             var underTest = new TokenBuilder();
 
-            underTest.SearchForTokens("abcd[%abc%]");
+            underTest.SearchForTokens("abcd{abc}");
             Assert.AreEqual(1, underTest.TokensFound.Count);     
             Assert.AreEqual("abc", underTest.TokensFound.Single());                      
         }

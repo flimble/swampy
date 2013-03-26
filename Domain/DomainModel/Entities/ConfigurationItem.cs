@@ -1,4 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
 using Swampy.Business.DomainModel.Entities.Interfaces;
 
 namespace Swampy.Business.DomainModel.Entities
@@ -41,16 +44,24 @@ namespace Swampy.Business.DomainModel.Entities
             return false;
         }
 
-        public virtual string Hydrate(ITokenBuilder builder)
+        public virtual void Hydrate(ITokenBuilder builder, IList<ConfigurationItem> replacementValues)
         {
+            var hydratedValue = new StringBuilder(this.Value);
+
             builder.SearchForTokens(this.Value);
             if (builder.TokensFound.Count > 0)
             {
-                //TODO: replace this string with 
-                throw new NotImplementedException();
+               foreach (var token in builder.TokensFound)
+               {
+                   string replacementValue = replacementValues.Single(x => x.Key == token).Value;
+
+                   hydratedValue.Replace(builder.AddTokenWrap(token), replacementValue);
+               }
             }
-            return this.Value;
+            this.HydratedValue = hydratedValue.ToString();
         }
+
+        public virtual string HydratedValue { get; protected set; }
 
         public virtual  string TypeName
         {

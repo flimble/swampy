@@ -6,5 +6,6 @@ namespace Swampy.Business.DomainModel.Entities.Interfaces
     {
         List<string> TokensFound { get; }
         void SearchForTokens(string input);
+        string AddTokenWrap(string toAppend);
     }
 }
