@@ -1,28 +1,33 @@
 **Swampy**
-----------
+==========
 
 Swampy is an Environment Configuration service used to provide a centralised source of truth for all Environment Endpoints. 
 
 Examples of these are: 
 
 
-** Getting Started ** 
+# Getting Started 
+Double-click build.bat in project root to run first compile/test.
 
-You'll need Visual Studio 2012, .NET 4.5 and Powershell 2.0 installed. 
-To run your first build, just double-click build.bat
+# Requirements
+* .NET Framework 4.5
+* Visual Studio 2012
+* SQL Server 2008 R2 (sa access)
+* Powershell 2.0
+* Access to SAIG internal nuget server ausydhc-pspap12 to access internal build dependencies
 
-** Developers **
+# Developers 
 
 John Fattal
 
 
-** Why Swampy? **
+# Why Swampy? 
 
 Named after British environ"mental"ist Daniel Hooper a.k.a Swampy.
 Famous for protesting against the Manchester airport runway, hiding in trees and trees and making life difficult for everyone. What a knob.
 
 
-** Documentation **
+# Documentation 
 
 To read WireFrame document swampy.wireframes.ep please download pencil tool from here
 http://pencil.evolus.vn/

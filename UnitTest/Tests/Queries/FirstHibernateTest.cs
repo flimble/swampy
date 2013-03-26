@@ -34,7 +34,7 @@ namespace Swampy.UnitTest.Queries
                 var environment = session.Load<SwampyEnvironment>(id);
 
                 Assert.AreEqual("SIT1",environment.Name);
-                Assert.AreEqual("saig.frd.global", environment.Domain.Name);
+                Assert.AreEqual("saig.frd.global", environment.Domain);
                 Assert.IsTrue(environment.Servers.Count == 1);
 
                 tx.Commit();
@@ -66,7 +66,7 @@ namespace Swampy.UnitTest.Queries
                 var environment = session.Load<SwampyEnvironment>(id);
 
                 Assert.AreEqual("SIT1", environment.Name);
-                Assert.AreEqual("saig.frd.global", environment.Domain.Name);
+                Assert.AreEqual("saig.frd.global", environment.Domain);
                 Assert.IsTrue(environment.Servers.Count == 1);
 
                 tx.Commit();

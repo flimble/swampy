@@ -17,11 +17,11 @@ namespace Swampy.Business.DomainModel.Entities
         public SwampyEnvironment(string name, string domain)
             : this()
         {
-            Name = name;
-            Domain = new Domain(domain);
+            this.Name = name;
+            this.Domain = domain;
         }
 
-        public virtual Domain Domain { get; set; }
+        public virtual string Domain { get; set; }
 
         protected SwampyEnvironment()
         {
@@ -54,6 +54,7 @@ namespace Swampy.Business.DomainModel.Entities
         }
 
 
+        public virtual string Fake { get; set; }
 
         public virtual IList<ConfigurationItem> ConfigurationItems { get; set; }
 

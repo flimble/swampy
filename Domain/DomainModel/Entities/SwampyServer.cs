@@ -14,7 +14,7 @@ namespace Swampy.Business.DomainModel.Entities
 
         public virtual string FullyQualifiedDomainName
         {
-            get { return string.Format("{0}.{1}", Name, SwampyEnvironment.Domain.Name); }
+            get { return string.Format("{0}.{1}", Name, SwampyEnvironment.Domain); }
         }
 
         public virtual bool IsValid()

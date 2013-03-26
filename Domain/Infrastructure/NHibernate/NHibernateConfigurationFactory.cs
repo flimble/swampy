@@ -12,20 +12,24 @@ using Swampy.Business.Infrastructure.NHibernate.Mappings;
 namespace Swampy.Business.Infrastructure.NHibernate
 {
     public class NHibernateConfigurationFactory
-    {              
+    {
 
         public static FluentConfiguration Configuration(IPersistenceConfigurer databaseConfig)
         {
 
             return Fluently.Configure()
                            .Database(databaseConfig)
-                           .Mappings(cfg => cfg.FluentMappings.AddFromAssembly(typeof (EnvironmentMap).Assembly)
+                           .Mappings(cfg => cfg.FluentMappings.AddFromAssembly(typeof(EnvironmentMap).Assembly)
                                                .Conventions.Setup(mappings =>
                                                    {
-                                                       mappings.AddAssembly(typeof (EnvironmentMap).Assembly);
-                                                       mappings.Add(ForeignKey.EndsWith("Id"));
+                                                       mappings.AddAssembly(typeof(EnvironmentMap).Assembly);
+                                                       mappings.Conventions.Add(new ManyToOneForeignKeyConvention());
+                                                       mappings.Conventions.Add(new OneToManyForeignKeyConvention());
+                                                       mappings.Conventions.Add(new );
                                                    }));
         }
-     
+
+
+      
     }
 }

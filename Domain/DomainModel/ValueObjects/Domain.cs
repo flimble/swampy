@@ -2,7 +2,7 @@
 
 namespace Swampy.Business.DomainModel.ValueObjects
 {
-    public class Domain : ValueObjectBase<Domain>
+    /*public class Domain : ValueObjectBase<Domain>
     {
 
         public virtual int Id { get; set; }
@@ -21,5 +21,5 @@ namespace Swampy.Business.DomainModel.ValueObjects
 
         public virtual string Name { get; protected set; }       
      
-    }
+    }*/
 }
