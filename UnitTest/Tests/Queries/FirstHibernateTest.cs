@@ -17,9 +17,9 @@ namespace Swampy.UnitTest.Queries
             
             using (var tx = session.BeginTransaction())
             {
-                var e = new Environment("SIT1","saig.frd.global");
+                var e = new SwampyEnvironment("SIT1","saig.frd.global");
                                 
-                e.Endpoints.Add(new ConfigurationItem("anEndpoint", "abc", ConfigurationItemType.Simple, e));
+                e.ConfigurationItems.Add(new ConfigurationItem("anEndpoint", "abc", ConfigurationItemType.Simple, e));
 
                 e.AddServer("ssrdbserver","ausydhq-pstsq04");
 
@@ -31,7 +31,7 @@ namespace Swampy.UnitTest.Queries
 
             using (var tx = session.BeginTransaction())
             {
-                var environment = session.Load<Environment>(id);
+                var environment = session.Load<SwampyEnvironment>(id);
 
                 Assert.AreEqual("SIT1",environment.Name);
                 Assert.AreEqual("saig.frd.global", environment.Domain.Name);
@@ -49,9 +49,9 @@ namespace Swampy.UnitTest.Queries
 
             using (var tx = session.BeginTransaction())
             {
-                var e = new Environment("SIT1", "saig.frd.global");
+                var e = new SwampyEnvironment("SIT1", "saig.frd.global");
 
-                e.Endpoints.Add(new ConfigurationItem("anEndpoint", "abc", ConfigurationItemType.Simple, e));
+                e.ConfigurationItems.Add(new ConfigurationItem("anEndpoint", "abc", ConfigurationItemType.Simple, e));
 
                 e.AddServer("ssrdbserver", "ausydhq-pstsq04");
 
@@ -63,7 +63,7 @@ namespace Swampy.UnitTest.Queries
 
             using (var tx = session.BeginTransaction())
             {
-                var environment = session.Load<Environment>(id);
+                var environment = session.Load<SwampyEnvironment>(id);
 
                 Assert.AreEqual("SIT1", environment.Name);
                 Assert.AreEqual("saig.frd.global", environment.Domain.Name);

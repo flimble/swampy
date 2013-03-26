@@ -2,7 +2,6 @@
 using NHibernate;
 using NHibernate.Linq;
 using Swampy.Business.DomainModel.Entities;
-using Environment = Swampy.Business.DomainModel.Entities.Environment;
 
 namespace Swampy.Business.DomainModel.Queries
 {
@@ -15,9 +14,9 @@ namespace Swampy.Business.DomainModel.Queries
         {
             var result =
                 from e in
-                    session.Query<Environment>()
+                    session.Query<SwampyEnvironment>()
                            .Where(en => en.Name == EnvironmentName)
-                           .SelectMany(en => en.Endpoints, (ep, r) => r)
+                           .SelectMany(en => en.ConfigurationItems, (ep, r) => r)
                            .Where(endpoint => endpoint.Key == EndpointName)
                 select e;
 

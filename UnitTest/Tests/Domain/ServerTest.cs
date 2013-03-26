@@ -1,7 +1,7 @@
 ﻿using NUnit.Framework;
 using Swampy.Business.DomainModel.Entities;
 
-namespace Swampy.UnitTest.Domain
+namespace Swampy.UnitTest.Tests.Domain
 {
     [TestFixture]
     public class ServerTest
@@ -9,9 +9,9 @@ namespace Swampy.UnitTest.Domain
         [Test]
         public void FQDN_is_servername_and_domain()
         {
-            var underTest = new Server
+            var underTest = new SwampyServer
                 {
-                    Environment = new Environment("SIT1", "saig.frd.global"),
+                    SwampyEnvironment = new SwampyEnvironment("SIT1", "saig.frd.global"),
                     Key = "SSRDBServer",
                     Name = "ausydhq-pstsq04"
                 };

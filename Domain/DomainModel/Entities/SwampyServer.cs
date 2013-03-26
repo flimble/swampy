@@ -4,17 +4,17 @@ using Swampy.Business.DomainModel.ValueObjects;
 
 namespace Swampy.Business.DomainModel.Entities
 {
-    public class Server : AbstractEntity    
+    public class SwampyServer : AbstractEntity    
     {
      
 
-        public virtual Swampy.Business.DomainModel.Entities.Environment Environment { get; set; }
+        public virtual Swampy.Business.DomainModel.Entities.SwampyEnvironment SwampyEnvironment { get; set; }
 
         public virtual string Name { get; set; }
 
         public virtual string FullyQualifiedDomainName
         {
-            get { return string.Format("{0}.{1}", Name, Environment.Domain.Name); }
+            get { return string.Format("{0}.{1}", Name, SwampyEnvironment.Domain.Name); }
         }
 
         public virtual bool IsValid()

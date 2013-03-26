@@ -3,7 +3,7 @@ using System.Linq;
 using NHibernate;
 using NHibernate.Linq;
 using Swampy.Business.Contract;
-using Environment = Swampy.Business.DomainModel.Entities.Environment;
+using Swampy.Business.DomainModel.Entities;
 
 namespace Swampy.Business.DomainServices
 {
@@ -18,19 +18,19 @@ namespace Swampy.Business.DomainServices
 
         public KeyPair[] GetEndpoints(string environment, string[] keys, string callingApplication)
         {
-            var env = Session.Query<Environment>().SingleOrDefault(x => x.Name == environment);
-            var keypairs = env.Endpoints.Select(e => new KeyPair(e.Key, e.Value));
+            var env = Session.Query<SwampyEnvironment>().SingleOrDefault(x => x.Name == environment);
+            var keypairs = env.ConfigurationItems.Select(e => new KeyPair(e.Key, e.Value));
 
             return keypairs.ToArray();
         }
 
         public KeyPair GetSingleEndpoint(string environment, string key, string callingApplication)
         {
-            var singleOrDefault = Session.Query<Environment>().SingleOrDefault(x => x.Name == environment);
+            var singleOrDefault = Session.Query<SwampyEnvironment>().SingleOrDefault(x => x.Name == environment);
             if (singleOrDefault != null)
             {
                 var endpoint = singleOrDefault
-                                      .Endpoints.SingleOrDefault(x => x.Key == key);
+                                      .ConfigurationItems.SingleOrDefault(x => x.Key == key);
 
                 if (endpoint == null)
                 {

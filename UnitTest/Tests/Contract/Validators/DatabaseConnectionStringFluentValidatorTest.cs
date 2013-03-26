@@ -7,7 +7,7 @@ namespace Swampy.UnitTest.Tests.Contract.Validators
     [TestFixture]
     public class DatabaseConnectionStringFluentValidatorTest
     {
-        [Test]
+        [Test]   
         public void url_correctly_validates()
         {
 

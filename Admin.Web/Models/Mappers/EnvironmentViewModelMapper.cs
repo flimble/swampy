@@ -1,18 +1,17 @@
 ﻿using System.Linq;
 using Swampy.Admin.Web.Models.ReadModels;
 using Swampy.Business.DomainModel.Entities;
-using Environment = Swampy.Business.DomainModel.Entities.Environment;
 
 namespace Swampy.Admin.Web.Models.Mappers
 {
-    public class EnvironmentViewModelMapper : IViewModelMapper<Environment, EnvironmentReadModel>
+    public class EnvironmentViewModelMapper : IViewModelMapper<SwampyEnvironment, EnvironmentReadModel>
     {
 
-        public EnvironmentReadModel Map(Environment toMap)
+        public EnvironmentReadModel Map(SwampyEnvironment toMap)
         {
            return  new EnvironmentReadModel
             {
-                Endpoints = (from ep in toMap.Endpoints
+                Endpoints = (from ep in toMap.ConfigurationItems
                              select ToEndpointViewModel(ep)).OrderBy(x=>x.Type).ThenBy(x=>x.Key).ToList(),
                 environmentName = toMap.Name
             };

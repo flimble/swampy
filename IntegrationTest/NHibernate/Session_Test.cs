@@ -10,7 +10,7 @@ namespace Swampy.IntegrationTest.NHibernate
         [Test]
         public void insert_environment_test()
         {           
-                var e = new Environment("SIT1");
+                var e = new SwampyEnvironment("SIT1");
                 //e.Endpoints.Add(new DatabaseConnectionString { Key="adbconnectionstring", Value = "ABV" });
                 //e.Endpoints.Add(new WebpageUrl { Key="awebpageurl", Value = "def" });
 
@@ -28,7 +28,7 @@ namespace Swampy.IntegrationTest.NHibernate
         {
             
 
-            var sit1 = new Environment("SIT1");
+            var sit1 = new SwampyEnvironment("SIT1");
             //sit1.Endpoints.Add(new DatabaseConnectionString { Key = "adbconnectionstring", Value = "ABV" });
             //sit1.Endpoints.Add(new WebpageUrl { Key = "awebpageurl", Value = "def" });
             //Session.Store(sit1);
@@ -51,7 +51,7 @@ namespace Swampy.IntegrationTest.NHibernate
         public void query_test_nested()
         {
 
-            var sit1 = new Environment("SIT1","saig.frd.global");
+            var sit1 = new SwampyEnvironment("SIT1","saig.frd.global");
             //sit1.Endpoints.Add(new DatabaseConnectionString { Key = "adbconnectionstring", Value = "ABV" });
             //sit1.Endpoints.Add(new WebpageUrl { Key = "awebpageurl", Value = "def" });
             //Session.Store(sit1);
@@ -77,7 +77,7 @@ namespace Swampy.IntegrationTest.NHibernate
         public void update_existing_test()
         {
 
-            var sit1 = new Environment("SIT1","saig.frd.global");
+            var sit1 = new SwampyEnvironment("SIT1","saig.frd.global");
             //sit1.Endpoints.Add(new DatabaseConnectionString { Key = "adbconnectionstring", Value = "ABV" });
             //sit1.Endpoints.Add(new WebpageUrl { Key = "awebpageurl", Value = "def" });
             //Session.Store(sit1);

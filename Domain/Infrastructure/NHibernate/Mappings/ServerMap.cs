@@ -3,13 +3,13 @@ using Swampy.Business.DomainModel.Entities;
 
 namespace Swampy.Business.Infrastructure.NHibernate.Mappings
 {
-    public class ServerMap : ClassMap<Server>
+    public class ServerMap : ClassMap<SwampyServer>
     {
         public ServerMap()
         {
             Table("Server");
             Id(x => x.Id).Column("ServerId").GeneratedBy.Native();
-            References(x => x.Environment);
+            References(x => x.SwampyEnvironment);
             Map(x => x.Name);
             //References(x => x.Domain);
 

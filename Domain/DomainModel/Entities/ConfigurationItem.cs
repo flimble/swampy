@@ -10,18 +10,18 @@ namespace Swampy.Business.DomainModel.Entities
             
         }
 
-        public ConfigurationItem(string key, string value, ConfigurationItemType type, Swampy.Business.DomainModel.Entities.Environment environment)
+        public ConfigurationItem(string key, string value, ConfigurationItemType type, Swampy.Business.DomainModel.Entities.SwampyEnvironment environment)
             : this()
         {
             this.Key = key;
             this.Value = value;
             this.Type = type;
-            this.Environment = environment;
+            this.SwampyEnvironment = environment;
         }
 
     
 
-        public virtual Swampy.Business.DomainModel.Entities.Environment Environment { get; set; }
+        public virtual SwampyEnvironment SwampyEnvironment { get; set; }
 
         public virtual ConfigurationItemType Type { get; set; }
 

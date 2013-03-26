@@ -7,7 +7,6 @@ using NHibernate.Linq;
 using Swampy.Admin.Web.Models.OperationModels;
 using Swampy.Admin.Web.Models.OperationModels.Endpoint;
 using Swampy.Business.DomainModel.Entities;
-using Environment = Swampy.Business.DomainModel.Entities.Environment;
 
 namespace Swampy.Admin.Web.Controllers
 {
@@ -82,13 +81,13 @@ namespace Swampy.Admin.Web.Controllers
 
 
             var environment =
-                this.Session.Query<Environment>().Single(
+                this.Session.Query<SwampyEnvironment>().Single(
                     x => x.Name == newEndpoint.EnvironmentName);
 
 
             var toAdd = new ConfigurationItem(newEndpoint.Endpoint.Name, newEndpoint.Endpoint.Value,
                                               ConfigurationItemType.Simple, environment);
-                        environment.Endpoints.Add(toAdd);
+                        environment.ConfigurationItems.Add(toAdd);
 
             this.Session.SaveOrUpdate(environment);
 
@@ -117,11 +116,11 @@ namespace Swampy.Admin.Web.Controllers
 
         public ActionResult Edit(string environment, string key)
         {
-            var environmentObject = this.Session.Query<Environment>().Single(
+            var environmentObject = this.Session.Query<SwampyEnvironment>().Single(
                             x => x.Name == environment
                             );
 
-            var endpoint = environmentObject.Endpoints.Single(x => x.Key == key) as ConfigurationItem;
+            var endpoint = environmentObject.ConfigurationItems.Single(x => x.Key == key) as ConfigurationItem;
 
             return View("Edit", endpoint);
             

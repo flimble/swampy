@@ -15,7 +15,7 @@ namespace Swampy.UnitTest.Tests.Admin.MVC.Controllers
         public void index_returns_view_with_data_populated()
         {
             //arrange
-            var config = new Environment("TEST1");
+            var config = new SwampyEnvironment("TEST1");
             SetupData(session => session.Save(config));
 
             ViewResult result = null;

@@ -3,7 +3,7 @@ using System.Web.Mvc;
 using NHibernate.Linq;
 using Swampy.Admin.Web.Models;
 using Swampy.Admin.Web.Models.ReadModels;
-using Environment = Swampy.Business.DomainModel.Entities.Environment;
+using Swampy.Business.DomainModel.Entities;
 
 namespace Swampy.Admin.Web.Controllers
 {
@@ -16,7 +16,7 @@ namespace Swampy.Admin.Web.Controllers
         {
             ViewBag.Message = "Welcome to ASP.NET MVC!";
 
-            var names = from e in Session.Query<Environment>()
+            var names = from e in Session.Query<SwampyEnvironment>()
                                           .OrderBy(x => x.Name)
                          select e.Name;                     
                        

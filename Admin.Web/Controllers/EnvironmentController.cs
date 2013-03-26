@@ -4,7 +4,6 @@ using NHibernate.Linq;
 using Swampy.Admin.Web.Models.Mappers;
 using Swampy.Business.DomainModel.Entities;
 using CreateEnvironmentOperationModel = Swampy.Admin.Web.Models.OperationModels.Environment.CreateEnvironmentOperationModel;
-using Environment = Swampy.Business.DomainModel.Entities.Environment;
 using System;
 
 
@@ -40,7 +39,7 @@ namespace Swampy.Admin.Web.Controllers
         {
 
 
-            var environments = this.Session.Query<Environment>();
+            var environments = this.Session.Query<SwampyEnvironment>();
 
             var currentEnvironment = environments.Single(x => x.Name == environmentName);
             var allEnvironments = from e in environments select e.Name;
@@ -62,7 +61,7 @@ namespace Swampy.Admin.Web.Controllers
           
               if(!string.IsNullOrWhiteSpace(operation.environmentName))
               {
-                  var environment = new Environment(operation.environmentName);
+                  var environment = new SwampyEnvironment(operation.environmentName);
 
 
               }
