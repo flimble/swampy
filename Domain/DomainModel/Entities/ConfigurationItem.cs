@@ -13,7 +13,7 @@ namespace Swampy.Business.DomainModel.Entities
             
         }
 
-        public ConfigurationItem(string key, string value, ConfigurationItemType type, Swampy.Business.DomainModel.Entities.SwampyEnvironment environment)
+        public ConfigurationItem(string key, string value, ConfigurationItemType type, SwampyEnvironment environment)
             : this()
         {
             this.Key = key;

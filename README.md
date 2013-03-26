@@ -1,18 +1,32 @@
 **Swampy**
 ----------
 
-Configuration management simplified
+Swampy is an Environment Configuration service used to provide a centralised source of truth for all Environment Endpoints. 
 
-**Title**
-
-asdfa
-
-**Credits**
-Ipsum Lorem et Dolor
+Examples of these are: 
 
 
-** **
+** Getting Started ** 
+
+You'll need Visual Studio 2012, .NET 4.5 and Powershell 2.0 installed. 
+To run your first build, just double-click build.bat
+
+** Developers **
+
+John Fattal
 
 
+** Why Swampy? **
 
+Named after British environ"mental"ist Daniel Hooper a.k.a Swampy.
+Famous for protesting against the Manchester airport runway, hiding in trees and being an all round douchebag.
+
+
+** Documentation **
+
+To read WireFrame document swampy.wireframes.ep please download pencil tool from here
+http://pencil.evolus.vn/
+
+To read MindMap document swampy.mindmap.mm please download FreeMind tool from here
+http://freemind.sourceforge.net/wiki/index.php/Download#Download
 
