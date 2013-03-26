@@ -99,8 +99,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DomainModel\Entities\ConfigurationItemType.cs" />
-    <Compile Include="Contract\Validators\DatabaseConnectionStringValidator.cs" />
-    <Compile Include="Contract\Validators\UrlValidator.cs" />
+    <Compile Include="Contract\Validators\DatabaseConnectionStringFluentValidator.cs" />
+    <Compile Include="Contract\Validators\FluentUrlValidator.cs" />
     <Compile Include="DomainModel\Queries\asdfQuery.cs" />
     <Compile Include="DomainModel\Queries\IQuery.cs" />
     <Compile Include="DomainModel\ValueObjects\ValueObjectBase.cs" />

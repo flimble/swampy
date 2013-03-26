@@ -1,19 +1,20 @@
 ﻿using NUnit.Framework;
 using Swampy.Business.Contract.Validators;
 using Swampy.Business.DomainModel.Entities;
+using Swampy.UnitTest.Helpers;
 
 namespace Swampy.UnitTest.Service.Endpoint
 {
     [TestFixture]
-    public class WebpageUrl_Test
+    public class UrlValidatorTest
     {
         [Test]
         public void url_correctly_validates()
         {
 
-            var underTest = new TestValidator<MockUrl>()
+            var underTest = new TestFluentValidator<MockUrl>()
                 {
-                    v => v.RuleFor(x => x.Url).SetValidator(new UrlValidator())
+                    v => v.RuleFor(x => x.Url).SetValidator(new UrlFluentValidator())
                 };
 
 
@@ -27,7 +28,7 @@ namespace Swampy.UnitTest.Service.Endpoint
         }
 
 
-        public class MockUrl
+        class MockUrl
         {
             public string Url { get; set; }
         }

@@ -3,9 +3,9 @@ using FluentValidation.Validators;
 
 namespace Swampy.Business.Contract.Validators
 {
-    public class UrlValidator : PropertyValidator
+    public class UrlFluentValidator : PropertyValidator
     {
-        public UrlValidator() : base("Property {PropertyName} must be a valid ")
+        public UrlFluentValidator() : base("Property {PropertyName} must be a valid ")
         {
             
         }

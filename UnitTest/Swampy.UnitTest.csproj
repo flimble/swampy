@@ -91,6 +91,7 @@
   <ItemGroup>
     <Compile Include="Helpers\AbstractControllerTest.cs" />
     <Compile Include="Tests\Admin.MVC\Controllers\EnvironmentControllerTest.cs" />
+    <Compile Include="Tests\Contract\Validators\DatabaseConnectionStringFluentValidatorTest.cs" />
     <Compile Include="Tests\Domain\ConfigurationItemTest.cs" />
     <Compile Include="Tests\Domain\LevenshteinTest.cs" />
     <Compile Include="Tests\Domain\ServerTest.cs" />
@@ -98,8 +99,8 @@
     <Compile Include="Tests\Domain\ValueObjectTest.cs" />
     <Compile Include="Tests\Queries\FirstHibernateTest.cs" />
     <Compile Include="Helpers\AbstractInMemoryDatabaseTest.cs" />
-    <Compile Include="Tests\Service\Endpoint\TestValidator.cs" />
-    <Compile Include="Tests\Service\Endpoint\WebpageUrl_Test.cs" />
+    <Compile Include="Helpers\TestFluentValidator.cs" />
+    <Compile Include="Tests\Contract\Validators\UrlValidatorTest.cs" />
     <Compile Include="Tests\Service\Fakes\FakeEndpointService.cs" />
     <Compile Include="Tests\Shared\Infrastructure\LoggingInterceptor_Test.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -126,7 +127,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Tests\Service\Endpoint\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\nuget.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

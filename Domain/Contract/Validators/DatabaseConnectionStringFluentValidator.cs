@@ -4,9 +4,9 @@ using FluentValidation.Validators;
 
 namespace Swampy.Business.Contract.Validators
 {
-    public class DatabaseConnectionStringValidator : PropertyValidator
+    public class DatabaseConnectionStringFluentValidator : PropertyValidator
     {
-        public DatabaseConnectionStringValidator() 
+        public DatabaseConnectionStringFluentValidator() 
 		: base("Property {PropertyName} must be a valida database connection string") {
 		
 	}
