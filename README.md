@@ -19,7 +19,7 @@ John Fattal
 ** Why Swampy? **
 
 Named after British environ"mental"ist Daniel Hooper a.k.a Swampy.
-Famous for protesting against the Manchester airport runway, hiding in trees and being an all round douchebag.
+Famous for protesting against the Manchester airport runway, hiding in trees and trees and making life difficult for everyone. What a knob.
 
 
 ** Documentation **
