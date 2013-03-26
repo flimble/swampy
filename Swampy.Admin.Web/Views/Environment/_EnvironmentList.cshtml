@@ -1,0 +1,23 @@
+﻿@using Swampy.Admin.Web.Models
+@model Swampy.Admin.Web.Models.ReadModels.EnvironmentReadModel
+<ul class="nav nav-tabs">
+    
+    @foreach (string environment in Model.allEnvironments)
+    {
+        <li>
+            <a href="/Environment?environmentName=@environment" data-toggle="tab" 
+                @if(environment == Model.environmentName)
+                {
+                    @: class="tab-pane active"
+                }
+                else
+                {
+                    @: class="tab-pane"
+                }
+                />
+            
+                                                                                                      
+                                                                                                      
+        </li>
+    }
+</ul>

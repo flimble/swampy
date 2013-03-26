@@ -1,0 +1,80 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Project DefaultTargets="DBDeploy" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <!-- Visit http://roundhouse.googlecode.com/ for details -->
+  
+  <UsingTask AssemblyFile="roundhouse.tasks.dll" TaskName="roundhouse.tasks.Roundhouse" />
+  <!-- Use DBConnectionString to use the SQL Server buildservice account -->
+  <PropertyGroup>
+    <Environment></Environment>
+    <DBServer></DBServer>
+    <DBName></DBName>
+    <DBConnectionString></DBConnectionString>
+    <DBSqlFilesPath></DBSqlFilesPath>
+    <RepositoryPath>$/SAIGPS Team Project/</RepositoryPath>
+    <VersionFile>_BuildInfo.xml</VersionFile>
+    <VersionFileXPath>//buildInfo/version</VersionFileXPath>
+    <DBRestore></DBRestore>
+    <DBRestorePath></DBRestorePath>
+    <DBRestoreOptions></DBRestoreOptions>
+    <DBCreateDatabaseCustomScript></DBCreateDatabaseCustomScript>
+    <DBDrop>false</DBDrop>
+    <IsSilent></IsSilent>
+    <LogOutputPath>C:\RoundhousE_runs</LogOutputPath>
+  </PropertyGroup>
+
+
+  <Target Name="ApplyDatabaseChanges">
+    <Message Text="Running RoundhousE on $(DBServer) ($(DBName)) for environment $(Environment). Looking in $(DBSqlFilesPath) for sql scripts." />
+    <Roundhouse
+	ConnectionString="$(DBConnectionString)"
+        ServerName="$(DBServer)"
+        DatabaseName="$(DBName)"        
+        SqlFilesDirectory="$(DBSqlFilesPath)"
+        CommandTimeout="9000"
+        CommandTimeoutAdmin="9000"
+        RepositoryPath="$(RepositoryPath)"
+        VersionFile="$(VersionFile)"
+        VersionXPath="$(VersionFileXPath)"
+        AlterDatabaseFolderName="alterDatabase"
+        UpFolderName="2.Update (UPDATE EXISTING OR CREATE NEW)"
+        DownFolderName="down"
+        RunFirstAfterUpFolderName="3.RunFirstAfterUpdate"
+        FunctionsFolderName="4.Functions (CREATE ONLY)"
+        ViewsFolderName="5.Views (CREATE ONLY)"
+        SprocsFolderName="6.Stored Procedures (CREATE ONLY)"
+        IndexesFolderName="7.Indexes (CREATE ONLY)"
+        PermissionsFolderName="8.Permissions"
+        RunAfterOtherAnyTimeScriptsFolderName="9.RunAfterOtherAnytimeScripts"
+        SchemaName="RoundhousE"
+        VersionTableName="Version"
+        ScriptsRunTableName="ScriptsRun"
+        ScriptsRunErrorsTableName="ScriptsRunErrors"
+        EnvironmentName="$(Environment)"
+        Restore="$(DBRestore)"
+        RestoreFromPath="$(DBRestorePath)"
+        RestoreCustomOptions="$(DBRestoreOptions)"
+        RestoreTimeout="9000"
+        CreateDatabaseCustomScript="$(DBCreateDatabaseCustomScript)"
+        Drop="$(DBDrop)"
+        DoNotCreateDatabase="false"
+        OutputPath="$(LogOutputPath)"
+        WarnOnOneTimeScriptChanges="true"
+        Silent="$(IsSilent)"
+        DatabaseType="roundhouse.databases.sqlserver.SqlServerDatabase, roundhouse"
+        WithTransaction="false"
+        RecoveryModeSimple="true"
+        RunAllAnyTimeScripts="true"
+        DisableTokenReplacement="false"
+        />
+        
+    <Message Text="Roundhouse Complete See Logs at $(LogOutputPath)" />
+  </Target>
+
+  <Target Name = "DBDeploy"
+		  DependsOnTargets="
+        ApplyDatabaseChanges;
+      "
+     >
+  </Target>
+
+</Project>
