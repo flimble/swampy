@@ -18,7 +18,6 @@ namespace Swampy.UnitTest
     public class SchemaUpdateGenerator
     {
         private Configuration Configuration;
-        private ISessionFactory SessionFactory;
 
 
 
@@ -40,14 +39,30 @@ namespace Swampy.UnitTest
                    .ExposeConfiguration(cfg => Configuration = cfg)
                    .BuildSessionFactory();
 
-            //var session = SessionFactory.OpenSession();
-
             var executingDir = new Uri(Directory.GetCurrentDirectory());
             var rootDir = new Uri(executingDir, @"../../");
             var dbScriptsDir = Path.Combine(rootDir.LocalPath,
                                             @"Swampy.Database\2.Tables and Data (MODIFICATIONS WILL REQUIRE DATABASE REFRESH)");
 
-            var newScript = Path.Combine(dbScriptsDir, "0010.update.sql");
+            var files = from file in Directory.GetFiles(dbScriptsDir)
+                                  orderby file descending
+                                  select file;
+
+            
+            int seed = 0;
+            if (files.Any())
+            {
+                string latestFile = Path.GetFileName(files.First());
+                int number = int.Parse(latestFile.Substring(0, 4));
+
+                seed = number/10;
+
+
+            }
+            int newScriptNo = (++seed) * 10;
+            string fileName = string.Format("{0}.update.sql", newScriptNo.ToString("0000"));
+
+            var newScript = Path.Combine(dbScriptsDir, fileName);
 
 
 

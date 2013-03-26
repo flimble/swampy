@@ -104,9 +104,8 @@
     <Compile Include="DomainModel\Queries\asdfQuery.cs" />
     <Compile Include="DomainModel\Queries\IQuery.cs" />
     <Compile Include="DomainModel\ValueObjects\ValueObjectBase.cs" />
-    <Compile Include="Infrastructure\NHibernate\FullIdNameConvention.cs" />
-    <Compile Include="Infrastructure\NHibernate\ManyToOneForeignKeyConvention.cs" />
-    <Compile Include="Infrastructure\NHibernate\Mappings\ServerMap.cs" />
+    <Compile Include="Infrastructure\NHibernate\Conventions\FullIdNameConvention.cs" />
+    <Compile Include="Infrastructure\NHibernate\Conventions\ManyToOneForeignKeyConvention.cs" />
     <Compile Include="DomainModel\ValueObjects\Domain.cs" />
     <Compile Include="Contract\Validators\IValidate.cs" />
     <Compile Include="DomainModel\Entities\ConfigurationItem.cs" />
@@ -129,11 +128,12 @@
     <Compile Include="Infrastructure\Logging\LogFactory.cs" />
     <Compile Include="Infrastructure\Logging\LoggingDecorator.cs" />
     <Compile Include="Infrastructure\Logging\LoggingInterceptor.cs" />
+    <Compile Include="Infrastructure\Abstractions\SystemTime.cs" />
     <Compile Include="Infrastructure\NHibernate\Mappings\ConfigurationItemMap.cs" />
     <Compile Include="Infrastructure\NHibernate\Mappings\EnvironmentMap.cs" />
-    <Compile Include="Infrastructure\Abstractions\SystemTime.cs" />
+    <Compile Include="Infrastructure\NHibernate\Mappings\ServerMap.cs" />
     <Compile Include="Infrastructure\NHibernate\NHibernateConfigurationFactory.cs" />
-    <Compile Include="Infrastructure\NHibernate\OneToManyForeignKeyConvention.cs" />
+    <Compile Include="Infrastructure\NHibernate\Conventions\OneToManyForeignKeyConvention.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="DomainServices\SwampyEndpointService.cs" />
     <Compile Include="DomainModel\Queries\EndpointQuery.cs" />

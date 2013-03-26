@@ -7,8 +7,7 @@ namespace Swampy.Business.Infrastructure.NHibernate.Mappings
     {
         public ServerMap()
         {
-            Table("Server");
-            Id(x => x.Id).Column("ServerId").GeneratedBy.Native();
+            Id(x => x.Id);
             References(x => x.SwampyEnvironment);
             Map(x => x.Name);
             //References(x => x.Domain);

@@ -25,7 +25,7 @@ namespace Swampy.Business.Infrastructure.NHibernate
                                                        mappings.AddAssembly(typeof(EnvironmentMap).Assembly);
                                                        mappings.Conventions.Add(new ManyToOneForeignKeyConvention());
                                                        mappings.Conventions.Add(new OneToManyForeignKeyConvention());
-                                                       mappings.Conventions.Add(new );
+                                                       mappings.Conventions.Add(new FullIdNameConvention());
                                                    }));
         }
 

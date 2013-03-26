@@ -8,13 +8,12 @@ namespace Swampy.Business.Infrastructure.NHibernate.Mappings
     {
         public ConfigurationItemMap()
         {
-            Table("ConfigurationItem");
-            Id(x => x.Id).Column("ConfigurationItemId").GeneratedBy.Native();
-            References(x => x.SwampyEnvironment).Column("EnvironmentId").Cascade.All();
-            Map(x => x.Key).Column("Name");
-            Map(x => x.Value).Column("Value");
-            Map(x => x.Type).Column("Type");
-            Map(x => x.StoreAsToken).Column("StoreAsToken");
+            Id(x => x.Id);
+            References(x => x.SwampyEnvironment).Cascade.All();
+            Map(x => x.Key);
+            Map(x => x.Value);
+            Map(x => x.Type);
+            Map(x => x.StoreAsToken);
         }
     }
 

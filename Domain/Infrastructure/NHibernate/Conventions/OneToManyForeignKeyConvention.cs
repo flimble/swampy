@@ -11,6 +11,8 @@ namespace Swampy.Business.Infrastructure.NHibernate
                                                   instance.Relationship.Class.Name,
                                                   instance.EntityType.Name));
 
+            instance.Key.Column(string.Format("{0}Id", instance.Relationship.Class.Name));
+
         }
     }
 }

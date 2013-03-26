@@ -10,6 +10,10 @@ namespace Swampy.Business.Infrastructure.NHibernate
             instance.ForeignKey(string.Format("FK_{0}_{1}",
                                               instance.EntityType.Name,
                                               instance.Name));
+
+            instance.Column(string.Format("{0}Id", instance.EntityType.Name));
+
+
         }
     }
 }

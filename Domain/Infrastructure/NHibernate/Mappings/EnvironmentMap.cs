@@ -7,10 +7,9 @@ namespace Swampy.Business.Infrastructure.NHibernate.Mappings
     {
         public EnvironmentMap()
         {
-            Table("Environment");
-            Id(x => x.Id).Column("EnvironmentId").GeneratedBy.Native();
-            Map(x => x.Name).Column("Name").Unique();
-            References(x => x.Domain).Cascade.All();
+            Id(x => x.Id);
+            Map(x => x.Name).Unique();
+            Map(x => x.Domain);
             HasMany(x => x.ConfigurationItems).Cascade.All();
             HasMany(x => x.Servers).Cascade.All();
         }
