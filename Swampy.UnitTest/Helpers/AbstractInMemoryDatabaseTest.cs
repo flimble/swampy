@@ -6,64 +6,44 @@ using NHibernate.Cfg;
 using NHibernate.Tool.hbm2ddl;
 using NUnit.Framework;
 using Swampy.Business.Infrastructure.NHibernate;
+using Swampy.UnitTest.Helpers;
 
 namespace Swampy.UnitTest.Queries
 {
-    public class AbstractInMemoryDatabaseTest : IDisposable
+    public class AbstractInMemoryDatabaseTest 
     {
-        private readonly bool _cleanBetweenTests;
-        private static Configuration Configuration;
-        public static ISessionFactory SessionFactory;
-        protected ISession session;
+        private NHibernateInMemoryDatabase _inMemoryDatabase;        
+        private readonly bool _clearDataAfterEveryTest;
+
+        public ISession session { get { return _inMemoryDatabase.Session; } }
 
         public AbstractInMemoryDatabaseTest() : this(true) { }
 
-        public AbstractInMemoryDatabaseTest(bool cleanBetweenTests)
+        public AbstractInMemoryDatabaseTest(bool clearDataAfterEveryTest)
         {
-            _cleanBetweenTests = cleanBetweenTests;
-            if (Configuration == null)
-            {
-                var sqLiteConfiguration = SQLiteConfiguration
-                    .Standard
-                    .InMemory()
-                    .ShowSql();
+            _inMemoryDatabase = new NHibernateInMemoryDatabase();
+            _clearDataAfterEveryTest = clearDataAfterEveryTest;
+            
 
-                SessionFactory = NHibernateConfigurationFactory.Configuration(sqLiteConfiguration)
-                    .ExposeConfiguration(cfg => Configuration = cfg)
-                    .ExposeConfiguration(x => x.SetProperty(NHibernate.Cfg.Environment.ReleaseConnections, "on_close"))
-                    .BuildSessionFactory();
+            if (!_clearDataAfterEveryTest)
+                _inMemoryDatabase.BuildSchema();
 
-
-            }
-
-            if(!_cleanBetweenTests)
-                CreateNewSession();
+            
         }
 
-        private void CreateNewSession()
-        {
-            session = SessionFactory.OpenSession();
-
-            new SchemaExport(Configuration).Execute(true, true, false, session.Connection, Console.Out);
-        }
-
-        public void Dispose()
-        {
-            session.Dispose();
-        }
 
         [SetUp]
         public void SetUp()
         {
-            if (_cleanBetweenTests)
-                CreateNewSession();
+            if (_clearDataAfterEveryTest)
+                _inMemoryDatabase.BuildSchema();
         }
 
         [TearDown]
         public void TearDown()
         {
-            if (_cleanBetweenTests)
-                Dispose();
+            if (_clearDataAfterEveryTest)
+                _inMemoryDatabase.Dispose();
         }
     }
 }
