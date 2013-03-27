@@ -4,7 +4,7 @@ using Swampy.Business.DomainModel.Entities;
 namespace Swampy.UnitTest.Queries
 {
     [TestFixture]
-    public class FirstHibernateTest : AbstractInMemoryDatabaseTest
+    public class FirstHibernateTest : AbstractNHibernateDatabaseTest
     {
 
         public FirstHibernateTest() : base(true) {}

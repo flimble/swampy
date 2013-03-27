@@ -20,7 +20,7 @@ using Swampy.UnitTest.Queries;
 namespace Swampy.UnitTest.Admin.MVC.Controllers
 {
 
-    public class AbstractControllerTest : AbstractInMemoryDatabaseTest
+    public class AbstractControllerTest : AbstractNHibernateDatabaseTest
     {
       
         protected ControllerContext ControllerContext { get; set; }

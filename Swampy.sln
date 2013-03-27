@@ -9,13 +9,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{2F2AEC
 		.nuget\packages.config = .nuget\packages.config
 	EndProjectSection
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "build", "build", "{DC16B65E-5E82-4246-9854-680932B5250D}"
-	ProjectSection(SolutionItems) = preProject
-		gemfile = gemfile
-		rakefile = rakefile
-		README.md = README.md
-	EndProjectSection
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Swampy.Admin.Web", "Swampy.Admin.Web\Swampy.Admin.Web.csproj", "{D974CE1C-EDFA-4F23-BE27-8998EDE3AA35}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Swampy.Business", "Swampy.Business\Swampy.Business.csproj", "{BEA1C3E4-9222-400E-8E7B-B0E98A715B11}"

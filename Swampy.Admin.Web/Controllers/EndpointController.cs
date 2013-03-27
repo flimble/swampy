@@ -12,7 +12,7 @@ namespace Swampy.Admin.Web.Controllers
 {
     public class EndpointController : AbstractController
     {
-     
+
 
         protected IDictionary<string, Type> GetEndpointTypes()
         {
@@ -52,7 +52,7 @@ namespace Swampy.Admin.Web.Controllers
         }*/
 
         [HttpGet]
-        public ActionResult Create(string environmentName)
+        public ActionResult Edit(string environmentName)
         {
             var model = new CreateEndpoint
                 {
@@ -60,23 +60,22 @@ namespace Swampy.Admin.Web.Controllers
                     Endpoint = new CreateSimpleEndpoint()
                 };
 
-            
+            model.EndpointTypes = GetEndpointTypes();
 
-            model.EndpointTypes = GetEndpointTypes();            
 
             return View(model);
         }
 
 
         [HttpPost]
-        public ActionResult Create(CreateEndpoint newEndpoint)
+        public ActionResult Edit(CreateEndpoint newEndpoint)
         {
             ModelState.AddModelError("Description", "Cannot be empty");
 
             if (!ModelState.IsValid)
             {
-                var model = RebuildModel(newEndpoint);
-                return View("Create", model);
+                //var model = RebuildModel(newEndpoint);
+                return View(newEndpoint);
             }
 
 
@@ -87,7 +86,7 @@ namespace Swampy.Admin.Web.Controllers
 
             var toAdd = new ConfigurationItem(newEndpoint.Endpoint.Name, newEndpoint.Endpoint.Value,
                                               ConfigurationItemType.Simple, environment);
-                        environment.ConfigurationItems.Add(toAdd);
+            environment.ConfigurationItems.Add(toAdd);
 
             this.Session.SaveOrUpdate(environment);
 
@@ -110,7 +109,7 @@ namespace Swampy.Admin.Web.Controllers
                 );
 
             return RedirectToAction("Index", "Home");
-            
+
 
         }
 
@@ -123,7 +122,7 @@ namespace Swampy.Admin.Web.Controllers
             var endpoint = environmentObject.ConfigurationItems.Single(x => x.Name == key) as ConfigurationItem;
 
             return View("Edit", endpoint);
-            
+
         }
     }
 }

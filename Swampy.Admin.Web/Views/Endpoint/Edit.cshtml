@@ -1,5 +1,4 @@
-﻿@using Swampy.Domain.Entities.Endpoint
-@model Swampy.Business.DomainModel.Entities.ConfigurationItem
+﻿@model Swampy.Admin.Web.Models.OperationModels.Endpoint.CreateEndpoint
 
 @{
     ViewBag.Title = "Create";
@@ -8,7 +7,7 @@
 
 
 @Html.ValidationSummary(false)
-@using (Html.BeginForm("Save", "Endpoint"))
+@using (Html.BeginForm("Edit", "Endpoint"))
 {
     
     <fieldset>
@@ -19,11 +18,11 @@
         <div class="control-group">
 
 
-            @Html.LabelFor(model => model.TypeName)
+            @Html.LabelFor(model => model.SelectedType)
 
             <div class="controls">
-                @Html.EditorFor(model => model.TypeName)
-                @Html.ValidationMessageFor(model => model.TypeName)
+                @Html.EditorFor(model => model.SelectedType)
+                @Html.ValidationMessageFor(model => model.SelectedType)
 
             </div>
         </div>

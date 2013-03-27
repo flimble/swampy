@@ -90,7 +90,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Helpers\AbstractControllerTest.cs" />
+    <Compile Include="Helpers\INHibernateDatabase.cs" />
     <Compile Include="Helpers\NHibernateInMemoryDatabase.cs" />
+    <Compile Include="Helpers\NHibernateSchemaUpdateDatabase.cs" />
     <Compile Include="RoundhouseSchemUpdateScriptGenerator.cs" />
     <Compile Include="Tests\Admin.MVC\Controllers\EnvironmentControllerTest.cs" />
     <Compile Include="Tests\Contract\Validators\DatabaseConnectionStringFluentValidatorTest.cs" />
@@ -100,7 +102,7 @@
     <Compile Include="Tests\Domain\TokenBuilderTest.cs" />
     <Compile Include="Tests\Domain\ValueObjectTest.cs" />
     <Compile Include="Tests\Queries\FirstHibernateTest.cs" />
-    <Compile Include="Helpers\AbstractInMemoryDatabaseTest.cs" />
+    <Compile Include="Helpers\AbstractNHibernateDatabaseTest.cs" />
     <Compile Include="Helpers\TestFluentValidator.cs" />
     <Compile Include="Tests\Contract\Validators\UrlValidatorTest.cs" />
     <Compile Include="Tests\Service\Fakes\FakeEndpointService.cs" />
@@ -130,6 +132,7 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Helpers\Databases\" />
     <Folder Include="Tests\Service\Endpoint\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

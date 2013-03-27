@@ -1,0 +1,11 @@
+﻿@model Swampy.Admin.Web.Controllers.TestViewModel
+
+@{
+    ViewBag.Title = "Test";
+    Layout = "~/Views/Shared/_LayoutFluid.cshtml";
+}
+
+<h2>Test</h2>
+@Html.DropDownListFor(x => x.SelectedValue, Model.PossibleValues);
+
+
