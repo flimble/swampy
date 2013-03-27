@@ -7,7 +7,9 @@ Examples of these are:
 
 
 # Getting Started 
-Double-click build.bat in project root to run first compile/test.
+* To build and unit test code: run build.bat in project root to run first compile/test.
+* To generate a local database: run databasebuild.bat
+* To build and run integration tests: run integrationtest.bat
 
 # Requirements
 * .NET Framework 4.5
@@ -17,7 +19,6 @@ Double-click build.bat in project root to run first compile/test.
 * Access to SAIG internal nuget server ausydhc-pspap12 to access internal build dependencies
 
 # Developers 
-
 John Fattal
 
 

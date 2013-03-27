@@ -28,14 +28,6 @@ namespace Swampy.UnitTest.Queries
                     .InMemory()
                     .ShowSql();
 
-                /*var sqlServerConfiguration = MsSqlConfiguration.MsSql2008
-                                                               .ConnectionString(
-                                                                   x =>
-                                                                   x.Server("(local)")
-                                                                    .TrustedConnection()
-                                                                    .Database("Swampy"))
-                                                               .ShowSql();
-                */
                 SessionFactory = NHibernateConfigurationFactory.Configuration(sqLiteConfiguration)
                     .ExposeConfiguration(cfg => Configuration = cfg)
                     .ExposeConfiguration(x => x.SetProperty(NHibernate.Cfg.Environment.ReleaseConnections, "on_close"))
