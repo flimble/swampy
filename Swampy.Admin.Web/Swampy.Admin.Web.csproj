@@ -169,7 +169,7 @@
     <Compile Include="Models\OperationModels\Endpoint\ConfigurationItem.cs" />
     <Compile Include="Models\OperationModels\Environment\CreateEnvironmentOperationModel.cs" />
     <Compile Include="Models\Operation\CreateEndpointOperationModel.cs" />
-    <Compile Include="Models\Operation\CreateEnvironmentOperationModel.cs" />
+    <Compile Include="Models\Operation\EnvironmentInput.cs" />
     <Compile Include="Models\ReadModels\EnvironmentReadModel.cs" />
     <Compile Include="Models\ReadModels\HomeReadModel.cs" />
     <Compile Include="Models\View\EnvironmentViewModel.cs" />
@@ -267,7 +267,7 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
-    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Environment\Index.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Web.config" />
     <Content Include="Content\styles\bootstrap\accordion.less" />
@@ -314,7 +314,7 @@
     <None Include="readme.txt" />
     <Content Include="Views\Endpoint\Create.cshtml" />
     <Content Include="Views\Endpoint\CreateSimpleEndpoint.cshtml" />
-    <Content Include="Views\Environment\Index.cshtml" />
+    <Content Include="Views\Environment\Detail.cshtml" />
     <Content Include="Views\Environment\_EnvironmentList.cshtml" />
     <Content Include="Views\Shared\_Footer.cshtml" />
     <Content Include="Views\Shared\_LayoutFluid.cshtml" />
@@ -326,6 +326,7 @@
     <Content Include="Views\Endpoint\Edit.cshtml" />
     <Content Include="Views\Account\Index.cshtml" />
     <Content Include="Views\Home\Test.cshtml" />
+    <Content Include="Views\Environment\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

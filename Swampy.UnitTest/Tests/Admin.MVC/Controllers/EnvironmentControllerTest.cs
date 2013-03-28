@@ -12,7 +12,7 @@ namespace Swampy.UnitTest.Tests.Admin.MVC.Controllers
     public class EnvironmentControllerTest : AbstractControllerTest
     {
         [Test]
-        public void index_returns_view_with_data_populated()
+        public void detail_returns_view_with_data_populated()
         {
             //arrange
             var config = new SwampyEnvironment("TEST1", "domain.com");
@@ -21,7 +21,7 @@ namespace Swampy.UnitTest.Tests.Admin.MVC.Controllers
             ViewResult result = null;
             
             //act
-            ExecuteAction<EnvironmentController>(controller => result = controller.Index("TEST1") as ViewResult);
+            ExecuteAction<EnvironmentController>(controller => result = controller.Detail("TEST1") as ViewResult);
 
             //assert
             var data = result.Model as EnvironmentReadModel;

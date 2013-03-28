@@ -16,21 +16,7 @@ namespace Swampy.Admin.Web.Controllers
         [HttpGet]
         public ActionResult Index()
         {
-            ViewBag.Message = "Welcome to ASP.NET MVC!";
-
-            var names = from e in Session.Query<SwampyEnvironment>()
-                                         .OrderBy(x => x.Name)
-                        select e.Name;
-
-
-
-            var model = new HomeReadModel
-                {
-                    EnvironmentNames = names.ToList()
-                };
-
-            return View(model);
-
+            return RedirectToAction("Index", "Environment");
         }
 
         [HttpGet]
@@ -40,33 +26,8 @@ namespace Swampy.Admin.Web.Controllers
         }
 
 
-        public ActionResult Test(int i)
-        {
-            return RedirectToAction("Test", new TestViewModel());
-        }
-
-        public ActionResult Test(TestViewModel model)
-        {
-            if (!ModelState.IsValid)
-            {
-                return View(model);
-            }
-
-            return RedirectToAction("Index");
-
-        }
+       
     }
-
-    public class TestViewModel
-    {
-        public SelectListItem SelectedValue { get; set; }
-
-        public SelectList PossibleValues { get; set; }
-
-        [Required]
-        public string WillFail { get; set; }
-    }
-
 
 }
 

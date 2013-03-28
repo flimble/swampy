@@ -1,0 +1,15 @@
+﻿@model Swampy.Admin.Web.Models.Operation.EnvironmentInput
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_LayoutFluid.cshtml";    
+}
+
+<h2>title</h2>
+@using (Html.BeginForm("Edit", "Environment", FormMethod.Post))  {
+
+    @Html.EditorForModel();
+    
+    <input type="submit" value="Save" />
+}
+
+
