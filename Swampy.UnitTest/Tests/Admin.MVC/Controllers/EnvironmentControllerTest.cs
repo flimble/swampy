@@ -1,6 +1,7 @@
 ﻿using System.Web.Mvc;
 using NUnit.Framework;
 using Swampy.Admin.Web.Controllers;
+using Swampy.Admin.Web.Models.Operation;
 using Swampy.Admin.Web.Models.ReadModels;
 using Swampy.Business.DomainModel.Entities;
 using Swampy.Business.Infrastructure.Abstractions;
@@ -24,9 +25,9 @@ namespace Swampy.UnitTest.Tests.Admin.MVC.Controllers
             ExecuteAction<EnvironmentController>(controller => result = controller.Detail("TEST1") as ViewResult);
 
             //assert
-            var data = result.Model as EnvironmentReadModel;
+            var data = (EnvironmentOutput)result.Model;
             Assert.IsNotNull(data);
-            Assert.AreEqual("TEST1", data.environmentName);
+            Assert.AreEqual("TEST1", data.Name);
         }
     }
 }
