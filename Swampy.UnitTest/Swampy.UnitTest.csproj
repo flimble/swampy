@@ -93,6 +93,7 @@
     <Compile Include="Helpers\INHibernateDatabase.cs" />
     <Compile Include="Helpers\NHibernateInMemoryDatabase.cs" />
     <Compile Include="Helpers\NHibernateSchemaUpdateDatabase.cs" />
+    <Compile Include="Helpers\RouteTestingExtensions.cs" />
     <Compile Include="RoundhouseSchemUpdateScriptGenerator.cs" />
     <Compile Include="Tests\Admin.MVC\Controllers\EnvironmentControllerTest.cs" />
     <Compile Include="Tests\Contract\Validators\DatabaseConnectionStringFluentValidatorTest.cs" />

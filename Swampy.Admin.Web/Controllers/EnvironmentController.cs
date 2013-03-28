@@ -65,7 +65,6 @@ namespace Swampy.Admin.Web.Controllers
             var environments = this.Session.Query<SwampyEnvironment>();
 
             var currentEnvironment = environments.Single(x => x.Name == environmentName);
-            var allEnvironments = from e in environments select e.Name;
 
             var model = new EnvironmentOutput()
                 {
@@ -73,13 +72,7 @@ namespace Swampy.Admin.Web.Controllers
                     Name = currentEnvironment.Name,
                     Domain = currentEnvironment.Domain
                 };
-
-            /*var model = new EnvironmentViewModelMapper()
-                .Map(currentEnvironment);
-
-            model.allEnvironments = allEnvironments.ToList();
-            model.EndpointTypes = Enum.GetValues(typeof(ConfigurationItemType)).Cast<ConfigurationItemType>();
-            */
+            
             return View(model);
 
         }
@@ -95,7 +88,12 @@ namespace Swampy.Admin.Web.Controllers
         {
             var environment = Session.Get<SwampyEnvironment>(EnvironmentId);
 
-            var model = new EnvironmentBuilder(Session).Build(environment);
+            var model = new EnvironmentInput
+            {
+                Domain = environment.Domain,
+                Id = environment.Id,
+                Name = environment.Name
+            };
 
             return View(model);
         }
@@ -106,51 +104,22 @@ namespace Swampy.Admin.Web.Controllers
             if (!ModelState.IsValid)
                 return View(operation);
 
-            var environment = new EnvironmentBuilder(Session)
-                .Build(operation);
+            SwampyEnvironment environment = null;
+            if (operation.Id.HasValue)
+            {
+                environment = Session.Get<SwampyEnvironment>(operation.Id.Value);
+            }
+            else
+            {
+                environment = new SwampyEnvironment(operation.Name);
+            }
+
+            environment.Domain = operation.Domain;
+            environment.Name = operation.Name;
 
             Session.SaveOrUpdate(environment);
 
             return RedirectToAction("Index");
-        }
-
-
-        public class EnvironmentBuilder
-        {
-            private ISession _session;
-
-            public EnvironmentBuilder(ISession session)
-            {
-                _session = session;
-            }
-
-            public SwampyEnvironment Build(EnvironmentInput operation)
-            {
-                SwampyEnvironment environment = null;
-
-                if (operation.Id.HasValue)
-                {
-                    environment = _session.Get<SwampyEnvironment>(operation.Id.Value);
-                }
-                else
-                {
-                    environment = new SwampyEnvironment(operation.Name);
-                }
-
-                environment.Domain = operation.Domain;
-                environment.Name = operation.Name;
-                return environment;
-            }
-
-            public EnvironmentInput Build(SwampyEnvironment entity)
-            {
-                return new EnvironmentInput
-                    {
-                        Domain = entity.Domain,
-                        Id = entity.Id,
-                        Name = entity.Name
-                    };
-            }
         }
     }
 }
