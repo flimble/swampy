@@ -4,12 +4,29 @@
     Layout = "~/Views/Shared/_LayoutFluid.cshtml";    
 }
 
-<h2>title</h2>
-@using (Html.BeginForm("Edit", "Environment", FormMethod.Post))  {
-
-    @Html.EditorForModel();
+<fieldset>
+    <legend>Edit</legend>
     
-    <input type="submit" value="Save" />
-}
+    @Html.ValidationSummary()
 
+    @using (Html.BeginForm("Edit", "Environment", FormMethod.Post))
+        {
+            @Html.HiddenFor(model => model.Id)
+            <div class="control-group">
+                @Html.LabelFor(model => model.Name)
+                <div class="controls">
+                    @Html.EditorFor(model => model.Name)
+                    @Html.ValidationMessageFor(model => model.Name)
+                </div>
+            </div>
 
+            <div class="control-group">
+                @Html.LabelFor(model => model.Domain)
+                <div class="controls">
+                    @Html.EditorFor(model => model.Domain)
+                    @Html.ValidationMessageFor(model => model.Domain)
+                </div>
+            </div>
+            <input type="submit" value="Save" />
+        }
+</fieldset>

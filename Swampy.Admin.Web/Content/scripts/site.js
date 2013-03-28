@@ -1,5 +1,5 @@
 ﻿
-$(document).ready(function () {
+/*$(document).ready(function () {
     $("span.field-validation-valid, span.field-validation-error").each(function () { });
     return $(this).addClass("help-inline");
 });
@@ -26,4 +26,4 @@ $("form").each(function () {
             return $(this).addClass("error");
         }
     });
-});
+});*/

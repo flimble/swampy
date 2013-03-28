@@ -104,9 +104,7 @@ namespace Swampy.Admin.Web.Controllers
         public ActionResult Edit(EnvironmentInput operation)
         {
             if (!ModelState.IsValid)
-            {
                 return View(operation);
-            }
 
             var environment = new EnvironmentBuilder(Session)
                 .Build(operation);
