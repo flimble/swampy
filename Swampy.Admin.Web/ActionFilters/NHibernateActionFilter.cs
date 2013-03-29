@@ -14,7 +14,18 @@ namespace Swampy.Admin.Web.ActionFilters
 {
     public class NHibernateActionFilter : ActionFilterAttribute
     {
-             
+        protected ISessionFactory SessionFactory { get; private set; }
+
+        public NHibernateActionFilter(ISessionFactory sessionFactory)
+        {
+            SessionFactory = sessionFactory;
+        }
+
+        public NHibernateActionFilter() : this(NHibernateConfig.SessionFactory)
+        {
+            
+        }
+        
         public override void OnActionExecuting(ActionExecutingContext filterContext)
         {
             var sessionController = filterContext.Controller as AbstractController;
@@ -22,7 +33,7 @@ namespace Swampy.Admin.Web.ActionFilters
             if (sessionController == null)
                 return;
 
-            sessionController.Session = NHibernateConfig.SessionFactory.OpenSession();
+            sessionController.Session = SessionFactory.OpenSession();
             sessionController.Session.BeginTransaction();
         }
 
