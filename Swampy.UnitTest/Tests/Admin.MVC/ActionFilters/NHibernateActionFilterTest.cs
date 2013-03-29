@@ -56,6 +56,37 @@ namespace Swampy.UnitTest.Tests.Admin.MVC.ActionFilters
 
         }
 
+        [Test]
+        public void actionexecuted_commits_nhibernate_transaction_on_no_error()
+        {
+            // arrange
+            var mockSessionFactory = MockRepository.GenerateStub<ISessionFactory>();
+            var mockSession = MockRepository.GenerateStub<ISession>();
+            mockSession.Stub(x => x.Transaction.IsActive).Return(true);
+            mockSessionFactory.Stub(x => x.OpenSession()).Return(mockSession);
+            var underTest = new NHibernateActionFilter(mockSessionFactory);
+
+
+            var viewResultMock = MockRepository.GenerateStub<ViewResultBase>();
+
+            var filterContextMock = MockRepository.GenerateStub<ActionExecutedContext>();
+            filterContextMock.Result = viewResultMock;
+            var fakeController = MockRepository.GenerateStub<AbstractController>();
+            fakeController.Session = mockSession;
+            filterContextMock.Controller = fakeController;
+            
+
+            mockSession.Expect(x => x.Transaction.Commit());
+
+            // act
+            underTest.OnActionExecuted(filterContextMock);
+
+            //assert
+            mockSession.VerifyAllExpectations();
+
+        }
+
+
 
         [Test]
         public void actionexecuting_begins_nhibernate_transaction()
