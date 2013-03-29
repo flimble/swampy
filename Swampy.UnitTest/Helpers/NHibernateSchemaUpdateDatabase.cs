@@ -15,7 +15,6 @@ namespace Swampy.UnitTest.Helpers
     public class NHibernateSchemaUpdateDatabase : INHibernateDatabase
     {
         protected Configuration Configuration;
-        private static ISessionFactory _sessionFactory;
         public ISession Session { get; set; }
         public void BuildSchema()
         {

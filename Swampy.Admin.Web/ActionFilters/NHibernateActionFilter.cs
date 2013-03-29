@@ -14,10 +14,7 @@ namespace Swampy.Admin.Web.ActionFilters
 {
     public class NHibernateActionFilter : ActionFilterAttribute
     {
-        
-
-       
-
+             
         public override void OnActionExecuting(ActionExecutingContext filterContext)
         {
             var sessionController = filterContext.Controller as AbstractController;

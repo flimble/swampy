@@ -82,6 +82,10 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Microsoft.AspNet.Mvc.4.0.20710.0\lib\net40\System.Web.Mvc.dll</HintPath>
     </Reference>
+    <Reference Include="System.Web.Optimization, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Swampy.Admin.Web\bin\System.Web.Optimization.dll</HintPath>
+    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -93,9 +97,10 @@
     <Compile Include="Helpers\INHibernateDatabase.cs" />
     <Compile Include="Helpers\NHibernateInMemoryDatabase.cs" />
     <Compile Include="Helpers\NHibernateSchemaUpdateDatabase.cs" />
-    <Compile Include="Helpers\RouteTestingExtensions.cs" />
     <Compile Include="RoundhouseSchemUpdateScriptGenerator.cs" />
+    <Compile Include="Tests\Admin.MVC\Config\BundleConfigTest.cs" />
     <Compile Include="Tests\Admin.MVC\Controllers\EnvironmentControllerTest.cs" />
+    <Compile Include="Tests\Admin.MVC\Config\RouteConfigTest.cs" />
     <Compile Include="Tests\Contract\Validators\DatabaseConnectionStringFluentValidatorTest.cs" />
     <Compile Include="Tests\Domain\ConfigurationItemTest.cs" />
     <Compile Include="Tests\Domain\LevenshteinTest.cs" />
