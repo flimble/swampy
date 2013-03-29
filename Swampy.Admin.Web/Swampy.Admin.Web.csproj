@@ -145,12 +145,7 @@
     <Compile Include="App_Start\NHibernateConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
-    <Compile Include="Bootstrappers\BundleTransformations.cs" />
-    <Compile Include="Bootstrappers\ControllersInstaller.cs" />
-    <Compile Include="Bootstrappers\FluentValidationConfiguration.cs" />
-    <Compile Include="Bootstrappers\SampleDataConfiguration.cs" />
-    <Compile Include="Bootstrappers\WindsorContainerConfiguration.cs" />
-    <Compile Include="Bootstrappers\WindsorControllerFactory.cs" />
+    <Compile Include="App_Start\ValidationConfig.cs" />
     <Compile Include="Controllers\AbstractController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\EndpointController.cs" />
@@ -159,9 +154,8 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="HtmlHelpers\LabelExtensions.cs" />
-    <Compile Include="HtmlHelpers\Twitter.cs" />
-    <Compile Include="ImportedFilePathResolver.cs" />
+    <Compile Include="Helpers\LabelExtensions.cs" />
+    <Compile Include="Helpers\Twitter.cs" />
     <Compile Include="Models\Mappers\EnvironmentViewModelMapper.cs" />
     <Compile Include="Models\Mappers\IViewModelMapper.cs" />
     <Compile Include="Models\OperationModels\CreateEndpointOperationModel.cs" />
@@ -247,21 +241,6 @@
     <Content Include="packages.config">
       <SubType>Designer</SubType>
     </Content>
-    <Content Include="scripts\bootstrap.js" />
-    <Content Include="scripts\bootstrap.min.js" />
-    <Content Include="scripts\html5shiv.js" />
-    <None Include="scripts\jquery-1.9.1-vsdoc.js" />
-    <Content Include="scripts\jquery-1.9.1.js" />
-    <Content Include="scripts\jquery-1.9.1.min.js" />
-    <Content Include="scripts\jquery-migrate-1.1.1.js" />
-    <Content Include="scripts\jquery-migrate-1.1.1.min.js" />
-    <Content Include="scripts\jquery.unobtrusive-ajax.js" />
-    <Content Include="scripts\jquery.unobtrusive-ajax.min.js" />
-    <None Include="scripts\jquery.validate-vsdoc.js" />
-    <Content Include="scripts\jquery.validate.js" />
-    <Content Include="scripts\jquery.validate.min.js" />
-    <Content Include="scripts\jquery.validate.unobtrusive.js" />
-    <Content Include="scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Test\jasmine\jasmine-html.js" />
     <Content Include="Test\jasmine\jasmine.css" />
     <Content Include="Test\jasmine\jasmine.js" />
@@ -353,7 +332,6 @@
     <Content Include="Views\Home\Test.cshtml" />
     <Content Include="Views\Environment\Edit.cshtml" />
     <Content Include="Views\Shared\_html5shiv.cshtml" />
-    <Content Include="scripts\jquery-1.9.1.min.map" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

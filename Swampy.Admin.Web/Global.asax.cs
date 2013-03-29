@@ -22,7 +22,7 @@ namespace Swampy.Admin.Web
 
             BundleConfig.RegisterBundles(BundleTable.Bundles);
 
-            FluentValidationConfiguration.Configure();
+            ValidationConfig.Configure();
         }
 
         protected void Application_Error(object sender, EventArgs e)

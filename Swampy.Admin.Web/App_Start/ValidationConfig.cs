@@ -8,7 +8,7 @@ using FluentValidation.Mvc;
 
 namespace Swampy.Admin.Web.Bootstrappers
 {
-    public static class FluentValidationConfiguration
+    public static class ValidationConfig
     {
         public static void Configure()
         {
