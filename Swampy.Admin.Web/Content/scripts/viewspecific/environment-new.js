@@ -1,4 +1,4 @@
-﻿$(document).ready(function () {
+$(document).ready(function () {
   
     $('#endpoints').dataTable({
         "sDom": "<'row'<'span8'l><'span8'f>r>t<'row'<'span8'i><'span8'p>>",

@@ -1,4 +1,4 @@
-﻿using NUnit.Framework;
+using NUnit.Framework;
 using Swampy.Business.DomainModel.Entities;
 
 namespace Swampy.IntegrationTest.NHibernate

@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using Swampy.Business.Infrastructure.Logging.Swampy.Service.Infrastructure;
 using log4net;
 

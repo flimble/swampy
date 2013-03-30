@@ -1,4 +1,4 @@
-﻿using System.Reflection;
+using System.Reflection;
 using System.Runtime.InteropServices;
 
 // General Information about an assembly is controlled through the following 
@@ -9,7 +9,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("SAI Global")]
 [assembly: AssemblyProduct("Swampy.IntegrationTest")]
-[assembly: AssemblyCopyright("Copyright © SAI Global 2012")]
+[assembly: AssemblyCopyright("Copyright � SAI Global 2012")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

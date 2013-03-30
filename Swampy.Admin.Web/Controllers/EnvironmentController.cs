@@ -1,4 +1,4 @@
-﻿using System.Linq;
+using System.Linq;
 using System.Web.Mvc;
 using NHibernate;
 using NHibernate.Linq;
@@ -14,29 +14,6 @@ namespace Swampy.Admin.Web.Controllers
 {
     public class EnvironmentController : AbstractController
     {
-
-
-        /*protected IDictionary<string, Type> GetEndpointTypes()
-        {
-            var endpointTypes = Assembly
-               .GetAssembly(typeof(ConfigurationItem))
-               .GetTypes()
-               .Where(x => x.IsSubclassOf(typeof(AbstractEntity)) && !x.IsAbstract)
-               .Select(x => x)
-               .ToList();
-
-            var a = new Dictionary<string, Type>();
-
-            foreach (var type in endpointTypes)
-            {
-                var endpoint = Activator.CreateInstance(type) as ConfigurationItem;
-                string name = endpoint.TypeName;
-
-                a.Add(name, type);
-            }
-
-            return a;
-        }*/
 
         [HttpGet]
         public ActionResult Index()

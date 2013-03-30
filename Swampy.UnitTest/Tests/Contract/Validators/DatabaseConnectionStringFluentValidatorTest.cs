@@ -1,4 +1,4 @@
-﻿using NUnit.Framework;
+using NUnit.Framework;
 using Swampy.Business.Contract.Validators;
 using Swampy.UnitTest.Helpers;
 

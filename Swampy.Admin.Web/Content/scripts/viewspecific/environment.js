@@ -1,4 +1,4 @@
-﻿var getrows;
+var getrows;
 
 $(document).ready(function () {
     var searchtext;

@@ -1,4 +1,4 @@
-﻿
+
 /*$(document).ready(function () {
     $("span.field-validation-valid, span.field-validation-error").each(function () { });
     return $(this).addClass("help-inline");

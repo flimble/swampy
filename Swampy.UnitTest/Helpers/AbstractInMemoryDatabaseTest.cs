@@ -1,4 +1,4 @@
-﻿
+
 using System;
 using FluentNHibernate.Cfg.Db;
 using NHibernate;

@@ -1,4 +1,4 @@
-﻿using Castle.DynamicProxy;
+using Castle.DynamicProxy;
 
 namespace Swampy.Business.Infrastructure.Logging
 {

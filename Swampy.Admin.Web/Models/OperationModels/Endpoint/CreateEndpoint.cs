@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 
 namespace Swampy.Admin.Web.Models.OperationModels.Endpoint

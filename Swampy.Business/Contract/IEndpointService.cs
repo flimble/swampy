@@ -1,4 +1,4 @@
-﻿namespace Swampy.Business.Contract
+namespace Swampy.Business.Contract
 {
     
     public interface ISwampyEndpointService

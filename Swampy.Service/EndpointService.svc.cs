@@ -1,4 +1,4 @@
-﻿using System.ServiceModel;
+using System.ServiceModel;
 using Swampy.Business.Contract;
 
 namespace Swampy.Service

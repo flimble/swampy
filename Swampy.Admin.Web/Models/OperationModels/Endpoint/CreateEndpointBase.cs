@@ -1,4 +1,4 @@
-﻿using FluentValidation;
+using FluentValidation;
 
 namespace Swampy.Admin.Web.Models.OperationModels.Endpoint
 {

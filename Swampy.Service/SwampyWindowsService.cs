@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.ServiceModel;
 using System.ServiceProcess;
 using Swampy.Business.Contract;

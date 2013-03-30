@@ -1,4 +1,4 @@
-﻿namespace Swampy.Business.DomainModel.Entities
+namespace Swampy.Business.DomainModel.Entities
 {
     public enum ConfigurationItemType
     {

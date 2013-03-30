@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Linq;
 using Castle.DynamicProxy;
 using Swampy.Business.Infrastructure.Abstractions;

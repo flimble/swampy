@@ -1,4 +1,4 @@
-﻿using FluentNHibernate.Conventions;
+using FluentNHibernate.Conventions;
 using FluentNHibernate.Conventions.Instances;
 
 namespace Swampy.Business.Infrastructure.NHibernate

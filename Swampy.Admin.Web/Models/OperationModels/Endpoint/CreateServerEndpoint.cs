@@ -1,4 +1,4 @@
-﻿namespace Swampy.Admin.Web.Models.OperationModels.Endpoint
+namespace Swampy.Admin.Web.Models.OperationModels.Endpoint
 {
     public class CreateServerEndpoint : CreateEndpointBase
     {

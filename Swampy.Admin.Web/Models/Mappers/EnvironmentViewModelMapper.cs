@@ -1,4 +1,4 @@
-﻿using System.Linq;
+using System.Linq;
 using Swampy.Admin.Web.Models.ReadModels;
 using Swampy.Business.DomainModel.Entities;
 

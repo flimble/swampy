@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using FluentValidation.Validators;
 
 namespace Swampy.Business.Contract.Validators

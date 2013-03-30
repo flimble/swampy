@@ -1,4 +1,4 @@
-﻿using FluentNHibernate.Mapping;
+using FluentNHibernate.Mapping;
 using Swampy.Business.DomainModel.Entities;
 
 namespace Swampy.Business.Infrastructure.NHibernate.Mappings

@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using Swampy.Business.Infrastructure.Extensions;
 
 namespace Swampy.Business.DomainModel.Entities

@@ -1,4 +1,4 @@
-﻿namespace Swampy.Admin.Web.HtmlHelpers
+namespace Swampy.Admin.Web.HtmlHelpers
 {
     public static class Twitter
     {

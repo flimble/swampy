@@ -1,4 +1,4 @@
-﻿var readFixtures = function () {
+var readFixtures = function () {
     return jasmine.getFixtures().proxyCallTo_('read', arguments);
 };
 

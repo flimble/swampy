@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using NHibernate;
 
 namespace Swampy.UnitTest.Helpers

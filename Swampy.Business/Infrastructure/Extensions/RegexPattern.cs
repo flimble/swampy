@@ -1,4 +1,4 @@
-﻿namespace Swampy.Business.Infrastructure.Extensions
+namespace Swampy.Business.Infrastructure.Extensions
 {
     // 
     //   SubSonic - http://subsonicproject.com
