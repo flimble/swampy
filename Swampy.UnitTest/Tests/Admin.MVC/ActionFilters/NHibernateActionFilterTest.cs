@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web;
 using System.Web.Mvc;
+using System.Web.Routing;
 using NHibernate;
 using NUnit.Framework;
 using Rhino.Mocks;
@@ -14,75 +16,50 @@ using Swampy.Admin.Web.Controllers;
 namespace Swampy.UnitTest.Tests.Admin.MVC.ActionFilters
 {
     [TestFixture]
-    public class NHibernateActionFilterTest
-    {        
+    public class NHibernateActionFilterTest : AbstractActionFilterTest
+    {
+        private ISessionFactory _mockSessionFactory;
+        private ISession _mockSession;
 
-        public ActionExecutedContext ActionExecutedContext()
+        [SetUp]
+        public void Setup()
         {
-            var filterContextMock = MockRepository.GenerateStub<ActionExecutedContext>();
-            filterContextMock.Result = MockRepository.GenerateStub<ViewResultBase>();
-            filterContextMock.Controller = MockRepository.GenerateStub<AbstractController>();
-            return filterContextMock;
+            _mockSessionFactory = MockRepository.GenerateStub<ISessionFactory>();
+            _mockSession = MockRepository.GenerateStub<ISession>();
+            _mockSession.Stub(x => x.Transaction.IsActive).Return(true);
+            _mockSessionFactory.Stub(x => x.OpenSession()).Return(_mockSession);
         }
-        
-        //TODO: Complete unit tests for first Action Filter
+
+
+      
         [Test]
         public void actionexecuted_rolls_back_nhibernate_transaction_on_error()
         {
-            // arrange
-            var mockSessionFactory = MockRepository.GenerateStub<ISessionFactory>();
-            var mockSession = MockRepository.GenerateStub<ISession>();
-            mockSession.Stub(x => x.Transaction.IsActive).Return(true);
-            mockSessionFactory.Stub(x => x.OpenSession()).Return(mockSession);
-            var underTest = new NHibernateActionFilter(mockSessionFactory);
-            
-            
-            var viewResultMock = MockRepository.GenerateStub<ViewResultBase>();
+            //arrange            
+            _mockSession.Stub(x => x.Transaction.IsActive).Return(true);
+            _mockSession.Expect(x => x.Transaction.Rollback());
+            this.ActionExecutedContext.Exception = new NotImplementedException();            
 
-            var filterContextMock = MockRepository.GenerateStub<ActionExecutedContext>();
-            filterContextMock.Result = viewResultMock;
-            var fakeController = MockRepository.GenerateStub<AbstractController>();
-            fakeController.Session = mockSession;
-            filterContextMock.Controller = fakeController;
-            filterContextMock.Exception = new NotImplementedException();
-
-            mockSession.Expect(x => x.Transaction.Rollback());
-
-            // act
-            underTest.OnActionExecuted(filterContextMock);
+            //act
+            ExecuteActionFilter(new NHibernateActionFilter(_mockSessionFactory), _mockSession, x => x.OnActionExecuted(this.ActionExecutedContext));
 
             //assert
-            mockSession.VerifyAllExpectations();
+            _mockSession.VerifyAllExpectations();
 
         }
 
         [Test]
         public void actionexecuted_commits_nhibernate_transaction_on_no_error()
         {
-            // arrange
-            var mockSessionFactory = MockRepository.GenerateStub<ISessionFactory>();
-            var mockSession = MockRepository.GenerateStub<ISession>();
-            mockSession.Stub(x => x.Transaction.IsActive).Return(true);
-            mockSessionFactory.Stub(x => x.OpenSession()).Return(mockSession);
-            var underTest = new NHibernateActionFilter(mockSessionFactory);
+            //arrange            
+            _mockSession.Stub(x => x.Transaction.IsActive).Return(true);
+            _mockSession.Expect(x => x.Transaction.Commit());
 
-
-            var viewResultMock = MockRepository.GenerateStub<ViewResultBase>();
-
-            var filterContextMock = MockRepository.GenerateStub<ActionExecutedContext>();
-            filterContextMock.Result = viewResultMock;
-            var fakeController = MockRepository.GenerateStub<AbstractController>();
-            fakeController.Session = mockSession;
-            filterContextMock.Controller = fakeController;
-            
-
-            mockSession.Expect(x => x.Transaction.Commit());
-
-            // act
-            underTest.OnActionExecuted(filterContextMock);
+            //act
+            ExecuteActionFilter(new NHibernateActionFilter(_mockSessionFactory), _mockSession, x => x.OnActionExecuted(this.ActionExecutedContext));
 
             //assert
-            mockSession.VerifyAllExpectations();
+            _mockSession.VerifyAllExpectations();
 
         }
 
@@ -90,42 +67,18 @@ namespace Swampy.UnitTest.Tests.Admin.MVC.ActionFilters
 
         [Test]
         public void actionexecuting_begins_nhibernate_transaction()
-        {
-            // arrange
-            var mockSessionFactory = MockRepository.GenerateStub<ISessionFactory>();
-            var mockSession = MockRepository.GenerateStub<ISession>();
-            mockSessionFactory.Stub(x => x.OpenSession()).Return(mockSession);                   
-            var underTest = new NHibernateActionFilter(mockSessionFactory);
-            var fakeController = MockRepository.GenerateStub<AbstractController>();
-            
-            var filterContextMock = MockRepository.GenerateStub<ActionExecutingContext>();
-            var viewResultMock = MockRepository.GenerateStub<ViewResultBase>();
-            filterContextMock.Result = viewResultMock;
-            filterContextMock.Controller = fakeController;
+        {   
+            //arrange            
+            _mockSession.Stub(x => x.BeginTransaction()).Return(MockRepository.GenerateStub<ITransaction>());
+            _mockSession.Expect(x => x.BeginTransaction());            
 
-            mockSession.Expect(x => x.BeginTransaction());
-
-            // act
-            underTest.OnActionExecuting(filterContextMock);
-
+            //act
+            ExecuteActionFilter(new NHibernateActionFilter(_mockSessionFactory), _mockSession, x => x.OnActionExecuting(this.ActionExecutingContext));
 
             //assert
-            mockSession.VerifyAllExpectations();
+            _mockSession.VerifyAllExpectations();
 
 
-        }
-    }
-
-    public class FakeController : AbstractController
-    {
-        public FakeController(ISession session)
-        {
-            this.Session = session;
-        }
-
-        public ActionResult Index()
-        {
-            throw new ArgumentException();
         }
     }
 }
