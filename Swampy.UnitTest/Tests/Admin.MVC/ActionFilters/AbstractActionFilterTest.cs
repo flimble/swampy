@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Web.Mvc;
 using NHibernate;
+using NUnit.Framework;
 using Rhino.Mocks;
 using Swampy.Admin.Web.Controllers;
 
@@ -16,12 +17,13 @@ namespace Swampy.UnitTest.Tests.Admin.MVC.ActionFilters
         protected ActionExecutingContext ActionExecutingContext { get; set; }
 
 
-
-        public AbstractActionFilterTest()
+        [SetUp]
+        public void Setup()
         {
             this.ActionExecutedContext = MockRepository.GenerateStub<ActionExecutedContext>();
             this.ActionExecutingContext = MockRepository.GenerateStub<ActionExecutingContext>();  
         }
+
 
         protected void ExecuteActionFilter<TActionFilter>(TActionFilter filter, ISession session, Action<TActionFilter> action) where TActionFilter : ActionFilterAttribute, new()
         {
