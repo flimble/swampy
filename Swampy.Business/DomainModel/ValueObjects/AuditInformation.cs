@@ -7,15 +7,15 @@ namespace Swampy.Business.DomainModel.ValueObjects
     public class AuditInformation : ValueObjectBase<AuditInformation>
     {
 
-        public AuditInformation() : this(new User { UserName = "John Doe"}, SystemTime.Now() )
+        public AuditInformation() : this(new User { UserName = "John Doe"})
         {
             
         }
 
-        public AuditInformation(User changedBy, DateTime changedDate)
+        public AuditInformation(User changedBy)
         {
             this.UserName = changedBy.UserName;
-            this.TimeStamp = changedDate;
+            this.TimeStamp = SystemTime.Now();
 
             RegisterProperty(x=>x.UserName);
             RegisterProperty(x=>x.TimeStamp);

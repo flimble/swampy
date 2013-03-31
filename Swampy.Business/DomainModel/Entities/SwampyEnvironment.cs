@@ -23,6 +23,8 @@ namespace Swampy.Business.DomainModel.Entities
 
         public virtual string Domain { get; set; }
 
+        public virtual string Description { get; set; }
+
         protected SwampyEnvironment()
         {
             ConfigurationItems = new List<ConfigurationItem>();

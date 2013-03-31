@@ -61,9 +61,9 @@ namespace Swampy.Admin.Web.Controllers
         }
 
         [HttpGet]
-        public ActionResult Edit(int id)
+        public ActionResult Edit(int environmentId)
         {
-            var environment = Session.Get<SwampyEnvironment>(id);
+            var environment = Session.Get<SwampyEnvironment>(environmentId);
 
             var model = new EnvironmentInput
             {
