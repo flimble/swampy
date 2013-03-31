@@ -101,13 +101,14 @@
     <Compile Include="DomainModel\Entities\ConfigurationItemType.cs" />
     <Compile Include="Contract\Validators\DatabaseConnectionStringFluentValidator.cs" />
     <Compile Include="Contract\Validators\FluentUrlValidator.cs" />
+    <Compile Include="DomainModel\Entities\User.cs" />
     <Compile Include="Infrastructure\NHibernate\Conventions\ColumnDefaultNotNullConvention.cs" />
     <Compile Include="obj\Queries\asdfQuery.cs" />
     <Compile Include="obj\Queries\IQuery.cs" />
     <Compile Include="DomainModel\ValueObjects\ValueObjectBase.cs" />
     <Compile Include="Infrastructure\NHibernate\Conventions\FullIdNameConvention.cs" />
     <Compile Include="Infrastructure\NHibernate\Conventions\ManyToOneForeignKeyConvention.cs" />
-    <Compile Include="DomainModel\ValueObjects\Domain.cs" />
+    <Compile Include="DomainModel\ValueObjects\AuditInformation.cs" />
     <Compile Include="Contract\Validators\IValidate.cs" />
     <Compile Include="DomainModel\Entities\ConfigurationItem.cs" />
     <Compile Include="DomainModel\Entities\AbstractEntity.cs" />

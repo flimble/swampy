@@ -12,6 +12,12 @@ namespace Swampy.Business.Infrastructure.NHibernate.Mappings
             Map(x => x.Domain);
             HasMany(x => x.ConfigurationItems).Cascade.All();
             HasMany(x => x.Servers).Cascade.All();
+
+            Component(x => x.ModificationDetails, a =>
+            {
+                a.Map(x => x.TimeStamp, "ModifiedOn");
+                a.Map(x => x.UserName, "ModifiedBy");
+            });
         }
     }
 

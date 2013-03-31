@@ -18,7 +18,7 @@ namespace Swampy.UnitTest.Tests.Admin.MVC.ActionFilters
             var modelData = new ViewDataDictionary();
                     modelData.ModelState.AddModelError("Name", "Not a valid state for name");        
                                            
-            ExecuteActionFilter(new ValidateModelStateAttribute(), null, x =>
+            ExecuteActionFilter(new ValidateModelStateAttribute(), x =>
                 {                    
                     this.ActionExecutingContext.Controller.ViewData = modelData;
                     x.OnActionExecuting(this.ActionExecutingContext);
@@ -35,7 +35,7 @@ namespace Swampy.UnitTest.Tests.Admin.MVC.ActionFilters
         public void modelstate_without_errors_no_change()
         {
           
-            ExecuteActionFilter(new ValidateModelStateAttribute(), null, x => x.OnActionExecuting(this.ActionExecutingContext));
+            ExecuteActionFilter(new ValidateModelStateAttribute(), x => x.OnActionExecuting(this.ActionExecutingContext));
             ViewResult result = this.ActionExecutingContext.Result as ViewResult;
 
             Assert.IsNull(result);            

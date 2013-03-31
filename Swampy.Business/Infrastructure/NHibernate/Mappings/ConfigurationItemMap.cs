@@ -1,5 +1,6 @@
 using FluentNHibernate.Mapping;
 using Swampy.Business.DomainModel.Entities;
+using Swampy.Business.DomainModel.ValueObjects;
 
 namespace Swampy.Business.Infrastructure.NHibernate.Mappings
 {
@@ -14,6 +15,12 @@ namespace Swampy.Business.Infrastructure.NHibernate.Mappings
             Map(x => x.Value);
             Map(x => x.ConfigurationType);
             Map(x => x.StoreAsToken);
+
+            Component(x => x.ModificationDetails, a =>
+            {
+                a.Map(x => x.TimeStamp, "ModifiedOn");
+                a.Map(x => x.UserName, "ModifiedBy");
+            });
         }
     }
 

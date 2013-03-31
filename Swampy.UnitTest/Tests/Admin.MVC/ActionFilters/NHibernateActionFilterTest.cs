@@ -1,16 +1,8 @@
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Web;
-using System.Web.Mvc;
-using System.Web.Routing;
 using NHibernate;
 using NUnit.Framework;
 using Rhino.Mocks;
 using Swampy.Admin.Web.ActionFilters;
-using Swampy.Admin.Web.App_Start;
 using Swampy.Admin.Web.Controllers;
 
 namespace Swampy.UnitTest.Tests.Admin.MVC.ActionFilters
@@ -38,13 +30,32 @@ namespace Swampy.UnitTest.Tests.Admin.MVC.ActionFilters
             //arrange            
             _mockSession.Stub(x => x.Transaction.IsActive).Return(true);
             _mockSession.Expect(x => x.Transaction.Rollback());
-            this.ActionExecutedContext.Exception = new NotImplementedException();            
+            this.ActionExecutedContext.Exception = new NotImplementedException();
+
+            var controller = MockRepository.GenerateStub<AbstractController>();
+            controller.Session = _mockSession;
 
             //act
-            ExecuteActionFilter(new NHibernateActionFilter(_mockSessionFactory), _mockSession, x => x.OnActionExecuted(this.ActionExecutedContext));
+            ExecuteActionFilter(new NHibernateActionFilter(_mockSessionFactory), controller, x => x.OnActionExecuted(this.ActionExecutedContext));
 
             //assert
             _mockSession.VerifyAllExpectations();
+
+        }
+
+        [Test]
+        public void actionexecuted_no_active_controller_session_do_not_modify_transaction()
+        {
+            //arrange                        
+            var controller = MockRepository.GenerateStub<AbstractController>();
+            controller.Session = null;
+
+            //act
+            ExecuteActionFilter(new NHibernateActionFilter(_mockSessionFactory), controller, x => x.OnActionExecuted(this.ActionExecutedContext));
+
+            //assert
+            _mockSession.AssertWasNotCalled(x=>x.Transaction.Commit());
+            _mockSession.AssertWasNotCalled(x => x.Transaction.Rollback());
 
         }
 
@@ -55,8 +66,11 @@ namespace Swampy.UnitTest.Tests.Admin.MVC.ActionFilters
             _mockSession.Stub(x => x.Transaction.IsActive).Return(true);
             _mockSession.Expect(x => x.Transaction.Commit());
 
-            //act
-            ExecuteActionFilter(new NHibernateActionFilter(_mockSessionFactory), _mockSession, x => x.OnActionExecuted(this.ActionExecutedContext));
+            var controller = MockRepository.GenerateStub<AbstractController>();
+            controller.Session = _mockSession;
+
+            //act            
+            ExecuteActionFilter(new NHibernateActionFilter(_mockSessionFactory), controller, x => x.OnActionExecuted(this.ActionExecutedContext));
 
             //assert
             _mockSession.VerifyAllExpectations();
@@ -73,7 +87,7 @@ namespace Swampy.UnitTest.Tests.Admin.MVC.ActionFilters
             _mockSession.Expect(x => x.BeginTransaction());            
 
             //act
-            ExecuteActionFilter(new NHibernateActionFilter(_mockSessionFactory), _mockSession, x => x.OnActionExecuting(this.ActionExecutingContext));
+            ExecuteActionFilter(new NHibernateActionFilter(_mockSessionFactory), x => x.OnActionExecuting(this.ActionExecutingContext));
 
             //assert
             _mockSession.VerifyAllExpectations();

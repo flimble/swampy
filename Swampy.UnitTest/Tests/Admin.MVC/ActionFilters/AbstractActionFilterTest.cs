@@ -24,18 +24,21 @@ namespace Swampy.UnitTest.Tests.Admin.MVC.ActionFilters
             this.ActionExecutingContext = MockRepository.GenerateStub<ActionExecutingContext>();  
         }
 
-
-        protected void ExecuteActionFilter<TActionFilter>(TActionFilter filter, ISession session, Action<TActionFilter> action) where TActionFilter : ActionFilterAttribute, new()
+        protected void ExecuteActionFilter<TActionFilter>(TActionFilter filter, AbstractController controller, Action<TActionFilter> action) where TActionFilter : ActionFilterAttribute, new()
         {
-            var controller = MockRepository.GenerateStub<AbstractController>();
-            controller.Session = session;
-
             var actionFilter = filter;
 
             ActionExecutedContext.Controller = controller;
             ActionExecutingContext.Controller = controller;
-          
-            action(actionFilter);            
+
+            action(actionFilter);
+        }
+
+        protected void ExecuteActionFilter<TActionFilter>(TActionFilter filter, Action<TActionFilter> action) where TActionFilter : ActionFilterAttribute, new()
+        {
+            var controller = MockRepository.GenerateStub<AbstractController>();
+
+           ExecuteActionFilter(filter, controller, action);         
         }
     }
 }

@@ -36,3 +36,6 @@ http://pencil.evolus.vn/
 To read MindMap document swampy.mindmap.mm please download FreeMind tool from here
 http://freemind.sourceforge.net/wiki/index.php/Download#Download
 
+# Versioning
+This application uses semantic versioning
+http://semver.org/

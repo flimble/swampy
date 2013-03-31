@@ -27,6 +27,7 @@ namespace Swampy.Business.DomainModel.Entities
         {
             ConfigurationItems = new List<ConfigurationItem>();
             Servers = new List<SwampyServer>();
+            
         }
 
         public virtual IList<ConfigurationItem> ConfigurationItemsUsedByOthers

@@ -1,5 +1,7 @@
+using System;
 using NUnit.Framework;
 using Swampy.Business.DomainModel.Entities;
+using Swampy.Business.Infrastructure.Abstractions;
 
 namespace Swampy.UnitTest.Queries
 {
@@ -7,21 +9,23 @@ namespace Swampy.UnitTest.Queries
     public class FirstHibernateTest : AbstractNHibernateDatabaseTest
     {
 
-        public FirstHibernateTest() : base(true) {}
-        
+        public FirstHibernateTest() : base(true) { }
+
 
         [Test]
         public void Can_load_and_save_environment()
         {
             object id;
+
             
+
             using (var tx = session.BeginTransaction())
             {
-                var e = new SwampyEnvironment("SIT1","saig.frd.global");
-                                
+                var e = new SwampyEnvironment("SIT1", "saig.frd.global");
+
                 e.ConfigurationItems.Add(new ConfigurationItem("anEndpoint", "abc", ConfigurationItemType.Simple, e));
 
-                e.AddServer("ssrdbserver","ausydhq-pstsq04");
+                e.AddServer("ssrdbserver", "ausydhq-pstsq04");
 
                 id = session.Save(e);
                 tx.Commit();
@@ -33,7 +37,7 @@ namespace Swampy.UnitTest.Queries
             {
                 var environment = session.Load<SwampyEnvironment>(id);
 
-                Assert.AreEqual("SIT1",environment.Name);
+                Assert.AreEqual("SIT1", environment.Name);
                 Assert.AreEqual("saig.frd.global", environment.Domain);
                 Assert.IsTrue(environment.Servers.Count == 1);
 

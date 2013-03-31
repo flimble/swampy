@@ -6,6 +6,11 @@ using Swampy.Business.Infrastructure.Abstractions;
 
 namespace Swampy.Admin.Web.Controllers
 {
+    /// <summary>
+    /// Base for ALL Controllers
+    /// ExecuteCommand is provided specifically for unit testing to provide the option to override in test with the 
+    /// AlternativeExecuteCommand options
+    /// </summary>
     public class AbstractController : Controller
     {
         public ISession Session;
