@@ -103,8 +103,6 @@
     <Compile Include="Contract\Validators\FluentUrlValidator.cs" />
     <Compile Include="DomainModel\Entities\User.cs" />
     <Compile Include="Infrastructure\NHibernate\Conventions\ColumnDefaultNotNullConvention.cs" />
-    <Compile Include="obj\Queries\asdfQuery.cs" />
-    <Compile Include="obj\Queries\IQuery.cs" />
     <Compile Include="DomainModel\ValueObjects\ValueObjectBase.cs" />
     <Compile Include="Infrastructure\NHibernate\Conventions\FullIdNameConvention.cs" />
     <Compile Include="Infrastructure\NHibernate\Conventions\ManyToOneForeignKeyConvention.cs" />
@@ -138,7 +136,6 @@
     <Compile Include="Infrastructure\NHibernate\Conventions\OneToManyForeignKeyConvention.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="DomainServices\SwampyEndpointService.cs" />
-    <Compile Include="obj\Queries\EndpointQuery.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="log4net.config" />
