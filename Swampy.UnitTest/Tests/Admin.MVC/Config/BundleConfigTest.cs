@@ -33,6 +33,7 @@ namespace Swampy.UnitTest.Tests.Admin.MVC.Config
 
         }
 
+
         private static string MapBundleItemPath(string item)
         {
             //TODO: Replace this with whatever logic you need to map from your virtual paths to a physical path
@@ -50,6 +51,7 @@ namespace Swampy.UnitTest.Tests.Admin.MVC.Config
         }
 
         [Test]
+        [Explicit]
         public void jquery_bundle_contains_jquery()
         {            
             var jqueryBundle = GetFilesInBundle(@"~/bundles/jquery");            
@@ -57,6 +59,7 @@ namespace Swampy.UnitTest.Tests.Admin.MVC.Config
         }
 
         [Test]
+        [Explicit]
         public void nonspecified_bundle_not_created()
         {
             Assert.IsFalse(BundleTable.Bundles.Any(x=>x.Path=="zForZachariah"));
