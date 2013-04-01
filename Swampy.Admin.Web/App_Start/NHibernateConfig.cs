@@ -1,9 +1,6 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using FluentNHibernate.Cfg.Db;
 using NHibernate;
+using NHibernate.Cfg;
 using Swampy.Business.Infrastructure.NHibernate;
 
 namespace Swampy.Admin.Web.App_Start
@@ -23,8 +20,11 @@ namespace Swampy.Admin.Web.App_Start
                                                               .ShowSql();
 
 
-            return NHibernateConfigurationFactory.Configuration(sqlServerConfiguration)
+            return NHibernateConfigurationFactory.Configuration(sqlServerConfiguration)                
                 .BuildConfiguration()
+                .SetProperty(
+                    Environment.SqlExceptionConverter,
+                    typeof(MsSqlExceptionConverter).AssemblyQualifiedName)
                 .BuildSessionFactory();
         }
 

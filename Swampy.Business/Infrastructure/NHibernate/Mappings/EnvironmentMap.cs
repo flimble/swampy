@@ -8,7 +8,7 @@ namespace Swampy.Business.Infrastructure.NHibernate.Mappings
         public EnvironmentMap()
         {
             Id(x => x.Id);
-            Map(x => x.Name);
+            Map(x => x.Name).Unique();
             Map(x => x.Domain);
             Map(x => x.Description).Nullable();
             HasMany(x => x.ConfigurationItems).Cascade.All();

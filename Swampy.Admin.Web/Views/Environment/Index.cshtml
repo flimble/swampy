@@ -1,33 +1,29 @@
-﻿
-@model Swampy.Admin.Web.Models.ReadModels.HomeReadModel
+﻿@model Swampy.Admin.Web.Models.ReadModels.HomeReadModel
 
 @{
-    ViewBag.Title = "Home Page";
+    ViewBag.Title = "Environments";
+    
 }
 
 
-
-<h2>@ViewBag.Message</h2>
-<p>
-    Welcome to Swampy Administration Page. 
-
-    Please select an environment from the list below to view/manage environment data
-    
-    
+<p class="pull-right">
+    @Html.ActionLink("+ Add New", "Create", null, new { @class = "btn btn-primary btn-large" })
 </p>
-<p>
-@Html.ActionLink("+ Add New", "Create", "Environment", new {@class="btn btn-primary btn-large"})
 
+<div>
+    <h2>Environmets</h2>
+    <p>
+        Please select an environment from the list below to view/manage environment data
     </p>
-
+</div>
 
 
 
 @foreach (KeyValuePair<string, string> environment in Model.EnvironmentNames)
 {  
     <div>
-    <h3>@Html.ActionLink(environment.Key, "Detail", "Environment", new { environmentName = environment.Key }, null)</h3>
-    <span>@environment.Value</span>
-        </div>
+        <h3>@Html.ActionLink(environment.Key, "Detail", "Environment", new { environmentName = environment.Key }, null)</h3>
+        <span>@environment.Value</span>
+    </div>
 }
 
