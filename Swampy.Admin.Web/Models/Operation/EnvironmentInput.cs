@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using FluentValidation;
 using FluentValidation.Attributes;
 
@@ -19,7 +20,7 @@ namespace Swampy.Admin.Web.Models.Operation
         public EnvironmentInputValidator()
         {
             RuleFor(x => x.Name).NotEmpty();
-            RuleFor(x => x.Domain).NotEmpty();            
+            RuleFor(x => x.Domain).NotEmpty();
         }
     }
 
@@ -29,6 +30,7 @@ namespace Swampy.Admin.Web.Models.Operation
         public int Id { get; set; }
         public string Name { get; set; }
         public string Domain { get; set; }
+        
         public string Description { get; set; }
 
 

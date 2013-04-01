@@ -1,43 +1,31 @@
-﻿@model Swampy.Admin.Web.Models.Operation.EnvironmentInput
+﻿@using Swampy.Admin.Web.HtmlHelpers
+@model Swampy.Admin.Web.Models.Operation.EnvironmentInput
 @{
     ViewBag.Title = "Edit";
     Layout = "~/Views/Shared/_LayoutFluid.cshtml";    
 }
 
 
-    
-    @Html.ValidationSummary()
 
-    @using (Html.BeginForm("Edit", "Environment", FormMethod.Post))
-    {
-        <fieldset>
-            <legend>Edit</legend>
+
+
+@using (Html.BeginForm("Edit", "Environment", FormMethod.Post))
+{
         
-            @Html.HiddenFor(model => model.Id)
-            <div class="control-group">
-                @Html.LabelFor(model => model.Name)
-                <div class="controls">
-                    @Html.EditorFor(model => model.Name)
-                    @Html.ValidationMessageFor(model => model.Name)
-                </div>
-            </div>
+    <fieldset>
+        <legend>Edit</legend>
 
-            <div class="control-group">
-                @Html.LabelFor(model => model.Domain)
-                <div class="controls">
-                    @Html.EditorFor(model => model.Domain)
-                    @Html.ValidationMessageFor(model => model.Domain)
-                </div>
-            </div>
-            
-            <div class="control-group">
-                @Html.LabelFor(model => model.Domain)
-                <div class="controls">
-                    @Html.EditorFor(model => model.Domain)
-                    @Html.ValidationMessageFor(model => model.Domain)
-                </div>
-            </div>
+        @Html.HiddenFor(model => model.Id)
 
-            <input type="submit" value="Save" />
-       </fieldset>
-    }
+        @Html.TwitterEditorFor(model => model.Name)
+
+        @Html.TwitterEditorFor(model => model.Domain)
+
+        @Html.TwitterTextAreaEditorFor(model => model.Description, 5, 20)
+
+        <div class="form-actions">
+            <button type="submit" class="btn btn-primary">Save changes</button>
+            @Html.ActionLink("Cancel", "Index","Environment", null, new { @class="btn"})
+        </div>
+    </fieldset>
+}

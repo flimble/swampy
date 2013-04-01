@@ -12,14 +12,22 @@
     Welcome to Swampy Administration Page. 
 
     Please select an environment from the list below to view/manage environment data
+    
+    
 </p>
+<p>
+@Html.ActionLink("+ Add New", "Create", "Environment", new {@class="btn btn-primary btn-large"})
+
+    </p>
 
 
-@Html.ActionLink("+ Add New", "Create")
 
 
-@foreach(string environment in Model.EnvironmentNames)
-{
-    <h3>@environment</h3>
-    @Html.ActionLink(environment ,"Detail", "Environment", new { environmentName = environment }, null);
+@foreach (KeyValuePair<string, string> environment in Model.EnvironmentNames)
+{  
+    <div>
+    <h3>@Html.ActionLink(environment.Key, "Detail", "Environment", new { environmentName = environment.Key }, null)</h3>
+    <span>@environment.Value</span>
+        </div>
 }
+

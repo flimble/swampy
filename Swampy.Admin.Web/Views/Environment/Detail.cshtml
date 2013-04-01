@@ -1,4 +1,5 @@
-﻿@using Swampy.Admin.Web.Models
+﻿@using Swampy.Admin.Web.HtmlHelpers
+@using Swampy.Admin.Web.Models
 @using Swampy.Admin.Web.Models.ReadModels
 @model Swampy.Admin.Web.Models.Operation.EnvironmentOutput
 @{
@@ -19,7 +20,9 @@
     @Html.HiddenFor(x=>x.Id)
     
     
-    @Html.DisplayForModel();
+    @Html.TwitterDisplayFor(model=>model.Name)
+    @Html.TwitterDisplayFor(model=>model.Domain)
+    @Html.TwitterDisplayFor(model=>model.Description)
 
     @* @Html.DropDownListFor(x => x.SelectedType, new SelectList(@Model.EndpointTypes, "SimpleEndpoint")) *@
     @* @Html.ActionLink("Create New Endpoint", "Edit", "Endpoint", new { environmentName = @Model.environmentName}, new { @class="btn btn-primary"}) *@
@@ -50,7 +53,7 @@
             </table>*@
     
     
-    @Html.ActionLink("Edit", "Edit", "Environment", new { EnvironmentId=Model.Id },null);
+    @Html.ActionLink("Edit", "Edit", "Environment", new { EnvironmentId=Model.Id }, new {@class="btn btn-primary"})
 
 
 </div>

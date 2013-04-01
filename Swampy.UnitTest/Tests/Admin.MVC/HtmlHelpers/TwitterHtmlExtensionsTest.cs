@@ -85,7 +85,11 @@ namespace Swampy.UnitTest.Tests.Admin.MVC.HtmlHelpers
 
             string expected =
                 string.Format(
-                    "<div class=\"control-group\"><label for=\"aProperty\">{0}</label><div class=\"controls\"><input class=\"input-validation-error text-box single-line\" id=\"aProperty\" name=\"aProperty\" type=\"text\" value=\"{1}\" /><span class=\"field-validation-error\" data-valmsg-for=\"aProperty\" data-valmsg-replace=\"true\">{2}</span><\\div><\\div>", errorProperty, propertyText, errorMessage);
+                    "<div class=\"control-group\">"+
+                    "<label class=\"control-label\" for=\"aProperty\">{0}</label><div class=\"controls\">"+
+                    "<input class=\"input-validation-error text-box single-line\" id=\"aProperty\" name=\"aProperty\" type=\"text\" value=\"{1}\" />"+
+                    "<span class=\"field-validation-error help-inline\" data-valmsg-for=\"aProperty\" data-valmsg-replace=\"true\">{2}</span>"+
+                    "</div></div>", errorProperty, propertyText, errorMessage);
 
             Assert.IsTrue(expected.Equals(result.ToString().Replace(Environment.NewLine, "")));
 
@@ -106,7 +110,37 @@ namespace Swampy.UnitTest.Tests.Admin.MVC.HtmlHelpers
 
             string expected =
                 string.Format(
-                    "<div class=\"control-group\"><label for=\"aProperty\">aProperty</label><div class=\"controls\"><input class=\"text-box single-line\" id=\"aProperty\" name=\"aProperty\" type=\"text\" value=\"{0}\" /><span class=\"field-validation-valid\" data-valmsg-for=\"aProperty\" data-valmsg-replace=\"true\"></span><\\div><\\div>",propertyText);
+                    "<div class=\"control-group\">"+
+                    "<label class=\"control-label\" for=\"aProperty\">aProperty</label>"+
+                    "<div class=\"controls\">"+
+                    "<input class=\"text-box single-line\" id=\"aProperty\" name=\"aProperty\" type=\"text\" value=\"{0}\" />"+
+                    "<span class=\"field-validation-valid help-inline\" data-valmsg-for=\"aProperty\" data-valmsg-replace=\"true\">"+
+                    "</span></div></div>",propertyText);
+
+            Assert.IsTrue(expected.Equals(result.ToString().Replace(Environment.NewLine, "")));
+
+        }
+
+          [Test]
+        [TestCase("sf", 4, 1)]
+        public void twittereditorfor_without_error_outputs_label_and_editor(string propertyText, int rows, int columns)
+        {
+            var viewData = new ViewDataDictionary<FakeModel>(new FakeModel { aProperty = propertyText });
+
+            
+            var helper = CreateHtmlHelper<FakeModel>(viewData);
+
+            var result = helper.TwitterTextAreaEditorFor(model => model.aProperty, rows, columns);
+
+
+            string expected =
+                string.Format(
+                    "<div class=\"control-group\">" + 
+                    "<label class=\"control-label\" for=\"aProperty\">aProperty</label>" + 
+                    "<div class=\"controls\">" + 
+                    "<textarea cols=\"{0}\" id=\"aProperty\" name=\"aProperty\" rows=\"{1}\">{2}</textarea>" +
+                    "<span class=\"field-validation-valid help-inline\" data-valmsg-for=\"aProperty\" data-valmsg-replace=\"true\">"+
+                    "</span></div></div>", columns, rows, propertyText);
 
             Assert.IsTrue(expected.Equals(result.ToString().Replace(Environment.NewLine, "")));
 

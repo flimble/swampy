@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
 using NHibernate;
@@ -22,7 +23,7 @@ namespace Swampy.Admin.Web.Controllers
 
             var names = from e in Session.Query<SwampyEnvironment>()
                                          .OrderBy(x => x.Name)
-                        select e.Name;
+                        select new KeyValuePair<string,string>(e.Name,e.Description);
 
 
 
@@ -93,6 +94,7 @@ namespace Swampy.Admin.Web.Controllers
 
             environment.Domain = operation.Domain;
             environment.Name = operation.Name;
+            environment.Description = operation.Description;
 
             Session.SaveOrUpdate(environment);
 
