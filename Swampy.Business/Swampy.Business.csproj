@@ -57,8 +57,9 @@
     <Reference Include="FluentNHibernate">
       <HintPath>..\packages\FluentNHibernate.1.3.0.733\lib\FluentNHibernate.dll</HintPath>
     </Reference>
-    <Reference Include="FluentValidation">
-      <HintPath>..\Admin.Web\bin\FluentValidation.dll</HintPath>
+    <Reference Include="FluentValidation, Version=3.4.6.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\FluentValidation.3.4.6.0\lib\Net40\FluentValidation.dll</HintPath>
     </Reference>
     <Reference Include="ICSharpCode.NRefactory">
       <HintPath>..\packages\RavenDB.Database.1.0.960\lib\net40\ICSharpCode.NRefactory.dll</HintPath>
@@ -103,8 +104,6 @@
     <Compile Include="Contract\Validators\FluentUrlValidator.cs" />
     <Compile Include="DomainModel\Entities\User.cs" />
     <Compile Include="Infrastructure\NHibernate\Conventions\ColumnDefaultNotNullConvention.cs" />
-    <Compile Include="obj\Queries\asdfQuery.cs" />
-    <Compile Include="obj\Queries\IQuery.cs" />
     <Compile Include="DomainModel\ValueObjects\ValueObjectBase.cs" />
     <Compile Include="Infrastructure\NHibernate\Conventions\FullIdNameConvention.cs" />
     <Compile Include="Infrastructure\NHibernate\Conventions\ManyToOneForeignKeyConvention.cs" />
@@ -138,7 +137,6 @@
     <Compile Include="Infrastructure\NHibernate\Conventions\OneToManyForeignKeyConvention.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="DomainServices\SwampyEndpointService.cs" />
-    <Compile Include="obj\Queries\EndpointQuery.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="log4net.config" />
