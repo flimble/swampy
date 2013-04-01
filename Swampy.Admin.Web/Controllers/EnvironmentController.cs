@@ -19,11 +19,10 @@ namespace Swampy.Admin.Web.Controllers
         [HttpGet]
         public ActionResult Index()
         {
-            ViewBag.Message = "Welcome to ASP.NET MVC!";
 
             var names = from e in Session.Query<SwampyEnvironment>()
                                          .OrderBy(x => x.Name)
-                        select new KeyValuePair<string,string>(e.Name,e.Description);
+                        select new KeyValuePair<string, string>(e.Name, e.Description);
 
 
 
@@ -50,7 +49,7 @@ namespace Swampy.Admin.Web.Controllers
                     Name = currentEnvironment.Name,
                     Domain = currentEnvironment.Domain
                 };
-            
+
             return View(model);
 
         }
@@ -90,6 +89,12 @@ namespace Swampy.Admin.Web.Controllers
             else
             {
                 environment = new SwampyEnvironment(operation.Name);
+
+                if (Session.Query<SwampyEnvironment>().Any(x => x.Name == operation.Name))
+                {
+                    ModelState.AddModelError("Name", "Duplicate name already found. Cannot have two environments with the same name");
+                    return View(operation);
+                }
             }
 
             environment.Domain = operation.Domain;
@@ -97,6 +102,7 @@ namespace Swampy.Admin.Web.Controllers
             environment.Description = operation.Description;
 
             Session.SaveOrUpdate(environment);
+
 
             return RedirectToAction("Index");
         }
