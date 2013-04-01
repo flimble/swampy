@@ -15,11 +15,15 @@ namespace Swampy.UnitTest.Tests.Admin.MVC.Config
     public class BundleConfigTest
     {
         private readonly BundleContext _mockBundleContext;
+        private readonly string _pathToMvcProject;
 
         public BundleConfigTest()
         {
             _mockBundleContext = new BundleContext(new FakeHttpContext(string.Empty), new BundleCollection(), string.Empty);
+            _pathToMvcProject = GetPathToMvcProject();
         }
+
+        
 
         [SetUp]
         public void Setup()
@@ -33,25 +37,39 @@ namespace Swampy.UnitTest.Tests.Admin.MVC.Config
 
         }
 
-
-        private static string MapBundleItemPath(string item)
+        /// <summary>
+        /// Gets the path to local Swampy.Admin.Web
+        /// </summary>
+        /// <remarks>Warning this is a hack, and may need to be looked at another time</remarks>
+        /// <returns></returns>
+        private string GetPathToMvcProject()
         {
-            //TODO: Replace this with whatever logic you need to map from your virtual paths to a physical path
+            // Join the item virtual path with the location of your MVC project
+            var executingDir = new Uri(AppDomain.CurrentDomain.BaseDirectory);
+            var rootDir = new Uri(executingDir, @"../../../");
 
+
+            var dirs = Directory.GetDirectories(rootDir.LocalPath, "Swampy.Admin.Web", SearchOption.AllDirectories);
+
+            if (!dirs.Any())
+                throw new ArgumentException("Can't find");
+
+            return dirs.First();
+
+        }
+
+        private string MapBundleItemPath(string item)
+        {
+            
             // Strip the ~ and switch from / to \
             item = item.Replace("~", string.Empty).Replace("/", @"\");
 
-            // Join the item virtual path with the location of your MVC project
-            var executingDir = new Uri(Directory.GetCurrentDirectory());
-            var rootDir = new Uri(executingDir, @"../../");
-            var pathToMvcProject = Path.Combine(rootDir.LocalPath,
-                                            @"Swampy.Admin.Web");
+          
 
-            return string.Format("{0}{1}", pathToMvcProject, item);
+            return string.Format("{0}{1}", _pathToMvcProject, item);
         }
 
         [Test]
-        [Explicit]
         public void jquery_bundle_contains_jquery()
         {            
             var jqueryBundle = GetFilesInBundle(@"~/bundles/jquery");            
@@ -59,7 +77,6 @@ namespace Swampy.UnitTest.Tests.Admin.MVC.Config
         }
 
         [Test]
-        [Explicit]
         public void nonspecified_bundle_not_created()
         {
             Assert.IsFalse(BundleTable.Bundles.Any(x=>x.Path=="zForZachariah"));
