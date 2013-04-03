@@ -22,9 +22,9 @@ namespace Swampy.UnitTest.Admin.MVC.Controllers
 
     public class AbstractControllerTest : AbstractNHibernateDatabaseTest
     {
-      
-        protected ControllerContext ControllerContext { get; set; }
+       
 
+        protected ControllerContext ControllerContext { get; set; }
 
         protected TController ExecuteAction<TController>(Action<TController> action) where TController : AbstractController, new()
         {

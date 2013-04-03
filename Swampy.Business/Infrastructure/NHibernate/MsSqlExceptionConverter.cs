@@ -1,10 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Data;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using NHibernate;
 using NHibernate.Exceptions;
 using Swampy.Business.Infrastructure.NHibernate.Exceptions;
@@ -33,6 +28,7 @@ namespace Swampy.Business.Infrastructure.NHibernate
                         return new UniqueConstraintViolationException(exInfo.Message, sqle.InnerException, exInfo.Sql);
                 }
             }
+            
             return SQLStateConverter.HandledNonSpecificException(exInfo.SqlException,
                                                                  exInfo.Message, exInfo.Sql);
         }

@@ -3,6 +3,7 @@ using System.Web.Mvc;
 using NHibernate.Linq;
 using NHibernate.Util;
 using NUnit.Framework;
+using Swampy.Admin.Web.App_Start;
 using Swampy.Admin.Web.Controllers;
 using Swampy.Admin.Web.Models.Operation;
 using Swampy.Admin.Web.Models.ReadModels;
@@ -15,6 +16,13 @@ namespace Swampy.UnitTest.Tests.Admin.MVC.Controllers
     [TestFixture]
     public class EnvironmentControllerTest : AbstractControllerTest
     {
+
+        [SetUp]
+        public void Setup()
+        {
+            MappingConfig.Configure();
+        }
+
 
         [Test]
         [TestCase("TEST1", "domain.com")]
@@ -31,9 +39,9 @@ namespace Swampy.UnitTest.Tests.Admin.MVC.Controllers
             ExecuteAction<EnvironmentController>(controller => result = controller.Detail(environmentName) as ViewResult);
 
             //assert
-            Assert.IsInstanceOf<EnvironmentOutput>(result.Model);
+            Assert.IsInstanceOf<EnvironmentRead>(result.Model);
 
-            var data = (EnvironmentOutput)result.Model;            
+            var data = (EnvironmentRead)result.Model;            
             Assert.IsNotNull(data);
             Assert.AreEqual(environmentName, data.Name);
         }

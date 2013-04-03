@@ -2,12 +2,11 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
-using System.Web;
 using System.Web.Mvc;
 
-namespace Swampy.Admin.Web.HtmlHelpers
+namespace Swampy.Admin.Web.Infrastructure.HtmlExtensions
 {
-    public static class LabelExtensions
+    public static class HtmlLabelExtensions
     {
 
             public static MvcHtmlString LabelFor<TModel, TValue>(this HtmlHelper<TModel> html, Expression<Func<TModel, TValue>> expression, object htmlAttributes)

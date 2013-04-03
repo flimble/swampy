@@ -10,8 +10,8 @@ namespace Swampy.Business.Infrastructure.NHibernate.Mappings
         public ConfigurationItemMap()
         {
             Id(x => x.Id);
-            References(x => x.SwampyEnvironment).Cascade.All();
-            Map(x => x.Name);
+            References(x => x.SwampyEnvironment).Cascade.All().UniqueKey("UQ_ConfigurationItem_EnvironmentId_Name");
+            Map(x => x.Name).UniqueKey("UQ_ConfigurationItem_EnvironmentId_Name");
             Map(x => x.Value);
             Map(x => x.ConfigurationType);
             Map(x => x.StoreAsToken);

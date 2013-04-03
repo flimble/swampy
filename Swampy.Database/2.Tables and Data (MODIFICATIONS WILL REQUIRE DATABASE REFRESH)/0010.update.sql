@@ -7,7 +7,8 @@
        StoreAsToken BIT not null,
        ModifiedOn DATETIME not null,
        ModifiedBy NVARCHAR(255) not null,
-       primary key (ConfigurationItemId)
+       primary key (ConfigurationItemId),
+      unique (Name, ConfigurationItemId)
     )
     create table [SwampyEnvironment] (
         SwampyEnvironmentId INT IDENTITY NOT NULL,

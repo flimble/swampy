@@ -44,6 +44,9 @@
     <Reference Include="Antlr3.Runtime">
       <HintPath>..\packages\WebGrease.1.3.0\lib\Antlr3.Runtime.dll</HintPath>
     </Reference>
+    <Reference Include="AutoMapper">
+      <HintPath>..\packages\AutoMapper.2.2.1\lib\net40\AutoMapper.dll</HintPath>
+    </Reference>
     <Reference Include="Castle.Core">
       <HintPath>..\packages\Castle.Core.3.1.0\lib\net35\Castle.Core.dll</HintPath>
     </Reference>
@@ -137,9 +140,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ActionFilters\ValidateModelStateAttribute.cs" />
-    <Compile Include="ActionFilters\ModelState.cs" />
-    <Compile Include="ActionFilters\NHibernateActionFilter.cs" />
+    <Compile Include="App_Start\MappingConfig.cs" />
+    <Compile Include="Infrastructure\ActionFilters\ValidateModelStateAttribute.cs" />
+    <Compile Include="Infrastructure\ActionFilters\ModelState.cs" />
+    <Compile Include="Infrastructure\ActionFilters\NHibernateActionFilter.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\NHibernateConfig.cs" />
@@ -148,37 +152,21 @@
     <Compile Include="App_Start\ValidationConfig.cs" />
     <Compile Include="Controllers\AbstractController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
-    <Compile Include="Controllers\EndpointController.cs" />
     <Compile Include="Controllers\EnvironmentController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Helpers\LabelExtensions.cs" />
-    <Compile Include="Helpers\Twitter.cs" />
-    <Compile Include="Models\Mappers\EnvironmentViewModelMapper.cs" />
-    <Compile Include="Models\Mappers\IViewModelMapper.cs" />
-    <Compile Include="Models\OperationModels\CreateEndpointOperationModel.cs" />
-    <Compile Include="Models\OperationModels\CreateEnvironmentOperationModel.cs" />
-    <Compile Include="Models\OperationModels\Endpoint\CreateDatabaseConnectionEndpoint.cs" />
-    <Compile Include="Models\OperationModels\Endpoint\CreateEndpoint.cs" />
-    <Compile Include="Models\OperationModels\Endpoint\CreateEndpointBase.cs" />
-    <Compile Include="Models\OperationModels\Endpoint\CreateServerEndpoint.cs" />
-    <Compile Include="Models\OperationModels\Endpoint\ConfigurationItem.cs" />
-    <Compile Include="Models\OperationModels\Environment\CreateEnvironmentOperationModel.cs" />
-    <Compile Include="Models\Operation\CreateEndpointOperationModel.cs" />
-    <Compile Include="Models\Operation\EnvironmentInput.cs" />
-    <Compile Include="Models\ReadModels\EnvironmentReadModel.cs" />
-    <Compile Include="Models\ReadModels\HomeReadModel.cs" />
-    <Compile Include="Models\View\EnvironmentViewModel.cs" />
-    <Compile Include="Models\View\HomeViewModel.cs" />
+    <Compile Include="Infrastructure\HtmlExtensions\HtmlLabelExtensions.cs" />
+    <Compile Include="Infrastructure\HtmlExtensions\TwitterHtmlExtensions.cs" />
+    <Compile Include="Models\ConfigurationItemInput.cs" />
+    <Compile Include="Models\EnvironmentRead.cs" />
+    <Compile Include="Models\EnvironmentInput.cs" />
+    <Compile Include="Models\EnvironmentReadModel.cs" />
+    <Compile Include="Models\HomeReadModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Content\bootstrap-responsive.css" />
-    <Content Include="Content\bootstrap-responsive.min.css" />
-    <Content Include="Content\bootstrap.css" />
-    <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\images\bootstrap\glyphicons-halflings-white.png" />
     <Content Include="Content\images\bootstrap\glyphicons-halflings.png" />
     <Content Include="Content\images\glyphicons-halflings-white.png" />

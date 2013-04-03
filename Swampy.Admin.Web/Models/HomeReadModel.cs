@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace Swampy.Admin.Web.Models.ReadModels
+namespace Swampy.Admin.Web.Models.Read
 {
     public class HomeReadModel
     {

@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Web.Mvc;
+using AutoMapper;
 using NHibernate;
 using Swampy.Business.Infrastructure.Abstractions;
 
@@ -13,7 +14,14 @@ namespace Swampy.Admin.Web.Controllers
     /// </summary>
     public class AbstractController : Controller
     {
+        public AbstractController()
+        {
+            this.Mapper = AutoMapper.Mapper.Engine;
+        }
+
         public ISession Session;
+
+        public IMappingEngine Mapper;
 
         public Action<Command> AlternativeExecuteCommand { get; set; }
         public Func<Command, object> AlternativeExecuteCommandWithResult { get; set; }

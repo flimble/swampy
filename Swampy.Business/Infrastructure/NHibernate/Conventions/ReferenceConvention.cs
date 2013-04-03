@@ -3,7 +3,7 @@ using FluentNHibernate.Conventions.Instances;
 
 namespace Swampy.Business.Infrastructure.NHibernate
 {
-    public class ManyToOneForeignKeyConvention : IReferenceConvention
+    public class ReferenceConvention : IReferenceConvention
     {
         public void Apply(IManyToOneInstance instance)
         {

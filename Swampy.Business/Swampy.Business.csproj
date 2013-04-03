@@ -107,7 +107,7 @@
     <Compile Include="Infrastructure\NHibernate\Conventions\ColumnDefaultNotNullConvention.cs" />
     <Compile Include="DomainModel\ValueObjects\ValueObjectBase.cs" />
     <Compile Include="Infrastructure\NHibernate\Conventions\FullIdNameConvention.cs" />
-    <Compile Include="Infrastructure\NHibernate\Conventions\ManyToOneForeignKeyConvention.cs" />
+    <Compile Include="Infrastructure\NHibernate\Conventions\ReferenceConvention.cs" />
     <Compile Include="DomainModel\ValueObjects\AuditInformation.cs" />
     <Compile Include="Contract\Validators\IValidate.cs" />
     <Compile Include="DomainModel\Entities\ConfigurationItem.cs" />

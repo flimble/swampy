@@ -1,20 +1,16 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
-using NHibernate;
 using NHibernate.Linq;
-using Swampy.Admin.Web.Models.Mappers;
 using Swampy.Admin.Web.Models.Operation;
-using Swampy.Admin.Web.Models.ReadModels;
+using Swampy.Admin.Web.Models.Read;
 using Swampy.Business.DomainModel.Entities;
-using CreateEnvironmentOperationModel = Swampy.Admin.Web.Models.OperationModels.Environment.CreateEnvironmentOperationModel;
-using System;
 
 
 namespace Swampy.Admin.Web.Controllers
 {
     public class EnvironmentController : AbstractController
-    {
+    {        
 
         [HttpGet]
         public ActionResult Index()
@@ -23,8 +19,6 @@ namespace Swampy.Admin.Web.Controllers
             var names = from e in Session.Query<SwampyEnvironment>()
                                          .OrderBy(x => x.Name)
                         select new KeyValuePair<string, string>(e.Name, e.Description);
-
-
 
             var model = new HomeReadModel
             {
@@ -43,12 +37,7 @@ namespace Swampy.Admin.Web.Controllers
 
             var currentEnvironment = environments.Single(x => x.Name == environmentName);
 
-            var model = new EnvironmentOutput()
-                {
-                    Id = currentEnvironment.Id,
-                    Name = currentEnvironment.Name,
-                    Domain = currentEnvironment.Domain
-                };
+            var model = Mapper.Map<SwampyEnvironment, EnvironmentRead>(currentEnvironment);
 
             return View(model);
 
@@ -65,12 +54,8 @@ namespace Swampy.Admin.Web.Controllers
         {
             var environment = Session.Get<SwampyEnvironment>(environmentId);
 
-            var model = new EnvironmentInput
-            {
-                Domain = environment.Domain,
-                Id = environment.Id,
-                Name = environment.Name
-            };
+            var model = Mapper.Map<SwampyEnvironment, EnvironmentInput>(environment);
+
 
             return View(model);
         }
@@ -97,10 +82,9 @@ namespace Swampy.Admin.Web.Controllers
                 }
             }
 
-            environment.Domain = operation.Domain;
-            environment.Name = operation.Name;
-            environment.Description = operation.Description;
+            Mapper.Map(operation, environment);
 
+          
             Session.SaveOrUpdate(environment);
 
 

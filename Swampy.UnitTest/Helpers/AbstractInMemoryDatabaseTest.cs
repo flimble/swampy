@@ -13,6 +13,7 @@ namespace Swampy.UnitTest.Queries
     public class AbstractInMemoryDatabaseTest 
     {
         private NHibernateInMemoryDatabase _inMemoryDatabase;        
+
         private readonly bool _clearDataAfterEveryTest;
 
         public ISession session { get { return _inMemoryDatabase.Session; } }

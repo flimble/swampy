@@ -6,9 +6,9 @@ namespace Swampy.Admin.Web.Models.ReadModels
 {
     public class EnvironmentReadModel
     {
-        public string environmentName { get; set; }
+        public string EnvironmentName { get; set; }
 
-        public List<string> allEnvironments { get; set; }
+        public List<string> AllEnvironments { get; set; }
 
         public List<EndpointViewModel> Endpoints { get; set; }
 

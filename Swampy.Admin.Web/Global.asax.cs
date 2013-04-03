@@ -21,6 +21,8 @@ namespace Swampy.Admin.Web
             RouteConfig.RegisterRoutes(RouteTable.Routes);
 
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+            
+            MappingConfig.Configure();
 
             ValidationConfig.Configure();
         }
