@@ -5,7 +5,7 @@ using Swampy.Admin.Web.App_Start;
 namespace Swampy.UnitTest.Tests.Admin.Web.Models.Mappings
 {
     [TestFixture]
-    public class EnvironmentToEnvironmentReadMappingTest
+    public class MappingConfigurationTest
     {
         [SetUp]
         public void Setup()

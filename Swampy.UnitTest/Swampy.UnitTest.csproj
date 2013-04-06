@@ -73,14 +73,6 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Data.SQLite, Version=1.0.84.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\System.Data.SQLite.1.0.84.0\lib\net45\System.Data.SQLite.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Data.SQLite.Linq, Version=1.0.84.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\System.Data.SQLite.1.0.84.0\lib\net45\System.Data.SQLite.Linq.dll</HintPath>
-    </Reference>
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Mvc, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -97,21 +89,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Helpers\AbstractControllerTest.cs" />
-    <Compile Include="Helpers\AbstractInMemoryDatabaseTest.cs" />
-    <Compile Include="Helpers\Databases\INHibernateDatabase.cs" />
-    <Compile Include="Helpers\Databases\NHibernateInMemoryDatabase.cs" />
-    <Compile Include="Helpers\Databases\NHibernateSchemaUpdateDatabase.cs" />
     <Compile Include="RoundhouseSchemUpdateScriptGenerator.cs" />
     <Compile Include="Tests\Admin.Web\ActionFilters\AbstractActionFilterTest.cs" />
     <Compile Include="Tests\Admin.Web\ActionFilters\NHibernateActionFilterTest.cs" />
     <Compile Include="Tests\Admin.Web\ActionFilters\ValidateModelStateAttribute.cs" />
     <Compile Include="Tests\Admin.Web\Config\BundleConfigTest.cs" />
-    <Compile Include="Tests\Admin.Web\Controllers\EnvironmentControllerTest.cs" />
+    <Compile Include="Tests\Admin.Web\Config\CastleConfig.cs" />
     <Compile Include="Tests\Admin.Web\Config\RouteConfigTest.cs" />
     <Compile Include="Tests\Admin.Web\HtmlHelpers\TwitterHtmlExtensionsTest.cs" />
-    <Compile Include="Tests\Admin.Web\Models\ConfigurationItemInputTest.cs" />
-    <Compile Include="Tests\Admin.Web\Models\Mappings\EnvironmentToEnvironmentReadMapping.cs" />
+    <Compile Include="Tests\Admin.Web\Models\Mappings\ConfigurationItemProfileTest.cs" />
+    <Compile Include="Tests\Admin.Web\Models\Mappings\SwampyEnvironmentProfileTest.cs" />
+    <Compile Include="Tests\Admin.Web\Models\Validation\ConfigurationItemInputValidationTest.cs" />
+    <Compile Include="Tests\Admin.Web\Models\Mappings\MappingConfigurationTest.cs" />
     <Compile Include="Tests\Contract\Validators\DatabaseConnectionStringFluentValidatorTest.cs" />
     <Compile Include="Tests\Business\Domain\AbstractEntityTest.cs" />
     <Compile Include="Tests\Business\Domain\ConfigurationItemTest.cs" />
@@ -119,8 +108,6 @@
     <Compile Include="Tests\Business\Domain\ServerTest.cs" />
     <Compile Include="Tests\Business\Domain\TokenBuilderTest.cs" />
     <Compile Include="Tests\Business\Domain\ValueObjectTest.cs" />
-    <Compile Include="Tests\Business\Queries\FirstHibernateTest.cs" />
-    <Compile Include="Helpers\AbstractNHibernateDatabaseTest.cs" />
     <Compile Include="Helpers\TestFluentValidator.cs" />
     <Compile Include="Tests\Contract\Validators\UrlValidatorTest.cs" />
     <Compile Include="Tests\Service\Fakes\FakeEndpointService.cs" />
@@ -140,16 +127,13 @@
       <Project>{bea1c3e4-9222-400e-8e7b-b0e98a715b11}</Project>
       <Name>Swampy.Business</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Swampy.IntegrationTest\Swampy.IntegrationTest.csproj">
+      <Project>{2D83CEEF-655D-4F1C-94A9-024A79FDE9AF}</Project>
+      <Name>Swampy.IntegrationTest</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="x64\SQLite.Interop.dll">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="x86\SQLite.Interop.dll">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-  </ItemGroup>
-  <ItemGroup>
+    <Folder Include="Tests\Admin.Web\Controllers\" />
     <Folder Include="Tests\Service\Endpoint\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

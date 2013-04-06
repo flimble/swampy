@@ -14,7 +14,7 @@ namespace Swampy.UnitTest.Tests.Admin.MVC.Models
     /// </summary>
     /// <remarks>Some duplicated testing here with custom validators - but needed for the conditional validation</remarks>
     [TestFixture]
-    public class ConfigurationItemInputTest
+    public class ConfigurationItemInputValidationTest
     {
         private ConfigurationItemInputValidator _validator ;
 
@@ -30,7 +30,7 @@ namespace Swampy.UnitTest.Tests.Admin.MVC.Models
         [TestCase("Url", "www test:com")]
         public void invalid_configurationvalues_generate_error(string type, string value)
         {
-            var underTest = new ConfigurationItemInput
+            var underTest = new ConfigurationItemInputModel
                 {
                     Id = null,
                     Type = type,
@@ -47,7 +47,7 @@ namespace Swampy.UnitTest.Tests.Admin.MVC.Models
         [TestCase("Url", "www.google.com")]
         public void valid_configurationvalues_do_not_generate_error(string type, string value)
         {
-            var underTest = new ConfigurationItemInput
+            var underTest = new ConfigurationItemInputModel
             {
                 Id = null,
                 Type = type,

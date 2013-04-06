@@ -1,21 +1,25 @@
 using System.Linq;
 using System.Web.Mvc;
 using NHibernate.Linq;
-using NHibernate.Util;
 using NUnit.Framework;
 using Swampy.Admin.Web.App_Start;
 using Swampy.Admin.Web.Controllers;
+using Swampy.Admin.Web.Models;
 using Swampy.Admin.Web.Models.Operation;
-using Swampy.Admin.Web.Models.ReadModels;
 using Swampy.Business.DomainModel.Entities;
-using Swampy.Business.Infrastructure.Abstractions;
 using Swampy.UnitTest.Admin.MVC.Controllers;
+using Swampy.UnitTest.Helpers;
+using EnvironmentReadModel = Swampy.Admin.Web.Models.Operation.EnvironmentReadModel;
 
 namespace Swampy.UnitTest.Tests.Admin.MVC.Controllers
 {
     [TestFixture]
     public class EnvironmentControllerTest : AbstractControllerTest
     {
+        public EnvironmentControllerTest() : base(TheDatabase.MustBeFresh)
+        {
+            
+        }
 
         [SetUp]
         public void Setup()
@@ -31,17 +35,18 @@ namespace Swampy.UnitTest.Tests.Admin.MVC.Controllers
 
             //arrange
             var config = new SwampyEnvironment(environmentName, domain);
+
             SetupData(session => session.Save(config));
 
             ViewResult result = null;
-            
+
             //act
             ExecuteAction<EnvironmentController>(controller => result = controller.Detail(environmentName) as ViewResult);
 
             //assert
-            Assert.IsInstanceOf<EnvironmentRead>(result.Model);
+            Assert.IsInstanceOf<EnvironmentReadModel>(result.Model);
 
-            var data = (EnvironmentRead)result.Model;            
+            var data = (EnvironmentReadModel)result.Model;
             Assert.IsNotNull(data);
             Assert.AreEqual(environmentName, data.Name);
         }
@@ -61,17 +66,18 @@ namespace Swampy.UnitTest.Tests.Admin.MVC.Controllers
             ExecuteAction<EnvironmentController>(controller => result = controller.Edit((int)id) as ViewResult);
 
             //assert    
-            Assert.IsInstanceOf<EnvironmentInput>(result.Model);
+            Assert.IsInstanceOf<EnvironmentInputModel>(result.Model);
         }
 
         [Test]
         [TestCase("TEST1", "domain.com")]
-        public void edit_with_valid_object_(string environmentName, string domain)
+        public void edit_with_valid_object_persists_nested_object_graph(string environmentName, string domain)
         {
             //arrange
-            var config = new EnvironmentInput();
+            var config = new EnvironmentInputModel();
             config.Name = environmentName;
             config.Domain = domain;
+            config.ConfigurationItems.Add(new ConfigurationItemInputModel{Name = "Joe", Type = "Simple", Value="aValue"});
 
             RedirectToRouteResult result = null;
 
@@ -81,10 +87,11 @@ namespace Swampy.UnitTest.Tests.Admin.MVC.Controllers
             //assert    
             Assert.AreEqual("Index", result.RouteValues["action"]);
 
-            session.Query<SwampyEnvironment>()
-                .Any(x=>x.Name == environmentName);
-           
-                
+            var environment = Session.Query<SwampyEnvironment>().Single(x => x.Name == environmentName);
+            Assert.AreEqual(1, environment.ConfigurationItems.Count);
+            Assert.AreEqual("Joe", environment.ConfigurationItems.First().Name);
+
+     
         }
     }
 }

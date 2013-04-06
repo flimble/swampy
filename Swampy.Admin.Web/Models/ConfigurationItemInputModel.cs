@@ -8,14 +8,15 @@ using Swampy.Business.DomainModel.Entities;
 
 namespace Swampy.Admin.Web.Models
 {
-    public class ConfigurationItemInput
+    public class ConfigurationItemInputModel
     {
         public int? Id { get; set; }
         public string Type { get; set; }
+        public string Name { get; set; }
         public string Value { get; set; }
     }
 
-    public class ConfigurationItemInputValidator : AbstractValidator<ConfigurationItemInput>
+    public class ConfigurationItemInputValidator : AbstractValidator<ConfigurationItemInputModel>
     {
         public ConfigurationItemInputValidator()
         {

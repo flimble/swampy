@@ -1,14 +1,8 @@
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using FluentNHibernate.Cfg;
 using FluentNHibernate.Cfg.Db;
 using NHibernate;
 using NHibernate.Cfg;
 using NHibernate.Tool.hbm2ddl;
-using NUnit.Framework;
 using Swampy.Business.Infrastructure.NHibernate;
 
 namespace Swampy.UnitTest.Helpers
@@ -19,7 +13,7 @@ namespace Swampy.UnitTest.Helpers
         private static ISessionFactory _sessionFactory;
         public ISession Session { get; set; }
 
-        public NHibernateInMemoryDatabase()
+    public NHibernateInMemoryDatabase()
         {
             _sessionFactory = CreateSessionFactory();            
             BuildSchema();
@@ -38,9 +32,7 @@ namespace Swampy.UnitTest.Helpers
 
         public void BuildSchema()
         {
-
             Session = _sessionFactory.OpenSession();
-
             new SchemaExport(Configuration).Execute(true, true, false, Session.Connection, Console.Out);
         }
 

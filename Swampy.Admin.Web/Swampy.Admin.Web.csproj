@@ -140,6 +140,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App_Start\CastleWindsorConfig.cs" />
     <Compile Include="App_Start\MappingConfig.cs" />
     <Compile Include="Infrastructure\ActionFilters\ValidateModelStateAttribute.cs" />
     <Compile Include="Infrastructure\ActionFilters\ModelState.cs" />
@@ -159,11 +160,13 @@
     </Compile>
     <Compile Include="Infrastructure\HtmlExtensions\HtmlLabelExtensions.cs" />
     <Compile Include="Infrastructure\HtmlExtensions\TwitterHtmlExtensions.cs" />
-    <Compile Include="Models\ConfigurationItemInput.cs" />
+    <Compile Include="Models\ConfigurationItemInputModel.cs" />
     <Compile Include="Models\EnvironmentRead.cs" />
-    <Compile Include="Models\EnvironmentInput.cs" />
+    <Compile Include="Models\EnvironmentInputModel.cs" />
     <Compile Include="Models\EnvironmentReadModel.cs" />
     <Compile Include="Models\HomeReadModel.cs" />
+    <Compile Include="Models\MapperProfiles\ConfigurationItemProfile.cs" />
+    <Compile Include="Models\MapperProfiles\SwampyEnvironmentProfile.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

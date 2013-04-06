@@ -1,7 +1,7 @@
 ﻿@using Swampy.Admin.Web.HtmlHelpers
 @using Swampy.Admin.Web.Models
 @using Swampy.Admin.Web.Models.ReadModels
-@model Swampy.Admin.Web.Models.Operation.EnvironmentRead
+@model Swampy.Admin.Web.Models.Operation.EnvironmentReadModel
 @{
     ViewBag.Title = "Detail";
     Layout = "~/Views/Shared/_LayoutFluid.cshtml";    
@@ -39,7 +39,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach (EnvironmentReadModel.EndpointViewModel endpoint in Model.Endpoints)
+                    @foreach (EnvironmentReadModelModel.EndpointViewModel endpoint in Model.Endpoints)
                     {
                         <tr>
                             <td>@endpoint.Key</td>

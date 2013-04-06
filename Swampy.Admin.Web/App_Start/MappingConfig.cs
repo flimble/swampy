@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using AutoMapper;
+using Swampy.Admin.Web.Models;
+using Swampy.Admin.Web.Models.Mappers;
 using Swampy.Admin.Web.Models.Operation;
 using Swampy.Business.DomainModel.Entities;
 
@@ -10,19 +12,14 @@ namespace Swampy.Admin.Web.App_Start
 {
     public static class MappingConfig
     {
+        /// <summary>
+        /// Configure Automapper configuration by adding all profile classes
+        /// Profiles are split by entity
+        /// </summary>
         public static void Configure()
-        {
-            Mapper.CreateMap<SwampyEnvironment, EnvironmentRead>();
-
-            Mapper.CreateMap<SwampyEnvironment, EnvironmentInput>();
-
-            Mapper.CreateMap<EnvironmentInput, SwampyEnvironment>()
-                  .ForMember(dest => dest.Fake, opt => opt.Ignore())
-                  .ForMember(dest => dest.ConfigurationItems, opt => opt.Ignore())
-                  .ForMember(dest => dest.Servers, opt => opt.Ignore())
-                  .ForMember(dest => dest.ModificationDetails, opt => opt.Ignore());
-
-                  
+        {            
+            Mapper.AddProfile(new SwampyEnvironmentProfile());
+            Mapper.AddProfile(new ConfigurationItemProfile());              
         }
     }
 }

@@ -103,6 +103,7 @@
     <Compile Include="Contract\Validators\DatabaseConnectionStringFluentValidator.cs" />
     <Compile Include="Contract\Validators\FluentUrlValidator.cs" />
     <Compile Include="DomainModel\Entities\User.cs" />
+    <Compile Include="DomainModel\Repositories\IQuery.cs" />
     <Compile Include="Infrastructure\NHibernate\MsSqlExceptionConverter.cs" />
     <Compile Include="Infrastructure\NHibernate\Conventions\ColumnDefaultNotNullConvention.cs" />
     <Compile Include="DomainModel\ValueObjects\ValueObjectBase.cs" />

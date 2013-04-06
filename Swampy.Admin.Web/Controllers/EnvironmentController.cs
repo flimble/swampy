@@ -37,7 +37,7 @@ namespace Swampy.Admin.Web.Controllers
 
             var currentEnvironment = environments.Single(x => x.Name == environmentName);
 
-            var model = Mapper.Map<SwampyEnvironment, EnvironmentRead>(currentEnvironment);
+            var model = Mapper.Map<SwampyEnvironment, EnvironmentReadModel>(currentEnvironment);
 
             return View(model);
 
@@ -46,7 +46,7 @@ namespace Swampy.Admin.Web.Controllers
         [HttpGet]
         public ActionResult Create()
         {
-            return View("Edit", new EnvironmentInput());
+            return View("Edit", new EnvironmentInputModel());
         }
 
         [HttpGet]
@@ -54,14 +54,14 @@ namespace Swampy.Admin.Web.Controllers
         {
             var environment = Session.Get<SwampyEnvironment>(environmentId);
 
-            var model = Mapper.Map<SwampyEnvironment, EnvironmentInput>(environment);
+            var model = Mapper.Map<SwampyEnvironment, EnvironmentInputModel>(environment);
 
 
             return View(model);
         }
 
         [HttpPost]
-        public ActionResult Edit(EnvironmentInput operation)
+        public ActionResult Edit(EnvironmentInputModel operation)
         {
             if (!ModelState.IsValid)
                 return View(operation);

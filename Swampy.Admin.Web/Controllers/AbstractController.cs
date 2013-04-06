@@ -1,8 +1,10 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Web.Mvc;
 using AutoMapper;
 using NHibernate;
+using Swampy.Business.DomainModel.Repositories;
 using Swampy.Business.Infrastructure.Abstractions;
 
 namespace Swampy.Admin.Web.Controllers
@@ -22,6 +24,8 @@ namespace Swampy.Admin.Web.Controllers
         public ISession Session;
 
         public IMappingEngine Mapper;
+
+        
 
         public Action<Command> AlternativeExecuteCommand { get; set; }
         public Func<Command, object> AlternativeExecuteCommandWithResult { get; set; }
