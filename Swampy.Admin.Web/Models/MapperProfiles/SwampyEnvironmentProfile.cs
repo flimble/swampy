@@ -12,14 +12,14 @@ namespace Swampy.Admin.Web.Models.Mappers
     {
         protected override void Configure()
         {
-            Mapper.CreateMap<SwampyEnvironment, EnvironmentReadModel>();
+            Mapper.CreateMap<SwampyEnvironment, EnvironmentReadModel>()
+                  .ForMember(x => x.ConfigurationItems, opt => opt.MapFrom(src => src.ConfigurationItems));
 
             Mapper.CreateMap<SwampyEnvironment, EnvironmentInputModel>();
 
             Mapper.CreateMap<EnvironmentInputModel, SwampyEnvironment>()
                   .ForMember(dest => dest.ConfigurationItems, opt => opt.MapFrom(src => src.ConfigurationItems))
                   .ForMember(dest => dest.Fake, opt => opt.Ignore())
-                  .ForMember(dest => dest.Servers, opt => opt.Ignore())
                   .ForMember(dest => dest.ModificationDetails, opt => opt.Ignore());
         }
     }

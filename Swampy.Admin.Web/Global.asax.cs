@@ -25,6 +25,9 @@ namespace Swampy.Admin.Web
             MappingConfig.Configure();
 
             ValidationConfig.Configure();
+
+            NHibernateProfilerBootstrapper.PreStart();
+
         }
 
         protected void Application_Error(object sender, EventArgs e)

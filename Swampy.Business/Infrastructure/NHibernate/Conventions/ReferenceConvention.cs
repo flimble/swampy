@@ -12,7 +12,7 @@ namespace Swampy.Business.Infrastructure.NHibernate
                                               instance.Name));
 
             instance.Column(string.Format("{0}Id", instance.EntityType.Name));
-
+            
 
         }
     }

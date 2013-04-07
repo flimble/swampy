@@ -102,6 +102,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controllers\AbstractControllerTest.cs" />
+    <Compile Include="DatabaseSchemaHealthCheck.cs" />
     <Compile Include="Databases\AbstractNHibernateDatabaseTest.cs" />
     <Compile Include="Controllers\EnvironmentControllerTest.cs" />
     <Compile Include="Databases\INHibernateDatabase.cs" />

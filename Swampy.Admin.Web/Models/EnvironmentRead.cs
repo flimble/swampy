@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+
 namespace Swampy.Admin.Web.Models.Operation
 {
     public class EnvironmentReadModel
@@ -7,5 +9,7 @@ namespace Swampy.Admin.Web.Models.Operation
         public string Domain { get; set; }
         
         public string Description { get; set; }
+
+        public IList<ConfigurationItemInputModel> ConfigurationItems { get; set; }
     }
 }

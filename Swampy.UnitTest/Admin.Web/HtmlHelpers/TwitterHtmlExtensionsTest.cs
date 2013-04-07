@@ -80,7 +80,7 @@ namespace Swampy.UnitTest.Tests.Admin.MVC.HtmlHelpers
             viewData.ModelState.AddModelError(errorProperty, errorMessage);
             var helper = CreateHtmlHelper<FakeModel>(viewData);
 
-            var result = helper.TwitterEditorFor(model => model.aProperty);
+            var result = helper.BootstrapEditorFor(model => model.aProperty);
 
 
             string expected =
@@ -105,7 +105,7 @@ namespace Swampy.UnitTest.Tests.Admin.MVC.HtmlHelpers
             
             var helper = CreateHtmlHelper<FakeModel>(viewData);
 
-            var result = helper.TwitterEditorFor(model => model.aProperty);
+            var result = helper.BootstrapEditorFor(model => model.aProperty);
 
 
             string expected =
@@ -130,7 +130,7 @@ namespace Swampy.UnitTest.Tests.Admin.MVC.HtmlHelpers
             
             var helper = CreateHtmlHelper<FakeModel>(viewData);
 
-            var result = helper.TwitterTextAreaEditorFor(model => model.aProperty, rows, columns);
+            var result = helper.BootstrapTextAreaEditorFor(model => model.aProperty, rows, columns);
 
 
             string expected =

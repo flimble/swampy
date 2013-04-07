@@ -19,7 +19,7 @@ namespace Swampy.Admin.Web.App_Start
         public static void Configure()
         {            
             Mapper.AddProfile(new SwampyEnvironmentProfile());
-            Mapper.AddProfile(new ConfigurationItemProfile());              
+            Mapper.AddProfile(new ConfigurationItemProfile());
         }
     }
 }

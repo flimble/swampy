@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
 using NHibernate.Linq;
+using Swampy.Admin.Web.Models;
 using Swampy.Admin.Web.Models.Operation;
 using Swampy.Admin.Web.Models.Read;
 using Swampy.Business.DomainModel.Entities;
@@ -61,6 +62,25 @@ namespace Swampy.Admin.Web.Controllers
         }
 
         [HttpPost]
+        public ActionResult AddConfigurationItem(ConfigurationItemInputModel item)
+        {
+            if (!ModelState.IsValid)
+                return Edit(item.EnvironmentId);
+
+            var environment = Session.Load<SwampyEnvironment>(item.EnvironmentId);
+
+            var newConfigurationItem = this.Mapper.Map<ConfigurationItemInputModel, ConfigurationItem>(item);
+            //newConfigurationItem.SwampyEnvironment = environment;
+            environment.ConfigurationItems.Add(newConfigurationItem);
+
+            Session.SaveOrUpdate(environment);
+
+            return RedirectToAction("Detail", "Environment", new { environmentName=environment.Name} );
+
+        }
+
+
+        [HttpPost]
         public ActionResult Edit(EnvironmentInputModel operation)
         {
             if (!ModelState.IsValid)
@@ -69,7 +89,7 @@ namespace Swampy.Admin.Web.Controllers
             SwampyEnvironment environment = null;
             if (operation.Id.HasValue)
             {
-                environment = Session.Get<SwampyEnvironment>(operation.Id.Value);
+                environment = Session.Load<SwampyEnvironment>(operation.Id.Value);
             }
             else
             {
@@ -90,5 +110,7 @@ namespace Swampy.Admin.Web.Controllers
 
             return RedirectToAction("Index");
         }
+
+        
     }
 }

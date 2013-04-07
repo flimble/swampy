@@ -1,4 +1,4 @@
-var getrows;
+/*var getrows;
 
 $(document).ready(function () {
     var searchtext;
@@ -19,4 +19,11 @@ getrows = function (searchword) {
     $('tr').hide();
     tableRow.show();
     return $('th').closest('tr').show();
-};
+};*/
+
+$(document).ready(function () {   
+
+    $('#save-configurationitem').click(function() {
+        $(this).postForm(({ useAnchorHrefAsTarget: true }));
+    });
+});

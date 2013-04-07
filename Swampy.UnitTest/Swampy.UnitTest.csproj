@@ -89,29 +89,28 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="RoundhouseSchemUpdateScriptGenerator.cs" />
-    <Compile Include="Tests\Admin.Web\ActionFilters\AbstractActionFilterTest.cs" />
-    <Compile Include="Tests\Admin.Web\ActionFilters\NHibernateActionFilterTest.cs" />
-    <Compile Include="Tests\Admin.Web\ActionFilters\ValidateModelStateAttribute.cs" />
-    <Compile Include="Tests\Admin.Web\Config\BundleConfigTest.cs" />
-    <Compile Include="Tests\Admin.Web\Config\CastleConfig.cs" />
-    <Compile Include="Tests\Admin.Web\Config\RouteConfigTest.cs" />
-    <Compile Include="Tests\Admin.Web\HtmlHelpers\TwitterHtmlExtensionsTest.cs" />
-    <Compile Include="Tests\Admin.Web\Models\Mappings\ConfigurationItemProfileTest.cs" />
-    <Compile Include="Tests\Admin.Web\Models\Mappings\SwampyEnvironmentProfileTest.cs" />
-    <Compile Include="Tests\Admin.Web\Models\Validation\ConfigurationItemInputValidationTest.cs" />
-    <Compile Include="Tests\Admin.Web\Models\Mappings\MappingConfigurationTest.cs" />
-    <Compile Include="Tests\Contract\Validators\DatabaseConnectionStringFluentValidatorTest.cs" />
-    <Compile Include="Tests\Business\Domain\AbstractEntityTest.cs" />
-    <Compile Include="Tests\Business\Domain\ConfigurationItemTest.cs" />
-    <Compile Include="Tests\Business\Domain\LevenshteinTest.cs" />
-    <Compile Include="Tests\Business\Domain\ServerTest.cs" />
-    <Compile Include="Tests\Business\Domain\TokenBuilderTest.cs" />
-    <Compile Include="Tests\Business\Domain\ValueObjectTest.cs" />
-    <Compile Include="Helpers\TestFluentValidator.cs" />
-    <Compile Include="Tests\Contract\Validators\UrlValidatorTest.cs" />
-    <Compile Include="Tests\Service\Fakes\FakeEndpointService.cs" />
-    <Compile Include="Tests\Shared\Infrastructure\LoggingInterceptor_Test.cs" />
+    <Compile Include="Admin.Web\ActionFilters\AbstractActionFilterTest.cs" />
+    <Compile Include="Admin.Web\ActionFilters\NHibernateActionFilterTest.cs" />
+    <Compile Include="Admin.Web\ActionFilters\ValidateModelStateAttribute.cs" />
+    <Compile Include="Admin.Web\Config\BundleConfigTest.cs" />
+    <Compile Include="Admin.Web\Config\CastleConfig.cs" />
+    <Compile Include="Admin.Web\Config\RouteConfigTest.cs" />
+    <Compile Include="Admin.Web\HtmlHelpers\TwitterHtmlExtensionsTest.cs" />
+    <Compile Include="Admin.Web\Models\Mappings\ConfigurationItemProfileTest.cs" />
+    <Compile Include="Admin.Web\Models\Mappings\SwampyEnvironmentProfileTest.cs" />
+    <Compile Include="Admin.Web\Models\Validation\ConfigurationItemInputValidationTest.cs" />
+    <Compile Include="Admin.Web\Models\Mappings\MappingConfigurationTest.cs" />
+    <Compile Include="Contract\Validators\DatabaseConnectionStringFluentValidatorTest.cs" />
+    <Compile Include="Business\Domain\AbstractEntityTest.cs" />
+    <Compile Include="Business\Domain\ConfigurationItemTest.cs" />
+    <Compile Include="Business\Domain\LevenshteinTest.cs" />
+    <Compile Include="Business\Domain\ServerTest.cs" />
+    <Compile Include="Business\Domain\TokenBuilderTest.cs" />
+    <Compile Include="Business\Domain\ValueObjectTest.cs" />
+    <Compile Include="TestFluentValidator.cs" />
+    <Compile Include="Contract\Validators\UrlValidatorTest.cs" />
+    <Compile Include="Service\Fakes\FakeEndpointService.cs" />
+    <Compile Include="Shared\Infrastructure\LoggingInterceptor_Test.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -133,8 +132,8 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Tests\Admin.Web\Controllers\" />
-    <Folder Include="Tests\Service\Endpoint\" />
+    <Folder Include="Admin.Web\Controllers\" />
+    <Folder Include="Service\Endpoint\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\nuget.targets" />

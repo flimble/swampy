@@ -12,7 +12,8 @@ namespace Swampy.Admin.Web.Models.Mappers
 
         protected override void Configure()
         {
-            Mapper.CreateMap<ConfigurationItem, ConfigurationItemInputModel>();
+            Mapper.CreateMap<ConfigurationItem, ConfigurationItemInputModel>()
+                  .ForMember(x => x.EnvironmentId, opt => opt.MapFrom(x=>x.SwampyEnvironment.Id));
 
 
             Mapper.CreateMap<ConfigurationItemInputModel, ConfigurationItem>()

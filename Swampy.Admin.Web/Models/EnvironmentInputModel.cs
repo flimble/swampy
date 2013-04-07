@@ -23,6 +23,8 @@ namespace Swampy.Admin.Web.Models.Operation
         {
             RuleFor(x => x.Name).NotEmpty();
             RuleFor(x => x.Domain).NotEmpty();
+
+            RuleFor(x => x.ConfigurationItems).SetCollectionValidator(new ConfigurationItemInputValidator());
         }
     }
 }

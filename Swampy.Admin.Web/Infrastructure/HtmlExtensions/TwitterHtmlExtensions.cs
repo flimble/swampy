@@ -10,7 +10,7 @@ namespace Swampy.Admin.Web.HtmlHelpers
     public static class TwitterHtmlExtensions
     {
 
-        public static MvcHtmlString TwitterEditorFor<TModel, TValue>(this HtmlHelper<TModel> html,
+        public static MvcHtmlString BootstrapEditorFor<TModel, TValue>(this HtmlHelper<TModel> html,
                                                                      Expression<Func<TModel, TValue>> expression)
         {
             
@@ -26,7 +26,7 @@ namespace Swampy.Admin.Web.HtmlHelpers
             return MvcHtmlString.Create(sb.ToString());
         }
 
-        public static MvcHtmlString TwitterDisplayFor<TModel, TValue>(this HtmlHelper<TModel> html,
+        public static MvcHtmlString BootstrapDisplayFor<TModel, TValue>(this HtmlHelper<TModel> html,
                                                                    Expression<Func<TModel, TValue>> expression)
         {
             TValue modelData = expression.Compile().Invoke((TModel)html.ViewContext.ViewData.Model);
@@ -43,7 +43,7 @@ namespace Swampy.Admin.Web.HtmlHelpers
         }
 
 
-        public static MvcHtmlString TwitterTextAreaEditorFor<TModel, TValue>(this HtmlHelper<TModel> html,
+        public static MvcHtmlString BootstrapTextAreaEditorFor<TModel, TValue>(this HtmlHelper<TModel> html,
                                                                    Expression<Func<TModel, TValue>> expression, int rows, int columns)
         {
             StringBuilder sb = new StringBuilder();

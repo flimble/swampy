@@ -27,7 +27,6 @@ namespace Swampy.UnitTest.Queries
 
                 e.ConfigurationItems.Add(new ConfigurationItem("anEndpoint", "abc", ConfigurationItemType.Simple, e));
 
-                e.AddServer("ssrdbserver", "ausydhq-pstsq04");
 
                 id = Session.Save(e);
                 tx.Commit();
@@ -41,7 +40,6 @@ namespace Swampy.UnitTest.Queries
 
                 Assert.AreEqual(environmentName, environment.Name);
                 Assert.AreEqual(domain, environment.Domain);
-                Assert.IsTrue(environment.Servers.Count == 1);
 
                 tx.Commit();
             }
@@ -60,7 +58,7 @@ namespace Swampy.UnitTest.Queries
 
                 e.ConfigurationItems.Add(new ConfigurationItem("anEndpoint", "abc", ConfigurationItemType.Simple, e));
 
-                e.AddServer("ssrdbserver", "ausydhq-pstsq04");
+                
 
                 id = Session.Save(e);
                 tx.Commit();
@@ -74,7 +72,6 @@ namespace Swampy.UnitTest.Queries
 
                 Assert.AreEqual(environmentName, environment.Name);
                 Assert.AreEqual(domain, environment.Domain);
-                Assert.IsTrue(environment.Servers.Count == 1);
 
                 tx.Commit();
             }

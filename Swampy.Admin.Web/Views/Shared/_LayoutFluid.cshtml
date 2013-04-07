@@ -5,9 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="" />
     <meta name="author" content="" />
-    @Scripts.Render("~/bundles/modernizr")
+    <!-- start of site level styles -->
     @Styles.Render("~/Content/css")
+    <!-- end of site level styles -->
+    
+    <!-- start of view-specic styles. these must be added within 'section styles' -->
     @RenderSection("styles", false)
+    <!-- end of view-specific styles -->
 
 </head>
 <body>
@@ -26,6 +30,7 @@
                         @Html.Partial("_NavPartial")
                     </div>
                     <!--/.nav-collapse -->
+
                 </div>
             </div>
         </div>
@@ -44,10 +49,18 @@
 
     </div>
     <!--/.fluid-container-->
+
+    <!-- start of site level scripts -->
+    @Scripts.Render("~/bundles/modernizr")
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/jqueryui")
     @Scripts.Render("~/bundles/jqueryval")
-    @Scripts.Render("~/Content/scripts/site.js")
+    @Scripts.Render("~/Content/scripts/bootstrap/bootstrap.js")
+    @Scripts.Render("~/Content/scripts/site.js")    
+    <!-- end of site level scripts -->
+
+    <!-- start of view-specific scripts. these need to be added within the view's 'section scripts' block -->
     @RenderSection("scripts", false)
+    <!-- end of view-specific scripts -->
 </body>
 </html>
