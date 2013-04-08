@@ -24,7 +24,6 @@
                 url: url,
                 data: $form.serialize(), //parameters go here in object literal form
                 type: 'POST',
-                enctype: 'multipart/form-data',
                 success: function(data) { alert('got here with data'); },
                 error: function() { alert('something bad happened'); }
             });

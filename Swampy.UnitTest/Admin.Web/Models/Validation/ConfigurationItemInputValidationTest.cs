@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using FluentValidation.TestHelper;
 using NUnit.Framework;
 using Swampy.Admin.Web.Models;
+using Swampy.Business.DomainModel.Entities;
 
 namespace Swampy.UnitTest.Tests.Admin.MVC.Models
 {
@@ -25,15 +26,15 @@ namespace Swampy.UnitTest.Tests.Admin.MVC.Models
         }
 
         [Test]
-        [TestCase("DatabaseConnectionString","jf")]
-        [TestCase("Basic", "")]
-        [TestCase("Url", "www test:com")]
-        public void invalid_configurationvalues_generate_error(string type, string value)
+        [TestCase(ConfigurationItemType.DatabaseConnectionString,"jf")]
+        [TestCase(ConfigurationItemType.Simple, "")]
+        [TestCase(ConfigurationItemType.ServerUrl, "www test:com")]
+        public void invalid_configurationvalues_generate_error(ConfigurationItemType type, string value)
         {
             var underTest = new ConfigurationItemInputModel
                 {
                     Id = null,
-                    Type = type,
+                    SelectedItemType = type,
                     Value = value
                 };
 
@@ -42,15 +43,24 @@ namespace Swampy.UnitTest.Tests.Admin.MVC.Models
         }
 
         [Test]
-        [TestCase("DatabaseConnectionString", @"Data Source=(local);initial catalog=myDB;Trusted_Connection=True;persist security info=False;packet size=4096")]
-        [TestCase("Basic", "validString")]
-        [TestCase("Url", "www.google.com")]
-        public void valid_configurationvalues_do_not_generate_error(string type, string value)
+        public void empty_configuration_item_has_errors()
+        {
+            var underTest = new ConfigurationItemInputModel();
+
+            _validator.ShouldHaveValidationErrorFor(x => x.Name, underTest);
+
+        }
+
+        [Test]
+        [TestCase(ConfigurationItemType.DatabaseConnectionString, @"Data Source=(local);initial catalog=myDB;Trusted_Connection=True;persist security info=False;packet size=4096")]
+        [TestCase(ConfigurationItemType.Simple, "validString")]
+        [TestCase(ConfigurationItemType.ServerUrl, "www.google.com")]
+        public void valid_configurationvalues_do_not_generate_error(ConfigurationItemType type, string value)
         {
             var underTest = new ConfigurationItemInputModel
             {
                 Id = null,
-                Type = type,
+                SelectedItemType = type,
                 Value = value
             };
 

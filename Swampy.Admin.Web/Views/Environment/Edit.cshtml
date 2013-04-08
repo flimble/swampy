@@ -2,37 +2,29 @@
 @using Swampy.Admin.Web.Models
 @model Swampy.Admin.Web.Models.Operation.EnvironmentInputModel
 @{
-    ViewBag.Title = "Edit";
+    ViewBag.Title = Model.Id.HasValue ? "Edit Environment" : "Create Environment";
     Layout = "~/Views/Shared/_LayoutFluid.cshtml";    
 }
 
-@section scripts
-{
-    @Scripts.Render("~/Content/scripts/application/formpost.js") 
-    @Scripts.Render("~/Content/scripts/viewspecific/environment.js")  
-}
+@section scripts {}
 
+@section styles {}
 
-@if (Model.Id.HasValue)
-{
-    Html.RenderPartial("CreateConfigurationItemPopup", new ConfigurationItemInputModel {EnvironmentId = Model.Id.Value});
-}
 
 @using (Html.BeginForm("Edit", "Environment", FormMethod.Post))
 {
         
-    <fieldset>
-        <legend>Edit</legend>
-
+    <fieldset class="input-xxlarge">
+        <legend>@ViewBag.Title</legend>
+        
+        
         @Html.HiddenFor(model => model.Id)
 
-        @Html.BootstrapEditorFor(model => model.Name)
+        @Html.BootstrapTextboxFor(model => model.Name, new { @class="input-xxlarge"})
 
-        @Html.BootstrapEditorFor(model => model.Domain)
+        @Html.BootstrapTextboxFor(model => model.Domain, new { @class="input-xxlarge"})
 
-        @Html.BootstrapTextAreaEditorFor(model => model.Description, 5, 20)
-
-        <a href="#create-configurationitem" role="button" class="btn" data-toggle="modal">+ Add</a>
+        @Html.BootstrapTextAreaEditorFor(model => model.Description, 5, 20,  new { @class="input-xxlarge"})
                 
         <div class="form-actions">
             <button type="submit" class="btn btn-primary">Save changes</button>

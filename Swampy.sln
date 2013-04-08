@@ -18,6 +18,14 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Swampy.Service", "Swampy.Se
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Swampy.UnitTest", "Swampy.UnitTest\Swampy.UnitTest.csproj", "{59498DF9-EC90-46BC-8BF5-C03AB419CD21}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{32D6857D-7BB5-401A-8CE3-049DCB0EB487}"
+	ProjectSection(SolutionItems) = preProject
+		build.bat = build.bat
+		databasebuild.bat = databasebuild.bat
+		integrationtest.bat = integrationtest.bat
+		README.md = README.md
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

@@ -37,7 +37,7 @@ namespace Swampy.UnitTest.Tests.Admin.Web.Models.Mappings
                 {
                     Name = name,
                     Value = value,
-                    Type = type.ToNullSafeString()
+                    SelectedItemType = type
                 };
 
             var viewModel = Mapper.Map<ConfigurationItemInputModel, ConfigurationItem>(configItem);

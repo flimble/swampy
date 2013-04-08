@@ -1,8 +1,10 @@
-﻿@{
+﻿@using Swampy.Admin.Web.Infrastructure.HtmlExtensions
+@model Swampy.Admin.Web.Models.AboutReadModel
+
+@{
     ViewBag.Title = "About Us";
 }
 
-<h2>About</h2>
-<p>
-     Environment configuration service
-</p>
+
+@Html.MarkDown(Model.Markdown)
+

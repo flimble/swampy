@@ -24,10 +24,10 @@ namespace Swampy.Business.Infrastructure.NHibernate
                                                .Conventions.Setup(mappings =>
                                                    {
                                                        mappings.AddAssembly(typeof(EnvironmentMap).Assembly);
-                                                       mappings.Conventions.Add(new ReferenceConvention());
                                                        mappings.Conventions.Add(new OneToManyForeignKeyConvention());
                                                        mappings.Conventions.Add(new FullIdNameConvention());
                                                        mappings.Conventions.Add(new ColumnDefaultNotNullConvention());
+                                                       mappings.Conventions.Add(new EnumConvention());
                                                    }));
         }
 

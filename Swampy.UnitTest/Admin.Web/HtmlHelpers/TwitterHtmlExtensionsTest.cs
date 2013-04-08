@@ -130,7 +130,7 @@ namespace Swampy.UnitTest.Tests.Admin.MVC.HtmlHelpers
             
             var helper = CreateHtmlHelper<FakeModel>(viewData);
 
-            var result = helper.BootstrapTextAreaEditorFor(model => model.aProperty, rows, columns);
+            var result = helper.BootstrapTextAreaEditorFor(model => model.aProperty, rows, columns, null);
 
 
             string expected =

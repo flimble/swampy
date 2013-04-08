@@ -1,11 +1,9 @@
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
+using System;
+using System.IO;
+using System.Net.Mime;
+using System.Reflection;
 using System.Web.Mvc;
-using NHibernate.Linq;
 using Swampy.Admin.Web.Models;
-using Swampy.Admin.Web.Models.ReadModels;
-using Swampy.Business.DomainModel.Entities;
 
 namespace Swampy.Admin.Web.Controllers
 {
@@ -22,11 +20,18 @@ namespace Swampy.Admin.Web.Controllers
         [HttpGet]
         public ActionResult About()
         {
-            return View();
+            var baseDir = Server.MapPath("~/bin");
+            var readmeFile = Path.Combine(baseDir, "readme.md");
+
+            string fileText = System.IO.File.ReadAllText(readmeFile);
+
+            var model = new AboutReadModel { Markdown = fileText };
+
+            return View(model);
         }
 
 
-       
+
     }
 
 }

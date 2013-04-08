@@ -3,7 +3,7 @@
         ConfigurationItemId INT IDENTITY NOT NULL,
        Name NVARCHAR(255) not null,
        Value NVARCHAR(255) not null,
-       ConfigurationType NVARCHAR(255) not null,
+       ConfigurationType INT not null,
        StoreAsToken BIT not null,
        ModifiedOn DATETIME not null,
        ModifiedBy NVARCHAR(255) not null,

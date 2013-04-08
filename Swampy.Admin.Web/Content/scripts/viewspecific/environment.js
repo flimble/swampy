@@ -24,6 +24,6 @@ getrows = function (searchword) {
 $(document).ready(function () {   
 
     $('#save-configurationitem').click(function() {
-        $(this).postForm(({ useAnchorHrefAsTarget: true }));
+        $(this).postForm();
     });
 });

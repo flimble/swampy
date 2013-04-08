@@ -95,6 +95,7 @@
     <Compile Include="Admin.Web\Config\BundleConfigTest.cs" />
     <Compile Include="Admin.Web\Config\CastleConfig.cs" />
     <Compile Include="Admin.Web\Config\RouteConfigTest.cs" />
+    <Compile Include="Admin.Web\Controllers\EnvironmentControllerTest.cs" />
     <Compile Include="Admin.Web\HtmlHelpers\TwitterHtmlExtensionsTest.cs" />
     <Compile Include="Admin.Web\Models\Mappings\ConfigurationItemProfileTest.cs" />
     <Compile Include="Admin.Web\Models\Mappings\SwampyEnvironmentProfileTest.cs" />
@@ -132,7 +133,6 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Admin.Web\Controllers\" />
     <Folder Include="Service\Endpoint\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

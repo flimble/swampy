@@ -2,8 +2,8 @@ namespace Swampy.Business.DomainModel.Entities
 {
     public enum ConfigurationItemType
     {
-        Simple=1,
-        DatabaseConnectionString=2,
-        ServerUrl=3
+        Simple=0,
+        DatabaseConnectionString=1,
+        ServerUrl=2
     }
 }

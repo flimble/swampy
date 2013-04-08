@@ -4,26 +4,24 @@
     ViewBag.Title = "Environments";
     
 }
-
-
-<p class="pull-right">
-    @Html.ActionLink("+ Add New", "Create", null, new { @class = "btn btn-primary btn-large" })
-</p>
-
 <div>
-    <h2>Environmets</h2>
-    <p>
-        Please select an environment from the list below to view/manage environment data
-    </p>
-</div>
-
-
-
-@foreach (KeyValuePair<string, string> environment in Model.EnvironmentNames)
-{  
-    <div>
-        <h3>@Html.ActionLink(environment.Key, "Detail", "Environment", new { environmentName = environment.Key }, null)</h3>
-        <span>@environment.Value</span>
+    <div class="page-header">
+        <h1>Environments <small>Select an environment from the list below</small></h1>
     </div>
-}
 
+    <p class="pull-right">
+        @Html.ActionLink("+ Add New", "Create", null, new { @class = "btn btn-primary btn-large" })
+    </p>
+    
+    <ul>
+    @foreach (KeyValuePair<string, string> environment in Model.EnvironmentNames)
+    {  
+        <li>
+            <h3>@Html.ActionLink(environment.Key, "Detail", "Environment", new { environmentName = environment.Key }, null)</h3>
+            <span>@environment.Value</span>
+        </li>
+    }
+    </ul>
+
+
+</div>

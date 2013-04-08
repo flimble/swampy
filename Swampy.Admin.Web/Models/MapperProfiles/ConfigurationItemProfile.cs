@@ -13,14 +13,16 @@ namespace Swampy.Admin.Web.Models.Mappers
         protected override void Configure()
         {
             Mapper.CreateMap<ConfigurationItem, ConfigurationItemInputModel>()
-                  .ForMember(x => x.EnvironmentId, opt => opt.MapFrom(x=>x.SwampyEnvironment.Id));
+                  .ForMember(x => x.EnvironmentId, opt => opt.MapFrom(x => x.SwampyEnvironment.Id))
+                  .ForMember(x => x.SelectedItemType, opt => opt.MapFrom(src => src.ConfigurationType));
 
 
             Mapper.CreateMap<ConfigurationItemInputModel, ConfigurationItem>()
+                  .ForMember(dest => dest.ConfigurationType, opt => opt.MapFrom(x=>x.SelectedItemType))
                   .ForMember(dest => dest.StoreAsToken, opt => opt.Ignore())
                   .ForMember(dest => dest.HydratedValue, opt => opt.Ignore())
                   .ForMember(dest => dest.SwampyEnvironment, opt => opt.Ignore())
-                  .ForMember(dest => dest.ConfigurationType, opt => opt.Ignore())
+                  
                   .ForMember(dest => dest.Description, opt => opt.Ignore())
                   .ForMember(dest => dest.ModificationDetails, opt => opt.Ignore());
 

@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Linq.Expressions;
 using System.Text;
 using System.Web.Mvc;
@@ -26,6 +27,7 @@ namespace Swampy.Admin.Web.HtmlHelpers
             return MvcHtmlString.Create(sb.ToString());
         }
 
+
         public static MvcHtmlString BootstrapDisplayFor<TModel, TValue>(this HtmlHelper<TModel> html,
                                                                    Expression<Func<TModel, TValue>> expression)
         {
@@ -43,14 +45,32 @@ namespace Swampy.Admin.Web.HtmlHelpers
         }
 
 
+
+
         public static MvcHtmlString BootstrapTextAreaEditorFor<TModel, TValue>(this HtmlHelper<TModel> html,
-                                                                   Expression<Func<TModel, TValue>> expression, int rows, int columns)
+                                                                   Expression<Func<TModel, TValue>> expression, int rows, int columns, object htmlAttributes)
         {
             StringBuilder sb = new StringBuilder();
             sb.AppendLine("<div class=\"control-group\">");
             sb.AppendLine(HtmlLabelExtensions.LabelFor(html, expression, new { @class = "control-label" }).ToString());
             sb.AppendLine("<div class=\"controls\">");
-            sb.AppendLine(html.TextAreaFor(expression, rows, columns, null).ToString());
+            sb.AppendLine(html.TextAreaFor(expression, rows, columns, htmlAttributes).ToString());
+            sb.AppendLine(html.ValidationMessageFor(expression, null, new { @class = "help-inline" }).ToString());
+            sb.AppendLine(@"</div>");
+            sb.AppendLine(@"</div>");
+
+            return MvcHtmlString.Create(sb.ToString());
+        }
+
+        public static MvcHtmlString BootstrapTextboxFor<TModel, TValue>(this HtmlHelper<TModel> html,
+                                                             Expression<Func<TModel, TValue>> expression, object htmlAttributes)
+        {
+
+            StringBuilder sb = new StringBuilder();
+            sb.AppendLine("<div class=\"control-group\">");
+            sb.AppendLine(HtmlLabelExtensions.LabelFor(html, expression, new { @class = "control-label" }).ToString());
+            sb.AppendLine("<div class=\"controls\">");
+            sb.AppendLine(html.TextBoxFor(expression, htmlAttributes).ToString());
             sb.AppendLine(html.ValidationMessageFor(expression, null, new { @class = "help-inline" }).ToString());
             sb.AppendLine(@"</div>");
             sb.AppendLine(@"</div>");

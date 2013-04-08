@@ -77,7 +77,7 @@ namespace Swampy.UnitTest.Tests.Admin.MVC.Controllers
             var config = new EnvironmentInputModel();
             config.Name = environmentName;
             config.Domain = domain;
-            config.ConfigurationItems.Add(new ConfigurationItemInputModel{Name = "Joe", Type = "Simple", Value="aValue"});
+            config.ConfigurationItems.Add(new ConfigurationItemInputModel{Name = "Joe", SelectedItemType = ConfigurationItemType.Simple, Value="aValue"});
 
             RedirectToRouteResult result = null;
 
@@ -92,6 +92,27 @@ namespace Swampy.UnitTest.Tests.Admin.MVC.Controllers
             Assert.AreEqual("Joe", environment.ConfigurationItems.First().Name);
 
      
+        }
+
+        [Test]
+        [TestCase("TEST1", "domain.com")]
+        public void addconfigurationitem_redirects_to_detail_screen(string environmentName, string domain)
+        {
+            //arrange
+            var config = new SwampyEnvironment(environmentName, domain);
+            object id = null;
+            SetupData(session => id = session.Save(config));
+
+            
+            var item = new ConfigurationItemInputModel {Name = "Joe", SelectedItemType = ConfigurationItemType.Simple, Value = "aValue", EnvironmentId = (int)id};
+            RedirectToRouteResult result = null;
+
+            //act
+            ExecuteAction<EnvironmentController>(controller => result = controller.AddConfigurationItem(item) as RedirectToRouteResult);
+
+            //assert    
+            Assert.AreEqual("Detail", result.RouteValues["action"]);                    
+
         }
     }
 }

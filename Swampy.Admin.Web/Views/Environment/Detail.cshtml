@@ -9,48 +9,65 @@
 
 @section scripts
 {
-    @*@Scripts.Render("~/Content/scripts/viewspecific/environment.coffee")
-
+    @*@Scripts.Render("~/Content/scripts/viewspecific/environment.coffee")    
     @Scripts.Render("~/Content/scripts/datatables/jquery.dataTables.js")
     @Scripts.Render("~/Content/scripts/viewspecific/environment-new.js")*@
+    @Scripts.Render("~/Content/scripts/viewspecific/environment.detail.js")
 }
 <div>
 
-    <h1>@Model.Name</h1>
-    @Html.HiddenFor(x=>x.Id)
-    
-    
-    @Html.BootstrapDisplayFor(model=>model.Name)
-    @Html.BootstrapDisplayFor(model=>model.Domain)
-    @Html.BootstrapDisplayFor(model=>model.Description)
+    <div class="page-header">
+        <h1>@Model.Name</h1>
+    </div>
+    @Html.HiddenFor(x => x.Id)
 
-    @* @Html.DropDownListFor(x => x.SelectedType, new SelectList(@Model.EndpointTypes, "SimpleEndpoint")) *@
-    @* @Html.ActionLink("Create New Endpoint", "Edit", "Endpoint", new { environmentName = @Model.environmentName}, new { @class="btn btn-primary"}) *@
+    <div class="display-horizontal">
+        <div class="display-group">
+            <p class="display-label">Domain</p>
+            <div class="display-values">
+                <p>@Model.Domain</p>
+            </div>
+        </div>
+        <div class="display-group">
+            <p class="display-label">Description</p>
+            <div class="display-values">
+                <p>@Model.Description</p>
+            </div>
+        </div>
+    </div>
 
+    <div id="edit-configurationitem">
+        
+    </div>
+    @{ Html.RenderPartial("CreateConfigurationItemPopup", new ConfigurationItemInputModel { EnvironmentId = Model.Id }); }
 
     <table id="endpoints" class="table table-bordered table-striped table-hover">
-                <thead>
-                    <tr>
-                        <th>Name</th>
-                        <th>Value</th>
-                        
-                        <th>Type</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach (var endpoint in Model.ConfigurationItems)
-                    {
-                        <tr>
-                            <td>@endpoint.Name</td>
-                            <td>@endpoint.Value</td>                            
-                            <td>@endpoint.Type</td>                            
-                        </tr>
-                    }
-                </tbody>
-            </table>
-    
-    
-    @Html.ActionLink("Edit", "Edit", "Environment", new { EnvironmentId=Model.Id }, new {@class="btn btn-primary"})
-
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Value</th>
+                <th>Type</th>
+                <th>Edit</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var endpoint in Model.ConfigurationItems)
+            {
+                @Html.HiddenFor(x => x.Id)
+                <tr>
+                    <td>@endpoint.Name</td>
+                    <td>@endpoint.Value</td>
+                    <td>@endpoint.SelectedItemType</td>
+                    <td><a class="edit-configurationitem" onclick="loadEditPopup(
+                        '@Url.Action("GetConfigurationItem", "Environment", new { configurationItemId = @endpoint.Id, environmentId = Model.Id })', '#edit-configurationitem');"
+                           href="#">
+                            Edit
+                        </a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    <a href="#create-configurationitem-" role="button" class="btn pull-right" data-toggle="modal">+ Add</a>
 
 </div>

@@ -62,12 +62,6 @@ namespace Swampy.Business.DomainModel.Entities
         }
 
         public virtual string HydratedValue { get; protected set; }
-
-        public virtual  string TypeName
-        {
-            get { return "Simple String Endpoint"; }
-        }
-
      
 
         public virtual string Description { get; set; }

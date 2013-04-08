@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
@@ -62,21 +63,45 @@ namespace Swampy.Admin.Web.Controllers
         }
 
         [HttpPost]
-        public ActionResult AddConfigurationItem(ConfigurationItemInputModel item)
+        public ActionResult AddConfigurationItem(ConfigurationItemInputModel item)               
         {
-            if (!ModelState.IsValid)
-                return Edit(item.EnvironmentId);
-
             var environment = Session.Load<SwampyEnvironment>(item.EnvironmentId);
 
-            var newConfigurationItem = this.Mapper.Map<ConfigurationItemInputModel, ConfigurationItem>(item);
-            //newConfigurationItem.SwampyEnvironment = environment;
-            environment.ConfigurationItems.Add(newConfigurationItem);
+            if (item.Id.HasValue)
+            {
+                var configurationItem = Session.Load<ConfigurationItem>(item.Id.Value);
+                var updatedItem = Mapper.Map<ConfigurationItemInputModel, ConfigurationItem>(item, configurationItem);
 
-            Session.SaveOrUpdate(environment);
+                Session.SaveOrUpdate(updatedItem);
 
+                
+
+            }
+            else
+            {
+                var newConfigurationItem = this.Mapper.Map<ConfigurationItemInputModel, ConfigurationItem>(item);
+                
+                environment.ConfigurationItems.Add(newConfigurationItem);
+                Session.SaveOrUpdate(environment);
+
+                
+            }
+                                          
             return RedirectToAction("Detail", "Environment", new { environmentName=environment.Name} );
 
+        }
+
+        [HttpGet]
+        public ActionResult GetConfigurationItem(int configurationItemId, int environmentId)
+        {
+            ViewBag.Title = "Edit ConfigurationItem";
+
+            var item = Session.Load<ConfigurationItem>(configurationItemId);
+
+            var model = Mapper.Map<ConfigurationItem, ConfigurationItemInputModel>(item);
+            model.EnvironmentId = environmentId;
+
+            return View("CreateConfigurationItemPopup", model);
         }
 
 

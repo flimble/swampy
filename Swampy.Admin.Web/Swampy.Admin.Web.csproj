@@ -99,6 +99,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\log4net.2.0.0\lib\net40-full\log4net.dll</HintPath>
     </Reference>
+    <Reference Include="MarkdownSharp">
+      <HintPath>..\packages\MarkdownSharp.1.13.0.0\lib\35\MarkdownSharp.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Microsoft.Web.Mvc">
       <HintPath>..\packages\Mvc4Futures.4.0.20710.0\lib\net40\Microsoft.Web.Mvc.dll</HintPath>
@@ -176,8 +179,12 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Infrastructure\HtmlExtensions\DropDownListExtensions.cs" />
     <Compile Include="Infrastructure\HtmlExtensions\HtmlLabelExtensions.cs" />
+    <Compile Include="Infrastructure\HtmlExtensions\MarkdownHtmlExtensions.cs" />
     <Compile Include="Infrastructure\HtmlExtensions\TwitterHtmlExtensions.cs" />
+    <Compile Include="Infrastructure\ModelBinders\SwampyDefaultModelBinder.cs" />
+    <Compile Include="Models\AboutReadModel.cs" />
     <Compile Include="Models\ConfigurationItemInputModel.cs" />
     <Compile Include="Models\EnvironmentRead.cs" />
     <Compile Include="Models\EnvironmentInputModel.cs" />
@@ -200,6 +207,10 @@
     <Content Include="Content\scripts\jquery\jquery-ui-1.8.11.js" />
     <Content Include="Content\scripts\jquery\jquery.unobtrusive-ajax.js" />
     <Content Include="Content\scripts\application\calc.js" />
+    <Content Include="..\README.md">
+      <Link>README.md</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <None Include="Content\scripts\jquery\jquery.validate-vsdoc.js" />
     <Content Include="Content\scripts\jquery\jquery.validate.js" />
     <Content Include="Content\scripts\jquery\jquery.validate.unobtrusive.js" />
@@ -212,6 +223,7 @@
     <Content Include="Content\scripts\mvc4\MicrosoftMvcValidation.js" />
     <Content Include="Content\scripts\site.js" />
     <Content Include="Content\scripts\viewspecific\environment-new.js" />
+    <Content Include="Content\scripts\viewspecific\environment.detail.js" />
     <Content Include="Content\scripts\viewspecific\environment.js" />
     <Content Include="Content\styles\site.css">
       <DependentUpon>site.less</DependentUpon>
@@ -343,7 +355,6 @@
     <Content Include="Views\Home\Test.cshtml" />
     <Content Include="Views\Environment\Edit.cshtml" />
     <Content Include="Views\Shared\_html5shiv.cshtml" />
-    <Content Include="Views\Environment\EditConfigurationItems.cshtml" />
     <Content Include="Views\Environment\CreateConfigurationItemPopup.cshtml" />
   </ItemGroup>
   <ItemGroup>
