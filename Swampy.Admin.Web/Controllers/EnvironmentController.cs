@@ -63,7 +63,7 @@ namespace Swampy.Admin.Web.Controllers
         }
 
 
-        [HttpPost]
+        [HttpDelete]
         public ActionResult Delete(int environmentId, int configurationItemId)
         {
             var environment = Session.Get<SwampyEnvironment>(environmentId);

@@ -7,7 +7,7 @@ properties {
 	$release_dir = Join-Path $root_path 'release'
 	$verbosity = 'quiet'
 	$framework = '4.5'
-	$nunit_exe = Join-Path $root_path 'packages\NUnit.Runners.2.6.2\tools\nunit-console-x86.exe'
+	$nunit_exe = Join-Path $root_path 'packages\NUnit.Runners.2.6.2\tools\nunit-console.exe'
 	$unittest_assembly_filter = '*UnitTest*.dll'
 	$integrationtest_assembly_filter = '*IntegrationTest*.dll'
 	$sqltarget_server = ".\local"

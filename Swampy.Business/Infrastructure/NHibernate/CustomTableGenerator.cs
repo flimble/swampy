@@ -46,42 +46,12 @@ namespace Swampy.Business.Infrastructure.NHibernate
             TableKeyColumnName = PropertiesHelper.GetString("table_key_column", parms, DefaultTableKeyColumnName);
             TableKey = PropertiesHelper.GetString("table_key_value", parms, "");
             AllEntityNames = PropertiesHelper.GetString("all_entities", parms, ""); 
-
-            maxLo = PropertiesHelper.GetInt64(MaxLo, parms, Int16.MaxValue);
-            lo = maxLo + 1; // so we "clock over" on the first invocation
-            returnClass = type.ReturnedClass;
         }
 
         #endregion
         
 
-        /// <summary>
-        /// Generate a <see cref="Int64"/> for the identifier by selecting and updating a value in a table.
-        /// </summary>
-        /// <param name="session">The <see cref="ISessionImplementor"/> this id is being generated in.</param>
-        /// <param name="obj">The entity for which the id is being generated.</param>
-        /// <returns>The new identifier as a <see cref="Int64"/>.</returns>
-        [MethodImpl(MethodImplOptions.Synchronized)]
-        public override object Generate(ISessionImplementor session, object obj)
-        {
-            if (maxLo < 1)
-            {
-                //keep the behavior consistent even for boundary usages
-                long val = Convert.ToInt64(base.Generate(session, obj));
-                if (val == 0)
-                    val = Convert.ToInt64(base.Generate(session, obj));
-                return IdentifierGeneratorFactory.CreateNumber(val, returnClass);
-            }
-            if (lo > maxLo)
-            {
-                long hival = Convert.ToInt64(base.Generate(session, obj));
-                lo = (hival == 0) ? 1 : 0;
-                hi = hival * (maxLo + 1);
-                log.Debug("New high value: " + hival);
-            }
-
-            return IdentifierGeneratorFactory.CreateNumber(hi + lo++, returnClass);
-        }
+    
 
         protected string TableName { get; set; }
         protected string NextHighColumnName { get; set; }
@@ -109,17 +79,6 @@ namespace Swampy.Business.Infrastructure.NHibernate
 
             return command.ToArray();
 
-            /*string create = "create table " + tableName + " (";
-            string insert = "insert into " + tableName + " values (";
-            
-            foreach (string s in allColumns)
-            {
-                create += " " + s + " " + dialect.GetTypeName(columnSqlType) + ",";
-                insert += " 1,";
-            }
-            create = create.Trim(',') + " )";
-            insert = insert.Trim(',') + " )";
-            return new[] { create, insert };*/
         }
 
 

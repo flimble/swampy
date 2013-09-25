@@ -53,10 +53,17 @@ namespace Swampy.Admin.Web.ActionFilters
                     return;
 
                 if (filterContext.Exception != null)
+                {
                     session.Transaction.Rollback();
+                }
                 else
+                {
                     session.Transaction.Commit();
+
+                }
             }
+
+            
 
         }
     }

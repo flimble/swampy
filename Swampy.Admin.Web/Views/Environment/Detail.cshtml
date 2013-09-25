@@ -49,6 +49,8 @@
             </tr>
         </thead>
         <tbody>
+
+
             @foreach (var endpoint in Model.ConfigurationItems)
             {
                 @Html.HiddenFor(x => x.Id)
@@ -61,9 +63,18 @@
                            href="#">Edit
                     </a>
                     </td>
-                    <td>@Ajax.ActionLink("Delete", "Delete", "Environment", new { environmentId = Model.Id, configurationItemId = @endpoint.Id }, new AjaxOptions { HttpMethod = "Post" })
 
+                    <td>
+                        @using(Html.BeginForm("Delete", "Environment", FormMethod.Post))
+                        {
+                            <input type="hidden" name="environmentId" value="@Model.Id" />
+                            <input type="hidden" name="configurationItemId" value="@endpoint.Id" />
+
+                            @Html.HttpMethodOverride(HttpVerbs.Delete)
+                            <button type="submit" class="button delete_recipient">Delete</button>
+                        }
                     </td>
+
                 </tr>
             }
         </tbody>
