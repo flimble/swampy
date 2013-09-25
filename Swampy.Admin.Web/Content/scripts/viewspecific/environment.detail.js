@@ -1,5 +1,14 @@
 ﻿$(document).ready(function () {
 
+    //alert('in document ready');
+    
+    $('#myId-1').live('click',function (e) {
+
+
+        e.preventDefault();
+
+        $(this).postForm({ useAnchorHrefAsTarget: true});
+    });
 
 });
 

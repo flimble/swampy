@@ -12,7 +12,7 @@ namespace Swampy.Business.Infrastructure.NHibernate.Conventions
     {
         public void Apply(IPropertyInstance instance)
         {
-            instance.Not.Nullable();
+            //instance.Not.Nullable();
         }
 
     }

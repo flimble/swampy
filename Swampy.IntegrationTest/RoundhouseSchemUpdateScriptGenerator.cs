@@ -4,7 +4,7 @@ using Swampy.UnitTest.Helpers;
 namespace Swampy.UnitTest
 {
     [TestFixture]
-    public class RoundhouseSchemUpdateScriptGenerator
+    public class RoundhouseSchemaUpdateScriptGenerator
     {
         
         [Test]

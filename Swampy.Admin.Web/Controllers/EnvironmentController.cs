@@ -12,7 +12,7 @@ using Swampy.Business.DomainModel.Entities;
 namespace Swampy.Admin.Web.Controllers
 {
     public class EnvironmentController : AbstractController
-    {        
+    {
 
         [HttpGet]
         public ActionResult Index()
@@ -41,7 +41,7 @@ namespace Swampy.Admin.Web.Controllers
 
             var model = Mapper.Map<SwampyEnvironment, EnvironmentReadModel>(currentEnvironment);
 
-            return View(model);
+            return View("Detail", model);
 
         }
 
@@ -62,32 +62,47 @@ namespace Swampy.Admin.Web.Controllers
             return View(model);
         }
 
+
         [HttpPost]
-        public ActionResult AddConfigurationItem(ConfigurationItemInputModel item)               
+        public ActionResult Delete(int environmentId, int configurationItemId)
+        {
+            var environment = Session.Get<SwampyEnvironment>(environmentId);
+            var toDelete = environment.ConfigurationItems.Single(x => x.Id == configurationItemId);
+
+            environment.ConfigurationItems.Remove(toDelete);
+
+            Session.Save(environment);
+
+            return RedirectToAction("Detail", "Environment", new { environmentName = environment.Name});
+        }
+
+
+        [HttpPost]
+        public ActionResult AddConfigurationItem(ConfigurationItemInputModel item)
         {
             var environment = Session.Load<SwampyEnvironment>(item.EnvironmentId);
 
             if (item.Id.HasValue)
             {
                 var configurationItem = Session.Load<ConfigurationItem>(item.Id.Value);
-                var updatedItem = Mapper.Map<ConfigurationItemInputModel, ConfigurationItem>(item, configurationItem);
+                var updatedItem = Mapper.Map(item, configurationItem);
 
                 Session.SaveOrUpdate(updatedItem);
 
-                
+
 
             }
             else
             {
                 var newConfigurationItem = this.Mapper.Map<ConfigurationItemInputModel, ConfigurationItem>(item);
-                
+
                 environment.ConfigurationItems.Add(newConfigurationItem);
                 Session.SaveOrUpdate(environment);
 
-                
+
             }
-                                          
-            return RedirectToAction("Detail", "Environment", new { environmentName=environment.Name} );
+
+            return RedirectToAction("Detail", "Environment", new { environmentName = environment.Name });
 
         }
 
@@ -129,13 +144,13 @@ namespace Swampy.Admin.Web.Controllers
 
             Mapper.Map(operation, environment);
 
-          
+
             Session.SaveOrUpdate(environment);
 
 
             return RedirectToAction("Index");
         }
 
-        
+
     }
 }

@@ -32,9 +32,11 @@
                      @Html.ValidationMessageFor(x=>x.SelectedItemType)
                  </div>
             </div>
-
-            @Html.BootstrapEditorFor(x => x.Value)
-
+            
+            
+            @Html.BootstrapEditorFor(x => x.Value) 
+            <a id="myId-@Model.Id" onclick="preventDefault(); (this).postForm({ useAnchorHrefAsTarget: true});" href="@Url.Action("CalculateActualValue","ConfigurationItem")">refresh</a>
+            <span class="tada">@Model.ActualValue</span>
            
 
 

@@ -1,18 +1,15 @@
-﻿(function ($) {
-
+﻿/*jslint browser: true, devel: true*/
+/*global $, jQuery*/
+(function ($) {
+    "use strict";
     jQuery.fn.extend({
-        postForm: function(options) {
-
-            //by default use parent form target, unless specifically require to use anchor href
-            var defaults = {
-                useAnchorHrefAsTarget: false
-            };
-
-            var options = $.extend(defaults, options);
-
-            var $form = $(this).parents('form');
-
-            var url;
+        postForm: function (options) {         
+            var defaults, $form, url;
+            //by default use parent from target, 
+            //unless specifically require to use anchor href
+            defaults = { useAnchorHrefAsTarget: false };
+            options = $.extend(defaults, options);
+            $form = $(this).parents('form');
 
             if (options.useAnchorHrefAsTarget) {
                 url = this.href;
@@ -24,13 +21,10 @@
                 url: url,
                 data: $form.serialize(), //parameters go here in object literal form
                 type: 'POST',
-                success: function(data) { alert('got here with data'); },
-                error: function() { alert('something bad happened'); }
+                success: function () { alert('got here with data'); }
             });
-
-
             return this;
 
         }
     });
-})(jQuery);
+}(jQuery));

@@ -11,7 +11,9 @@ namespace Swampy.Business.Infrastructure.NHibernate.Mappings
             Map(x => x.Name).Unique();
             Map(x => x.Domain);
             Map(x => x.Description).Nullable();
-            HasMany(x => x.ConfigurationItems).Cascade.All();
+            HasMany(x => x.ConfigurationItems).Cascade.AllDeleteOrphan();
+                                              
+                                              
 
             Component(x => x.ModificationDetails, a =>
             {

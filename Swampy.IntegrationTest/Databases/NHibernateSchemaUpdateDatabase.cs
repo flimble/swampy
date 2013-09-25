@@ -9,6 +9,7 @@ using NHibernate;
 using NHibernate.Cfg;
 using NHibernate.Tool.hbm2ddl;
 using Swampy.Business.Infrastructure.NHibernate;
+using Swampy.Business.Infrastructure.NHibernate.Conventions;
 
 namespace Swampy.UnitTest.Helpers
 {
@@ -21,13 +22,18 @@ namespace Swampy.UnitTest.Helpers
             var sqlServerConfiguration = MsSqlConfiguration.MsSql2008
                                                    .ConnectionString(
                                                        x =>
-                                                       x.Server("(local)")
+                                                       x.Server(@".\local")
                                                         .TrustedConnection()
                                                         .Database("Swampy"))
                                                    .ShowSql();
 
-            NHibernateConfigurationFactory.Configuration(sqlServerConfiguration)
-                   .ExposeConfiguration(cfg => Configuration = cfg)
+            NHibernateConfigurationFactory.Configuration(sqlServerConfiguration)                             
+                  .ExposeConfiguration(
+                   cfg =>
+                       {                           
+                           Configuration = cfg;    
+                           
+                       })
                    .BuildSessionFactory();
 
             var executingDir = new Uri(Directory.GetCurrentDirectory());
@@ -65,6 +71,7 @@ namespace Swampy.UnitTest.Helpers
                 Action<string> updateExport = x =>
                 {
                     sw.Write(x);
+                    Console.Write(x);
                 };
 
                 new SchemaUpdate(Configuration).Execute(updateExport, false);

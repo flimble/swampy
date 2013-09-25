@@ -118,10 +118,11 @@
     <Compile Include="DomainModel\Entities\User.cs" />
     <Compile Include="DomainModel\Repositories\IQuery.cs" />
     <Compile Include="Infrastructure\NHibernate\Conventions\EnumConvention.cs" />
+    <Compile Include="Infrastructure\NHibernate\CustomTableGenerator.cs" />
     <Compile Include="Infrastructure\NHibernate\MsSqlExceptionConverter.cs" />
     <Compile Include="Infrastructure\NHibernate\Conventions\ColumnDefaultNotNullConvention.cs" />
     <Compile Include="DomainModel\ValueObjects\ValueObjectBase.cs" />
-    <Compile Include="Infrastructure\NHibernate\Conventions\FullIdNameConvention.cs" />
+    <Compile Include="Infrastructure\NHibernate\Conventions\PrimaryKeyConvention.cs" />
     <Compile Include="Infrastructure\NHibernate\Conventions\ReferenceConvention.cs" />
     <Compile Include="DomainModel\ValueObjects\AuditInformation.cs" />
     <Compile Include="Contract\Validators\IValidate.cs" />

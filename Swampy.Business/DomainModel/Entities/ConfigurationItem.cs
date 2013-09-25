@@ -8,9 +8,11 @@ namespace Swampy.Business.DomainModel.Entities
 {
     public class ConfigurationItem : AbstractEntity
     {
+        private ITokenBuilder _builder;
+
         protected ConfigurationItem()
         {
-            
+            _builder = new TokenBuilder();
         }
 
         public ConfigurationItem(string key, string value, ConfigurationItemType type, SwampyEnvironment environment)
@@ -35,27 +37,32 @@ namespace Swampy.Business.DomainModel.Entities
 
         public virtual bool StoreAsToken { get; set; }
 
-        public virtual bool ContainsTokens(ITokenBuilder builder)
+        public virtual bool ContainsTokens()
         {
-            builder.SearchForTokens(this.Value);
-            if (builder.TokensFound.Count > 0)
+            _builder.SearchForTokens(this.Value);
+            if (_builder.TokensFound.Count > 0)
                 return true;
 
             return false;
         }
 
-        public virtual void Hydrate(ITokenBuilder builder, IList<ConfigurationItem> replacementValues)
+        public virtual void Hydrate(IList<ConfigurationItem> replacementValues)
         {
             var hydratedValue = new StringBuilder(this.Value);
 
-            builder.SearchForTokens(this.Value);
-            if (builder.TokensFound.Count > 0)
+            _builder.SearchForTokens(this.Value);
+            if (_builder.TokensFound.Count > 0)
             {
-               foreach (var token in builder.TokensFound)
+               foreach (var token in _builder.TokensFound)
                {
-                   string replacementValue = replacementValues.Single(x => x.Name == token).Value;
+                   var dependency = replacementValues.SingleOrDefault(x => x.Name == token);
+                   if (dependency == null)
+                       throw new InvalidOperationException(string.Format("No valid replacement value exists for token {0}", token));
+                  
+                       string replacementValue = dependency.Value;
 
-                   hydratedValue.Replace(builder.AddTokenWrap(token), replacementValue);
+                       hydratedValue.Replace(_builder.AddTokenWrap(token), replacementValue);
+                   
                }
             }
             this.HydratedValue = hydratedValue.ToString();

@@ -20,18 +20,21 @@ namespace Swampy.Business.Infrastructure.NHibernate
 
             return Fluently.Configure()
                            .Database(databaseConfig)
+          
                            .Mappings(cfg => cfg.FluentMappings.AddFromAssembly(typeof(EnvironmentMap).Assembly)
                                                .Conventions.Setup(mappings =>
-                                                   {
-                                                       mappings.AddAssembly(typeof(EnvironmentMap).Assembly);
-                                                       mappings.Conventions.Add(new OneToManyForeignKeyConvention());
-                                                       mappings.Conventions.Add(new FullIdNameConvention());
-                                                       mappings.Conventions.Add(new ColumnDefaultNotNullConvention());
-                                                       mappings.Conventions.Add(new EnumConvention());
-                                                   }));
+                                               {
+                                                   mappings.AddAssembly(typeof(EnvironmentMap).Assembly);
+                                                   //mappings.Conventions.Add(new CustomIdentityHiLoGeneratorConvention());
+                                                   mappings.Conventions.Add(new OneToManyForeignKeyConvention());
+                                                   mappings.Conventions.Add(new PrimaryKeyConvention());
+                                                   mappings.Conventions.Add(new ColumnDefaultNotNullConvention());
+                                                   mappings.Conventions.Add(new EnumConvention());
+                                                   
+                                               }));
         }
 
 
-      
+
     }
 }

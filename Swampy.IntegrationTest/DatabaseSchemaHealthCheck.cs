@@ -1,13 +1,6 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using NHibernate;
+﻿using NHibernate;
 using NUnit.Framework;
 using Swampy.Admin.Web.App_Start;
-using Swampy.UnitTest.Helpers;
 
 namespace Swampy.IntegrationTest
 {

@@ -18,6 +18,7 @@ namespace Swampy.Admin.Web.Controllers
         }
 
         [HttpGet]
+        //TODO: Add a 'REAL' about page. Currently just using the readme.md to make sure it is maintained until version 1.0 release.
         public ActionResult About()
         {
             var baseDir = Server.MapPath("~/bin");

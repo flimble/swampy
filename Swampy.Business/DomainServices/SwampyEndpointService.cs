@@ -17,7 +17,7 @@ namespace Swampy.Business.DomainServices
         }
 
         public KeyPair[] GetEndpoints(string environment, string[] keys, string callingApplication)
-        {
+        {            
             var env = Session.Query<SwampyEnvironment>().SingleOrDefault(x => x.Name == environment);
             var keypairs = env.ConfigurationItems.Select(e => new KeyPair(e.Name, e.Name));
 

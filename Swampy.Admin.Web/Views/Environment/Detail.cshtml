@@ -9,9 +9,7 @@
 
 @section scripts
 {
-    @*@Scripts.Render("~/Content/scripts/viewspecific/environment.coffee")    
-    @Scripts.Render("~/Content/scripts/datatables/jquery.dataTables.js")
-    @Scripts.Render("~/Content/scripts/viewspecific/environment-new.js")*@
+    @Scripts.Render("~/Content/scripts/application/formpost.js")
     @Scripts.Render("~/Content/scripts/viewspecific/environment.detail.js")
 }
 <div>
@@ -37,7 +35,6 @@
     </div>
 
     <div id="edit-configurationitem">
-        
     </div>
     @{ Html.RenderPartial("CreateConfigurationItemPopup", new ConfigurationItemInputModel { EnvironmentId = Model.Id }); }
 
@@ -48,6 +45,7 @@
                 <th>Value</th>
                 <th>Type</th>
                 <th>Edit</th>
+                <th>Delete</th>
             </tr>
         </thead>
         <tbody>
@@ -59,10 +57,12 @@
                     <td>@endpoint.Value</td>
                     <td>@endpoint.SelectedItemType</td>
                     <td><a class="edit-configurationitem" onclick="loadEditPopup(
-                        '@Url.Action("GetConfigurationItem", "Environment", new { configurationItemId = @endpoint.Id, environmentId = Model.Id })', '#edit-configurationitem');"
-                           href="#">
-                            Edit
-                        </a>
+    '@Url.Action("GetConfigurationItem", "Environment", new { configurationItemId = @endpoint.Id, environmentId = Model.Id })', '#edit-configurationitem');"
+                           href="#">Edit
+                    </a>
+                    </td>
+                    <td>@Ajax.ActionLink("Delete", "Delete", "Environment", new { environmentId = Model.Id, configurationItemId = @endpoint.Id }, new AjaxOptions { HttpMethod = "Post" })
+
                     </td>
                 </tr>
             }

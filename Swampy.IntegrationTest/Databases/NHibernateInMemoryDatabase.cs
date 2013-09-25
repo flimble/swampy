@@ -25,7 +25,7 @@ namespace Swampy.UnitTest.Helpers
 
             return 
                NHibernateConfigurationFactory.Configuration(dbConfig)
-              .ExposeConfiguration(configuration => Configuration = configuration)
+              .ExposeConfiguration(configuration => Configuration = configuration)              
               .ExposeConfiguration(x=>x.SetProperty(NHibernate.Cfg.Environment.ReleaseConnections, "on_close"))
               .BuildSessionFactory();
         }

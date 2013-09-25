@@ -1,3 +1,4 @@
+﻿
 using FluentNHibernate.Cfg.Db;
 using NHibernate;
 using NHibernate.Cfg;
@@ -14,13 +15,13 @@ namespace Swampy.Admin.Web.App_Start
             var sqlServerConfiguration = MsSqlConfiguration.MsSql2008
                                                               .ConnectionString(
                                                                   x =>
-                                                                  x.Server("(local)")
+                                                                  x.Server(@".\local")
                                                                    .TrustedConnection()
                                                                    .Database("Swampy"))
                                                               .ShowSql();
 
 
-            return NHibernateConfigurationFactory.Configuration(sqlServerConfiguration)                
+            return NHibernateConfigurationFactory.Configuration(sqlServerConfiguration)
                 .BuildConfiguration()
                 .SetProperty(
                     Environment.SqlExceptionConverter,

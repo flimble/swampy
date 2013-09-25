@@ -21,6 +21,8 @@ namespace Swampy.Admin.Web.Models
         public ConfigurationItemType SelectedItemType { get; set; }
         public string Name { get; set; }
         public string Value { get; set; }
+
+        public string ActualValue { get; set; }
     }
 
     public class ConfigurationItemInputValidator : AbstractValidator<ConfigurationItemInputModel>

@@ -1,15 +1,11 @@
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
 using System.ServiceModel;
 using System.ServiceModel.Channels;
 using System.ServiceModel.Dispatcher;
-using System.Text;
-using System.Threading.Tasks;
+using FluentNHibernate.Cfg.Db;
 using NHibernate;
 using NHibernate.Cfg;
 using NHibernate.Context;
+using Swampy.Business.Infrastructure.NHibernate;
 
 namespace Swampy.Service
 {
@@ -19,11 +15,31 @@ namespace Swampy.Service
 
         private static ISessionFactory BuildSessionFactory()
         {
-            return new Configuration()
-                .Configure()
-                .CurrentSessionContext<WcfOperationSessionContext>()
-                .BuildSessionFactory();
+            var sqlServerConfiguration = MsSqlConfiguration.MsSql2008
+                                                           .ConnectionString(
+                                                               x =>
+                                                               x.Server(@".\local")
+                                                                .TrustedConnection()
+                                                                .Database("Swampy"))
+                                                           .ShowSql();
+
+
+
+
+
+
+
+
+               return NHibernateConfigurationFactory.Configuration(sqlServerConfiguration)
+                   .BuildConfiguration()                    
+                   .CurrentSessionContext<WcfOperationSessionContext>()
+                   .BuildSessionFactory();
+                
+
         }
+
+        
+           
 
         public object AfterReceiveRequest(ref Message request, IClientChannel channel, InstanceContext instanceContext)
         {

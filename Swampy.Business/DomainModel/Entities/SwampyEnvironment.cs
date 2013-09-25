@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
+using Swampy.Business.DomainModel.Entities.Interfaces;
 using Swampy.Business.DomainModel.ValueObjects;
 
 namespace Swampy.Business.DomainModel.Entities
@@ -8,10 +9,13 @@ namespace Swampy.Business.DomainModel.Entities
     {
         public virtual string Name { get; set; }
 
+        private ITokenBuilder _builder;
+
         public SwampyEnvironment(string name)
             : this()
         {
             Name = name;
+            this._builder = new TokenBuilder();
         }
 
         public SwampyEnvironment(string name, string domain)
@@ -38,7 +42,6 @@ namespace Swampy.Business.DomainModel.Entities
 
         public virtual IList<ConfigurationItem>  HydrateItems()
         {
-            var builder = new TokenBuilder();
 
             var orderedByDependency = this.ConfigurationItems
                                           .OrderByDescending(x => x.StoreAsToken)
@@ -46,9 +49,9 @@ namespace Swampy.Business.DomainModel.Entities
 
             foreach (var item in orderedByDependency)
             {
-                if (item.ContainsTokens(builder))
+                if (item.ContainsTokens())
                 {
-                    item.Hydrate(builder, this.ConfigurationItemsUsedByOthers);
+                    item.Hydrate(this.ConfigurationItemsUsedByOthers);
                 }
             }
 
