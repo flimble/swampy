@@ -11,11 +11,7 @@
         add constraint FK_ConfigurationItem_SwampyEnvironment 
         foreign key (SwampyEnvironmentId) 
         references [SwampyEnvironment]
-    create table NHibernateHiLoIdentity (
-         NextHigh INT,
-       TableKey VARCHAR(125)
 
-    )
 
-    insert into NHibernateHiLoIdentity values ( 1,'ConfigurationItem' )
+
     insert into NHibernateHiLoIdentity values ( 1,'SwampyEnvironment' )

@@ -30,4 +30,4 @@
     )
 
     insert into NHibernateHiLoIdentity values ( 1,'ConfigurationItem' )
-    insert into NHibernateHiLoIdentity values ( 1,'SwampyEnvironment' )
+    
