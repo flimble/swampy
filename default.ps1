@@ -69,7 +69,7 @@ task UnitTest -depends Compile {
 	}
 }
 
-task IntegrationTest -depends Compile, UnitTest {
+task IntegrationTest -depends Compile, UnitTest, BuildDatabaseForTest {
 	$integrationtest_assemblies = Get-ChildItem $build_dir -filter $integrationtest_assembly_filter
 
 	Write-Host $integrationtest_assemblies
