@@ -38,6 +38,7 @@ namespace Swampy.Admin.Web.Controllers
             var environments = this.Session.Query<SwampyEnvironment>();
 
             var currentEnvironment = environments.Single(x => x.Name == environmentName);
+            currentEnvironment.HydrateItems();
 
             var model = Mapper.Map<SwampyEnvironment, EnvironmentReadModel>(currentEnvironment);
 
@@ -76,30 +77,70 @@ namespace Swampy.Admin.Web.Controllers
             return RedirectToAction("Detail", "Environment", new { environmentName = environment.Name});
         }
 
+        [HttpGet]
+        public ActionResult Clone()
+        {
+            return View("Clone");
+        }
+
+        [HttpPost]
+        public ActionResult Clone(EnvironmentCloneModel input)
+        {
+            var toClone = Session.Query<SwampyEnvironment>().SingleOrDefault(x=>x.Name == input.ParentEnvironmentName);
+
+            var clone = toClone.Clone();
+            clone.Name = input.Name;
+            clone.Description = input.Description;
+            clone.Domain = input.Domain;
+            
+
+            Session.Save(clone);
+
+            return Detail(clone.Name);
+        }
+
 
         [HttpPost]
         public ActionResult AddConfigurationItem(ConfigurationItemInputModel item)
         {
             var environment = Session.Load<SwampyEnvironment>(item.EnvironmentId);
 
-            if (item.Id.HasValue)
+            if (item.AddToAllEnvironments)
             {
-                var configurationItem = Session.Load<ConfigurationItem>(item.Id.Value);
-                var updatedItem = Mapper.Map(item, configurationItem);
+                var environments = Session.Query<SwampyEnvironment>();
 
-                Session.SaveOrUpdate(updatedItem);
+                foreach (var e in environments)
+                {
+                    var newConfigurationItem = this.Mapper.Map<ConfigurationItemInputModel, ConfigurationItem>(item);
 
-
-
+                    e.ConfigurationItems.Add(newConfigurationItem);
+                    Session.SaveOrUpdate(e);    
+                }
+                
             }
+
             else
-            {
-                var newConfigurationItem = this.Mapper.Map<ConfigurationItemInputModel, ConfigurationItem>(item);
+            {                
 
-                environment.ConfigurationItems.Add(newConfigurationItem);
-                Session.SaveOrUpdate(environment);
+                if (item.Id.HasValue)
+                {
+                    var configurationItem = Session.Load<ConfigurationItem>(item.Id.Value);
+                    var updatedItem = Mapper.Map(item, configurationItem);
+
+                    Session.SaveOrUpdate(updatedItem);
 
 
+
+                }
+                else
+                {
+                    var newConfigurationItem = this.Mapper.Map<ConfigurationItemInputModel, ConfigurationItem>(item);
+
+                    environment.ConfigurationItems.Add(newConfigurationItem);
+                    Session.SaveOrUpdate(environment);
+
+
+                }
             }
 
             return RedirectToAction("Detail", "Environment", new { environmentName = environment.Name });

@@ -1,0 +1,1 @@
+CREATE UNIQUE INDEX UQ_ConfigurationItem_Name_SwampyEnvironmentId ON ConfigurationItem(Name, SwampyEnvironmentId)

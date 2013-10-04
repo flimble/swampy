@@ -17,24 +17,23 @@ namespace Swampy.UnitTest.Helpers
     {
         protected Configuration Configuration;
         public ISession Session { get; set; }
+
         public void BuildSchema()
         {
             var sqlServerConfiguration = MsSqlConfiguration.MsSql2008
-                                                   .ConnectionString(
-                                                       x =>
-                                                       x.Server(@".\local")
-                                                        .TrustedConnection()
-                                                        .Database("Swampy"))
-                                                   .ShowSql();
+                                                           .ConnectionString(
+                                                               x =>
+                                                               x.FromConnectionStringWithKey("SwampyDatabase"))
+                                                           .ShowSql();
 
-            NHibernateConfigurationFactory.Configuration(sqlServerConfiguration)                             
-                  .ExposeConfiguration(
-                   cfg =>
-                       {                           
-                           Configuration = cfg;    
-                           
-                       })
-                   .BuildSessionFactory();
+            NHibernateConfigurationFactory.Configuration(sqlServerConfiguration)
+                                          .ExposeConfiguration(
+                                              cfg =>
+                                                  {
+                                                      Configuration = cfg;
+
+                                                  })
+                                          .BuildSessionFactory();
 
             var executingDir = new Uri(Directory.GetCurrentDirectory());
             var rootDir = new Uri(executingDir, @"../../");
@@ -52,11 +51,11 @@ namespace Swampy.UnitTest.Helpers
                 string latestFile = Path.GetFileName(files.First());
                 int number = int.Parse(latestFile.Substring(0, 4));
 
-                seed = number / 10;
+                seed = number/10;
 
 
             }
-            int newScriptNo = (++seed) * 10;
+            int newScriptNo = (++seed)*10;
             string fileName = string.Format("{0}.update.sql", newScriptNo.ToString("0000"));
 
             var newScript = Path.Combine(dbScriptsDir, fileName);
@@ -64,20 +63,28 @@ namespace Swampy.UnitTest.Helpers
 
 
 
+            StringBuilder sb = new StringBuilder();
 
-            using (var file = new FileStream(newScript, FileMode.Create, FileAccess.Write))
-            using (var sw = new StreamWriter(file))
+            using (var sw = new StringWriter(sb))
             {
                 Action<string> updateExport = x =>
-                {
-                    sw.Write(x);
-                    Console.Write(x);
-                };
+                    {
+                        sw.Write(x);
+                    };
 
                 new SchemaUpdate(Configuration).Execute(updateExport, false);
-                sw.Close();
             }
-        }
+
+            if (sb.Length > 0)
+            {
+                File.WriteAllText(newScript, sb.ToString());
+            }
+            else
+            {
+                Console.Write("No file generated as no changes found");
+            }
+
+    }
 
 
         public void Dispose()

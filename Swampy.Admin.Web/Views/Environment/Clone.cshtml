@@ -1,0 +1,36 @@
+﻿@using Swampy.Admin.Web.HtmlHelpers
+@using Swampy.Admin.Web.Models
+@model Swampy.Admin.Web.Models.Operation.EnvironmentCloneModel
+@{
+    ViewBag.Title = "Clone Environment";
+    Layout = "~/Views/Shared/_LayoutFluid.cshtml";    
+}
+
+@section scripts {
+   
+}
+
+@section styles {}
+
+
+@using (Html.BeginForm("Clone", "Environment", FormMethod.Post))
+{
+        
+    <fieldset class="input-xxlarge">
+        <legend>@ViewBag.Title</legend>                       
+        
+        @Html.BootstrapTextboxFor(model => model.ParentEnvironmentName, new { @class="input-xxlarge"})
+
+        @Html.BootstrapTextboxFor(model => model.Name, new { @class="input-xxlarge"})
+
+        @Html.BootstrapTextboxFor(model => model.Domain, new { @class="input-xxlarge"})       
+
+        @Html.BootstrapTextAreaEditorFor(model => model.Description, 5, 20,  new { @class="input-xxlarge"})
+                
+        <div class="form-actions">
+            <button type="submit" class="btn btn-primary">Save changes</button>
+            @Html.ActionLink("Cancel", "Index", "Environment", null, new { @class = "btn" })
+        </div>
+    </fieldset>
+}
+

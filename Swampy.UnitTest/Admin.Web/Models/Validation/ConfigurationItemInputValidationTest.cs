@@ -26,8 +26,7 @@ namespace Swampy.UnitTest.Tests.Admin.MVC.Models
         }
 
         [Test]
-        [TestCase(ConfigurationItemType.DatabaseConnectionString,"jf")]
-        [TestCase(ConfigurationItemType.Simple, "")]
+        [TestCase(ConfigurationItemType.DatabaseConnectionString,"jf")]        
         [TestCase(ConfigurationItemType.ServerUrl, "www test:com")]
         public void invalid_configurationvalues_generate_error(ConfigurationItemType type, string value)
         {

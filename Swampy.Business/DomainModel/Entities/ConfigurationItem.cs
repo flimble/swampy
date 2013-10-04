@@ -18,15 +18,12 @@ namespace Swampy.Business.DomainModel.Entities
         public ConfigurationItem(string key, string value, ConfigurationItemType type, SwampyEnvironment environment)
             : this()
         {
+
             this.Name = key;
             this.Value = value;
-            this.ConfigurationType = type;
-            this.SwampyEnvironment = environment;
-        }
-
-    
-
-        public virtual SwampyEnvironment SwampyEnvironment { get; set; }
+            this.ConfigurationType = type;            
+        }        
+        
 
         public virtual ConfigurationItemType ConfigurationType { get; set; }
 
@@ -53,23 +50,42 @@ namespace Swampy.Business.DomainModel.Entities
             _builder.SearchForTokens(this.Value);
             if (_builder.TokensFound.Count > 0)
             {
-               foreach (var token in _builder.TokensFound)
-               {
-                   var dependency = replacementValues.SingleOrDefault(x => x.Name == token);
-                   if (dependency == null)
-                       throw new InvalidOperationException(string.Format("No valid replacement value exists for token {0}", token));
-                  
-                       string replacementValue = dependency.Value;
+                foreach (var token in _builder.TokensFound)
+                {
+                    var dependency = replacementValues.SingleOrDefault(x => x.Name == token);
 
-                       hydratedValue.Replace(_builder.AddTokenWrap(token), replacementValue);
-                   
-               }
+
+                    if (dependency == null)
+                        throw new InvalidOperationException(string.Format("No valid replacement value exists for token {0}", token));                    
+
+                    string replacementValue = dependency.HydratedValue;
+
+                    hydratedValue.Replace(_builder.AddTokenWrap(token), replacementValue);
+
+                }
             }
-            this.HydratedValue = hydratedValue.ToString();
+            _hydratedValue = hydratedValue.ToString();
         }
 
-        public virtual string HydratedValue { get; protected set; }
-     
+        public virtual string HydratedValue
+        {
+            get
+            {
+                if (string.IsNullOrEmpty(_hydratedValue))
+                {
+                    return Value;
+                }
+                else
+                {
+                    return _hydratedValue;
+                }
+
+
+            }
+        }
+
+        private string _hydratedValue;
+
 
         public virtual string Description { get; set; }
 

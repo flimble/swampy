@@ -188,11 +188,14 @@
     <Compile Include="Infrastructure\ModelBinders\SwampyDefaultModelBinder.cs" />
     <Compile Include="Models\AboutReadModel.cs" />
     <Compile Include="Models\ConfigurationItemInputModel.cs" />
+    <Compile Include="Models\Copy of EnvironmentInputModel.cs" />
     <Compile Include="Models\EnvironmentRead.cs" />
     <Compile Include="Models\EnvironmentInputModel.cs" />
     <Compile Include="Models\EnvironmentReadModel.cs" />
     <Compile Include="Models\HomeReadModel.cs" />
+    <Compile Include="Models\MapperProfiles\SwampyEnvironmentCloneProfile.cs" />
     <Compile Include="Models\MapperProfiles\ConfigurationItemProfile.cs" />
+    <Compile Include="Models\MapperProfiles\ConfigurationItemCloneProfile.cs" />
     <Compile Include="Models\MapperProfiles\SwampyEnvironmentProfile.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -358,6 +361,7 @@
     <Content Include="Views\Environment\Edit.cshtml" />
     <Content Include="Views\Shared\_html5shiv.cshtml" />
     <Content Include="Views\Environment\CreateConfigurationItemPopup.cshtml" />
+    <Content Include="Views\Environment\Clone.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

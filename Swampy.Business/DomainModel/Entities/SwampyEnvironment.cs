@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
+using AutoMapper;
 using Swampy.Business.DomainModel.Entities.Interfaces;
 using Swampy.Business.DomainModel.ValueObjects;
 
@@ -35,6 +36,13 @@ namespace Swampy.Business.DomainModel.Entities
                        
         }
 
+        public virtual SwampyEnvironment Clone()
+        {
+            var result = Mapper.Map<SwampyEnvironment, SwampyEnvironment>(this);
+
+            return result;
+        }
+
         public virtual IList<ConfigurationItem> ConfigurationItemsUsedByOthers
         {
             get { return this.ConfigurationItems.Where(x => x.StoreAsToken).ToList(); }
@@ -52,7 +60,7 @@ namespace Swampy.Business.DomainModel.Entities
                 if (item.ContainsTokens())
                 {
                     item.Hydrate(this.ConfigurationItemsUsedByOthers);
-                }
+                }                
             }
 
             return orderedByDependency;

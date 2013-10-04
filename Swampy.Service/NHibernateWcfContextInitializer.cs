@@ -1,3 +1,4 @@
+using System.Configuration;
 using System.ServiceModel;
 using System.ServiceModel.Channels;
 using System.ServiceModel.Dispatcher;
@@ -6,21 +7,29 @@ using NHibernate;
 using NHibernate.Cfg;
 using NHibernate.Context;
 using Swampy.Business.Infrastructure.NHibernate;
+using Swampy.Business.Infrastructure.NHibernate.Session;
 
 namespace Swampy.Service
 {
     public sealed class NHibernateWcfContextInitializer : IDispatchMessageInspector
     {
-        private static readonly ISessionFactory sessionFactory = BuildSessionFactory();
+        private static ISessionFactory SessionFactory;
+
+        public NHibernateWcfContextInitializer()
+        {
+            SessionFactory = BuildSessionFactory();
+            UnitOfWork.Initialize(SessionFactory);
+        }
+        
+        
 
         private static ISessionFactory BuildSessionFactory()
-        {
+        {         
+
             var sqlServerConfiguration = MsSqlConfiguration.MsSql2008
                                                            .ConnectionString(
                                                                x =>
-                                                               x.Server(@".\local")
-                                                                .TrustedConnection()
-                                                                .Database("Swampy"))
+                                                               x.FromConnectionStringWithKey("SwampyDatabase"))
                                                            .ShowSql();
 
 
@@ -43,7 +52,7 @@ namespace Swampy.Service
 
         public object AfterReceiveRequest(ref Message request, IClientChannel channel, InstanceContext instanceContext)
         {
-            var session = sessionFactory.OpenSession();
+            var session = SessionFactory.OpenSession();
 
             session.BeginTransaction();
             CurrentSessionContext.Bind(
@@ -56,7 +65,7 @@ namespace Swampy.Service
 
         public void BeforeSendReply(ref Message reply, object correlationState)
         {           
-            using (var session = CurrentSessionContext.Unbind(sessionFactory))
+            using (var session = CurrentSessionContext.Unbind(SessionFactory))
             {
                 if (session == null)
                     return;

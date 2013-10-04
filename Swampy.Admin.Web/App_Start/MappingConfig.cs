@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using AutoMapper;
 using Swampy.Admin.Web.Models;
+using Swampy.Admin.Web.Models.MapperProfiles;
 using Swampy.Admin.Web.Models.Mappers;
 using Swampy.Admin.Web.Models.Operation;
 using Swampy.Business.DomainModel.Entities;
@@ -20,6 +21,8 @@ namespace Swampy.Admin.Web.App_Start
         {            
             Mapper.AddProfile(new SwampyEnvironmentProfile());
             Mapper.AddProfile(new ConfigurationItemProfile());
+            Mapper.AddProfile(new ConfigurationItemCloneProfile());
+            Mapper.AddProfile(new SwampyEnvironmentCloneProfile());
         }
     }
 }

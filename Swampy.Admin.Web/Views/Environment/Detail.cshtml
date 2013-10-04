@@ -38,6 +38,9 @@
     </div>
     @{ Html.RenderPartial("CreateConfigurationItemPopup", new ConfigurationItemInputModel { EnvironmentId = Model.Id }); }
 
+    <p>
+        <a href="#create-configurationitem-" role="button" class="btn pull-right" data-toggle="modal">+ Add</a>
+    </p>
     <table id="endpoints" class="table table-bordered table-striped table-hover">
         <thead>
             <tr>
@@ -65,7 +68,7 @@
                     </td>
 
                     <td>
-                        @using(Html.BeginForm("Delete", "Environment", FormMethod.Post))
+                        @using (Html.BeginForm("Delete", "Environment", FormMethod.Post))
                         {
                             <input type="hidden" name="environmentId" value="@Model.Id" />
                             <input type="hidden" name="configurationItemId" value="@endpoint.Id" />

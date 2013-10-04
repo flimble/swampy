@@ -18,9 +18,7 @@ namespace Swampy.UnitTest.Queries
         public void Can_load_and_save_environment(string environmentName, string domain)
         {
             object id;
-
-            
-
+           
             using (var tx = Session.BeginTransaction())
             {
                 var e = new SwampyEnvironment(environmentName, domain);

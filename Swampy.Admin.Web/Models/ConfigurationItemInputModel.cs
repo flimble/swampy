@@ -21,8 +21,9 @@ namespace Swampy.Admin.Web.Models
         public ConfigurationItemType SelectedItemType { get; set; }
         public string Name { get; set; }
         public string Value { get; set; }
-
+        public bool StoreAsToken { get; set; }
         public string ActualValue { get; set; }
+        public bool AddToAllEnvironments { get; set; }
     }
 
     public class ConfigurationItemInputValidator : AbstractValidator<ConfigurationItemInputModel>
@@ -30,8 +31,7 @@ namespace Swampy.Admin.Web.Models
         public ConfigurationItemInputValidator()
         {
             RuleFor(x => x.Value).SetValidator(new UrlFluentValidator()).When(x => x.SelectedItemType == ConfigurationItemType.ServerUrl);
-            RuleFor(x => x.Value).SetValidator(new DatabaseConnectionStringFluentValidator()).When(x => x.SelectedItemType == ConfigurationItemType.DatabaseConnectionString);
-            RuleFor(x => x.Value).NotEmpty().When(x => x.SelectedItemType == ConfigurationItemType.Simple);
+            RuleFor(x => x.Value).SetValidator(new DatabaseConnectionStringFluentValidator()).When(x => x.SelectedItemType == ConfigurationItemType.DatabaseConnectionString);            
 
             RuleFor(x => x.Name).NotEmpty();
         }

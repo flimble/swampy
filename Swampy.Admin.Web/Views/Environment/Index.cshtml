@@ -13,6 +13,10 @@
         @Html.ActionLink("+ Add New", "Create", null, new { @class = "btn btn-primary btn-large" })
     </p>
     
+        <p class="pull-right">
+        @Html.ActionLink("Clone Existing", "Clone", null, new { @class = "btn btn-primary btn-large" })
+    </p>
+    
     <ul>
     @foreach (KeyValuePair<string, string> environment in Model.EnvironmentNames)
     {  

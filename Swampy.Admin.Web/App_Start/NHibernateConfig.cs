@@ -15,9 +15,7 @@ namespace Swampy.Admin.Web.App_Start
             var sqlServerConfiguration = MsSqlConfiguration.MsSql2008
                                                               .ConnectionString(
                                                                   x =>
-                                                                  x.Server(@".\local")
-                                                                   .TrustedConnection()
-                                                                   .Database("Swampy"))
+                                                                 x.FromConnectionStringWithKey("SwampyDatabase"))
                                                               .ShowSql();
 
 

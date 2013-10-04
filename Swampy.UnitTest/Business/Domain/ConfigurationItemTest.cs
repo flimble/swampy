@@ -10,6 +10,22 @@ namespace Swampy.UnitTest.Tests.Domain
     public class ConfigurationItemTest
     {
         [Test]
+        public void HydrateItems_replaces_nested_tokens_with_real_data()
+        {
+            var e = new SwampyEnvironment("SIT1", "ausydhc-pspsq10");
+            var item1 = new ConfigurationItem("domain", "saig.frd.global", ConfigurationItemType.Simple, e) { StoreAsToken = true };
+            var item2 = new ConfigurationItem("server", "ausydhc-pstsq08.{domain}", ConfigurationItemType.Simple, e) { StoreAsToken = true };
+            var item3 = new ConfigurationItem("servercopy", "{server}", ConfigurationItemType.Simple, e);            
+
+            e.ConfigurationItems = new List<ConfigurationItem> { item1, item2, item3};
+
+            var resolvedItems = e.HydrateItems();
+
+            Assert.AreEqual("ausydhc-pstsq08.saig.frd.global", resolvedItems.Single(x => x.Name == "servercopy").HydratedValue);
+
+        }
+
+        [Test]
         public void HydrateItems_replaces_tokens_with_real_data()
         {
             var e = new SwampyEnvironment("SIT1", "ausydhc-pspsq10");

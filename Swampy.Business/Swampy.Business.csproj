@@ -39,6 +39,9 @@
     <StartupObject />
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AutoMapper">
+      <HintPath>..\packages\AutoMapper.2.2.1\lib\net40\AutoMapper.dll</HintPath>
+    </Reference>
     <Reference Include="BouncyCastle.Crypto">
       <HintPath>..\packages\RavenDB.Database.1.0.960\lib\net40\BouncyCastle.Crypto.dll</HintPath>
     </Reference>
@@ -152,6 +155,7 @@
     <Compile Include="Infrastructure\NHibernate\NHibernateConfigurationFactory.cs" />
     <Compile Include="Infrastructure\NHibernate\Conventions\OneToManyForeignKeyConvention.cs" />
     <Compile Include="Infrastructure\NHibernate\Exceptions\UniqueConstraintViolationException.cs" />
+    <Compile Include="Infrastructure\NHibernate\Session\UnitOfWork.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="DomainServices\SwampyEndpointService.cs" />
   </ItemGroup>

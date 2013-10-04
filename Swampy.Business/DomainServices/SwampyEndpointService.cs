@@ -4,33 +4,40 @@ using NHibernate;
 using NHibernate.Linq;
 using Swampy.Business.Contract;
 using Swampy.Business.DomainModel.Entities;
+using Swampy.Business.Infrastructure.NHibernate.Session;
 
 namespace Swampy.Business.DomainServices
 {
     public class SwampyEndpointService : ISwampyEndpointService
     {
-        private ISession Session;
-
-        public void SetSession(ISession session)
-        {
-            this.Session = session;
-        }
+        
+        
 
         public KeyPair[] GetEndpoints(string environment, string[] keys, string callingApplication)
         {            
-            var env = Session.Query<SwampyEnvironment>().SingleOrDefault(x => x.Name == environment);
-            var keypairs = env.ConfigurationItems.Select(e => new KeyPair(e.Name, e.Name));
+            var env = UnitOfWork.GetCurrentSession.Query<SwampyEnvironment>().SingleOrDefault(x => x.Name.ToLower() == environment.ToLower());
+            env.HydrateItems();
+
+            keys = Array.ConvertAll(keys, x=>x.ToLower());
+
+            var keypairs = env.ConfigurationItems.Where(x=> keys.Contains(x.Name.ToLower())).Select(e => new KeyPair(e.Name, e.HydratedValue));
 
             return keypairs.ToArray();
         }
 
         public KeyPair GetSingleEndpoint(string environment, string key, string callingApplication)
         {
-            var singleOrDefault = Session.Query<SwampyEnvironment>().SingleOrDefault(x => x.Name == environment);
+            key = key.ToLower();
+
+            var singleOrDefault = UnitOfWork.GetCurrentSession.Query<SwampyEnvironment>().SingleOrDefault(x => x.Name == environment);
+            
+
             if (singleOrDefault != null)
             {
+                singleOrDefault.HydrateItems();
+
                 var endpoint = singleOrDefault
-                                      .ConfigurationItems.SingleOrDefault(x => x.Name == key);
+                                      .ConfigurationItems.SingleOrDefault(x => x.Name.ToLower() == key);
 
                 if (endpoint == null)
                 {
@@ -39,7 +46,7 @@ namespace Swampy.Business.DomainServices
                         );
                 }
 
-                return new KeyPair(endpoint.Name, endpoint.Name);
+                return new KeyPair(endpoint.Name, endpoint.HydratedValue);
             }
             return null;
         }

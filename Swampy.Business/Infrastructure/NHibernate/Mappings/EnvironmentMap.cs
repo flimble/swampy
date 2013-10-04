@@ -13,6 +13,7 @@ namespace Swampy.Business.Infrastructure.NHibernate.Mappings
             Map(x => x.Description).Nullable();
             HasMany(x => x.ConfigurationItems).Cascade.AllDeleteOrphan();
                                               
+            
                                               
 
             Component(x => x.ModificationDetails, a =>
